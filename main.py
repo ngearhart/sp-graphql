@@ -1,7 +1,9 @@
 import argparse
+import tensorflow
 from model import T5MultiSPModel
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning import Trainer
+import torch
 
 def pre_train(system: T5MultiSPModel) -> Trainer:
     # trainer = Trainer(num_tpu_cores=8,max_epochs=1)   
@@ -91,6 +93,18 @@ def test(system: T5MultiSPModel, trainer: Trainer, test_flag: str):
 
 
 def main():
+    num_gpus = len(tensorflow.config.list_physical_devices('GPU'))
+    if num_gpus > 0:
+        print("Num GPUs Available: ", num_gpus)
+    else:
+        print("No GPU Available (tensorflow). Make sure you have tensorflow/CUDA installed.")
+        return
+
+    num_gpus_torch = torch.cuda.device_count()
+    if num_gpus_torch == 0:
+        print("Torch does not detect any GPUs. Try https://github.com/PyTorchLightning/pytorch-lightning/issues/1314")
+        return
+
     hparams = argparse.Namespace(**{'lr': 0.0004365158322401656}) # for 3 epochs
     # system = ConvBartSystem(dataset, train_sampler, batch_size=2)
 
