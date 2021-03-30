@@ -60,7 +60,7 @@ class TextToGraphQLDataset(Dataset):
         self.max_len = 0
         self.name_to_schema = {}
         for schema_path in schemas:
-           with open(schema_path, 'r') as s:
+           with open(schema_path, 'r', encoding='utf-8') as s:
              data = json.load(s)
 
              type_field_tokens = [ ['<t>'] + [t['name']] + ['{'] + [ f['name'] for f in t['fields']] + ['}'] + ['</t>'] for t in data['types']]
@@ -88,7 +88,7 @@ class TextToGraphQLDataset(Dataset):
         #   p = re.compile('\s*"""[\s\S]*?"""')
         #   pt = re.compile(': \[?\w+\!?]?!?')
         #   ps = re.compile('\s')
-        #   with open(schema_path, 'r') as s:
+        #   with open(schema_path, 'r', encoding='utf-8') as s:
         #     schema = s.read()
         #     schema = p.sub('', schema)
         #     schema = pt.sub('', schema)
@@ -105,7 +105,7 @@ class TextToGraphQLDataset(Dataset):
         # should I be saving each schema?
         # it's more memory efficent if I only load and tokenize it once. 
 
-        with open(dataset_path, 'r') as f:
+        with open(dataset_path, 'r', encoding='utf-8') as f:
           data = json.load(f)
 
           for element in data:
@@ -162,7 +162,7 @@ class MaskGraphQLDataset(Dataset):
         self.source = []
         self.target = []
         path = './SPEGQL-dataset/dataset/' + type_path
-        with open(path, 'r') as f:
+        with open(path, 'r', encoding='utf-8') as f:
           data = json.load(f)
           # for element in data:
           for example in data:
@@ -231,7 +231,7 @@ class SpiderDataset(Dataset):
 
         tables_path = spider_path + 'tables.json'
 
-        with open(path, 'r') as f, open(tables_path, 'r') as t:
+        with open(path, 'r', encoding='utf-8') as f, open(tables_path, 'r', encoding='utf-8') as t:
           databases = json.load(t)
           data = json.load(f)
 
@@ -297,7 +297,7 @@ class CoSQLMaskDataset(Dataset):
         self.source = []
         self.target = []
         path = './cosql_dataset/sql_state_tracking/' + type_path
-        with open(path, 'r') as f:
+        with open(path, 'r', encoding='utf-8') as f:
           data = json.load(f)
           for element in data:
             for interaction in element['interaction']:
