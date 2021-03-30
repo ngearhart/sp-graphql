@@ -1,9 +1,12 @@
 import argparse
+
 import tensorflow
-from model import T5MultiSPModel
-from pytorch_lightning.callbacks import ModelCheckpoint
-from pytorch_lightning import Trainer
 import torch
+from pytorch_lightning import Trainer
+from pytorch_lightning.callbacks import ModelCheckpoint
+
+from model import T5MultiSPModel
+
 
 def pre_train(system: T5MultiSPModel) -> Trainer:
     # trainer = Trainer(num_tpu_cores=8,max_epochs=1)   

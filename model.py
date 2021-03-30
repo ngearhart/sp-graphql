@@ -1,33 +1,19 @@
-import torch
-import numpy as np
-# from tqdm import tqdm
-from torch.utils.data import DataLoader, Dataset, RandomSampler, SequentialSampler, ConcatDataset
-from torch.utils.data.sampler import SubsetRandomSampler
-from torch.optim import Adam
-from transformers import get_linear_schedule_with_warmup, AutoConfig 
-# from transformers import BartTokenizer,BartModel,BartForConditionalGeneration
-from transformers import T5Tokenizer, T5ForConditionalGeneration, T5Model
-from transformers import AdamW
-from torch.autograd import Variable
-import torch
-import pytorch_lightning as pl
-from pytorch_lightning import Trainer
-import pandas as pd
-import torch.nn.functional as F
 import os
-import glob
-import json
-from pathlib import Path
-import re
-from os.path import basename
-from transformers import BartConfig
-from functools import reduce
+
+import pytorch_lightning as pl
+import torch
 from graphqlval import exact_match
-import itertools
+# from tqdm import tqdm
+from torch.utils.data import ConcatDataset, DataLoader
+
+# from transformers import BartTokenizer,BartModel,BartForConditionalGeneration
+from transformers import (AdamW, T5ForConditionalGeneration, T5Tokenizer,
+                          get_linear_schedule_with_warmup)
+
 torch.manual_seed(0)
 
-from dataset import MaskGraphQLDataset, TextToGraphQLDataset, SpiderDataset, CoSQLMaskDataset
-
+from dataset import (CoSQLMaskDataset, MaskGraphQLDataset, SpiderDataset,
+                     TextToGraphQLDataset)
 
 # OPTIONAL: if you want to have more information on what's happening under the hood, activate the logger as follows
 # import logging

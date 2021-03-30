@@ -1,29 +1,15 @@
-import torch
-import numpy as np
-# from tqdm import tqdm
-from torch.utils.data import DataLoader, Dataset, RandomSampler, SequentialSampler, ConcatDataset
-from torch.utils.data.sampler import SubsetRandomSampler
-from torch.optim import Adam
-from transformers import get_linear_schedule_with_warmup, AutoConfig 
-# from transformers import BartTokenizer,BartModel,BartForConditionalGeneration
-from transformers import T5Tokenizer, T5ForConditionalGeneration, T5Model
-from transformers import AdamW
-from torch.autograd import Variable
-import torch
-import pytorch_lightning as pl
-from pytorch_lightning import Trainer
-import pandas as pd
-import torch.nn.functional as F
-import os
 import glob
-import json
-from pathlib import Path
-import re
-from os.path import basename
-from transformers import BartConfig
-from functools import reduce
-from graphqlval import exact_match
 import itertools
+import json
+from functools import reduce
+from os import curdir
+from os.path import basename, join
+from pathlib import Path
+
+import torch
+# from tqdm import tqdm
+from torch.utils.data import Dataset
+
 torch.manual_seed(0)
 
 # OPTIONAL: if you want to have more information on what's happening under the hood, activate the logger as follows
@@ -40,8 +26,8 @@ class TextToGraphQLDataset(Dataset):
         self.source = []
         self.target = []
         self.schema_ids = []
-        root_path = './SPEGQL-dataset/'
-        dataset_path = root_path + 'dataset/' + type_path
+        root_path = join(curdir, 'SPEGQL-dataset')
+        dataset_path = join(root_path, 'dataset', type_path)
         # TODO open up tables.json
         # its a list of tables
         # group by db_id 
@@ -53,7 +39,7 @@ class TextToGraphQLDataset(Dataset):
         # Maybe try making making more structure 
         # in the concat by using primary_keys and foreign_keys 
 
-        schemas_path = root_path + 'Schemas/'
+        schemas_path = join(root_path, 'Schemas')
         # schemas = glob.glob(schemas_path + '**/' + 'schema.graphql')
         schemas = glob.glob(schemas_path + '**/' + 'simpleSchema.json')
 
@@ -161,7 +147,7 @@ class MaskGraphQLDataset(Dataset):
 
         self.source = []
         self.target = []
-        path = './SPEGQL-dataset/dataset/' + type_path
+        path = join(curdir, 'SPEGQL-dataset', 'dataset', type_path)
         with open(path, 'r', encoding='utf-8') as f:
           data = json.load(f)
           # for element in data:
@@ -216,7 +202,7 @@ class SpiderDataset(Dataset):
 
         self.source = []
         self.target = []
-        spider_path = './spider/'
+        spider_path = join(curdir, 'spider')
         path = spider_path + type_path
         # TODO open up tables.json
         # its a list of tables
@@ -229,7 +215,7 @@ class SpiderDataset(Dataset):
         # Maybe try making making more structure 
         # in the concat by using primary_keys and foreign_keys 
 
-        tables_path = spider_path + 'tables.json'
+        tables_path = join(spider_path, 'tables.json')
 
         with open(path, 'r', encoding='utf-8') as f, open(tables_path, 'r', encoding='utf-8') as t:
           databases = json.load(t)
@@ -296,7 +282,7 @@ class CoSQLMaskDataset(Dataset):
 
         self.source = []
         self.target = []
-        path = './cosql_dataset/sql_state_tracking/' + type_path
+        path = join(curdir, 'cosql_dataset', 'sql_state_tracking', type_path)
         with open(path, 'r', encoding='utf-8') as f:
           data = json.load(f)
           for element in data:
