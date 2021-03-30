@@ -26,6 +26,8 @@ from graphqlval import exact_match
 import itertools
 torch.manual_seed(0)
 
+from dataset import MaskGraphQLDataset, TextToGraphQLDataset, SpiderDataset, CoSQLMaskDataset
+
 
 # OPTIONAL: if you want to have more information on what's happening under the hood, activate the logger as follows
 # import logging

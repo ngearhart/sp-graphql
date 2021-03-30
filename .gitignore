@@ -128,3 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /cosql_dataset.zip
+/spider
+/SPEGQL-dataset
+/cosql_dataset
