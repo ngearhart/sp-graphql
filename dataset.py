@@ -43,7 +43,7 @@ class TextToGraphQLDataset(Dataset):
 
         schemas_path = join(root_path, 'Schemas')
         # schemas = glob.glob(schemas_path + '**/' + 'schema.graphql')
-        schemas = glob.glob(schemas_path + '**/' + 'simpleSchema.json')
+        schemas = glob.glob(join(schemas_path, '**', 'simpleSchema.json'))
 
         self.max_len = 0
         self.name_to_schema = {}
@@ -113,7 +113,7 @@ class TextToGraphQLDataset(Dataset):
                         self.name_to_schema[element['schemaId']]) + ' </s>'
                 # print(question_with_schema)
                 tokenized_s = tokenizer.encode_plus(
-                    question_with_schema, max_length=1024, pad_to_max_length=True, truncation=True, return_tensors='pt')
+                    question_with_schema, max_length=1024, padding='max_length', truncation=True, return_tensors='pt')
                 self.source.append(tokenized_s)
                 # get max_len of source. so far it is 49
                 # tokenized_s = tokenizer.batch_encode_plus([element['question']],return_tensors='pt')
@@ -121,7 +121,7 @@ class TextToGraphQLDataset(Dataset):
                 # self.max_len = this_len if this_len > self.max_len else self.max_len
 
                 tokenized_t = tokenizer.encode_plus(
-                    element['query'] + ' </s>', max_length=block_size, pad_to_max_length=True, truncation=True, return_tensors='pt')
+                    element['query'] + ' </s>', max_length=block_size, padding='max_length', truncation=True, return_tensors='pt')
                 self.target.append(tokenized_t)
                 self.schema_ids.append(element['schemaId'])
 
@@ -167,7 +167,7 @@ class MaskGraphQLDataset(Dataset):
                 utterance = example['query']
                 # tokens = utterance.split()
                 encoded_source = tokenizer.encode(
-                    utterance + ' </s>', max_length=block_size, pad_to_max_length=True, truncation=True, return_tensors='pt').squeeze()
+                    utterance + ' </s>', max_length=block_size, padding='max_length', truncation=True, return_tensors='pt').squeeze()
                 token_count = encoded_source.shape[0]
                 # print(encoded_source.shape)
                 repeated_utterance = [
@@ -181,7 +181,7 @@ class MaskGraphQLDataset(Dataset):
                     decoded_target = ''.join(
                         tokenizer.convert_ids_to_tokens([target_id])) + ' </s>'
                     encoded_target = tokenizer.encode(decoded_target, return_tensors='pt', max_length=4,
-                                                      pad_to_max_length=True, truncation=True).squeeze()  # should always be of size 1
+                                                      padding='max_length', truncation=True).squeeze()  # should always be of size 1
                     self.target.append(encoded_target)
                     self.source.append(encoded_source)
 
@@ -214,7 +214,7 @@ class SpiderDataset(Dataset):
         self.source = []
         self.target = []
         spider_path = join(curdir, 'spider')
-        path = spider_path + type_path
+        path = join(spider_path, type_path)
         # TODO open up tables.json
         # its a list of tables
         # group by db_id
@@ -264,14 +264,14 @@ class SpiderDataset(Dataset):
                 # question_with_schema = 'translate English to GraphQL: ' + element['question']  + ' ' + ' '.join(self.name_to_schema[element['schemaId']]) + ' </s>'
 
                 tokenized_s = tokenizer.batch_encode_plus(
-                    [db_with_question], max_length=1024, pad_to_max_length=True, truncation=True, return_tensors='pt')
+                    [db_with_question], max_length=1024, padding='max_length', truncation=True, return_tensors='pt')
                 # what is the largest example size?
                 # the alternative is to collate
                 # might need to collate
                 self.source.append(tokenized_s)
 
                 tokenized_t = tokenizer.batch_encode_plus(
-                    [element['query'] + ' </s>'], max_length=block_size, pad_to_max_length=True, truncation=True, return_tensors='pt')
+                    [element['query'] + ' </s>'], max_length=block_size, padding='max_length', truncation=True, return_tensors='pt')
                 self.target.append(tokenized_t)
 
     def __len__(self):
@@ -310,7 +310,7 @@ class CoSQLMaskDataset(Dataset):
                     utterance = interaction['query']
                     # tokens = utterance.split()
                     encoded_source = tokenizer.encode(
-                        utterance, max_length=block_size, pad_to_max_length=True, truncation=True, return_tensors='pt').squeeze()
+                        utterance, max_length=block_size, padding='max_length', truncation=True, return_tensors='pt').squeeze()
                     token_count = encoded_source.shape[0]
                     # print(encoded_source.shape)
                     repeated_utterance = [
@@ -328,7 +328,7 @@ class CoSQLMaskDataset(Dataset):
                         decoded_target = ''.join(
                             tokenizer.convert_ids_to_tokens([target_id])) + ' </s>'
                         encoded_target = tokenizer.encode(decoded_target, return_tensors='pt', max_length=4,
-                                                          pad_to_max_length=True, truncation=True).squeeze()  # should always be of size 1
+                                                          padding='max_length', truncation=True).squeeze()  # should always be of size 1
                         self.target.append(encoded_target)
                         self.source.append(encoded_source)
 

@@ -131,3 +131,4 @@ dmypy.json
 /spider
 /SPEGQL-dataset
 /cosql_dataset
+/lightning_logs

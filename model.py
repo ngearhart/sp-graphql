@@ -1,5 +1,3 @@
-from dataset import (CoSQLMaskDataset, MaskGraphQLDataset, SpiderDataset,
-                     TextToGraphQLDataset)
 import os
 
 import pytorch_lightning as pl
@@ -7,13 +5,16 @@ import torch
 from graphqlval import exact_match
 # from tqdm import tqdm
 from torch.utils.data import ConcatDataset, DataLoader
-
 # from transformers import BartTokenizer,BartModel,BartForConditionalGeneration
 from transformers import (AdamW, T5ForConditionalGeneration, T5Tokenizer,
                           get_linear_schedule_with_warmup)
 
+from dataset import (CoSQLMaskDataset, MaskGraphQLDataset, SpiderDataset,
+                     TextToGraphQLDataset)
+
 torch.manual_seed(0)
 
+from constants import DEVICE
 
 # OPTIONAL: if you want to have more information on what's happening under the hood, activate the logger as follows
 # import logging
@@ -45,6 +46,8 @@ class T5MultiSPModel(pl.LightningModule):
             self.model = T5ForConditionalGeneration.from_pretrained(
                 't5-base')  # no output past?
 
+        self.model = self.model.to(DEVICE)
+
         self.tokenizer = T5Tokenizer.from_pretrained('t5-base')
 
         self.criterion = torch.nn.CrossEntropyLoss(
@@ -59,7 +62,7 @@ class T5MultiSPModel(pl.LightningModule):
             attention_mask=attention_mask,
             decoder_input_ids=decoder_input_ids,
             decoder_attention_mask=decoder_attention_mask,
-            lm_labels=lm_labels,
+            labels=lm_labels,
         )
 
     def add_special_tokens(self):
@@ -128,17 +131,20 @@ class T5MultiSPModel(pl.LightningModule):
         tensorboard_logs = {"val_loss": avg_loss}
         return {'progress_bar': tensorboard_logs, 'log': tensorboard_logs}
 
-    def optimizer_step(self, epoch, batch_idx, optimizer, optimizer_idx, second_order_closure=None):
+    def optimizer_step(self, epoch, batch_idx, optimizer, optimizer_idx, second_order_closure=None, *args, **kwargs):
         if self.trainer.use_tpu:
-            xm.optimizer_step(optimizer)
+            print("Invalid code (optimizer_step handler)")
+            exit(1)
+            # xm.optimizer_step(optimizer)
         else:
             optimizer.step()
         optimizer.zero_grad()
         self.lr_scheduler.step()
 
     def configure_optimizers(self):
+        # TODO: Is val_check_interval the same as train_percent_check?
         t_total = len(self.train_dataloader()) * \
-            self.trainer.max_epochs * self.trainer.train_percent_check
+            self.trainer.max_epochs * self.trainer.val_check_interval
         no_decay = ["bias", "LayerNorm.weight"]
         optimizer_grouped_parameters = [
             {

@@ -1,14 +1,19 @@
 import argparse
+from datetime import datetime
+from os import curdir
+from os.path import join
 
 import tensorflow
 import torch
 from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import ModelCheckpoint
+from tensorflow.keras.callbacks import TensorBoard
 
+from constants import DEVICE
 from model import T5MultiSPModel
 
 
-def pre_train(system: T5MultiSPModel) -> Trainer:
+def pre_train(system: T5MultiSPModel, callbacks=[]) -> Trainer:
     # trainer = Trainer(num_tpu_cores=8,max_epochs=1)
     # trainer = Trainer(max_epochs=1, train_percent_check=0.1)
     # checkpoint_callback = ModelCheckpoint(
@@ -18,11 +23,11 @@ def pre_train(system: T5MultiSPModel) -> Trainer:
     #     mode='min',
     #     prefix=''
     # )
-    # trainer = Trainer(gpus=1, max_epochs=1, progress_bar_refresh_rate=1)
+    trainer = Trainer(gpus=[0], max_epochs=1, progress_bar_refresh_rate=1)
 
-    # TODO: Is train percent check the same as val check interval?
-    trainer = Trainer(gpus=1, max_epochs=1,
-                      progress_bar_refresh_rate=1, val_check_interval=0.2)
+    # # TODO: Is train percent check the same as val check interval?
+    # trainer = Trainer(gpus=1, max_epochs=1,
+    #                   progress_bar_refresh_rate=1, val_check_interval=0.2)
     # trainer = Trainer(gpus=1, max_epochs=3, auto_lr_find=True, progress_bar_refresh_rate=1, train_percent_check=0.2)\
     # trainer = Trainer(gpus=1,max_epochs=1, progress_bar_refresh_rate=1, train_percent_check=0.2)
     # trainer = Trainer(gpus=1,max_epochs=1, progress_bar_refresh_rate=1, train_percent_check=0.2,checkpoint_callback=checkpoint_callback)
@@ -30,18 +35,22 @@ def pre_train(system: T5MultiSPModel) -> Trainer:
     # import gc
     # gc.collect()
 
-    trainer.fit(system)
+    trainer.fit(system) #callbacks=callbacks)
+    # TODO: Running fit moves the system to CPU
+    system = system.to(DEVICE)
     system.tokenizer.decode(system.train_dataset[0]['source_ids'].squeeze(
     ), skip_special_tokens=False, clean_up_tokenization_spaces=False)
     TXT = "query { faculty_aggregate { aggregate { <mask> } } } </s>"
-    input_ids = system.tokenizer.batch_encode_plus(
-        [TXT], return_tensors='pt')['input_ids']
+    inputs = system.tokenizer.batch_encode_plus([TXT], return_tensors='pt')
+    inputs = inputs.to(DEVICE)
+    input_ids = inputs['input_ids']
     # logits = system.model(input_ids)[0]
-    system.tokenizer.decode(system.model.generate(input_ids.cuda())[0])
+    items = system.model.generate(input_ids.cuda())[0]
+    system.tokenizer.decode(items)
     return trainer
 
 
-def fine_tune(system: T5MultiSPModel) -> Trainer:
+def fine_tune(system: T5MultiSPModel, callbacks=[]) -> Trainer:
     system.task = 'finetune'
     system.batch_size = 2  # because t5-base is smaller than bart.
     # system.lr=3e-4 # -6 is original
@@ -51,7 +60,9 @@ def fine_tune(system: T5MultiSPModel) -> Trainer:
     # TODO collate to go back to 16
     # system.model.config.output_past=True
     # system.model.model.decoder.output_past=True
+
     system.prepare_data()  # might not be needed.
+
     # system.add_special_tokens()
     # system.model.output_past = True
     # trainer = Trainer(num_tpu_cores=8,max_epochs=1)
@@ -71,7 +82,9 @@ def fine_tune(system: T5MultiSPModel) -> Trainer:
     # trainer = Trainer(gpus=1, max_epochs=3, progress_bar_refresh_rate=1, val_check_interval=0.5)
     # trainer = Trainer(gpus=1,max_epochs=3, progress_bar_refresh_rate=1,checkpoint_callback=checkpoint_callback)
     # trainer = Trainer(num_tpu_cores=8,max_epochs=1, progress_bar_refresh_rate=1)
-    trainer.fit(system)
+    trainer.fit(system) #, callbacks=callbacks)
+    # TODO: Running fit moves the system to CPU
+    system = system.to(DEVICE)
     inputs = system.val_dataset[0]
     system.tokenizer.decode(inputs['source_ids'])
     # system.tokenizer.decode(inputs['target_ids'])
@@ -93,7 +106,9 @@ def fine_tune(system: T5MultiSPModel) -> Trainer:
     system.task = 'finetune'
     trainer = Trainer(gpus=1, max_epochs=0,
                       progress_bar_refresh_rate=1, val_check_interval=0.5)
-    trainer.fit(system)
+    trainer.fit(system) #, callbacks=callbacks)
+    # TODO: Running fit moves the system to CPU
+    system = system.to(DEVICE)
     return trainer
 
 
@@ -125,12 +140,19 @@ def main():
     print("Creating model...")
     system = T5MultiSPModel(hparams, batch_size=32)
     # system.lr = 3e-4
+    
+    # Set device
+    system = system.to(DEVICE)
 
-    print("Pretraining...")
-    pre_train(system)
+    # Tensorboard setup
+    log_dir = join(curdir, "logs", "fit", datetime.now().strftime("%Y%m%d-%H%M%S"))
+    tensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
+
+    # print("Pretraining...")
+    # pre_train(system, [tensorboard_callback])
 
     print("Fine tuning...")
-    trainer = fine_tune(system)
+    trainer = fine_tune(system, [tensorboard_callback])
     print("Testing...")
     test(system, trainer, 'graphql')
     test(system, trainer, 'sql')
