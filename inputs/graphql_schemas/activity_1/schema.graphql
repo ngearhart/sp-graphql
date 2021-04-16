@@ -1,0 +1,39 @@
+type activity {
+  actid: int!
+  activity_name: varchar
+  faculty: [faculty]
+}
+
+type faculty {
+  facid: ID!
+  lname: varchar
+  fname: varchar
+  rank: varchar
+  sex: varchar
+  phone: int
+  room: varchar
+  building: varchar
+  activities: [activity]
+}
+
+type student {
+  stuid: int!
+  lname: varchar
+  fname: varchar
+  age: int
+  sex: varchar
+  major: int
+  advisor: faculty
+  city_code: varchar
+  activities: [activity]
+}
+
+type participates_in {
+  student: student
+  activity: activity
+}
+
+type faculty_participates_in {
+  student: student
+  activity: activity
+}

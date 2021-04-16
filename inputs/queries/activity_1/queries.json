@@ -1,0 +1,97 @@
+[
+	{
+		"query": "query { faculty ( distinct_on : rank ) { rank } }",
+		"schemaId": "activity_1",
+		"question": "What ranks do we have for faculty?"
+	},
+	{
+		"query": "query { faculty ( distinct_on : rank ) { rank } }",
+		"schemaId": "activity_1",
+		"question": "Find the list of distinct ranks for faculty."
+	},
+	{
+		"query": "query { faculty ( distinct_on : building ) { building } }",
+		"schemaId": "activity_1",
+		"question": "Show all the distinct buildings that have faculty rooms."
+	},
+	{
+		"query": "query { faculty ( distinct_on : building ) { building } }",
+		"schemaId": "activity_1",
+		"question": "What buildings have faculty offices?"
+	},
+	{
+		"query": "query { faculty { rank fname lname } }",
+		"schemaId": "activity_1",
+		"question": "Show the rank, first name, and last name for all the faculty."
+	},
+	{
+		"query": "query { faculty { rank fname lname } }",
+		"schemaId": "activity_1",
+		"question": "What are the rank, first name, and last name of the faculty members?"
+	},
+	{
+		"query": "query { faculty ( where : { sex : { _eq : \"F\" } } ) { fname lname phone } }",
+		"schemaId": "activity_1",
+		"question": "Show the first name, last name, and phone number for all female faculty members."
+	},
+	{
+		"query": "query { faculty ( where : { sex : { _eq : \"F\" } } ) { fname lname phone } }",
+		"schemaId": "activity_1",
+		"question": "What are the first name, last name, and phone number of all the female faculty members?"
+	},
+	{
+		"query": "query { faculty ( where : { sex : { _eq : \"M\" } } ) { facid } }",
+		"schemaId": "activity_1",
+		"question": "Show ids for all the male faculty."
+	},
+	{
+		"query": "query { faculty ( where : { sex : { _eq : \"M\" } } ) { facid } }",
+		"schemaId": "activity_1",
+		"question": "What are the faculty ids of all the male faculty members?"
+	},
+	{
+		"query": "query { faculty_aggregate ( where : { _and : { rank : { _eq : \"Professor\" } , sex : { _eq : \"F\" } } } ) { aggregate { count } } }",
+		"schemaId": "activity_1",
+		"question": "How many female Professors do we have?"
+	},
+	{
+		"query": "query { faculty ( where : { _and : { fname : { _eq : \"Jerry\" } , lname : { _eq : \"Prince\" } } } ) { phone room building } }",
+		"schemaId": "activity_1",
+		"question": "Show the phone, room, and building for the faculty named Jerry Prince."
+	},
+	{
+		"query": "query { faculty ( where : { _and : { fname : { _eq : \"Jerry\" } , lname : { _eq : \"Prince\" } } } ) { phone room building } }",
+		"schemaId": "activity_1",
+		"question": "What are the phone, room, and building of the faculty member called Jerry Prince?"
+	},
+	{
+		"query": "query { faculty ( where : { rank : { _eq : \"Instructor\" } } ) { fname lname } }",
+		"schemaId": "activity_1",
+		"question": "Show the first name and last name for all the instructors."
+	},
+	{
+		"query": "query { faculty ( where : { rank : { _eq : \"Instructor\" } } ) { fname lname } }",
+		"schemaId": "activity_1",
+		"question": "What are the first name and last name of all the instructors?"
+	},
+	{
+		"query": "query { activity { activity_name } }",
+		"schemaId": "activity_1",
+		"question": "What activities do we have?"
+	},
+	{
+		"query": "query { activity { activity_name } }",
+		"schemaId": "activity_1",
+		"question": "List all the activities we have."
+	},
+	{
+		"query": "query { activity ( where : { _and : { faculty_participates_ins : { faculty : { lname : { _eq : \"Giuliano\" } , fname : { _eq : \"Mark\" } } } } } ) { activity_name } }",
+		"schemaId": "activity_1",
+		"question": "Show the names of all the activities Mark Giuliano participates in."
+	},
+	{
+		"query": "query { activity ( where : { _and : { faculty_participates_ins : { faculty : { fname : { _eq : \"Mark\" } , lname : { _eq : \"Giuliano\" } } } } } ) { activity_name } }",
+		"schemaId": "activity_1",
+		"question": "What are the names of the activities Mark Giuliano is involved in"
+	}
+]
