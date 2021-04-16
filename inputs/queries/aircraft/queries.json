@@ -1,0 +1,87 @@
+[
+    {
+        "query": "query { aircraft { Description } }",
+        "schemaId": "aircraft",
+        "question": "List the description of all aircrafts."
+    },
+    {
+        "query": "query { aircraft { Description } }",
+        "schemaId": "aircraft",
+        "question": "What are the descriptions for the aircrafts?"
+    },
+    {
+        "query": "query { airport ( where : { Airport_Name : { _eq : \"London Heathrow\" } } ) { International_Passengers Domestic_Passengers } }",
+        "schemaId": "aircraft",
+        "question": "What are the number of international and domestic passengers of the airport named London \"Heathrow\"?"
+    },
+    {
+        "query": "query { airport ( where : { Airport_Name : { _eq : \"London Heathrow\" } } ) { International_Passengers Domestic_Passengers } }",
+        "schemaId": "aircraft",
+        "question": "How many international and domestic passengers are there in the airport London Heathrow?"
+    },
+    {
+        "query": "query { pilot ( where : { Age : { _gte : 25 } } ) { Name } }",
+        "schemaId": "aircraft",
+        "question": "What are the name of pilots aged 25 or older?"
+    },
+    {
+        "query": "query { pilot ( where : { Age : { _gte : 25 } } ) { Name } }",
+        "schemaId": "aircraft",
+        "question": "what is the name of every pilot who is at least 25 years old?"
+    },
+    {
+        "query": "query { pilot ( order_by : { Name : asc } ) { Name } }",
+        "schemaId": "aircraft",
+        "question": "List all pilot names in ascending alphabetical order."
+    },
+    {
+        "query": "query { pilot ( order_by : { Name : asc } ) { Name } }",
+        "schemaId": "aircraft",
+        "question": "What are the names of the pilots in alphabetical order?"
+    },
+    {
+        "query": "query { pilot ( order_by : { Name : desc } , where : { Age : { _lte : 30 } } ) { Name } }",
+        "schemaId": "aircraft",
+        "question": "List names of all pilot aged 30 or younger in descending alphabetical order."
+    },
+    {
+        "query": "query { pilot ( order_by : { Name : desc } , where : { Age : { _lte : 30 } } ) { Name } }",
+        "schemaId": "aircraft",
+        "question": "What are the names of all pilots 30 years old or young in descending alphabetical order?"
+    },
+    {
+        "query": "query { match { Location aircraft { Aircraft } } }",
+        "schemaId": "aircraft",
+        "question": "Please list the location and the winning aircraft name."
+    },
+    {
+        "query": "query { match { Location aircraft { Aircraft } } }",
+        "schemaId": "aircraft",
+        "question": "What is the location and name of the winning aircraft?"
+    },
+    {
+        "query": "query { pilot ( order_by : { Age : desc } ) { Name } }",
+        "schemaId": "aircraft",
+        "question": "List names of all pilot in descending order of age."
+    },
+    {
+        "query": "query { pilot ( order_by : { Age : desc } ) { Name } }",
+        "schemaId": "aircraft",
+        "question": "What are the names of all pilots listed by descending age?"
+    },
+    {
+        "query": "query { airport ( limit : 1 , order_by : { International_Passengers : desc } ) { Aircraft_Movements Airport_ID Airport_Name Domestic_Passengers Freight_Metric_Tonnes International_Passengers Total_Passengers Transit_Passengers } }",
+        "schemaId": "aircraft",
+        "question": "Show all information on the airport that has the largest number of international passengers."
+    },
+    {
+        "query": "query { airport ( limit : 1 , order_by : { International_Passengers : desc } ) { Aircraft_Movements Airport_ID Airport_Name Domestic_Passengers Freight_Metric_Tonnes International_Passengers Total_Passengers Transit_Passengers } }",
+        "schemaId": "aircraft",
+        "question": "What is all the information on the airport with the largest number of international passengers?"
+    },
+    {
+        "query": "query { pilot ( limit : 1 , order_by : { Age : asc } ) { Name Age } }",
+        "schemaId": "aircraft",
+        "question": "what is the name and age of the youngest winning pilot?"
+    }
+]

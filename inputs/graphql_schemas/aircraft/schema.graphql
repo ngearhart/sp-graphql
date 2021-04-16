@@ -1,0 +1,46 @@
+type pilot {
+    pilot_id: ID!
+    Name: varchar
+    Age: int
+}
+
+type aircraft {
+    aircraft_id: ID!
+    aircraft: varchar
+    Description: varchar
+    max_gross_weight: varchar
+    total_disk_area: varchar
+    max_disk_loading: varchar
+    matches_won: [match]
+    airports: [airport]
+}
+
+
+type match {
+    round: ID!
+    location: varchar
+    country: varchar
+    date: varchar
+    fastest_qualifying: varchar
+    winning_pilot: pilot
+    winning_aircraft: aircraft
+}
+
+type airport {
+    airport_id: ID!
+    Airport_Name: varchar
+    Total_Passengers: int
+    percent_change_2007: double
+    International_Passengers: int
+    Domestic_Passengers: int
+    Transit_Passengers: int
+    Aircraft_Movements: int
+    freight_metric_tonnes: int
+    aircraft: [aircraft]
+}
+
+type airport_aircraft {
+    id: ID!
+    airport: airport
+    aircraft: aircraft
+}
