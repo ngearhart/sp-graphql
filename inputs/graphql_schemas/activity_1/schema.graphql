@@ -17,7 +17,7 @@ type faculty {
 }
 
 type student {
-  stuid: int!
+  stuid: ID!
   lname: varchar
   fname: varchar
   age: int
