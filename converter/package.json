@@ -1,0 +1,15 @@
+{
+  "name": "sp-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ngearhart/sp-graphql.git",
+  "author": "Noah Gearhart <excelsiorvfx@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^2.24.0",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.0",
+    "graphql-compose": "^8.0.1",
+    "graphql-compose-mysql": "^0.0.7"
+  }
+}

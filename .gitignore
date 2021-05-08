@@ -132,3 +132,6 @@ dmypy.json
 /SPEGQL-dataset
 /cosql_dataset
 /lightning_logs
+
+**/node_modules/**
+/converter/db_dumps/schema.sql
