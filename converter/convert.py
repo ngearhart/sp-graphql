@@ -1,9 +1,11 @@
 import argparse
 
-from os import curdir, system
+from os import curdir, mkdir, system, remove, listdir
 from os.path import join, abspath
 from shutil import copy
 from time import sleep
+from collections import defaultdict
+import json
 
 import re
 
@@ -88,19 +90,71 @@ def convert_sqlite_file(old_path, new_path):
                 new_file.writelines([line])
 
 parser = argparse.ArgumentParser()
-parser.add_argument('dataset_name', type=str, nargs='+',
+parser.add_argument('--dataset_name', type=str,
                     help='The name of the dataset to process')
+parser.add_argument('--all', action='store_true')
 
-def main(dataset):
+training_data = defaultdict(list)
+
+def convert_dataset(dataset):
     print("Copying SQL file...")
     convert_sqlite_file(join(abspath('..'), 'spider', 'database', dataset, 'schema.sql'), join(curdir, 'db_dumps', 'schema.sql'))
     print("Launching MySQL database...")
     system("docker compose down")
     system("docker compose up -d")
-    print("Waiting for MySQL to be done loading.")
-    sleep(30)  # Arbitrary, but shouldn't take more than 30 seconds for MySQL to initialize
+    print("Waiting for MySQL to be done loading...")
+    sleep(20)  # Arbitrary, but shouldn't take more than 30 seconds for MySQL to initialize
     system("node index.js")
+    print("Copying schema file to output folder...")
+    try:
+        mkdir(join(curdir, 'output'))
+    except:
+        pass
+    try:
+        mkdir(join(curdir, 'output', dataset))
+    except:
+        pass
+    copy(join(curdir, 'schema.graphql'), join(curdir, 'output', dataset, 'schema.graphql'))
+    remove(join(curdir, 'schema.graphql'))
+
+    print("Copying training files to output folder...")
+    with open(join(curdir, 'output', dataset, 'queries.json'), 'w+', encoding='utf-8') as new_file:
+        new_file.writelines(json.dumps(training_data[dataset], indent=4))
+
+    print("Done!")
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    main(args.dataset_name[0])
+
+    # Load training data
+    with open(abspath('../SPEGQL-dataset/dataset/dev.json'), 'r', encoding='utf-8') as dev:
+        lines = dev.readlines()
+        data = json.loads(''.join(lines))
+        for obj in data:
+            training_data[obj["schemaId"]].append({
+                "query": obj["query"],
+                "question": obj["question"]
+            })
+    with open(abspath('../SPEGQL-dataset/dataset/train.json'), 'r', encoding='utf-8') as train:
+        lines = train.readlines()
+        data = json.loads(''.join(lines))
+        for obj in data:
+            training_data[obj["schemaId"]].append({
+                "query": obj["query"],
+                "question": obj["question"]
+            })
+
+    if args.all:
+        errors = []
+        for dataset in listdir(abspath('../spider/database')):
+            try:
+                print(' - - CONVERTING {} - -'.format(dataset))
+                convert_dataset(dataset)
+            except KeyboardInterrupt:
+                print(', '.join(errors))
+                exit()
+            except:
+                errors.append(dataset)
+        print(', '.join(errors))
+    else:
+        convert_dataset(args.dataset_name[0])

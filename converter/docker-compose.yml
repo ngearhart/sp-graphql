@@ -12,4 +12,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: graphql
       MYSQL_DATABASE: graphql
-      MYSQL_ENTRYPOINT_INITDB: ./mysql/docker-entrypoint-initdb.d
+      MYSQL_ENTRYPOINT_INITDB: ./mysql/docker-entrypoint-initdb.d    
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=graphql --execute \"SHOW DATABASES;\""
+      interval: 2s
+      timeout: 20s
+      retries: 10

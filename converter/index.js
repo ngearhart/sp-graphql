@@ -2,6 +2,7 @@
 // NEEDS OLD VERSION OF graphql-compose (5.10)
 const { composeWithMysql } = require("graphql-compose-mysql")
 const graphql = require('graphql');
+const fs = require('fs');
 
 async function main() {
     return composeWithMysql({
@@ -13,9 +14,9 @@ async function main() {
             database: "graphql"
         },
     }).then(schema => {
-		console.log("hi")
-		console.log(schema)
-		console.log(graphql.printSchema(schema));
+		const data = graphql.printSchema(schema) 
+		console.log(data);
+		fs.writeFileSync('schema.graphql', data)
 		// var root = {
 		// 	hello: () => {
 		// 	  return 'Hello world!';
