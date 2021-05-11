@@ -28,6 +28,7 @@ def convert_sqlite_file(old_path, new_path):
         return bool(re.search(r'PRIMARY KEY', line))
 
     searching_for_end = False
+    open(new_path, "a").close()  # Touch new file just in case
     with open(old_path, 'r', encoding='utf-8') as old_file:
         with open(new_path, 'w+', encoding='utf-8') as new_file:
             for line in old_file.readlines():

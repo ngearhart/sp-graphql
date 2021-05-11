@@ -1,4 +1,5 @@
-const { ApolloServer } = require("apollo-server")
+// const { ApolloServer } = require("apollo-server")
+// NEEDS OLD VERSION OF graphql-compose (5.10)
 const { composeWithMysql } = require("graphql-compose-mysql")
 const graphql = require('graphql');
 
@@ -12,6 +13,7 @@ async function main() {
             database: "graphql"
         },
     }).then(schema => {
+		console.log("hi")
 		console.log(schema)
 		console.log(graphql.printSchema(schema));
 		// var root = {
