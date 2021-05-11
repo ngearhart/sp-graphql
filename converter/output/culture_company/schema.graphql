@@ -1,0 +1,14 @@
+type Query {
+  """"""
+  book_club(_limit: Int, book_club_id: Int, Year: Int, Author_or_Editor: String, Book_Title: String, Publisher: String, Category: String, Result: String): [book_clubT]
+}
+
+type book_clubT {
+  book_club_id: Int
+  Year: Int
+  Author_or_Editor: String
+  Book_Title: String
+  Publisher: String
+  Category: String
+  Result: String
+}

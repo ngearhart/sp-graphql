@@ -1,0 +1,25 @@
+type Query {
+  """"""
+  artist(_limit: Int, Artist_ID: Int, Artist: String, Age: Int, Famous_Title: String, Famous_Release_date: String): [artistT]
+
+  """"""
+  volume(_limit: Int, Volume_ID: Int, Volume_Issue: String, Issue_Date: String, Weeks_on_Top: Float, Song: String, Artist_ID: Int): [volumeT]
+}
+
+type artistT {
+  Artist_ID: Int
+  Artist: String
+  Age: Int
+  Famous_Title: String
+  Famous_Release_date: String
+}
+
+type volumeT {
+  Volume_ID: Int
+  Volume_Issue: String
+  Issue_Date: String
+  Weeks_on_Top: Float
+  Song: String
+  Artist_ID: Int
+  artist(_limit: Int, Artist: String, Age: Int, Famous_Title: String, Famous_Release_date: String): [artistT]
+}

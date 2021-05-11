@@ -1,0 +1,11 @@
+type Query {
+  """"""
+  college(_limit: Int, College_ID: Int, Name: String, Leader_Name: String, College_Location: String): [collegeT]
+}
+
+type collegeT {
+  College_ID: Int
+  Name: String
+  Leader_Name: String
+  College_Location: String
+}

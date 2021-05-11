@@ -1,0 +1,25 @@
+type Query {
+  """"""
+  station(_limit: Int, Station_ID: Int, Name: String, Annual_entry_exit: Float, Annual_interchanges: Float, Total_Passengers: Float, Location: String, Main_Services: String, Number_of_Platforms: Int): [stationT]
+
+  """"""
+  train(_limit: Int, Train_ID: Int, Name: String, Time: String, Service: String): [trainT]
+}
+
+type stationT {
+  Station_ID: Int
+  Name: String
+  Annual_entry_exit: Float
+  Annual_interchanges: Float
+  Total_Passengers: Float
+  Location: String
+  Main_Services: String
+  Number_of_Platforms: Int
+}
+
+type trainT {
+  Train_ID: Int
+  Name: String
+  Time: String
+  Service: String
+}

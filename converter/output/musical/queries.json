@@ -1,0 +1,98 @@
+[
+    {
+        "query": "query { actor_aggregate { aggregate { count } } }",
+        "question": "How many actors are there?"
+    },
+    {
+        "query": "query { actor_aggregate { aggregate { count } } }",
+        "question": "Count the number of actors."
+    },
+    {
+        "query": "query { actor ( order_by : { name : asc } ) { name } }",
+        "question": "List the name of actors in ascending alphabetical order."
+    },
+    {
+        "query": "query { actor ( order_by : { name : asc } ) { name } }",
+        "question": "What are the names of actors, ordered alphabetically?"
+    },
+    {
+        "query": "query { actor { character duration } }",
+        "question": "What are the characters and duration of actors?"
+    },
+    {
+        "query": "query { actor { character duration } }",
+        "question": "Return the characters and durations for each actor."
+    },
+    {
+        "query": "query { actor ( where : { age : { _neq : 20 } } ) { name } }",
+        "question": "List the name of actors whose age is not 20."
+    },
+    {
+        "query": "query { actor ( where : { age : { _neq : 20 } } ) { name } }",
+        "question": "What are the names of actors who are not 20 years old?"
+    },
+    {
+        "query": "query { actor ( order_by : { age : desc } ) { character } }",
+        "question": "What are the characters of actors in descending order of age?"
+    },
+    {
+        "query": "query { actor ( order_by : { age : desc } ) { character } }",
+        "question": "Return the characters for actors, ordered by age descending."
+    },
+    {
+        "query": "query { actor ( limit : 1 , order_by : { age : desc } ) { duration } }",
+        "question": "What is the duration of the oldest actor?"
+    },
+    {
+        "query": "query { actor ( limit : 1 , order_by : { age : desc } ) { duration } }",
+        "question": "Return the duration of the actor with the greatest age."
+    },
+    {
+        "query": "query { musical ( where : { nominee : { _eq : \"Bob Fosse\" } } ) { name } }",
+        "question": "What are the names of musicals with nominee \"Bob Fosse\"?"
+    },
+    {
+        "query": "query { musical ( where : { nominee : { _eq : \"Bob Fosse\" } } ) { name } }",
+        "question": "Return the names of musicals who have the nominee Bob Fosse."
+    },
+    {
+        "query": "query { musical ( where : { award : { _neq : \"Tony Award\" } } , distinct_on : nominee ) { nominee } }",
+        "question": "What are the distinct nominees of the musicals with the award that is not \"Tony Award\"?"
+    },
+    {
+        "query": "query { musical ( where : { award : { _neq : \"Tony Award\" } } , distinct_on : nominee ) { nominee } }",
+        "question": "Return the different nominees of musicals that have an award that is not the Tony Award."
+    },
+    {
+        "query": "query { actor { name musical { name } } }",
+        "question": "Show names of actors and names of musicals they are in."
+    },
+    {
+        "query": "query { actor { name musical { name } } }",
+        "question": "What are the names of actors and the musicals that they are in?"
+    },
+    {
+        "query": "query { actor ( where : { musical : { name : { _eq : \"The Phantom of the Opera\" } } } ) { name } }",
+        "question": "Show names of actors that have appeared in musical with name \"The Phantom of the Opera\"."
+    },
+    {
+        "query": "query { actor ( where : { musical : { name : { _eq : \"The Phantom of the Opera\" } } } ) { name } }",
+        "question": "What are the names of actors who have been in the musical titled The Phantom of the Opera?"
+    },
+    {
+        "query": "query { actor ( order_by : { musical : { year : desc } } ) { name } }",
+        "question": "Show names of actors in descending order of the year their musical is awarded."
+    },
+    {
+        "query": "query { actor ( order_by : { musical : { year : desc } } ) { name } }",
+        "question": "What are the names of actors ordered descending by the year in which their musical was awarded?"
+    },
+    {
+        "query": "query { musical ( where : { _or : [ { award : { _eq : \"Tony Award\" } } , { award : { _eq : \"Cleavant Derricks\" } } ] } ) { nominee } }",
+        "question": "Show the musical nominee with award \"Bob Fosse\" or \"Cleavant Derricks\"."
+    },
+    {
+        "query": "query { musical ( where : { _or : [ { award : { _eq : \"Tony Award\" } } , { award : { _eq : \"Cleavant Derricks\" } } ] } ) { nominee } }",
+        "question": "Who are the nominees who were nominated for either of the Bob Fosse or Cleavant Derricks awards?"
+    }
+]

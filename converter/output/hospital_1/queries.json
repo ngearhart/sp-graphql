@@ -1,0 +1,202 @@
+[
+    {
+        "query": "query { patient { name } }",
+        "question": "What are names of patients who made an appointment?"
+    },
+    {
+        "query": "query { patient { name } }",
+        "question": "List the names of patients who have made appointments."
+    },
+    {
+        "query": "query { appointment ( limit : 1 , order_by : { start : desc } ) { appointmentid } }",
+        "question": "Find the id of the appointment with the most recent start date?"
+    },
+    {
+        "query": "query { appointment ( limit : 1 , order_by : { start : desc } ) { appointmentid } }",
+        "question": "What is the id of the appointment that started most recently?"
+    },
+    {
+        "query": "query { physician { name } }",
+        "question": "List the name of physicians who took some appointment."
+    },
+    {
+        "query": "query { physician { name } }",
+        "question": "What are the names of all the physicians who took appointments."
+    },
+    {
+        "query": "query { physician ( where : { departments : { physician : { affiliated_withs : { primaryaffiliation : { _eq : true } } } } } ) { name departments { name } } }",
+        "question": "Find the names of all physicians and their primary affiliated departments' names."
+    },
+    {
+        "query": "query { physician ( where : { departments : { physician : { affiliated_withs : { primaryaffiliation : { _eq : true } } } } } ) { name departments { name } } }",
+        "question": "What are the name and primarily affiliated department name of each physician?"
+    },
+    {
+        "query": "query { appointment ( limit : 1 , order_by : { start : desc } ) { patientByPatient { name } } }",
+        "question": "What is the name of the patient who made the most recent appointment?"
+    },
+    {
+        "query": "query { appointment ( limit : 1 , order_by : { start : desc } ) { patientByPatient { name } } }",
+        "question": "Find the name of the patient who made the appointment with the most recent start date."
+    },
+    {
+        "query": "query { stay_aggregate ( where : { room : { _eq : 112 } } ) { aggregate { count } } }",
+        "question": "How many patients stay in room 112?"
+    },
+    {
+        "query": "query { stay_aggregate ( where : { room : { _eq : 112 } } ) { aggregate { count } } }",
+        "question": "Count the number of patients who stayed in room 112."
+    },
+    {
+        "query": "query { stay ( limit : 1 , order_by : { staystart : desc } , where : { room : { _eq : 111 } } ) { patient } }",
+        "question": "Find the patient who most recently stayed in room 111."
+    },
+    {
+        "query": "query { stay ( limit : 1 , order_by : { staystart : desc } , where : { room : { _eq : 111 } } ) { patient } }",
+        "question": "What is the id of the patient who stayed in room 111 most recently?"
+    },
+    {
+        "query": "query { room ( where : { unavailable : { _eq : false } } , distinct_on : blockcode ) { blockcode } }",
+        "question": "What are the unique block codes that have available rooms?"
+    },
+    {
+        "query": "query { room ( where : { unavailable : { _eq : false } } , distinct_on : blockcode ) { blockcode } }",
+        "question": "Tell me the distinct block codes where some rooms are available."
+    },
+    {
+        "query": "query { room_aggregate { aggregate { count } } }",
+        "question": "How many different types of rooms are there?"
+    },
+    {
+        "query": "query { room_aggregate { aggregate { count } } }",
+        "question": "Find the number of distinct room types available."
+    },
+    {
+        "query": "query { physician ( where : { position : { _like : \"%senior%\" } } ) { name } }",
+        "question": "Find the name of physicians whose position title contains the word 'senior'."
+    },
+    {
+        "query": "query { physician ( where : { position : { _like : \"%senior%\" } } ) { name } }",
+        "question": "What are the names of the physicians who have 'senior' in their titles."
+    },
+    {
+        "query": "query { undergoes ( limit : 1 , order_by : { dateundergoes : asc } ) { patient } }",
+        "question": "Find the patient who has the most recent undergoing treatment?"
+    },
+    {
+        "query": "query { undergoes ( limit : 1 , order_by : { dateundergoes : asc } ) { patient } }",
+        "question": "Which patient is undergoing the most recent treatment?"
+    },
+    {
+        "query": "query { nurse ( order_by : { name : asc } , distinct_on : name ) { name } }",
+        "question": "List the names of all distinct nurses ordered by alphabetical order?"
+    },
+    {
+        "query": "query { nurse ( order_by : { name : asc } , distinct_on : name ) { name } }",
+        "question": "What is the alphabetically ordered list of all the distinct names of nurses?"
+    },
+    {
+        "query": "query { nurse ( distinct_on : name ) { name } }",
+        "question": "Find the names of nurses who are nursing an undergoing treatment."
+    },
+    {
+        "query": "query { nurse ( distinct_on : name ) { name } }",
+        "question": "Which nurses are in charge of patients undergoing treatments?"
+    },
+    {
+        "query": "query { medication ( order_by : { name : asc } , distinct_on : name ) { name } }",
+        "question": "List the names of all distinct medications, ordered in an alphabetical order."
+    },
+    {
+        "query": "query { medication ( order_by : { name : asc } , distinct_on : name ) { name } }",
+        "question": "What is the alphabetically ordered list of all distinct medications?"
+    },
+    {
+        "query": "query { physician ( limit : 1 , order_by : { prescribes_aggregate : { max : { dose : desc_nulls_last } } } ) { name } }",
+        "question": "What are the names of the physician who prescribed the highest dose?"
+    },
+    {
+        "query": "query { physician ( limit : 1 , order_by : { prescribes_aggregate : { max : { dose : desc_nulls_last } } } ) { name } }",
+        "question": "Find the physician who prescribed the highest dose. What is his or her name?"
+    },
+    {
+        "query": "query { affiliated_with ( where : { primaryaffiliation : { _eq : true } } ) { physician department } }",
+        "question": "List the physicians' employee ids together with their primary affiliation departments' ids."
+    },
+    {
+        "query": "query { affiliated_with ( where : { primaryaffiliation : { _eq : true } } ) { physician department } }",
+        "question": "What are each physician's employee id and department id primarily affiliated."
+    },
+    {
+        "query": "query { department ( where : { affiliated_withs : { primaryaffiliation : { _eq : true } } } , distinct_on : name ) { name } }",
+        "question": "List the names of departments where some physicians are primarily affiliated with."
+    },
+    {
+        "query": "query { department ( where : { affiliated_withs : { primaryaffiliation : { _eq : true } } } , distinct_on : name ) { name } }",
+        "question": "What are the names of departments that have primarily affiliated physicians."
+    },
+    {
+        "query": "query { on_call ( where : { _and : { blockcode : { _eq : 1 } , blockfloor : { _eq : 1 } } } ) { nurse } }",
+        "question": "What nurses are on call with block floor 1 and block code 1? Tell me their names."
+    },
+    {
+        "query": "query { on_call ( where : { _and : { blockfloor : { _eq : 1 } , blockcode : { _eq : 1 } } } ) { nurse } }",
+        "question": "Find the ids of the nurses who are on call in block floor 1 and block code 1."
+    },
+    {
+        "query": "query { procedures_aggregate { aggregate { max { cost } min { cost } avg { cost } } } }",
+        "question": "What are the highest cost, lowest cost and average cost of procedures?"
+    },
+    {
+        "query": "query { procedures_aggregate { aggregate { max { cost } min { cost } avg { cost } } } }",
+        "question": "Tell me the highest, lowest, and average cost of procedures."
+    },
+    {
+        "query": "query { procedures ( order_by : { cost : desc } ) { name cost } }",
+        "question": "List the name and cost of all procedures sorted by the cost from the highest to the lowest."
+    },
+    {
+        "query": "query { procedures ( order_by : { cost : desc } ) { name cost } }",
+        "question": "Sort the list of names and costs of all procedures in the descending order of cost."
+    },
+    {
+        "query": "query { procedures ( limit : 3 , order_by : { cost : asc } ) { name } }",
+        "question": "Find the three most expensive procedures."
+    },
+    {
+        "query": "query { procedures ( limit : 3 , order_by : { cost : asc } ) { name } }",
+        "question": "What are the three most costly procedures?"
+    },
+    {
+        "query": "query { procedures_aggregate ( where : { trained_ins : { physicianByPhysician : { name : { _eq : \"John Wen\" } } } } ) { aggregate { avg { cost } } } }",
+        "question": "What is the average cost of procedures that physician John Wen was trained in?"
+    },
+    {
+        "query": "query { procedures_aggregate ( where : { trained_ins : { physicianByPhysician : { name : { _eq : \"John Wen\" } } } } ) { aggregate { avg { cost } } } }",
+        "question": "Compute the mean price of procedures physician John Wen was trained in."
+    },
+    {
+        "query": "query { procedures ( where : { trained_ins : { physicianByPhysician : { name : { _eq : \"John Wen\" } } } } ) { name } }",
+        "question": "Find the names of procedures which physician John Wen was trained in."
+    },
+    {
+        "query": "query { procedures ( where : { trained_ins : { physicianByPhysician : { name : { _eq : \"John Wen\" } } } } ) { name } }",
+        "question": "What are the names of procedures physician John Wen was trained in?"
+    },
+    {
+        "query": "query { appointment_aggregate { aggregate { count } } }",
+        "question": "How many appointments are there?"
+    },
+    {
+        "query": "query { appointment_aggregate { aggregate { count } } }",
+        "question": "Count how many appointments have been made in total."
+    },
+    {
+        "query": "query { nurse ( distinct_on : name ) { name } }",
+        "question": "Find the names of nurses who are on call."
+    },
+    {
+        "query": "query { nurse ( distinct_on : name ) { name } }",
+        "question": "What are the distinct names of nurses on call?"
+    }
+]

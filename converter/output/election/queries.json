@@ -1,0 +1,194 @@
+[
+    {
+        "query": "query { county_aggregate { aggregate { count } } }",
+        "question": "How many counties are there in total?"
+    },
+    {
+        "query": "query { county_aggregate { aggregate { count } } }",
+        "question": "Count the total number of counties."
+    },
+    {
+        "query": "query { county { county_name population } }",
+        "question": "Show the county name and population of all counties."
+    },
+    {
+        "query": "query { county { county_name population } }",
+        "question": "What are the name and population of each county?"
+    },
+    {
+        "query": "query { county_aggregate { aggregate { avg { population } } } }",
+        "question": "Show the average population of all counties."
+    },
+    {
+        "query": "query { county_aggregate { aggregate { avg { population } } } }",
+        "question": "On average how large is the population of the counties?"
+    },
+    {
+        "query": "query { county_aggregate { aggregate { max { population } min { population } } } }",
+        "question": "Return the maximum and minimum population among all counties."
+    },
+    {
+        "query": "query { county_aggregate { aggregate { max { population } min { population } } } }",
+        "question": "What are the maximum and minimum population of the counties?"
+    },
+    {
+        "query": "query { election ( distinct_on : district ) { district } }",
+        "question": "Show all the distinct districts for elections."
+    },
+    {
+        "query": "query { election ( distinct_on : district ) { district } }",
+        "question": "What are the distinct districts for elections?"
+    },
+    {
+        "query": "query { county ( where : { county_name : { _eq : \"Howard\" } } ) { zip_code } }",
+        "question": "Show the zip code of the county with name \"Howard\"."
+    },
+    {
+        "query": "query { county ( where : { county_name : { _eq : \"Howard\" } } ) { zip_code } }",
+        "question": "What is the zip code the county named \"Howard\" is located in?"
+    },
+    {
+        "query": "query { election ( where : { district : { _eq : 1 } } ) { delegate } }",
+        "question": "Show the delegate from district 1 in election."
+    },
+    {
+        "query": "query { election ( where : { district : { _eq : 1 } } ) { delegate } }",
+        "question": "Who is the delegate of district 1 in the elections?"
+    },
+    {
+        "query": "query { election { delegate committee } }",
+        "question": "Show the delegate and committee information of elections."
+    },
+    {
+        "query": "query { election { delegate committee } }",
+        "question": "What are the delegate and committee information for each election record?"
+    },
+    {
+        "query": "query { party_aggregate { aggregate { count } } }",
+        "question": "How many distinct governors are there?"
+    },
+    {
+        "query": "query { party_aggregate { aggregate { count } } }",
+        "question": "Count the number of distinct governors."
+    },
+    {
+        "query": "query { party ( where : { party : { _eq : \"Democratic\" } } ) { lieutenant_governor comptroller } }",
+        "question": "Show the lieutenant governor and comptroller from the democratic party."
+    },
+    {
+        "query": "query { party ( where : { party : { _eq : \"Democratic\" } } ) { lieutenant_governor comptroller } }",
+        "question": "Who are the lieutenant governor and comptroller from the democratic party?"
+    },
+    {
+        "query": "query { party ( where : { governor : { _eq : \"Eliot Spitzer\" } } , distinct_on : year ) { year } }",
+        "question": "In which distinct years was the governor \"Eliot Spitzer\"?"
+    },
+    {
+        "query": "query { party ( where : { governor : { _eq : \"Eliot Spitzer\" } } , distinct_on : year ) { year } }",
+        "question": "Find the distinct years when the governor was named \"Eliot Spitzer\"."
+    },
+    {
+        "query": "query { election { committee counties_represented delegate district election_id first_elected party } }",
+        "question": "Show all the information about election."
+    },
+    {
+        "query": "query { election { committee counties_represented delegate district election_id first_elected party } }",
+        "question": "Return all the information for each election record."
+    },
+    {
+        "query": "query { election { delegate county { county_name } } }",
+        "question": "Show the delegates and the names of county they belong to."
+    },
+    {
+        "query": "query { election { delegate county { county_name } } }",
+        "question": "What are the delegate and name of the county they belong to, for each county?"
+    },
+    {
+        "query": "query { election ( where : { county : { population : { _lt : 100000.0 } } } ) { delegate } }",
+        "question": "Which delegates are from counties with population smaller than 100000?"
+    },
+    {
+        "query": "query { election ( where : { county : { population : { _lt : 100000.0 } } } ) { delegate } }",
+        "question": "Find the delegates who are from counties with population below 100000."
+    },
+    {
+        "query": "query { election_aggregate ( where : { county : { population : { _gt : 50000.0 } } } ) { aggregate { count } } }",
+        "question": "How many distinct delegates are from counties with population larger than 50000?"
+    },
+    {
+        "query": "query { election_aggregate ( where : { county : { population : { _gt : 50000.0 } } } ) { aggregate { count } } }",
+        "question": "Count the number of distinct delegates who are from counties with population above 50000."
+    },
+    {
+        "query": "query { county ( where : { elections : { committee : { _eq : \"Appropriations\" } } } ) { county_name } }",
+        "question": "What are the names of the county that the delegates on \"Appropriations\" committee belong to?"
+    },
+    {
+        "query": "query { county ( where : { elections : { committee : { _eq : \"Appropriations\" } } } ) { county_name } }",
+        "question": "Which county do the delegates on \"Appropriations\" committee belong to? Give me the county names."
+    },
+    {
+        "query": "query { election { delegate partyByParty { party } } }",
+        "question": "Show the delegates and the names of the party they belong to."
+    },
+    {
+        "query": "query { election { delegate partyByParty { party } } }",
+        "question": "For each delegate, find the names of the party they are part of."
+    },
+    {
+        "query": "query { party ( where : { elections : { district : { _eq : 1 } } } ) { governor } }",
+        "question": "Who were the governors of the parties associated with delegates from district 1?"
+    },
+    {
+        "query": "query { party ( where : { elections : { district : { _eq : 1 } } } ) { governor } }",
+        "question": "Find the parties associated with the delegates from district 1. Who served as governors of the parties?"
+    },
+    {
+        "query": "query { party ( where : { _or : [ { elections : { district : { _eq : 1 } } } , { elections : { district : { _eq : 2 } } } ] } ) { comptroller } }",
+        "question": "Who were the comptrollers of the parties associated with the delegates from district 1 or district 2?"
+    },
+    {
+        "query": "query { party ( where : { _or : [ { elections : { district : { _eq : 1 } } } , { elections : { district : { _eq : 2 } } } ] } ) { comptroller } }",
+        "question": "Find the parties associated with the delegates from district 1 or 2. Who served as comptrollers of the parties?"
+    },
+    {
+        "query": "query { election ( where : { partyByParty : { party : { _eq : \"Democratic\" } } } ) { committee } }",
+        "question": "Return all the committees that have delegates from Democratic party."
+    },
+    {
+        "query": "query { election ( where : { partyByParty : { party : { _eq : \"Democratic\" } } } ) { committee } }",
+        "question": "Which committees have delegates from the Democratic party?"
+    },
+    {
+        "query": "query { county ( order_by : { population : asc } ) { county_name } }",
+        "question": "Return the names of all counties sorted by population in ascending order."
+    },
+    {
+        "query": "query { county ( order_by : { population : asc } ) { county_name } }",
+        "question": "Sort the names of all counties in ascending order of population."
+    },
+    {
+        "query": "query { county ( order_by : { county_name : desc } ) { county_name } }",
+        "question": "Return the names of all counties sorted by county name in descending alphabetical order."
+    },
+    {
+        "query": "query { county ( order_by : { county_name : desc } ) { county_name } }",
+        "question": "Sort the names of all counties in descending alphabetical order."
+    },
+    {
+        "query": "query { county ( limit : 1 , order_by : { population : desc } ) { county_name } }",
+        "question": "Show the name of the county with the biggest population."
+    },
+    {
+        "query": "query { county ( limit : 1 , order_by : { population : desc } ) { county_name } }",
+        "question": "Which county has the largest population? Give me the name of the county."
+    },
+    {
+        "query": "query { county ( limit : 3 , order_by : { population : asc } ) { county_name } }",
+        "question": "Show the 3 counties with the smallest population."
+    },
+    {
+        "query": "query { county ( limit : 3 , order_by : { population : asc } ) { county_name } }",
+        "question": "What are the 3 counties that have the smallest population? Give me the county names."
+    }
+]

@@ -1,0 +1,162 @@
+[
+    {
+        "query": "query { country_aggregate { aggregate { count } } }",
+        "question": "How many countries are there in total?"
+    },
+    {
+        "query": "query { country_aggregate { aggregate { count } } }",
+        "question": "Count the number of countries."
+    },
+    {
+        "query": "query { country { country_name capital } }",
+        "question": "Show the country name and capital of all countries."
+    },
+    {
+        "query": "query { country { country_name capital } }",
+        "question": "What are the names and capitals of each country?"
+    },
+    {
+        "query": "query { country ( where : { official_native_language : { _like : \"%English%\" } } ) { official_native_language } }",
+        "question": "Show all official native languages that contain the word \"English\"."
+    },
+    {
+        "query": "query { country ( where : { official_native_language : { _like : \"%English%\" } } ) { official_native_language } }",
+        "question": "What are the official native languages that contain the string \"English\"."
+    },
+    {
+        "query": "query { match_season ( distinct_on : position ) { position } }",
+        "question": "Show all distinct positions of matches."
+    },
+    {
+        "query": "query { match_season ( distinct_on : position ) { position } }",
+        "question": "What are the different positions for match season?"
+    },
+    {
+        "query": "query { match_season ( where : { college : { _eq : \"UCLA\" } } ) { player } }",
+        "question": "Show the players from college UCLA."
+    },
+    {
+        "query": "query { match_season ( where : { college : { _eq : \"UCLA\" } } ) { player } }",
+        "question": "Who are the players from UCLA?"
+    },
+    {
+        "query": "query { match_season ( where : { _or : [ { college : { _eq : \"UCLA\" } } , { college : { _eq : \"Duke\" } } ] } , distinct_on : position ) { position } }",
+        "question": "Show the distinct position of players from college UCLA or Duke."
+    },
+    {
+        "query": "query { match_season ( where : { _or : [ { college : { _eq : \"UCLA\" } } , { college : { _eq : \"Duke\" } } ] } , distinct_on : position ) { position } }",
+        "question": "What are the different positions of players from UCLA or Duke colleges?"
+    },
+    {
+        "query": "query { match_season ( where : { position : { _eq : \"Defender\" } } ) { draft_pick_number draft_class } }",
+        "question": "Show the draft pick numbers and draft classes of players whose positions are defenders."
+    },
+    {
+        "query": "query { match_season ( where : { position : { _eq : \"Defender\" } } ) { draft_pick_number draft_class } }",
+        "question": "What are the draft pick numbers and draft classes for players who play the Defender position?"
+    },
+    {
+        "query": "query { match_season_aggregate { aggregate { count } } }",
+        "question": "How many distinct teams are involved in match seasons?"
+    },
+    {
+        "query": "query { match_season_aggregate { aggregate { count } } }",
+        "question": "Count the number of different teams involved in match season."
+    },
+    {
+        "query": "query { player { player years_played } }",
+        "question": "Show the players and the years played."
+    },
+    {
+        "query": "query { player { player years_played } }",
+        "question": "Who are the different players and how many years has each played?"
+    },
+    {
+        "query": "query { team { name } }",
+        "question": "Show all team names."
+    },
+    {
+        "query": "query { team { name } }",
+        "question": "What are the names of all teams?"
+    },
+    {
+        "query": "query { match_season { season player countryByCountry { country_name } } }",
+        "question": "Show the season, the player, and the name of the country that player belongs to."
+    },
+    {
+        "query": "query { match_season { season player countryByCountry { country_name } } }",
+        "question": "For each player, what are their name, season, and country that they belong to?"
+    },
+    {
+        "query": "query { match_season ( where : { countryByCountry : { country_name : { _eq : \"Indonesia\" } } } ) { player } }",
+        "question": "Which players are from Indonesia?"
+    },
+    {
+        "query": "query { match_season ( where : { countryByCountry : { country_name : { _eq : \"Indonesia\" } } } ) { player } }",
+        "question": "Who are the players from Indonesia?"
+    },
+    {
+        "query": "query { match_season ( where : { countryByCountry : { capital : { _eq : \"Dublin\" } } } , distinct_on : position ) { position } }",
+        "question": "What are the distinct positions of the players from a country whose capital is Dublin?"
+    },
+    {
+        "query": "query { match_season ( where : { countryByCountry : { capital : { _eq : \"Dublin\" } } } , distinct_on : position ) { position } }",
+        "question": "Give the different positions of players who play for the country with the capital Dublin."
+    },
+    {
+        "query": "query { country ( where : { _or : [ { match_seasons : { college : { _eq : \"Maryland\" } } } , { match_seasons : { college : { _eq : \"Duke\" } } } ] } ) { official_native_language } }",
+        "question": "What are the official languages of the countries of players from Maryland or Duke college?"
+    },
+    {
+        "query": "query { country ( where : { _or : [ { match_seasons : { college : { _eq : \"Maryland\" } } } , { match_seasons : { college : { _eq : \"Duke\" } } } ] } ) { official_native_language } }",
+        "question": "Return the official native languages of countries who have players from Maryland or Duke colleges."
+    },
+    {
+        "query": "query { country_aggregate ( where : { match_seasons : { position : { _eq : \"Defender\" } } } ) { aggregate { count } } }",
+        "question": "How many distinct official languages are there among countries of players whose positions are defenders."
+    },
+    {
+        "query": "query { country_aggregate ( where : { match_seasons : { position : { _eq : \"Defender\" } } } ) { aggregate { count } } }",
+        "question": "Count the number of different official languages corresponding to countries that players who play Defender are from."
+    },
+    {
+        "query": "query { match_season { season player teamByTeam { name } } }",
+        "question": "Show the season, the player, and the name of the team that players belong to."
+    },
+    {
+        "query": "query { match_season { season player teamByTeam { name } } }",
+        "question": "Who are the different players, what season do they play in, and what is the name of the team they are on?"
+    },
+    {
+        "query": "query { match_season ( where : { teamByTeam : { name : { _eq : \"Ryley Goldner\" } } } ) { position } }",
+        "question": "Show the positions of the players from the team with name \"Ryley Goldner\"."
+    },
+    {
+        "query": "query { match_season ( where : { teamByTeam : { name : { _eq : \"Ryley Goldner\" } } } ) { position } }",
+        "question": "Return the positions of players on the team Ryley Goldner."
+    },
+    {
+        "query": "query { match_season_aggregate ( where : { teamByTeam : { name : { _eq : \"Columbus Crew\" } } } ) { aggregate { count } } }",
+        "question": "How many distinct colleges are associated with players from the team with name \"Columbus Crew\"."
+    },
+    {
+        "query": "query { match_season_aggregate ( where : { teamByTeam : { name : { _eq : \"Columbus Crew\" } } } ) { aggregate { count } } }",
+        "question": "Count the number of different colleges that players who play for Columbus Crew are from."
+    },
+    {
+        "query": "query { player ( where : { teamByTeam : { name : { _eq : \"Columbus Crew\" } } } ) { player years_played } }",
+        "question": "Show the players and years played for players from team \"Columbus Crew\"."
+    },
+    {
+        "query": "query { player ( where : { teamByTeam : { name : { _eq : \"Columbus Crew\" } } } ) { player years_played } }",
+        "question": "What are the players who played for Columbus Crew, and how many years did each play for?"
+    },
+    {
+        "query": "query { match_season ( order_by : { college : asc } ) { player } }",
+        "question": "Return all players sorted by college in ascending alphabetical order."
+    },
+    {
+        "query": "query { match_season ( order_by : { college : asc } ) { player } }",
+        "question": "What are all the players who played in match season, sorted by college in ascending alphabetical order?"
+    }
+]

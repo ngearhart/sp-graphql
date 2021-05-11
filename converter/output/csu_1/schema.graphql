@@ -1,0 +1,65 @@
+type Query {
+  """"""
+  Campuses(_limit: Int, Id: Int, Campus: String, Location: String, County: String, Year: Int): [CampusesT]
+
+  """"""
+  csu_fees(_limit: Int, Campus: Int, Year: Int, CampusFee: Int): [csu_feesT]
+
+  """"""
+  degrees(_limit: Int, Year: Int, Campus: Int, Degrees: Int): [degreesT]
+
+  """"""
+  discipline_enrollments(_limit: Int, Campus: Int, Discipline: Int, Year: Int, Undergraduate: Int, Graduate: Int): [discipline_enrollmentsT]
+
+  """"""
+  enrollments(_limit: Int, Campus: Int, Year: Int, TotalEnrollment_AY: Int, FTE_AY: Int): [enrollmentsT]
+
+  """"""
+  faculty(_limit: Int, Campus: Int, Year: Int, Faculty: Float): [facultyT]
+}
+
+type CampusesT {
+  Id: Int
+  Campus: String
+  Location: String
+  County: String
+  Year: Int
+}
+
+type csu_feesT {
+  Campus: Int
+  Year: Int
+  CampusFee: Int
+  Campuses(_limit: Int, Campus: String, Location: String, County: String, Year: Int): [CampusesT]
+}
+
+type degreesT {
+  Year: Int
+  Campus: Int
+  Degrees: Int
+  Campuses(_limit: Int, Campus: String, Location: String, County: String, Year: Int): [CampusesT]
+}
+
+type discipline_enrollmentsT {
+  Campus: Int
+  Discipline: Int
+  Year: Int
+  Undergraduate: Int
+  Graduate: Int
+  Campuses(_limit: Int, Campus: String, Location: String, County: String, Year: Int): [CampusesT]
+}
+
+type enrollmentsT {
+  Campus: Int
+  Year: Int
+  TotalEnrollment_AY: Int
+  FTE_AY: Int
+  Campuses(_limit: Int, Campus: String, Location: String, County: String, Year: Int): [CampusesT]
+}
+
+type facultyT {
+  Campus: Int
+  Year: Int
+  Faculty: Float
+  Campuses(_limit: Int, Campus: String, Location: String, County: String, Year: Int): [CampusesT]
+}

@@ -1,0 +1,66 @@
+[
+    {
+        "query": "query { highschooler_aggregate { aggregate { count } } }",
+        "question": "How many high schoolers are there?"
+    },
+    {
+        "query": "query { highschooler_aggregate { aggregate { count } } }",
+        "question": "Count the number of high schoolers."
+    },
+    {
+        "query": "query { highschooler { name grade } }",
+        "question": "Show the names and grades of each high schooler."
+    },
+    {
+        "query": "query { highschooler { name grade } }",
+        "question": "What are the names and grades for each high schooler?"
+    },
+    {
+        "query": "query { highschooler { grade } }",
+        "question": "Show all the grades of the high schoolers."
+    },
+    {
+        "query": "query { highschooler { grade } }",
+        "question": "What is the grade of each high schooler?"
+    },
+    {
+        "query": "query { highschooler ( where : { name : { _eq : \"Kyle\" } } ) { grade } }",
+        "question": "What grade is Kyle in?"
+    },
+    {
+        "query": "query { highschooler ( where : { name : { _eq : \"Kyle\" } } ) { grade } }",
+        "question": "Return the grade for the high schooler named Kyle."
+    },
+    {
+        "query": "query { highschooler ( where : { grade : { _eq : 10 } } ) { name } }",
+        "question": "Show the names of all high schoolers in grade 10."
+    },
+    {
+        "query": "query { highschooler ( where : { grade : { _eq : 10 } } ) { name } }",
+        "question": "What are the names of all high schoolers in grade 10?"
+    },
+    {
+        "query": "query { highschooler ( where : { name : { _eq : \"Kyle\" } } ) { id } }",
+        "question": "Show the ID of the high schooler named Kyle."
+    },
+    {
+        "query": "query { highschooler ( where : { name : { _eq : \"Kyle\" } } ) { id } }",
+        "question": "What is Kyle's id?"
+    },
+    {
+        "query": "query { highschooler_aggregate ( where : { _or : [ { grade : { _eq : 9 } } , { grade : { _eq : 10 } } ] } ) { aggregate { count } } }",
+        "question": "How many high schoolers are there in grade 9 or 10?"
+    },
+    {
+        "query": "query { highschooler_aggregate ( where : { _or : [ { grade : { _eq : 9 } } , { grade : { _eq : 10 } } ] } ) { aggregate { count } } }",
+        "question": "Count the number of high schoolers in grades 9 or 10."
+    },
+    {
+        "query": "query { highschooler ( where : { name : { _eq : \"Kyle\" } } ) { name } }",
+        "question": "Show the names of all of the high schooler Kyle's friends."
+    },
+    {
+        "query": "query { highschooler ( where : { name : { _eq : \"Kyle\" } } ) { name } }",
+        "question": "Return the names of friends of the high school student Kyle."
+    }
+]

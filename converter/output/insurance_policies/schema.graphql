@@ -1,0 +1,62 @@
+type Query {
+  """"""
+  Claims(_limit: Int, Claim_ID: Int, Policy_ID: Int, Date_Claim_Made: Date, Date_Claim_Settled: Date, Amount_Claimed: Int, Amount_Settled: Int): [ClaimsT]
+
+  """"""
+  Customer_Policies(_limit: Int, Policy_ID: Int, Customer_ID: Int, Policy_Type_Code: String, Start_Date: Date, End_Date: Date): [Customer_PoliciesT]
+
+  """"""
+  Customers(_limit: Int, Customer_ID: Int, Customer_Details: String): [CustomersT]
+
+  """"""
+  Payments(_limit: Int, Payment_ID: Int, Settlement_ID: Int, Payment_Method_Code: String, Date_Payment_Made: Date, Amount_Payment: Int): [PaymentsT]
+
+  """"""
+  Settlements(_limit: Int, Settlement_ID: Int, Claim_ID: Int, Date_Claim_Made: Date, Date_Claim_Settled: Date, Amount_Claimed: Int, Amount_Settled: Int, Customer_Policy_ID: Int): [SettlementsT]
+}
+
+type ClaimsT {
+  Claim_ID: Int
+  Policy_ID: Int
+  Date_Claim_Made: Date
+  Date_Claim_Settled: Date
+  Amount_Claimed: Int
+  Amount_Settled: Int
+  Customer_Policies(_limit: Int, Customer_ID: Int, Policy_Type_Code: String, Start_Date: Date, End_Date: Date): [Customer_PoliciesT]
+}
+
+scalar Date
+
+type Customer_PoliciesT {
+  Policy_ID: Int
+  Customer_ID: Int
+  Policy_Type_Code: String
+  Start_Date: Date
+  End_Date: Date
+  Customers(_limit: Int, Customer_Details: String): [CustomersT]
+}
+
+type CustomersT {
+  Customer_ID: Int
+  Customer_Details: String
+}
+
+type PaymentsT {
+  Payment_ID: Int
+  Settlement_ID: Int
+  Payment_Method_Code: String
+  Date_Payment_Made: Date
+  Amount_Payment: Int
+  Settlements(_limit: Int, Claim_ID: Int, Date_Claim_Made: Date, Date_Claim_Settled: Date, Amount_Claimed: Int, Amount_Settled: Int, Customer_Policy_ID: Int): [SettlementsT]
+}
+
+type SettlementsT {
+  Settlement_ID: Int
+  Claim_ID: Int
+  Date_Claim_Made: Date
+  Date_Claim_Settled: Date
+  Amount_Claimed: Int
+  Amount_Settled: Int
+  Customer_Policy_ID: Int
+  Claims(_limit: Int, Policy_ID: Int, Date_Claim_Made: Date, Date_Claim_Settled: Date, Amount_Claimed: Int, Amount_Settled: Int): [ClaimsT]
+}

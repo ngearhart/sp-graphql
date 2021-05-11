@@ -1,0 +1,9 @@
+type Query {
+  """"""
+  Allergy_Type(_limit: Int, Allergy: String, AllergyType: String): [Allergy_TypeT]
+}
+
+type Allergy_TypeT {
+  Allergy: String
+  AllergyType: String
+}

@@ -1,0 +1,23 @@
+type Query {
+  """"""
+  host(_limit: Int, Host_ID: Int, Name: String, Nationality: String, Age: String): [hostT]
+
+  """"""
+  party(_limit: Int, Party_ID: Int, Party_Theme: String, Location: String, First_year: String, Last_year: String, Number_of_hosts: Int): [partyT]
+}
+
+type hostT {
+  Host_ID: Int
+  Name: String
+  Nationality: String
+  Age: String
+}
+
+type partyT {
+  Party_ID: Int
+  Party_Theme: String
+  Location: String
+  First_year: String
+  Last_year: String
+  Number_of_hosts: Int
+}

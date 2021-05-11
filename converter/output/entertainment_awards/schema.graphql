@@ -1,0 +1,13 @@
+type Query {
+  """"""
+  festival_detail(_limit: Int, Festival_ID: Int, Festival_Name: String, Chair_Name: String, Location: String, Year: Int, Num_of_Audience: Int): [festival_detailT]
+}
+
+type festival_detailT {
+  Festival_ID: Int
+  Festival_Name: String
+  Chair_Name: String
+  Location: String
+  Year: Int
+  Num_of_Audience: Int
+}

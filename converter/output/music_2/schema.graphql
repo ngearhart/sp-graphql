@@ -1,0 +1,29 @@
+type Query {
+  """"""
+  Albums(_limit: Int, AId: Int, Title: String, Year: Int, Label: String, Type: String): [AlbumsT]
+
+  """"""
+  Band(_limit: Int, Id: Int, Firstname: String, Lastname: String): [BandT]
+
+  """"""
+  Songs(_limit: Int, SongId: Int, Title: String): [SongsT]
+}
+
+type AlbumsT {
+  AId: Int
+  Title: String
+  Year: Int
+  Label: String
+  Type: String
+}
+
+type BandT {
+  Id: Int
+  Firstname: String
+  Lastname: String
+}
+
+type SongsT {
+  SongId: Int
+  Title: String
+}

@@ -1,0 +1,114 @@
+[
+    {
+        "query": "query { wrestler_aggregate { aggregate { count } } }",
+        "question": "How many wrestlers are there?"
+    },
+    {
+        "query": "query { wrestler_aggregate { aggregate { count } } }",
+        "question": "Count the number of wrestlers."
+    },
+    {
+        "query": "query { wrestler ( order_by : { days_held : desc } ) { name } }",
+        "question": "List the names of wrestlers in descending order of days held."
+    },
+    {
+        "query": "query { wrestler ( order_by : { days_held : desc } ) { name } }",
+        "question": "What are the names of the wrestlers, ordered descending by days held?"
+    },
+    {
+        "query": "query { wrestler ( limit : 1 , order_by : { days_held : asc } ) { name } }",
+        "question": "What is the name of the wrestler with the fewest days held?"
+    },
+    {
+        "query": "query { wrestler ( limit : 1 , order_by : { days_held : asc } ) { name } }",
+        "question": "Return the name of the wrestler who had the lowest number of days held."
+    },
+    {
+        "query": "query { wrestler ( where : { location : { _neq : \"Tokyo , Japan\" } } , distinct_on : reign ) { reign } }",
+        "question": "What are the distinct reigns of wrestlers whose location is not \"Tokyo,Japan\" ?"
+    },
+    {
+        "query": "query { wrestler ( where : { location : { _neq : \"Tokyo , Japan\" } } , distinct_on : reign ) { reign } }",
+        "question": "Give the different reigns of wrestlers who are not located in Tokyo, Japan."
+    },
+    {
+        "query": "query { wrestler { name location } }",
+        "question": "What are the names and location of the wrestlers?"
+    },
+    {
+        "query": "query { wrestler { name location } }",
+        "question": "Give the names and locations of all wrestlers."
+    },
+    {
+        "query": "query { elimination ( where : { team : { _eq : \"Team Orton\" } } ) { elimination_move } }",
+        "question": "What are the elimination moves of wrestlers whose team is \"Team Orton\"?"
+    },
+    {
+        "query": "query { elimination ( where : { team : { _eq : \"Team Orton\" } } ) { elimination_move } }",
+        "question": "Return the elimination movies of wrestlers on Team Orton."
+    },
+    {
+        "query": "query { wrestler { name eliminations { elimination_move } } }",
+        "question": "What are the names of wrestlers and the elimination moves?"
+    },
+    {
+        "query": "query { wrestler { name eliminations { elimination_move } } }",
+        "question": "Give the names of wrestlers and their elimination moves."
+    },
+    {
+        "query": "query { wrestler ( order_by : { days_held : desc } ) { name eliminations { team } } }",
+        "question": "List the names of wrestlers and the teams in elimination in descending order of days held."
+    },
+    {
+        "query": "query { wrestler ( order_by : { days_held : desc } ) { name eliminations { team } } }",
+        "question": "What are the names of wrestlers and their teams in elimination, ordered descending by days held?"
+    },
+    {
+        "query": "query { elimination ( limit : 1 , order_by : { wrestler : { days_held : desc } } ) { time } }",
+        "question": "List the time of elimination of the wrestlers with largest days held."
+    },
+    {
+        "query": "query { elimination ( limit : 1 , order_by : { wrestler : { days_held : desc } } ) { time } }",
+        "question": "What is the time of elimination for the wrestler with the most days held?"
+    },
+    {
+        "query": "query { elimination ( where : { wrestler : { days_held : { _gt : \"50\" } } } ) { time } }",
+        "question": "Show times of elimination of wrestlers with days held more than 50."
+    },
+    {
+        "query": "query { elimination ( where : { wrestler : { days_held : { _gt : \"50\" } } } ) { time } }",
+        "question": "What are the times of elimination for wrestlers with over 50 days held?"
+    },
+    {
+        "query": "query { wrestler { reign days_held } }",
+        "question": "Show the reign and days held of wrestlers."
+    },
+    {
+        "query": "query { wrestler { reign days_held } }",
+        "question": "What are the reigns and days held of all wrestlers?"
+    },
+    {
+        "query": "query { wrestler ( where : { days_held : { _lt : \"100\" } } ) { name } }",
+        "question": "What are the names of wrestlers days held less than 100?"
+    },
+    {
+        "query": "query { wrestler ( where : { days_held : { _lt : \"100\" } } ) { name } }",
+        "question": "Return the names of wrestlers with fewer than 100 days held."
+    },
+    {
+        "query": "query { elimination_aggregate { aggregate { count } } }",
+        "question": "What is the number of distinct teams that suffer elimination?"
+    },
+    {
+        "query": "query { elimination_aggregate { aggregate { count } } }",
+        "question": "How many different teams have had eliminated wrestlers?"
+    },
+    {
+        "query": "query { elimination ( where : { _or : [ { eliminated_by : { _eq : \"Punk\" } } , { eliminated_by : { _eq : \"Orton\" } } ] } ) { time } }",
+        "question": "Show the times of elimination by \"Punk\" or \"Orton\"."
+    },
+    {
+        "query": "query { elimination ( where : { _or : [ { eliminated_by : { _eq : \"Punk\" } } , { eliminated_by : { _eq : \"Orton\" } } ] } ) { time } }",
+        "question": "What are the times of elimination for any instances in which the elimination was done by Punk or Orton?"
+    }
+]

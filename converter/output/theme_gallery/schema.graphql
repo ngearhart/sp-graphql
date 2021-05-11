@@ -1,0 +1,12 @@
+type Query {
+  """"""
+  artist(_limit: Int, Artist_ID: Int, Name: String, Country: String, Year_Join: Int, Age: Int): [artistT]
+}
+
+type artistT {
+  Artist_ID: Int
+  Name: String
+  Country: String
+  Year_Join: Int
+  Age: Int
+}

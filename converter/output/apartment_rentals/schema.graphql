@@ -1,0 +1,14 @@
+type Query {
+  """"""
+  Apartment_Buildings(_limit: Int, building_id: Int, building_short_name: String, building_full_name: String, building_description: String, building_address: String, building_manager: String, building_phone: String): [Apartment_BuildingsT]
+}
+
+type Apartment_BuildingsT {
+  building_id: Int
+  building_short_name: String
+  building_full_name: String
+  building_description: String
+  building_address: String
+  building_manager: String
+  building_phone: String
+}

@@ -1,0 +1,12 @@
+type Query {
+  """"""
+  manufacturer(_limit: Int, Manufacturer_ID: Int, Open_Year: Float, Name: String, Num_of_Factories: Int, Num_of_Shops: Int): [manufacturerT]
+}
+
+type manufacturerT {
+  Manufacturer_ID: Int
+  Open_Year: Float
+  Name: String
+  Num_of_Factories: Int
+  Num_of_Shops: Int
+}

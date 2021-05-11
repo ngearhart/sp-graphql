@@ -1,0 +1,58 @@
+[
+    {
+        "query": "query { restaurant { resname } }",
+        "question": "Show me all the restaurants."
+    },
+    {
+        "query": "query { restaurant ( where : { resname : { _eq : \"Subway\" } } ) { address } }",
+        "question": "What is the address of the restaurant Subway?"
+    },
+    {
+        "query": "query { restaurant ( where : { resname : { _eq : \"Subway\" } } ) { rating } }",
+        "question": "What is the rating of the restaurant Subway?"
+    },
+    {
+        "query": "query { restaurant_type { restypename } }",
+        "question": "List all restaurant types."
+    },
+    {
+        "query": "query { restaurant_type ( where : { restypename : { _eq : \"Sandwich\" } } ) { restypedescription } }",
+        "question": "What is the description of the restaurant type Sandwich?"
+    },
+    {
+        "query": "query { restaurant ( limit : 1 , order_by : { rating : desc } ) { resname rating } }",
+        "question": "Which restaurants have highest rating? List the restaurant name and its rating."
+    },
+    {
+        "query": "query { student ( where : { _and : { lname : { _eq : \"Smith\" } , fname : { _eq : \"Linda\" } } } ) { age } }",
+        "question": "What is the age of student Linda Smith?"
+    },
+    {
+        "query": "query { student ( where : { _and : { lname : { _eq : \"Smith\" } , fname : { _eq : \"Linda\" } } } ) { sex } }",
+        "question": "What is the gender of the student Linda Smith?"
+    },
+    {
+        "query": "query { student ( where : { major : { _eq : 600 } } ) { fname lname } }",
+        "question": "List all students' first names and last names who majored in 600."
+    },
+    {
+        "query": "query { student ( where : { _and : { lname : { _eq : \"Smith\" } , fname : { _eq : \"Linda\" } } } ) { city_code } }",
+        "question": "Which city does student Linda Smith live in?"
+    },
+    {
+        "query": "query { student_aggregate ( where : { advisor : { _eq : 1121 } } ) { aggregate { count } } }",
+        "question": "Advisor 1121 has how many students?"
+    },
+    {
+        "query": "query { student ( where : { _and : { age : { _gt : 18 } , major : { _eq : 600 } } } ) { fname lname } }",
+        "question": "Which student's age is older than 18 and is majoring in 600? List each student's first and last name."
+    },
+    {
+        "query": "query { student ( where : { _and : { major : { _neq : 600 } , sex : { _eq : \"F\" } , age : { _gt : 18 } } } ) { fname lname } }",
+        "question": "List all female students age is older than 18 who is not majoring in 600. List students' first name and last name."
+    },
+    {
+        "query": "query { visits_restaurant_aggregate ( where : { _and : { student : { lname : { _eq : \"Smith\" } , fname : { _eq : \"Linda\" } } } } ) { aggregate { sum { spent } } } }",
+        "question": "How long does student Linda Smith spend on the restaurant in total?"
+    }
+]

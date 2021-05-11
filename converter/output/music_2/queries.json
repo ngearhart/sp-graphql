@@ -1,0 +1,218 @@
+[
+    {
+        "query": "query { band_aggregate { aggregate { count } } }",
+        "question": "How many bands are there?"
+    },
+    {
+        "query": "query { band_aggregate { aggregate { count } } }",
+        "question": "Find the number of bands."
+    },
+    {
+        "query": "query { albums ( distinct_on : label ) { label } }",
+        "question": "What are all the labels?"
+    },
+    {
+        "query": "query { albums ( distinct_on : label ) { label } }",
+        "question": "What are the different album labels listed?"
+    },
+    {
+        "query": "query { albums ( where : { year : { _eq : 2012 } } ) { label title type year } }",
+        "question": "Find all the albums in 2012."
+    },
+    {
+        "query": "query { albums ( where : { year : { _eq : 2012 } } ) { label title type year } }",
+        "question": "return all columns of the albums created in the year of 2012."
+    },
+    {
+        "query": "query { performance ( where : { band : { firstname : { _eq : \"Solveig\" } } } , distinct_on : stageposition ) { stageposition } }",
+        "question": "Find all the stage positions of the musicians with first name \"Solveig\""
+    },
+    {
+        "query": "query { performance ( where : { band : { firstname : { _eq : \"Solveig\" } } } , distinct_on : stageposition ) { stageposition } }",
+        "question": "What are the different stage positions for all musicians whose first name is \"Solveig\"?"
+    },
+    {
+        "query": "query { songs_aggregate { aggregate { count } } }",
+        "question": "How many songs are there?"
+    },
+    {
+        "query": "query { songs_aggregate { aggregate { count } } }",
+        "question": "Count the number of songs."
+    },
+    {
+        "query": "query { songs ( where : { performances : { band : { lastname : { _eq : \"Heilo\" } } } } ) { title } }",
+        "question": "Find all the songs performed by artist with last name \"Heilo\""
+    },
+    {
+        "query": "query { songs ( where : { performances : { band : { lastname : { _eq : \"Heilo\" } } } } ) { title } }",
+        "question": "What are the names of the songs by the artist whose last name is \"Heilo\"?"
+    },
+    {
+        "query": "query { songs ( where : { performances : { band : { firstname : { _eq : \"Marianne\" } } } } ) { title } }",
+        "question": "Find all the songs produced by artists with first name \"Marianne\"."
+    },
+    {
+        "query": "query { songs ( where : { performances : { band : { firstname : { _eq : \"Marianne\" } } } } ) { title } }",
+        "question": "What are the names of all songs produced by the artist with the first name \"Marianne\"?"
+    },
+    {
+        "query": "query { albums_aggregate { aggregate { count } } }",
+        "question": "How many unique labels are there for albums?"
+    },
+    {
+        "query": "query { albums_aggregate { aggregate { count } } }",
+        "question": "What are the unique labels for the albums?"
+    },
+    {
+        "query": "query { songs ( where : { title : { _like : \"% the %\" } } ) { title } }",
+        "question": "Find all the songs whose name contains the word \"the\"."
+    },
+    {
+        "query": "query { songs ( where : { title : { _like : \"% the %\" } } ) { title } }",
+        "question": "What are the names of the songs whose title has the word \"the\"?"
+    },
+    {
+        "query": "query { instruments ( distinct_on : instrument ) { instrument } }",
+        "question": "What are all the instruments used?"
+    },
+    {
+        "query": "query { instruments ( distinct_on : instrument ) { instrument } }",
+        "question": "What are the different instruments listed in the database?"
+    },
+    {
+        "query": "query { instruments_aggregate ( where : { instrument : { _eq : \"drums\" } } ) { aggregate { count } } }",
+        "question": "How many songs have used the instrument \"drums\"?"
+    },
+    {
+        "query": "query { instruments_aggregate ( where : { instrument : { _eq : \"drums\" } } ) { aggregate { count } } }",
+        "question": "How many songs use drums as an instrument?"
+    },
+    {
+        "query": "query { instruments ( where : { song : { title : { _eq : \"Le Pop\" } } } ) { instrument } }",
+        "question": "What instruments does the the song \"Le Pop\" use?"
+    },
+    {
+        "query": "query { instruments ( where : { song : { title : { _eq : \"Le Pop\" } } } ) { instrument } }",
+        "question": "What are the instruments are used in the song \"Le Pop\"?"
+    },
+    {
+        "query": "query { instruments_aggregate ( where : { song : { title : { _eq : \"Le Pop\" } } } ) { aggregate { count } } }",
+        "question": "How many instruments does the song \"Le Pop\" use?"
+    },
+    {
+        "query": "query { instruments_aggregate ( where : { song : { title : { _eq : \"Le Pop\" } } } ) { aggregate { count } } }",
+        "question": "How many different instruments are used in the song \"Le Pop\"?"
+    },
+    {
+        "query": "query { instruments_aggregate ( where : { band : { lastname : { _eq : \"Heilo\" } } } ) { aggregate { count } } }",
+        "question": "How many instrument does the musician with last name \"Heilo\" use?"
+    },
+    {
+        "query": "query { instruments_aggregate ( where : { band : { lastname : { _eq : \"Heilo\" } } } ) { aggregate { count } } }",
+        "question": "How many different instruments does the musician with the last name \"Heilo\" use?"
+    },
+    {
+        "query": "query { instruments ( where : { band : { lastname : { _eq : \"Heilo\" } } } ) { instrument } }",
+        "question": "Find all the instruments ever used by the musician with last name \"Heilo\"?"
+    },
+    {
+        "query": "query { instruments ( where : { band : { lastname : { _eq : \"Heilo\" } } } ) { instrument } }",
+        "question": "What are all the instruments used by the musician with the last name \"Heilo\"?"
+    },
+    {
+        "query": "query { vocals ( where : { song : { title : { _eq : \"Le Pop\" } } } ) { type } }",
+        "question": "What are the vocal types used in song \"Le Pop\"?"
+    },
+    {
+        "query": "query { vocals ( where : { song : { title : { _eq : \"Le Pop\" } } } ) { type } }",
+        "question": "What are the types of vocals used in the song \"Le Pop\"?"
+    },
+    {
+        "query": "query { vocals_aggregate ( where : { song : { title : { _eq : \"Demon Kitty Rag\" } } } ) { aggregate { count } } }",
+        "question": "Find the number of vocal types used in song \"Demon Kitty Rag\"?"
+    },
+    {
+        "query": "query { vocals_aggregate ( where : { song : { title : { _eq : \"Demon Kitty Rag\" } } } ) { aggregate { count } } }",
+        "question": "What are the types of vocals used in the song \"Demon Kitty Rag\"?"
+    },
+    {
+        "query": "query { songs_aggregate ( where : { vocals : { type : { _eq : \"lead\" } } } ) { aggregate { count } } }",
+        "question": "How many songs have a lead vocal?"
+    },
+    {
+        "query": "query { songs_aggregate ( where : { vocals : { type : { _eq : \"lead\" } } } ) { aggregate { count } } }",
+        "question": "How many songs have vocals of type lead?"
+    },
+    {
+        "query": "query { vocals ( distinct_on : type ) { type } }",
+        "question": "Find all the vocal types."
+    },
+    {
+        "query": "query { vocals ( distinct_on : type ) { type } }",
+        "question": "What are the different types of vocals?"
+    },
+    {
+        "query": "query { albums ( where : { year : { _eq : 2010 } } ) { label title type year } }",
+        "question": "What are the albums produced in year 2010?"
+    },
+    {
+        "query": "query { albums ( where : { year : { _eq : 2010 } } ) { label title type year } }",
+        "question": "What information is there on albums from 2010?"
+    },
+    {
+        "query": "query { instruments_aggregate ( where : { song : { title : { _eq : \"Badlands\" } } } ) { aggregate { count } } }",
+        "question": "How many instruments does the song \"Badlands\" use?"
+    },
+    {
+        "query": "query { instruments_aggregate ( where : { song : { title : { _eq : \"Badlands\" } } } ) { aggregate { count } } }",
+        "question": "How many different instruments are used in the song \"Badlands\"?"
+    },
+    {
+        "query": "query { vocals ( where : { song : { title : { _eq : \"Badlands\" } } } ) { type } }",
+        "question": "What are the vocal types used in song \"Badlands\"?"
+    },
+    {
+        "query": "query { vocals ( where : { song : { title : { _eq : \"Badlands\" } } } ) { type } }",
+        "question": "What types of vocals are used in the song \"Badlands\"?"
+    },
+    {
+        "query": "query { vocals_aggregate ( where : { song : { title : { _eq : \"Le Pop\" } } } ) { aggregate { count } } }",
+        "question": "Find the number of vocal types used in song \"Le Pop\""
+    },
+    {
+        "query": "query { vocals_aggregate ( where : { song : { title : { _eq : \"Le Pop\" } } } ) { aggregate { count } } }",
+        "question": "How many vocal types are used in the song \"Le Pop\"?"
+    },
+    {
+        "query": "query { songs_aggregate ( where : { vocals : { type : { _eq : \"shared\" } } } ) { aggregate { count } } }",
+        "question": "How many songs have a shared vocal?"
+    },
+    {
+        "query": "query { songs_aggregate ( where : { vocals : { type : { _eq : \"shared\" } } } ) { aggregate { count } } }",
+        "question": "How many different songs have shared vocals?"
+    },
+    {
+        "query": "query { songs ( where : { tracklists : { album : { title : { _eq : \"A Kiss Before You Go: Live in Hamburg\" } } } } ) { title } }",
+        "question": "What are the songs in album \"A Kiss Before You Go: Live in Hamburg\"?"
+    },
+    {
+        "query": "query { songs ( where : { tracklists : { album : { title : { _eq : \"A Kiss Before You Go: Live in Hamburg\" } } } } ) { title } }",
+        "question": "What are the song titles on the album \"A Kiss Before You Go: Live in Hamburg\"?"
+    },
+    {
+        "query": "query { songs ( where : { tracklists : { album : { label : { _eq : \"Universal Music Group\" } } } } ) { title } }",
+        "question": "What are all the songs in albums under label \"Universal Music Group\"?"
+    },
+    {
+        "query": "query { songs ( where : { tracklists : { album : { label : { _eq : \"Universal Music Group\" } } } } ) { title } }",
+        "question": "What are the names of all the songs whose album is under the label of \"Universal Music Group\"?"
+    },
+    {
+        "query": "query { songs_aggregate ( where : { tracklists : { album : { type : { _eq : \"Studio\" } } } } ) { aggregate { count } } }",
+        "question": "Find the number of songs in all the studio albums."
+    },
+    {
+        "query": "query { songs_aggregate ( where : { tracklists : { album : { type : { _eq : \"Studio\" } } } } ) { aggregate { count } } }",
+        "question": "How many songs appear in studio albums?"
+    }
+]

@@ -1,0 +1,15 @@
+type Query {
+  """"""
+  Student(_limit: Int, StuID: Int, LName: String, Fname: String, Age: Int, Sex: String, Major: Int, Advisor: Int, city_code: String): [StudentT]
+}
+
+type StudentT {
+  StuID: Int
+  LName: String
+  Fname: String
+  Age: Int
+  Sex: String
+  Major: Int
+  Advisor: Int
+  city_code: String
+}

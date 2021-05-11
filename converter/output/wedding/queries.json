@@ -1,0 +1,38 @@
+[
+    {
+        "query": "query { church_aggregate ( where : { open_date : { _lt : 1850 } } ) { aggregate { count } } }",
+        "question": "How many churches opened before 1850 are there?"
+    },
+    {
+        "query": "query { church { name open_date organized_by } }",
+        "question": "Show the name, open date, and organizer for all churches."
+    },
+    {
+        "query": "query { church ( order_by : { open_date : desc } ) { name } }",
+        "question": "List all church names in descending order of opening date."
+    },
+    {
+        "query": "query { church ( where : { open_date : { _gte : 1830 , _lte : 1840 } } ) { organized_by name } }",
+        "question": "Show the organizer and name for churches that opened between 1830 and 1840."
+    },
+    {
+        "query": "query { church ( limit : 3 , order_by : { open_date : desc } ) { name open_date } }",
+        "question": "Show the name and opening year for three churches that opened most recently."
+    },
+    {
+        "query": "query { people_aggregate ( where : { _and : { age : { _gt : 30 } , is_male : { _eq : \"F\" } } } ) { aggregate { count } } }",
+        "question": "How many female people are older than 30 in our record?"
+    },
+    {
+        "query": "query { people_aggregate { aggregate { min { age } max { age } avg { age } } } }",
+        "question": "Show the minimum, maximum, and average age for all people."
+    },
+    {
+        "query": "query { wedding_aggregate ( where : { year : { _eq : 2016 } } ) { aggregate { count } } }",
+        "question": "How many weddings are there in year 2016?"
+    },
+    {
+        "query": "query { wedding_aggregate ( where : { year : { _eq : 2016 } } ) { aggregate { count } } }",
+        "question": "How many churches have a wedding in year 2016?"
+    }
+]

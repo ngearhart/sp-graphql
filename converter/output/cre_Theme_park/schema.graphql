@@ -1,0 +1,55 @@
+type Query {
+  """"""
+  Features(_limit: Int, Feature_ID: Int, Feature_Details: String): [FeaturesT]
+
+  """"""
+  Hotels(_limit: Int, hotel_id: Int, star_rating_code: String, pets_allowed_yn: String, price_range: Float, other_hotel_details: String): [HotelsT]
+
+  """"""
+  Locations(_limit: Int, Location_ID: Int, Location_Name: String, Address: String, Other_Details: String): [LocationsT]
+
+  """"""
+  Ref_Attraction_Types(_limit: Int, Attraction_Type_Code: String, Attraction_Type_Description: String): [Ref_Attraction_TypesT]
+
+  """"""
+  Ref_Hotel_Star_Ratings(_limit: Int, star_rating_code: String, star_rating_description: String): [Ref_Hotel_Star_RatingsT]
+
+  """"""
+  Visitors(_limit: Int, Tourist_ID: Int, Tourist_Details: String): [VisitorsT]
+}
+
+type FeaturesT {
+  Feature_ID: Int
+  Feature_Details: String
+}
+
+type HotelsT {
+  hotel_id: Int
+  star_rating_code: String
+  pets_allowed_yn: String
+  price_range: Float
+  other_hotel_details: String
+  Ref_Hotel_Star_Ratings(_limit: Int, star_rating_description: String): [Ref_Hotel_Star_RatingsT]
+}
+
+type Ref_Hotel_Star_RatingsT {
+  star_rating_code: String
+  star_rating_description: String
+}
+
+type LocationsT {
+  Location_ID: Int
+  Location_Name: String
+  Address: String
+  Other_Details: String
+}
+
+type Ref_Attraction_TypesT {
+  Attraction_Type_Code: String
+  Attraction_Type_Description: String
+}
+
+type VisitorsT {
+  Tourist_ID: Int
+  Tourist_Details: String
+}

@@ -1,0 +1,74 @@
+[
+    {
+        "query": "query { customers ( order_by : { customer_details : asc } ) { customer_details } }",
+        "question": "List the names of all the customers in alphabetical order."
+    },
+    {
+        "query": "query { customers ( order_by : { customer_details : asc } ) { customer_details } }",
+        "question": "Sort the customer names in alphabetical order."
+    },
+    {
+        "query": "query { policies ( where : { customer : { customer_details : { _eq : \"Dayana Robel\" } } } ) { policy_type_code } }",
+        "question": "Find all the policy type codes associated with the customer \"Dayana Robel\""
+    },
+    {
+        "query": "query { policies ( where : { customer : { customer_details : { _eq : \"Dayana Robel\" } } } ) { policy_type_code } }",
+        "question": "What are the type codes of the policies used by the customer \"Dayana Robel\"?"
+    },
+    {
+        "query": "query { claim_headers_aggregate { aggregate { sum { amount_piad } avg { amount_piad } } } }",
+        "question": "Find the total and average amount paid in claim headers."
+    },
+    {
+        "query": "query { claim_headers_aggregate { aggregate { sum { amount_piad } avg { amount_piad } } } }",
+        "question": "What are the total amount and average amount paid in claim headers?"
+    },
+    {
+        "query": "query { claims_processing_stages_aggregate { aggregate { count } } }",
+        "question": "How many claim processing stages are there in total?"
+    },
+    {
+        "query": "query { claims_processing_stages_aggregate { aggregate { count } } }",
+        "question": "Find the number of distinct stages in claim processing."
+    },
+    {
+        "query": "query { customers ( where : { customer_details : { _like : \"%Diana%\" } } ) { customer_details } }",
+        "question": "Find the names of customers whose name contains \"Diana\"."
+    },
+    {
+        "query": "query { customers ( where : { customer_details : { _like : \"%Diana%\" } } ) { customer_details } }",
+        "question": "Which customers have the substring \"Diana\" in their names? Return the customer details."
+    },
+    {
+        "query": "query { customers ( where : { policies : { policy_type_code : { _eq : \"Deputy\" } } } , distinct_on : customer_details ) { customer_details } }",
+        "question": "Find the names of the customers who have an deputy policy."
+    },
+    {
+        "query": "query { customers ( where : { policies : { policy_type_code : { _eq : \"Deputy\" } } } , distinct_on : customer_details ) { customer_details } }",
+        "question": "Which customers have an insurance policy with the type code \"Deputy\"? Give me the customer details."
+    },
+    {
+        "query": "query { customers ( where : { _or : [ { policies : { policy_type_code : { _eq : \"Deputy\" } } } , { policies : { policy_type_code : { _eq : \"Uniform\" } } } ] } , distinct_on : customer_details ) { customer_details } }",
+        "question": "Find the names of customers who either have an deputy policy or uniformed policy."
+    },
+    {
+        "query": "query { customers ( where : { _or : [ { policies : { policy_type_code : { _eq : \"Deputy\" } } } , { policies : { policy_type_code : { _eq : \"Uniform\" } } } ] } , distinct_on : customer_details ) { customer_details } }",
+        "question": "Which customers have an insurance policy with the type code \"Deputy\" or \"Uniform\"? Return the customer details."
+    },
+    {
+        "query": "query { claims_processing_stages ( where : { claim_status_name : { _eq : \"Open\" } } ) { claim_status_description } }",
+        "question": "What is the description of the claim status \"Open\"?"
+    },
+    {
+        "query": "query { claims_processing_stages ( where : { claim_status_name : { _eq : \"Open\" } } ) { claim_status_description } }",
+        "question": "Find the description of the claim status \"Open\"."
+    },
+    {
+        "query": "query { claims_processing_aggregate { aggregate { count } } }",
+        "question": "How many distinct claim outcome codes are there?"
+    },
+    {
+        "query": "query { claims_processing_aggregate { aggregate { count } } }",
+        "question": "Count the number of distinct claim outcome codes."
+    }
+]

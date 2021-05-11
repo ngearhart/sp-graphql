@@ -1,0 +1,106 @@
+[
+    {
+        "query": "query { artist_aggregate { aggregate { count } } }",
+        "question": "How many artists do we have?"
+    },
+    {
+        "query": "query { artist_aggregate { aggregate { count } } }",
+        "question": "Count the number of artists."
+    },
+    {
+        "query": "query { artist ( order_by : { year_join : asc } ) { name age country } }",
+        "question": "Show all artist name, age, and country ordered by the yeared they joined."
+    },
+    {
+        "query": "query { artist ( order_by : { year_join : asc } ) { name age country } }",
+        "question": "What are the names, ages, and countries of artists, sorted by the year they joined?"
+    },
+    {
+        "query": "query { artist ( distinct_on : country ) { country } }",
+        "question": "What are all distinct country for artists?"
+    },
+    {
+        "query": "query { artist ( distinct_on : country ) { country } }",
+        "question": "Return the different countries for artists."
+    },
+    {
+        "query": "query { artist ( where : { country : { _neq : \"United States\" } } ) { name year_join } }",
+        "question": "Show all artist names and the year joined who are not from United States."
+    },
+    {
+        "query": "query { artist ( where : { country : { _neq : \"United States\" } } ) { name year_join } }",
+        "question": "What are the names and year of joining for artists that do not have the country \"United States\"?"
+    },
+    {
+        "query": "query { artist_aggregate ( where : { _and : { year_join : { _gt : 1990 } , age : { _gt : 46 } } } ) { aggregate { count } } }",
+        "question": "How many artists are above age 46 and joined after 1990?"
+    },
+    {
+        "query": "query { artist_aggregate ( where : { _and : { year_join : { _gt : 1990 } , age : { _gt : 46 } } } ) { aggregate { count } } }",
+        "question": "Count the number of artists who are older than 46 and joined after 1990."
+    },
+    {
+        "query": "query { artist_aggregate ( where : { country : { _eq : \"United States\" } } ) { aggregate { avg { age } min { age } } } }",
+        "question": "What is the average and minimum age of all artists from United States."
+    },
+    {
+        "query": "query { artist_aggregate ( where : { country : { _eq : \"United States\" } } ) { aggregate { avg { age } min { age } } } }",
+        "question": "Return the average and minimum ages across artists from the United States."
+    },
+    {
+        "query": "query { artist ( limit : 1 , order_by : { year_join : desc } ) { name } }",
+        "question": "What is the name of the artist who joined latest?"
+    },
+    {
+        "query": "query { artist ( limit : 1 , order_by : { year_join : desc } ) { name } }",
+        "question": "Return the name of the artist who has the latest join year."
+    },
+    {
+        "query": "query { exhibition_aggregate ( where : { year : { _gte : 2005 } } ) { aggregate { count } } }",
+        "question": "How many exhibition are there in year 2005 or after?"
+    },
+    {
+        "query": "query { exhibition_aggregate ( where : { year : { _gte : 2005 } } ) { aggregate { count } } }",
+        "question": "Count the number of exhibitions that happened in or after 2005."
+    },
+    {
+        "query": "query { exhibition ( where : { ticket_price : { _lt : 15.0 } } ) { theme year } }",
+        "question": "Show theme and year for all exhibitions with ticket prices lower than 15."
+    },
+    {
+        "query": "query { exhibition ( where : { ticket_price : { _lt : 15.0 } } ) { theme year } }",
+        "question": "What are the theme and year for all exhibitions that have a ticket price under 15?"
+    },
+    {
+        "query": "query { exhibition_aggregate ( where : { year : { _lt : 2009 } } ) { aggregate { avg { ticket_price } min { ticket_price } max { ticket_price } } } }",
+        "question": "Show the average, minimum, and maximum ticket prices for exhibitions for all years before 2009."
+    },
+    {
+        "query": "query { exhibition_aggregate ( where : { year : { _lt : 2009 } } ) { aggregate { avg { ticket_price } min { ticket_price } max { ticket_price } } } }",
+        "question": "What are the average, minimum, and maximum ticket prices for exhibitions that happened prior to 2009?"
+    },
+    {
+        "query": "query { exhibition ( order_by : { ticket_price : desc } ) { theme year } }",
+        "question": "Show theme and year for all exhibitions in an descending order of ticket price."
+    },
+    {
+        "query": "query { exhibition ( order_by : { ticket_price : desc } ) { theme year } }",
+        "question": "What are the themes and years for exhibitions, sorted by ticket price descending?"
+    },
+    {
+        "query": "query { exhibition ( where : { year : { _eq : 2004 } } ) { theme exhibition_records { date attendance } } }",
+        "question": "What is the theme, date, and attendance for the exhibition in year 2004?"
+    },
+    {
+        "query": "query { exhibition ( where : { year : { _eq : 2004 } } ) { theme exhibition_records { date attendance } } }",
+        "question": "Return the themes, dates, and attendance for exhibitions that happened in 2004."
+    },
+    {
+        "query": "query { exhibition_record_aggregate ( where : { _or : [ { attendance : { _gt : 100 } } , { exhibition : { ticket_price : { _lt : 10.0 } } } ] } ) { aggregate { count } } }",
+        "question": "How many exhibitions have a attendance more than 100 or have a ticket price below 10?"
+    },
+    {
+        "query": "query { exhibition_record_aggregate ( where : { _or : [ { attendance : { _gt : 100 } } , { exhibition : { ticket_price : { _lt : 10.0 } } } ] } ) { aggregate { count } } }",
+        "question": "Count the number of exhibitions that have had an attendnance of over 100 or a ticket prices under 10."
+    }
+]

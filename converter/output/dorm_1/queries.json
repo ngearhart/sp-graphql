@@ -1,0 +1,162 @@
+[
+    {
+        "query": "query { dorm ( where : { gender : { _eq : \"F\" } } ) { dorm_name } }",
+        "question": "Find the name of dorms only for female (F gender)."
+    },
+    {
+        "query": "query { dorm ( where : { gender : { _eq : \"F\" } } ) { dorm_name } }",
+        "question": "What are the names of the all-female dorms?"
+    },
+    {
+        "query": "query { dorm ( where : { student_capacity : { _gt : 300 } } ) { dorm_name } }",
+        "question": "Find the name of dorms that can accommodate more than 300 students."
+    },
+    {
+        "query": "query { dorm ( where : { student_capacity : { _gt : 300 } } ) { dorm_name } }",
+        "question": "What are the names of all the dorms that can accomdate more than 300 students?"
+    },
+    {
+        "query": "query { student_aggregate ( where : { _and : { age : { _lt : 25 } , sex : { _eq : \"F\" } } } ) { aggregate { count } } }",
+        "question": "How many female students (sex is F) whose age is below 25?"
+    },
+    {
+        "query": "query { student_aggregate ( where : { _and : { sex : { _eq : \"F\" } , age : { _lt : 25 } } } ) { aggregate { count } } }",
+        "question": "How many girl students who are younger than 25?"
+    },
+    {
+        "query": "query { student ( where : { age : { _gt : 20 } } ) { fname } }",
+        "question": "Find the first name of students who is older than 20."
+    },
+    {
+        "query": "query { student ( where : { age : { _gt : 20 } } ) { fname } }",
+        "question": "What are the first names of all students who are older than 20?"
+    },
+    {
+        "query": "query { student ( where : { _and : { city_code : { _eq : \"PHL\" } , age : { _gte : 20 , _lte : 25 } } } ) { fname } }",
+        "question": "Find the first name of students living in city PHL whose age is between 20 and 25."
+    },
+    {
+        "query": "query { student ( where : { _and : { age : { _gte : 20 , _lte : 25 } , city_code : { _eq : \"PHL\" } } } ) { fname } }",
+        "question": "What is the first name of the students who are in age 20 to 25 and living in PHL city?"
+    },
+    {
+        "query": "query { dorm_aggregate { aggregate { count } } }",
+        "question": "How many dorms are there?"
+    },
+    {
+        "query": "query { dorm_aggregate { aggregate { count } } }",
+        "question": "How many dorms are in the database?"
+    },
+    {
+        "query": "query { dorm_amenity_aggregate { aggregate { count } } }",
+        "question": "Find the number of distinct amenities."
+    },
+    {
+        "query": "query { dorm_amenity_aggregate { aggregate { count } } }",
+        "question": "How many diffrent dorm amenities are there?"
+    },
+    {
+        "query": "query { dorm_aggregate { aggregate { sum { student_capacity } } } }",
+        "question": "Find the total capacity of all dorms."
+    },
+    {
+        "query": "query { dorm_aggregate { aggregate { sum { student_capacity } } } }",
+        "question": "What is the total student capacity of all dorms?"
+    },
+    {
+        "query": "query { student_aggregate { aggregate { count } } }",
+        "question": "How many students are there?"
+    },
+    {
+        "query": "query { student_aggregate { aggregate { count } } }",
+        "question": "How many students exist?"
+    },
+    {
+        "query": "query { dorm_aggregate ( where : { gender : { _eq : \"X\" } } ) { aggregate { avg { student_capacity } sum { student_capacity } } } }",
+        "question": "Find the average and total capacity of dorms for the students with gender X."
+    },
+    {
+        "query": "query { dorm_aggregate ( where : { gender : { _eq : \"X\" } } ) { aggregate { avg { student_capacity } sum { student_capacity } } } }",
+        "question": "What is the average and total capacity for all dorms who are of gender X?"
+    },
+    {
+        "query": "query { has_amenity_aggregate { aggregate { count } } }",
+        "question": "Find the number of dorms that have some amenity."
+    },
+    {
+        "query": "query { has_amenity_aggregate { aggregate { count } } }",
+        "question": "How many dorms have amenities?"
+    },
+    {
+        "query": "query { dorm_aggregate { aggregate { count } } }",
+        "question": "Find the number of distinct gender for dorms."
+    },
+    {
+        "query": "query { dorm_aggregate { aggregate { count } } }",
+        "question": "How many different genders are there in the dorms?"
+    },
+    {
+        "query": "query { dorm ( where : { dorm_name : { _like : \"%Donor%\" } } ) { student_capacity gender } }",
+        "question": "Find the capacity and gender type of the dorm whose name has substring \u2018Donor\u2019."
+    },
+    {
+        "query": "query { dorm ( where : { dorm_name : { _like : \"%Donor%\" } } ) { student_capacity gender } }",
+        "question": "What is the student capacity and type of gender for the dorm whose name as the phrase Donor in it?"
+    },
+    {
+        "query": "query { dorm ( where : { _or : [ { student_capacity : { _gt : 300 } } , { student_capacity : { _lt : 100 } } ] } ) { dorm_name gender } }",
+        "question": "Find the name and gender type of the dorms whose capacity is greater than 300 or less than 100."
+    },
+    {
+        "query": "query { dorm ( where : { _or : [ { student_capacity : { _gt : 300 } } , { student_capacity : { _lt : 100 } } ] } ) { dorm_name gender } }",
+        "question": "What are the names and types of the dorms that have a capacity greater than 300 or less than 100?"
+    },
+    {
+        "query": "query { student_aggregate { aggregate { count count } } }",
+        "question": "Find the numbers of different majors and cities."
+    },
+    {
+        "query": "query { student_aggregate { aggregate { count count } } }",
+        "question": "How many different majors are there and how many different city codes are there for each student?"
+    },
+    {
+        "query": "query { dorm ( limit : 1 , order_by : { student_capacity : desc } ) { dorm_name } }",
+        "question": "Find the name of the dorm with the largest capacity."
+    },
+    {
+        "query": "query { dorm ( limit : 1 , order_by : { student_capacity : desc } ) { dorm_name } }",
+        "question": "What are the names of the dorm with the largest capacity?"
+    },
+    {
+        "query": "query { dorm_amenity ( order_by : { amenity_name : asc } ) { amenity_name } }",
+        "question": "List in alphabetic order all different amenities."
+    },
+    {
+        "query": "query { dorm_amenity ( order_by : { amenity_name : asc } ) { amenity_name } }",
+        "question": "What are the different dorm amenity names in alphabetical order?"
+    },
+    {
+        "query": "query { student ( order_by : { age : asc } , where : { city_code : { _neq : \"HKG\" } } ) { fname lname } }",
+        "question": "List the first and last name of students who are not living in the city with code HKG, and sorted the results by their ages."
+    },
+    {
+        "query": "query { student ( order_by : { age : asc } , where : { city_code : { _neq : \"HKG\" } } ) { fname lname } }",
+        "question": "What are the first and last names of all students who are not living in the city HKG and order the results by age?"
+    },
+    {
+        "query": "query { dorm_amenity ( where : { has_amenities : { dorm : { dorm_name : { _eq : \"Smith Hall\" } } } } ) { amenity_name } }",
+        "question": "Find the name of amenities Smith Hall dorm have."
+    },
+    {
+        "query": "query { dorm_amenity ( where : { has_amenities : { dorm : { dorm_name : { _eq : \"Smith Hall\" } } } } ) { amenity_name } }",
+        "question": "What are the names of the amenities that Smith Hall has?"
+    },
+    {
+        "query": "query { dorm_amenity ( order_by : { amenity_name : asc } , where : { has_amenities : { dorm : { dorm_name : { _eq : \"Smith Hall\" } } } } ) { amenity_name } }",
+        "question": "Find the name of amenities Smith Hall dorm have. ordered the results by amenity names."
+    },
+    {
+        "query": "query { dorm_amenity ( order_by : { amenity_name : asc } , where : { has_amenities : { dorm : { dorm_name : { _eq : \"Smith Hall\" } } } } ) { amenity_name } }",
+        "question": "What amenities does Smith Hall have in alphabetical order?"
+    }
+]

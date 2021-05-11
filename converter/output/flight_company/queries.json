@@ -1,0 +1,42 @@
+[
+    {
+        "query": "query { flight_aggregate ( where : { velocity : { _gt : 200.0 } } ) { aggregate { count } } }",
+        "question": "How many flights have a velocity larger than 200?"
+    },
+    {
+        "query": "query { flight ( order_by : { altitude : asc } ) { vehicle_flight_number date pilot } }",
+        "question": "List the vehicle flight number, date and pilot of all the flights, ordered by altitude."
+    },
+    {
+        "query": "query { airport ( order_by : { name : asc } ) { id country city name } }",
+        "question": "List the id, country, city and name of the airports ordered alphabetically by the name."
+    },
+    {
+        "query": "query { operate_company_aggregate { aggregate { max { group_equity_shareholding } } } }",
+        "question": "What is maximum group equity shareholding of the companies?"
+    },
+    {
+        "query": "query { flight_aggregate ( where : { pilot : { _eq : \"Thompson\" } } ) { aggregate { avg { velocity } } } }",
+        "question": "What is the velocity of the pilot named 'Thompson'?"
+    },
+    {
+        "query": "query { operate_company { name type } }",
+        "question": "What are the names and types of the companies that have ever operated a flight?"
+    },
+    {
+        "query": "query { airport ( where : { country : { _neq : \"Iceland\" } } ) { name } }",
+        "question": "What are the names of the airports which are not in the country 'Iceland'?"
+    },
+    {
+        "query": "query { operate_company ( where : { flights : { velocity : { _lt : 200.0 } } } , distinct_on : type ) { type } }",
+        "question": "What are the distinct types of the companies that have operated any flights with velocity less than 200?"
+    },
+    {
+        "query": "query { flight ( where : { _or : [ { airport : { country : { _eq : \"United States\" } } } , { airport : { name : { _eq : \"Billund Airport\" } } } ] } , distinct_on : pilot ) { pilot } }",
+        "question": "What are the different pilot names who had piloted a flight in the country 'United States' or in the airport named 'Billund Airport'?"
+    },
+    {
+        "query": "query { airport ( where : { name : { _like : \"%international%\" } } ) { name } }",
+        "question": "Which of the airport names contains the word 'international'?"
+    }
+]

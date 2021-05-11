@@ -1,0 +1,154 @@
+[
+    {
+        "query": "query { actor_aggregate { aggregate { count } } }",
+        "question": "How many different last names do the actors and actresses have?"
+    },
+    {
+        "query": "query { actor_aggregate { aggregate { count } } }",
+        "question": "Count the number of different last names actors have."
+    },
+    {
+        "query": "query { address ( where : { address : { _eq : \"1031 Daugavpils Parkway\" } } ) { phone postal_code } }",
+        "question": "What is the phone number and postal code of the address 1031 Daugavpils Parkway?"
+    },
+    {
+        "query": "query { address ( where : { address : { _eq : \"1031 Daugavpils Parkway\" } } ) { phone postal_code } }",
+        "question": "Give the phone and postal code corresponding to the address '1031 Daugavpils Parkway'."
+    },
+    {
+        "query": "query { address_aggregate ( where : { district : { _eq : \"California\" } } ) { aggregate { count } } }",
+        "question": "How many addresses are in the district of California?"
+    },
+    {
+        "query": "query { address_aggregate ( where : { district : { _eq : \"California\" } } ) { aggregate { count } } }",
+        "question": "Count the number of addressed in the California district."
+    },
+    {
+        "query": "query { city_aggregate ( where : { country : { country : { _eq : \"Australia\" } } } ) { aggregate { count } } }",
+        "question": "How many cities are in Australia?"
+    },
+    {
+        "query": "query { city_aggregate ( where : { country : { country : { _eq : \"Australia\" } } } ) { aggregate { count } } }",
+        "question": "Count the number of cities in Australia."
+    },
+    {
+        "query": "query { customer_aggregate ( where : { active : { _eq : true } } ) { aggregate { count } } }",
+        "question": "How many customers have an active value of 1?"
+    },
+    {
+        "query": "query { customer_aggregate ( where : { active : { _eq : true } } ) { aggregate { count } } }",
+        "question": "Count the number of customers who are active."
+    },
+    {
+        "query": "query { film ( limit : 1 , order_by : { rental_rate : desc } ) { title rental_rate } }",
+        "question": "Which film has the highest rental rate? And what is the rate?"
+    },
+    {
+        "query": "query { film ( limit : 1 , order_by : { rental_rate : desc } ) { title rental_rate } }",
+        "question": "What are the title and rental rate of the film with the highest rental rate?"
+    },
+    {
+        "query": "query { payment_aggregate { aggregate { sum { amount } } } }",
+        "question": "What is the total amount of all payments?"
+    },
+    {
+        "query": "query { payment_aggregate { aggregate { sum { amount } } } }",
+        "question": "Return the sum of all payment amounts."
+    },
+    {
+        "query": "query { film_aggregate { aggregate { count } } }",
+        "question": "How many languages are in these films?"
+    },
+    {
+        "query": "query { film_aggregate { aggregate { count } } }",
+        "question": "Count the number of different languages in these films."
+    },
+    {
+        "query": "query { film ( where : { rating : { _eq : \"R\" } } ) { title } }",
+        "question": "What are all the movies rated as R? List the titles."
+    },
+    {
+        "query": "query { film ( where : { rating : { _eq : \"R\" } } ) { title } }",
+        "question": "Return the titles of any movies with an R rating."
+    },
+    {
+        "query": "query { address ( where : { stores : { store_id : { _eq : 1 } } } ) { address } }",
+        "question": "Where is store 1 located?"
+    },
+    {
+        "query": "query { address ( where : { stores : { store_id : { _eq : 1 } } } ) { address } }",
+        "question": "Return the address of store 1."
+    },
+    {
+        "query": "query { store_aggregate { aggregate { count } } }",
+        "question": "How many stores are there?"
+    },
+    {
+        "query": "query { store_aggregate { aggregate { count } } }",
+        "question": "Count the number of stores."
+    },
+    {
+        "query": "query { film_aggregate { aggregate { count } } }",
+        "question": "How many kinds of different ratings are listed?"
+    },
+    {
+        "query": "query { film_aggregate { aggregate { count } } }",
+        "question": "Count the number of different film ratings."
+    },
+    {
+        "query": "query { film ( where : { special_features : { _like : \"%Deleted Scenes%\" } } ) { title } }",
+        "question": "Which movies have 'Deleted Scenes' as a substring in the special feature?"
+    },
+    {
+        "query": "query { film ( where : { special_features : { _like : \"%Deleted Scenes%\" } } ) { title } }",
+        "question": "Return the titles of films that include 'Deleted Scenes' in their special feature section."
+    },
+    {
+        "query": "query { inventory_aggregate ( where : { store_id : { _eq : 1 } } ) { aggregate { count } } }",
+        "question": "How many items in inventory does store 1 have?"
+    },
+    {
+        "query": "query { inventory_aggregate ( where : { store_id : { _eq : 1 } } ) { aggregate { count } } }",
+        "question": "Count the number of items store 1 has in stock."
+    },
+    {
+        "query": "query { payment ( limit : 1 , order_by : { payment_date : asc } ) { payment_date } }",
+        "question": "When did the first payment happen?"
+    },
+    {
+        "query": "query { payment ( limit : 1 , order_by : { payment_date : asc } ) { payment_date } }",
+        "question": "What was the date of the earliest payment?"
+    },
+    {
+        "query": "query { address ( where : { customers : { first_name : { _eq : \"LINDA\" } } } ) { address customers { email } } }",
+        "question": "Where does the customer with the first name Linda live? And what is her email?"
+    },
+    {
+        "query": "query { address ( where : { customers : { first_name : { _eq : \"LINDA\" } } } ) { address customers { email } } }",
+        "question": "Return the address and email of the customer with the first name Linda."
+    },
+    {
+        "query": "query { customer ( limit : 1 , order_by : { rentals_aggregate : { min : { rental_date : asc } } } ) { first_name last_name } }",
+        "question": "What is the first name and the last name of the customer who made the earliest rental?"
+    },
+    {
+        "query": "query { customer ( limit : 1 , order_by : { rentals_aggregate : { min : { rental_date : asc } } } ) { first_name last_name } }",
+        "question": "Return the full name of the customer who made the first rental."
+    },
+    {
+        "query": "query { payment ( limit : 1 , order_by : { amount : desc } ) { amount } }",
+        "question": "What is the largest payment amount?"
+    },
+    {
+        "query": "query { payment ( limit : 1 , order_by : { amount : desc } ) { amount } }",
+        "question": "Return the amount of the largest payment."
+    },
+    {
+        "query": "query { address ( where : { staffs : { first_name : { _eq : \"Elsa\" } } } ) { address } }",
+        "question": "Where does the staff member with the first name Elsa live?"
+    },
+    {
+        "query": "query { address ( where : { staffs : { first_name : { _eq : \"Elsa\" } } } ) { address } }",
+        "question": "Give the address of the staff member who has the first name Elsa."
+    }
+]

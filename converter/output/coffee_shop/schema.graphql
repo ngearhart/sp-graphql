@@ -1,0 +1,12 @@
+type Query {
+  """"""
+  shop(_limit: Int, Shop_ID: Int, Address: String, Num_of_staff: String, Score: Float, Open_Year: String): [shopT]
+}
+
+type shopT {
+  Shop_ID: Int
+  Address: String
+  Num_of_staff: String
+  Score: Float
+  Open_Year: String
+}

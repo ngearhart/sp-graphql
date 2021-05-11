@@ -1,0 +1,23 @@
+type Query {
+  """"""
+  channel(_limit: Int, Channel_ID: Int, Name: String, Owner: String, Share_in_percent: Float, Rating_in_percent: Float): [channelT]
+
+  """"""
+  program(_limit: Int, Program_ID: Int, Name: String, Origin: String, Launch: Float, Owner: String): [programT]
+}
+
+type channelT {
+  Channel_ID: Int
+  Name: String
+  Owner: String
+  Share_in_percent: Float
+  Rating_in_percent: Float
+}
+
+type programT {
+  Program_ID: Int
+  Name: String
+  Origin: String
+  Launch: Float
+  Owner: String
+}

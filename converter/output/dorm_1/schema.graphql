@@ -1,0 +1,33 @@
+type Query {
+  """"""
+  Dorm(_limit: Int, dormid: Int, dorm_name: String, student_capacity: Int, gender: String): [DormT]
+
+  """"""
+  Dorm_amenity(_limit: Int, amenid: Int, amenity_name: String): [Dorm_amenityT]
+
+  """"""
+  Student(_limit: Int, StuID: Int, LName: String, Fname: String, Age: Int, Sex: String, Major: Int, Advisor: Int, city_code: String): [StudentT]
+}
+
+type DormT {
+  dormid: Int
+  dorm_name: String
+  student_capacity: Int
+  gender: String
+}
+
+type Dorm_amenityT {
+  amenid: Int
+  amenity_name: String
+}
+
+type StudentT {
+  StuID: Int
+  LName: String
+  Fname: String
+  Age: Int
+  Sex: String
+  Major: Int
+  Advisor: Int
+  city_code: String
+}

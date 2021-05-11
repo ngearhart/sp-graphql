@@ -1,0 +1,186 @@
+[
+    {
+        "query": "query { allergy_type_aggregate { aggregate { count } } }",
+        "question": "How many allergies are there?"
+    },
+    {
+        "query": "query { allergy_type_aggregate { aggregate { count } } }",
+        "question": "How many allergy entries are there?"
+    },
+    {
+        "query": "query { allergy_type_aggregate { aggregate { count } } }",
+        "question": "How many different allergy types exist?"
+    },
+    {
+        "query": "query { allergy_type_aggregate { aggregate { count } } }",
+        "question": "How many distinct allergies are there?"
+    },
+    {
+        "query": "query { allergy_type ( distinct_on : allergytype ) { allergytype } }",
+        "question": "Show all allergy types."
+    },
+    {
+        "query": "query { allergy_type ( distinct_on : allergytype ) { allergytype } }",
+        "question": "What are the different allergy types?"
+    },
+    {
+        "query": "query { allergy_type { allergy allergytype } }",
+        "question": "Show all allergies and their types."
+    },
+    {
+        "query": "query { allergy_type { allergy allergytype } }",
+        "question": "What are the allergies and their types?"
+    },
+    {
+        "query": "query { allergy_type ( where : { allergytype : { _eq : \"food\" } } , distinct_on : allergy ) { allergy } }",
+        "question": "Show all allergies with type food."
+    },
+    {
+        "query": "query { allergy_type ( where : { allergytype : { _eq : \"food\" } } , distinct_on : allergy ) { allergy } }",
+        "question": "What are all the different food allergies?"
+    },
+    {
+        "query": "query { allergy_type ( where : { allergy : { _eq : \"Cat\" } } ) { allergytype } }",
+        "question": "What is the type of allergy Cat?"
+    },
+    {
+        "query": "query { allergy_type ( where : { allergy : { _eq : \"Cat\" } } ) { allergytype } }",
+        "question": "What is allergy type of a cat allergy?"
+    },
+    {
+        "query": "query { allergy_type_aggregate ( where : { allergytype : { _eq : \"animal\" } } ) { aggregate { count } } }",
+        "question": "How many allergies have type animal?"
+    },
+    {
+        "query": "query { allergy_type_aggregate ( where : { allergytype : { _eq : \"animal\" } } ) { aggregate { count } } }",
+        "question": "How many animal type allergies exist?"
+    },
+    {
+        "query": "query { student_aggregate { aggregate { count } } }",
+        "question": "How many students are there?"
+    },
+    {
+        "query": "query { student_aggregate { aggregate { count } } }",
+        "question": "What is the total number of students?"
+    },
+    {
+        "query": "query { student { fname lname } }",
+        "question": "Show first name and last name for all students."
+    },
+    {
+        "query": "query { student { fname lname } }",
+        "question": "What are the full names of all students"
+    },
+    {
+        "query": "query { student_aggregate { aggregate { count } } }",
+        "question": "How many different advisors are listed?"
+    },
+    {
+        "query": "query { student_aggregate { aggregate { count } } }",
+        "question": "How many advisors are there?"
+    },
+    {
+        "query": "query { student ( distinct_on : major ) { major } }",
+        "question": "Show all majors."
+    },
+    {
+        "query": "query { student ( distinct_on : major ) { major } }",
+        "question": "What are the different majors?"
+    },
+    {
+        "query": "query { student ( distinct_on : city_code ) { city_code } }",
+        "question": "Show all cities where students live."
+    },
+    {
+        "query": "query { student ( distinct_on : city_code ) { city_code } }",
+        "question": "What cities do students live in?"
+    },
+    {
+        "query": "query { student ( where : { sex : { _eq : \"F\" } } ) { fname lname age } }",
+        "question": "Show first name, last name, age for all female students. Their sex is F."
+    },
+    {
+        "query": "query { student ( where : { sex : { _eq : \"F\" } } ) { fname lname age } }",
+        "question": "What are the full names and ages for all female students whose sex is F?"
+    },
+    {
+        "query": "query { student ( where : { sex : { _eq : \"M\" } } ) { stuid } }",
+        "question": "Show student ids for all male students."
+    },
+    {
+        "query": "query { student ( where : { sex : { _eq : \"M\" } } ) { stuid } }",
+        "question": "What are the student ids for all male students?"
+    },
+    {
+        "query": "query { student_aggregate ( where : { age : { _eq : 18 } } ) { aggregate { count } } }",
+        "question": "How many students are age 18?"
+    },
+    {
+        "query": "query { student_aggregate ( where : { age : { _eq : 18 } } ) { aggregate { count } } }",
+        "question": "How many students are 18 years old?"
+    },
+    {
+        "query": "query { student ( where : { age : { _gt : 20 } } ) { stuid } }",
+        "question": "Show all student ids who are older than 20."
+    },
+    {
+        "query": "query { student ( where : { age : { _gt : 20 } } ) { stuid } }",
+        "question": "What are the student ids for students over 20 years old?"
+    },
+    {
+        "query": "query { student ( where : { lname : { _eq : \"Kim\" } } ) { city_code } }",
+        "question": "Which city does the student whose last name is \"Kim\" live in?"
+    },
+    {
+        "query": "query { student ( where : { lname : { _eq : \"Kim\" } } ) { city_code } }",
+        "question": "Give the city that the student whose family name is Kim lives in."
+    },
+    {
+        "query": "query { student ( where : { stuid : { _eq : 1004 } } ) { advisor } }",
+        "question": "Who is the advisor of student with ID 1004?"
+    },
+    {
+        "query": "query { student ( where : { stuid : { _eq : 1004 } } ) { advisor } }",
+        "question": "Who advises student 1004?"
+    },
+    {
+        "query": "query { student_aggregate ( where : { _or : [ { city_code : { _eq : \"HKG\" } } , { city_code : { _eq : \"CHI\" } } ] } ) { aggregate { count } } }",
+        "question": "How many students live in HKG or CHI?"
+    },
+    {
+        "query": "query { student_aggregate ( where : { _or : [ { city_code : { _eq : \"HKG\" } } , { city_code : { _eq : \"CHI\" } } ] } ) { aggregate { count } } }",
+        "question": "Give the number of students living in either HKG or CHI."
+    },
+    {
+        "query": "query { student_aggregate { aggregate { min { age } avg { age } max { age } } } }",
+        "question": "Show the minimum, average, and maximum age of all students."
+    },
+    {
+        "query": "query { student_aggregate { aggregate { min { age } avg { age } max { age } } } }",
+        "question": "What is the minimum, mean, and maximum age across all students?"
+    },
+    {
+        "query": "query { has_allergy_aggregate ( where : { allergy : { _eq : \"Cat\" } } ) { aggregate { count } } }",
+        "question": "How many students have cat allergies?"
+    },
+    {
+        "query": "query { has_allergy_aggregate ( where : { allergy : { _eq : \"Cat\" } } ) { aggregate { count } } }",
+        "question": "How many students are affected by cat allergies?"
+    },
+    {
+        "query": "query { has_allergy_aggregate ( where : { _or : [ { _and : { student : { sex : { _eq : \"F\" } } , allergy : { _eq : \"Milk\" } } } , { allergy : { _eq : \"Eggs\" } } ] } ) { aggregate { count } } }",
+        "question": "How many female students have milk or egg allergies?"
+    },
+    {
+        "query": "query { has_allergy_aggregate ( where : { _or : [ { _and : { student : { sex : { _eq : \"F\" } } , allergy : { _eq : \"Milk\" } } } , { allergy : { _eq : \"Eggs\" } } ] } ) { aggregate { count } } }",
+        "question": "How many students who are female are allergic to milk or eggs?"
+    },
+    {
+        "query": "query { has_allergy_aggregate ( where : { allergy_type : { allergytype : { _eq : \"food\" } } } ) { aggregate { count } } }",
+        "question": "How many students have a food allergy?"
+    },
+    {
+        "query": "query { has_allergy_aggregate ( where : { allergy_type : { allergytype : { _eq : \"food\" } } } ) { aggregate { count } } }",
+        "question": "How many students are affected by food related allergies?"
+    }
+]

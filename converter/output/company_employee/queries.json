@@ -1,0 +1,38 @@
+[
+    {
+        "query": "query { company_aggregate ( where : { headquarters : { _eq : \"USA\" } } ) { aggregate { count } } }",
+        "question": "How many companies are headquartered in the US?"
+    },
+    {
+        "query": "query { company ( order_by : { sales_in_billion : asc } ) { name } }",
+        "question": "List the names of companies by ascending number of sales."
+    },
+    {
+        "query": "query { company { headquarters industry } }",
+        "question": "What are the headquarters and industries of all companies?"
+    },
+    {
+        "query": "query { company ( where : { _or : [ { industry : { _eq : \"Banking\" } } , { industry : { _eq : \"Retailing\" } } ] } ) { name } }",
+        "question": "Show the names of companies in the banking or retailing industry?"
+    },
+    {
+        "query": "query { company_aggregate { aggregate { max { market_value_in_billion } min { market_value_in_billion } } } }",
+        "question": "What is the maximum and minimum market value of companies?"
+    },
+    {
+        "query": "query { company ( limit : 1 , order_by : { sales_in_billion : desc } ) { headquarters } }",
+        "question": "What is the headquarter of the company with the largest sales?"
+    },
+    {
+        "query": "query { company { name employments { person { name } } } }",
+        "question": "Show the names of companies and of employees."
+    },
+    {
+        "query": "query { company ( order_by : { employments_aggregate : { min : { year_working : asc } } } ) { name employments { person { name } } } }",
+        "question": "Show names of companies and that of employees in descending order of number of years working for that employee."
+    },
+    {
+        "query": "query { company ( order_by : { sales_in_billion : desc , profits_in_billion : desc } , where : { sales_in_billion : { _gt : 200.0 } } ) { name } }",
+        "question": "list the names of the companies with more than 200 sales in the descending order of sales and profits."
+    }
+]

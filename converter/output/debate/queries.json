@@ -1,0 +1,30 @@
+[
+    {
+        "query": "query { debate_aggregate { aggregate { count } } }",
+        "question": "How many debates are there?"
+    },
+    {
+        "query": "query { debate ( order_by : { num_of_audience : asc } ) { venue } }",
+        "question": "List the venues of debates in ascending order of the number of audience."
+    },
+    {
+        "query": "query { debate { date venue } }",
+        "question": "What are the date and venue of each debate?"
+    },
+    {
+        "query": "query { debate ( where : { num_of_audience : { _gt : 150 } } ) { date } }",
+        "question": "List the dates of debates with number of audience bigger than 150"
+    },
+    {
+        "query": "query { people ( where : { _or : [ { age : { _eq : 35 } } , { age : { _eq : 36 } } ] } ) { name } }",
+        "question": "Show the names of people aged either 35 or 36."
+    },
+    {
+        "query": "query { people ( limit : 1 , order_by : { age : asc } ) { party } }",
+        "question": "What is the party of the youngest people?"
+    },
+    {
+        "query": "query { debate ( distinct_on : venue ) { venue } }",
+        "question": "Show the distinct venues of debates"
+    }
+]

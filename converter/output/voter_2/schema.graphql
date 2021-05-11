@@ -1,0 +1,31 @@
+type Query {
+  """"""
+  Student(_limit: Int, StuID: Int, LName: String, Fname: String, Age: Int, Sex: String, Major: Int, Advisor: Int, city_code: String): [StudentT]
+
+  """"""
+  Voting_record(_limit: Int, StuID: Int, Registration_Date: String, Election_Cycle: String, President_Vote: Int, Vice_President_Vote: Int, Secretary_Vote: Int, Treasurer_Vote: Int, Class_President_Vote: Int, Class_Senator_Vote: Int): [Voting_recordT]
+}
+
+type StudentT {
+  StuID: Int
+  LName: String
+  Fname: String
+  Age: Int
+  Sex: String
+  Major: Int
+  Advisor: Int
+  city_code: String
+}
+
+type Voting_recordT {
+  StuID: Int
+  Registration_Date: String
+  Election_Cycle: String
+  President_Vote: Int
+  Vice_President_Vote: Int
+  Secretary_Vote: Int
+  Treasurer_Vote: Int
+  Class_President_Vote: Int
+  Class_Senator_Vote: Int
+  Student(_limit: Int, LName: String, Fname: String, Age: Int, Sex: String, Major: Int, Advisor: Int, city_code: String): [StudentT]
+}

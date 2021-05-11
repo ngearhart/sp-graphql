@@ -1,0 +1,234 @@
+[
+    {
+        "query": "query { hotels_aggregate { aggregate { count } } }",
+        "question": "How many available hotels are there in total?"
+    },
+    {
+        "query": "query { hotels_aggregate { aggregate { count } } }",
+        "question": "Find the total number of available hotels."
+    },
+    {
+        "query": "query { hotels { price_range } }",
+        "question": "What are the price ranges of hotels?"
+    },
+    {
+        "query": "query { hotels { price_range } }",
+        "question": "Tell me the price ranges for all the hotels."
+    },
+    {
+        "query": "query { locations ( distinct_on : location_name ) { location_name } }",
+        "question": "Show all distinct location names."
+    },
+    {
+        "query": "query { locations ( distinct_on : location_name ) { location_name } }",
+        "question": "What are the distinct location names?"
+    },
+    {
+        "query": "query { staff { name other_details } }",
+        "question": "Show the names and details of all the staff members."
+    },
+    {
+        "query": "query { staff { name other_details } }",
+        "question": "What is the name and detail of each staff member?"
+    },
+    {
+        "query": "query { visitors { tourist_details } }",
+        "question": "Show details of all visitors."
+    },
+    {
+        "query": "query { visitors { tourist_details } }",
+        "question": "What is the detail of each visitor?"
+    },
+    {
+        "query": "query { hotels ( where : { star_rating_code : { _eq : \"5\" } } ) { price_range } }",
+        "question": "Show the price ranges of hotels with 5 star ratings."
+    },
+    {
+        "query": "query { hotels ( where : { star_rating_code : { _eq : \"5\" } } ) { price_range } }",
+        "question": "What are the price ranges of five star hotels?"
+    },
+    {
+        "query": "query { hotels_aggregate ( where : { _and : { pets_allowed_yn : { _eq : \"1\" } , star_rating_code : { _eq : \"5\" } } } ) { aggregate { avg { price_range } } } }",
+        "question": "Show the average price range of hotels that have 5 star ratings and allow pets."
+    },
+    {
+        "query": "query { hotels_aggregate ( where : { _and : { star_rating_code : { _eq : \"5\" } , pets_allowed_yn : { _eq : \"1\" } } } ) { aggregate { avg { price_range } } } }",
+        "question": "What is the average price range of five star hotels that allow pets?"
+    },
+    {
+        "query": "query { locations ( where : { location_name : { _eq : \"UK Gallery\" } } ) { address } }",
+        "question": "What is the address of the location \"UK Gallery\"?"
+    },
+    {
+        "query": "query { locations ( where : { location_name : { _eq : \"UK Gallery\" } } ) { address } }",
+        "question": "Find the address of the location named \"UK Gallery\"."
+    },
+    {
+        "query": "query { locations ( where : { location_name : { _eq : \"UK Gallery\" } } ) { other_details } }",
+        "question": "What is the detail of the location UK Gallery?"
+    },
+    {
+        "query": "query { locations ( where : { location_name : { _eq : \"UK Gallery\" } } ) { other_details } }",
+        "question": "Return the detail of the location named \"UK Gallery\"."
+    },
+    {
+        "query": "query { locations ( where : { location_name : { _like : \"%film%\" } } ) { location_name } }",
+        "question": "Which location names contain the word \"film\"?"
+    },
+    {
+        "query": "query { locations ( where : { location_name : { _like : \"%film%\" } } ) { location_name } }",
+        "question": "Find all the locations whose names contain the word \"film\"."
+    },
+    {
+        "query": "query { photos_aggregate { aggregate { count } } }",
+        "question": "How many distinct names are associated with all the photos?"
+    },
+    {
+        "query": "query { photos_aggregate { aggregate { count } } }",
+        "question": "Count the number of distinct names associated with the photos."
+    },
+    {
+        "query": "query { visits ( distinct_on : visit_date ) { visit_date } }",
+        "question": "What are the distinct visit dates?"
+    },
+    {
+        "query": "query { visits ( distinct_on : visit_date ) { visit_date } }",
+        "question": "Find all the distinct visit dates."
+    },
+    {
+        "query": "query { tourist_attractions ( where : { how_to_get_there : { _eq : \"bus\" } } ) { name } }",
+        "question": "What are the names of the tourist attractions that can be accessed by bus?"
+    },
+    {
+        "query": "query { tourist_attractions ( where : { how_to_get_there : { _eq : \"bus\" } } ) { name } }",
+        "question": "Which tourist attractions can we get to by bus? Tell me the names of the attractions."
+    },
+    {
+        "query": "query { tourist_attractions ( where : { _or : [ { how_to_get_there : { _eq : \"bus\" } } , { how_to_get_there : { _eq : \"walk\" } } ] } ) { name opening_hours } }",
+        "question": "What are the names and opening hours of the tourist attractions that can be accessed by bus or walk?"
+    },
+    {
+        "query": "query { tourist_attractions ( where : { _or : [ { how_to_get_there : { _eq : \"bus\" } } , { how_to_get_there : { _eq : \"walk\" } } ] } ) { name opening_hours } }",
+        "question": "Find the names and opening hours of the tourist attractions that we get to by bus or walk."
+    },
+    {
+        "query": "query { ref_hotel_star_ratings ( where : { hotels : { price_range : { _gt : 10000.0 } } } ) { star_rating_description } }",
+        "question": "What are the star rating descriptions of the hotels with price above 10000?"
+    },
+    {
+        "query": "query { ref_hotel_star_ratings ( where : { hotels : { price_range : { _gt : 10000.0 } } } ) { star_rating_description } }",
+        "question": "Give me the star rating descriptions of the hotels that cost more than 10000."
+    },
+    {
+        "query": "query { museums { museum_details tourist_attraction { opening_hours } } }",
+        "question": "What are the details and opening hours of the museums?"
+    },
+    {
+        "query": "query { museums { museum_details tourist_attraction { opening_hours } } }",
+        "question": "Give me the detail and opening hour for each museum."
+    },
+    {
+        "query": "query { tourist_attractions ( where : { photos : { name : { _eq : \"game1\" } } } ) { name } }",
+        "question": "What is the name of the tourist attraction that is associated with the photo \"game1\"?"
+    },
+    {
+        "query": "query { tourist_attractions ( where : { photos : { name : { _eq : \"game1\" } } } ) { name } }",
+        "question": "Which tourist attraction is associated with the photo \"game1\"? Return its name."
+    },
+    {
+        "query": "query { photos ( where : { tourist_attraction : { name : { _eq : \"film festival\" } } } ) { name description } }",
+        "question": "What are the names and descriptions of the photos taken at the tourist attraction \"film festival\"?"
+    },
+    {
+        "query": "query { photos ( where : { tourist_attraction : { name : { _eq : \"film festival\" } } } ) { name description } }",
+        "question": "Find the names and descriptions of the photos taken at the tourist attraction called \"film festival\"."
+    },
+    {
+        "query": "query { royal_family { royal_family_details tourist_attraction { how_to_get_there } } }",
+        "question": "What are the details and ways to get to tourist attractions related to royal family?"
+    },
+    {
+        "query": "query { royal_family { royal_family_details tourist_attraction { how_to_get_there } } }",
+        "question": "Which tourist attractions are related to royal family? Tell me their details and how we can get there."
+    },
+    {
+        "query": "query { shops ( where : { tourist_attraction : { how_to_get_there : { _eq : \"walk\" } } } ) { shop_details } }",
+        "question": "What are the details of the shops that can be accessed by walk?"
+    },
+    {
+        "query": "query { shops ( where : { tourist_attraction : { how_to_get_there : { _eq : \"walk\" } } } ) { shop_details } }",
+        "question": "Find the details of the shops that can be reached by walk."
+    },
+    {
+        "query": "query { staff ( where : { tourist_attraction : { name : { _eq : \"US museum\" } } } ) { name } }",
+        "question": "What is the name of the staff that is in charge of the attraction named \"US museum\"?"
+    },
+    {
+        "query": "query { staff ( where : { tourist_attraction : { name : { _eq : \"US museum\" } } } ) { name } }",
+        "question": "Tell me the name of the staff in charge of the attraction called \"US museum\"."
+    },
+    {
+        "query": "query { street_markets ( where : { _or : [ { tourist_attraction : { how_to_get_there : { _eq : \"walk\" } } } , { tourist_attraction : { how_to_get_there : { _eq : \"bus\" } } } ] } ) { market_details } }",
+        "question": "What are the details of the markets that can be accessed by walk or bus?"
+    },
+    {
+        "query": "query { street_markets ( where : { _or : [ { tourist_attraction : { how_to_get_there : { _eq : \"walk\" } } } , { tourist_attraction : { how_to_get_there : { _eq : \"bus\" } } } ] } ) { market_details } }",
+        "question": "Find the details of all the markets that are accessible by walk or bus."
+    },
+    {
+        "query": "query { visits ( where : { visitor : { tourist_details : { _eq : \"Vincent\" } } } ) { visit_date visit_details } }",
+        "question": "What are the visit date and details of the visitor whose detail is 'Vincent'?"
+    },
+    {
+        "query": "query { visits ( where : { visitor : { tourist_details : { _eq : \"Vincent\" } } } ) { visit_date visit_details } }",
+        "question": "Find the visit date and details of the tourist whose detail is 'Vincent'"
+    },
+    {
+        "query": "query { tourist_attractions ( where : { _or : [ { visits : { tourist_attraction : { visits : { visitor : { tourist_details : { _eq : \"Vincent\" } } } } } } , { visits : { tourist_attraction : { visits : { visitor : { tourist_details : { _eq : \"Vivian\" } } } } } } ] } ) { name visits { visit_date } } }",
+        "question": "What are the names of the tourist attractions and the dates when the tourists named Vincent or Vivian visited there?"
+    },
+    {
+        "query": "query { tourist_attractions ( where : { _or : [ { visits : { tourist_attraction : { visits : { visitor : { tourist_details : { _eq : \"Vincent\" } } } } } } , { visits : { tourist_attraction : { visits : { visitor : { tourist_details : { _eq : \"Vivian\" } } } } } } ] } ) { name visits { visit_date } } }",
+        "question": "For each tourist attraction, return its name and the date when the tourists named Vincent or Vivian visited there."
+    },
+    {
+        "query": "query { hotels ( order_by : { price_range : asc } ) { hotel_id star_rating_code } }",
+        "question": "Show the id and star rating of each hotel, ordered by its price from low to high."
+    },
+    {
+        "query": "query { hotels ( order_by : { price_range : asc } ) { hotel_id star_rating_code } }",
+        "question": "Find the id and star rating of each hotel and sort them in increasing order of price."
+    },
+    {
+        "query": "query { hotels ( limit : 3 , order_by : { price_range : desc } ) { other_hotel_details } }",
+        "question": "Show the details of the top 3 most expensive hotels."
+    },
+    {
+        "query": "query { hotels ( limit : 3 , order_by : { price_range : desc } ) { other_hotel_details } }",
+        "question": "What are the details of the three most expensive hotels?"
+    },
+    {
+        "query": "query { hotels ( limit : 3 , order_by : { price_range : asc } ) { other_hotel_details star_rating_code } }",
+        "question": "Show the details and star ratings of the 3 least expensive hotels."
+    },
+    {
+        "query": "query { hotels ( limit : 3 , order_by : { price_range : asc } ) { other_hotel_details star_rating_code } }",
+        "question": "What are the details and star ratings of the three hotels with the lowest price ranges?"
+    },
+    {
+        "query": "query { tourist_attractions ( where : { _or : [ { location : { address : { _eq : \"660 Shea Crescent\" } } } , { how_to_get_there : { _eq : \"walk\" } } ] } ) { name } }",
+        "question": "What are the names of tourist attractions that can be reached by walk or is at address 660 Shea Crescent?"
+    },
+    {
+        "query": "query { tourist_attractions ( where : { _or : [ { location : { address : { _eq : \"660 Shea Crescent\" } } } , { how_to_get_there : { _eq : \"walk\" } } ] } ) { name } }",
+        "question": "Find the names of the tourist attractions that is either accessible by walk or at address 660 Shea Crescent."
+    },
+    {
+        "query": "query { tourist_attractions ( where : { _or : [ { location : { address : { _eq : \"254 Ottilie Junction\" } } } , { how_to_get_there : { _eq : \"bus\" } } ] } ) { name } }",
+        "question": "What are the names of tourist attractions that can be reached by bus or is at address 254 Ottilie Junction?"
+    },
+    {
+        "query": "query { tourist_attractions ( where : { _or : [ { location : { address : { _eq : \"254 Ottilie Junction\" } } } , { how_to_get_there : { _eq : \"bus\" } } ] } ) { name } }",
+        "question": "Find the names of the tourist attractions that is either accessible by bus or at address 254 Ottilie Junction."
+    }
+]

@@ -1,0 +1,12 @@
+type Query {
+  """"""
+  film(_limit: Int, Film_ID: Int, Title: String, Studio: String, Director: String, Gross_in_dollar: Int): [filmT]
+}
+
+type filmT {
+  Film_ID: Int
+  Title: String
+  Studio: String
+  Director: String
+  Gross_in_dollar: Int
+}

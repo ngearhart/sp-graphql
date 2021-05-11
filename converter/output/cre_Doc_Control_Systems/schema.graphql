@@ -1,0 +1,9 @@
+type Query {
+  """"""
+  Ref_Document_Types(_limit: Int, document_type_code: String, document_type_description: String): [Ref_Document_TypesT]
+}
+
+type Ref_Document_TypesT {
+  document_type_code: String
+  document_type_description: String
+}

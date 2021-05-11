@@ -1,0 +1,82 @@
+[
+    {
+        "query": "query { party_aggregate { aggregate { count } } }",
+        "question": "How many parties are there?"
+    },
+    {
+        "query": "query { party_aggregate { aggregate { count } } }",
+        "question": "Count the number of parties."
+    },
+    {
+        "query": "query { party ( order_by : { number_of_hosts : asc } ) { party_theme } }",
+        "question": "List the themes of parties in ascending order of number of hosts."
+    },
+    {
+        "query": "query { party ( order_by : { number_of_hosts : asc } ) { party_theme } }",
+        "question": "What are the themes of parties ordered by the number of hosts in ascending manner?"
+    },
+    {
+        "query": "query { party { party_theme location } }",
+        "question": "What are the themes and locations of parties?"
+    },
+    {
+        "query": "query { party { party_theme location } }",
+        "question": "Give me the theme and location of each party."
+    },
+    {
+        "query": "query { party ( where : { _or : [ { party_theme : { _eq : \"Spring\" } } , { party_theme : { _eq : \"Teqnology\" } } ] } ) { first_year last_year } }",
+        "question": "Show the first year and last year of parties with theme \"Spring\" or \"Teqnology\"."
+    },
+    {
+        "query": "query { party ( where : { _or : [ { party_theme : { _eq : \"Spring\" } } , { party_theme : { _eq : \"Teqnology\" } } ] } ) { first_year last_year } }",
+        "question": "What are the first year and last year of the parties whose theme is \"Spring\" or \"Teqnology\"?"
+    },
+    {
+        "query": "query { party_aggregate { aggregate { avg { number_of_hosts } } } }",
+        "question": "What is the average number of hosts for parties?"
+    },
+    {
+        "query": "query { party_aggregate { aggregate { avg { number_of_hosts } } } }",
+        "question": "Compute the average number of hosts for parties."
+    },
+    {
+        "query": "query { party ( limit : 1 , order_by : { number_of_hosts : desc } ) { location } }",
+        "question": "What is the location of the party with the most hosts?"
+    },
+    {
+        "query": "query { party ( limit : 1 , order_by : { number_of_hosts : desc } ) { location } }",
+        "question": "Which party had the most hosts? Give me the party location."
+    },
+    {
+        "query": "query { party { party_theme party_hosts { host { name } } } }",
+        "question": "Show the themes of parties and the names of the party hosts."
+    },
+    {
+        "query": "query { party { party_theme party_hosts { host { name } } } }",
+        "question": "For each party, return its theme and the name of its host."
+    },
+    {
+        "query": "query { host ( order_by : { age : asc } ) { name party_hosts { party { location } } } }",
+        "question": "Show the locations of parties and the names of the party hosts in ascending order of the age of the host."
+    },
+    {
+        "query": "query { host ( order_by : { age : asc } ) { name party_hosts { party { location } } } }",
+        "question": "For each party, find its location and the name of its host. Sort the result in ascending order of the age of the host."
+    },
+    {
+        "query": "query { party ( where : { party_hosts : { host : { age : { _gt : \"50\" } } } } ) { location } }",
+        "question": "Show the locations of parties with hosts older than 50."
+    },
+    {
+        "query": "query { party ( where : { party_hosts : { host : { age : { _gt : \"50\" } } } } ) { location } }",
+        "question": "Which parties have hosts of age above 50? Give me the party locations."
+    },
+    {
+        "query": "query { host ( limit : 1 , order_by : { age : desc } ) { name nationality } }",
+        "question": "Show the name and the nationality of the oldest host."
+    },
+    {
+        "query": "query { host ( limit : 1 , order_by : { age : desc } ) { name nationality } }",
+        "question": "What are the name and the nationality of the host of the highest age?"
+    }
+]

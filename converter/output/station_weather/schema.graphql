@@ -1,0 +1,34 @@
+type Query {
+  """"""
+  route(_limit: Int, train_id: Int, station_id: Int): [routeT]
+
+  """"""
+  station(_limit: Int, id: Int, network_name: String, services: String, local_authority: String): [stationT]
+
+  """"""
+  train(_limit: Int, id: Int, train_number: Int, name: String, origin: String, destination: String, time: String, interval: String): [trainT]
+}
+
+type routeT {
+  train_id: Int
+  station_id: Int
+  station(_limit: Int, network_name: String, services: String, local_authority: String): [stationT]
+  train(_limit: Int, train_number: Int, name: String, origin: String, destination: String, time: String, interval: String): [trainT]
+}
+
+type stationT {
+  id: Int
+  network_name: String
+  services: String
+  local_authority: String
+}
+
+type trainT {
+  id: Int
+  train_number: Int
+  name: String
+  origin: String
+  destination: String
+  time: String
+  interval: String
+}

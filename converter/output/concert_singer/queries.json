@@ -1,0 +1,90 @@
+[
+    {
+        "query": "query { singer_aggregate { aggregate { count } } }",
+        "question": "How many singers do we have?"
+    },
+    {
+        "query": "query { singer_aggregate { aggregate { count } } }",
+        "question": "What is the total number of singers?"
+    },
+    {
+        "query": "query { singer ( order_by : { age : desc } ) { name country age } }",
+        "question": "Show name, country, age for all singers ordered by age from the oldest to the youngest."
+    },
+    {
+        "query": "query { singer ( order_by : { age : desc } ) { name country age } }",
+        "question": "What are the names, countries, and ages for every singer in descending order of age?"
+    },
+    {
+        "query": "query { singer_aggregate ( where : { country : { _eq : \"France\" } } ) { aggregate { avg { age } min { age } max { age } } } }",
+        "question": "What is the average, minimum, and maximum age of all singers from France?"
+    },
+    {
+        "query": "query { singer_aggregate ( where : { country : { _eq : \"France\" } } ) { aggregate { avg { age } min { age } max { age } } } }",
+        "question": "What is the average, minimum, and maximum age for all French singers?"
+    },
+    {
+        "query": "query { singer ( limit : 1 , order_by : { age : asc } ) { song_name song_release_year } }",
+        "question": "Show the name and the release year of the song by the youngest singer."
+    },
+    {
+        "query": "query { singer ( limit : 1 , order_by : { age : asc } ) { song_name song_release_year } }",
+        "question": "What are the names and release years for all the songs of the youngest singer?"
+    },
+    {
+        "query": "query { singer ( where : { age : { _gt : 20 } } , distinct_on : country ) { country } }",
+        "question": "What are all distinct countries where singers above age 20 are from?"
+    },
+    {
+        "query": "query { singer ( where : { age : { _gt : 20 } } , distinct_on : country ) { country } }",
+        "question": "What are  the different countries with singers above age 20?"
+    },
+    {
+        "query": "query { stadium ( where : { capacity : { _gte : 5000 , _lte : 10000 } } ) { location name } }",
+        "question": "Show location and name for all stadiums with a capacity between 5000 and 10000."
+    },
+    {
+        "query": "query { stadium ( where : { capacity : { _gte : 5000 , _lte : 10000 } } ) { location name } }",
+        "question": "What are the locations and names of all stations with capacity between 5000 and 10000?"
+    },
+    {
+        "query": "query { stadium_aggregate { aggregate { avg { capacity } max { capacity } } } }",
+        "question": "What is the average and the maximum capacity of all stadiums?"
+    },
+    {
+        "query": "query { stadium_aggregate { aggregate { avg { capacity } max { capacity } } } }",
+        "question": "What is the average and maximum capacities for all stations?"
+    },
+    {
+        "query": "query { stadium ( limit : 1 , order_by : { average : desc } ) { name capacity } }",
+        "question": "What is the name and capacity for the stadium with highest average attendance?"
+    },
+    {
+        "query": "query { stadium ( limit : 1 , order_by : { average : desc } ) { name capacity } }",
+        "question": "What is the name and capacity for the stadium with the highest average attendance?"
+    },
+    {
+        "query": "query { concert_aggregate ( where : { _or : [ { year : { _eq : \"2014\" } } , { year : { _eq : \"2015\" } } ] } ) { aggregate { count } } }",
+        "question": "How many concerts are there in year 2014 or 2015?"
+    },
+    {
+        "query": "query { concert_aggregate ( where : { _or : [ { year : { _eq : \"2014\" } } , { year : { _eq : \"2015\" } } ] } ) { aggregate { count } } }",
+        "question": "How many concerts occurred in 2014 or 2015?"
+    },
+    {
+        "query": "query { singer ( where : { song_name : { _like : \"%Hey%\" } } ) { name country } }",
+        "question": "what is the name and nation of the singer who have a song having 'Hey' in its name?"
+    },
+    {
+        "query": "query { singer ( where : { song_name : { _like : \"%Hey%\" } } ) { name country } }",
+        "question": "What is the name and country of origin of every singer who has a song with the word 'Hey' in its title?"
+    },
+    {
+        "query": "query { concert_aggregate ( limit : 1 , order_by : { stadium : { capacity : desc } } ) { aggregate { count } } }",
+        "question": "Find the number of concerts happened in the stadium with the highest capacity."
+    },
+    {
+        "query": "query { concert_aggregate ( limit : 1 , order_by : { stadium : { capacity : desc } } ) { aggregate { count } } }",
+        "question": "What are the number of concerts that occurred in the stadium with the largest capacity?"
+    }
+]

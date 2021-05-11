@@ -1,0 +1,13 @@
+type Query {
+  """"""
+  region(_limit: Int, Region_ID: Int, Region_name: String, Date: String, Label: String, Format: String, Catalogue: String): [regionT]
+}
+
+type regionT {
+  Region_ID: Int
+  Region_name: String
+  Date: String
+  Label: String
+  Format: String
+  Catalogue: String
+}

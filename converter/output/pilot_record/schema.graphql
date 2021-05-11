@@ -1,0 +1,28 @@
+type Query {
+  """"""
+  aircraft(_limit: Int, Aircraft_ID: Int, Order_Year: Int, Manufacturer: String, Model: String, Fleet_Series: String, Powertrain: String, Fuel_Propulsion: String): [aircraftT]
+
+  """"""
+  pilot(_limit: Int, Pilot_ID: Int, Pilot_name: String, Rank: Int, Age: Int, Nationality: String, Position: String, Join_Year: Int, Team: String): [pilotT]
+}
+
+type aircraftT {
+  Aircraft_ID: Int
+  Order_Year: Int
+  Manufacturer: String
+  Model: String
+  Fleet_Series: String
+  Powertrain: String
+  Fuel_Propulsion: String
+}
+
+type pilotT {
+  Pilot_ID: Int
+  Pilot_name: String
+  Rank: Int
+  Age: Int
+  Nationality: String
+  Position: String
+  Join_Year: Int
+  Team: String
+}

@@ -1,0 +1,20 @@
+type Query {
+  """"""
+  course(_limit: Int, Course_ID: Int, Staring_Date: String, Course: String): [courseT]
+
+  """"""
+  teacher(_limit: Int, Teacher_ID: Int, Name: String, Age: String, Hometown: String): [teacherT]
+}
+
+type courseT {
+  Course_ID: Int
+  Staring_Date: String
+  Course: String
+}
+
+type teacherT {
+  Teacher_ID: Int
+  Name: String
+  Age: String
+  Hometown: String
+}

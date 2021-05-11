@@ -1,0 +1,98 @@
+[
+    {
+        "query": "query { companies_aggregate { aggregate { count } } }",
+        "question": "How many companies are there?"
+    },
+    {
+        "query": "query { companies_aggregate { aggregate { count } } }",
+        "question": "Count the number of companies."
+    },
+    {
+        "query": "query { companies ( order_by : { market_value_billion : desc } ) { name } }",
+        "question": "List the names of companies in descending order of market value."
+    },
+    {
+        "query": "query { companies ( order_by : { market_value_billion : desc } ) { name } }",
+        "question": "Sort the company names in descending order of the company's market value."
+    },
+    {
+        "query": "query { companies ( where : { headquarters : { _neq : \"USA\" } } ) { name } }",
+        "question": "What are the names of companies whose headquarters are not \"USA\"?"
+    },
+    {
+        "query": "query { companies ( where : { headquarters : { _neq : \"USA\" } } ) { name } }",
+        "question": "Find the names of the companies whose headquarters are not located in \"USA\"."
+    },
+    {
+        "query": "query { companies ( order_by : { name : asc } ) { name assets_billion } }",
+        "question": "What are the name and assets of each company, sorted in ascending order of company name?"
+    },
+    {
+        "query": "query { companies ( order_by : { name : asc } ) { name assets_billion } }",
+        "question": "List the name and assets of each company in ascending order of company name."
+    },
+    {
+        "query": "query { companies_aggregate { aggregate { avg { profits_billion } } } }",
+        "question": "What are the average profits of companies?"
+    },
+    {
+        "query": "query { companies_aggregate { aggregate { avg { profits_billion } } } }",
+        "question": "Compute the average profits companies make."
+    },
+    {
+        "query": "query { companies_aggregate ( where : { industry : { _neq : \"Banking\" } } ) { aggregate { max { sales_billion } min { sales_billion } } } }",
+        "question": "What are the maximum and minimum sales of the companies whose industries are not \"Banking\"."
+    },
+    {
+        "query": "query { companies_aggregate ( where : { industry : { _neq : \"Banking\" } } ) { aggregate { max { sales_billion } min { sales_billion } } } }",
+        "question": "Find the maximum and minimum sales of the companies that are not in the \"Banking\" industry."
+    },
+    {
+        "query": "query { companies_aggregate { aggregate { count } } }",
+        "question": "How many different industries are the companies in?"
+    },
+    {
+        "query": "query { companies_aggregate { aggregate { count } } }",
+        "question": "Count the number of distinct company industries."
+    },
+    {
+        "query": "query { buildings ( order_by : { height : desc } ) { name } }",
+        "question": "List the names of buildings in descending order of building height."
+    },
+    {
+        "query": "query { buildings ( order_by : { height : desc } ) { name } }",
+        "question": "What are the names of buildings sorted in descending order of building height?"
+    },
+    {
+        "query": "query { buildings ( limit : 1 , order_by : { height : desc } ) { stories } }",
+        "question": "Find the stories of the building with the largest height."
+    },
+    {
+        "query": "query { buildings ( limit : 1 , order_by : { height : desc } ) { stories } }",
+        "question": "What is the stories of highest building?"
+    },
+    {
+        "query": "query { companies { name office_locations { building { name } } } }",
+        "question": "List the name of a building along with the name of a company whose office is in the building."
+    },
+    {
+        "query": "query { companies { name office_locations { building { name } } } }",
+        "question": "For each company, return the company name and the name of the building its office is located in."
+    },
+    {
+        "query": "query { buildings ( order_by : { stories : asc } , where : { status : { _eq : \"on-hold\" } } ) { name } }",
+        "question": "Please show the names of the buildings whose status is \"on-hold\", in ascending order of stories."
+    },
+    {
+        "query": "query { buildings ( order_by : { stories : asc } , where : { status : { _eq : \"on-hold\" } } ) { name } }",
+        "question": "Find the names of the buildings in \"on-hold\" status, and sort them in ascending order of building stories."
+    },
+    {
+        "query": "query { companies_aggregate ( where : { _or : [ { industry : { _eq : \"Banking\" } } , { industry : { _eq : \"Conglomerate\" } } ] } ) { aggregate { count } } }",
+        "question": "Find the number of companies whose industry is \"Banking\" or \"Conglomerate\","
+    },
+    {
+        "query": "query { companies_aggregate ( where : { _or : [ { industry : { _eq : \"Banking\" } } , { industry : { _eq : \"Conglomerate\" } } ] } ) { aggregate { count } } }",
+        "question": "How many companies are in either \"Banking\" industry or \"Conglomerate\" industry?"
+    }
+]

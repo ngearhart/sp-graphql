@@ -1,0 +1,46 @@
+[
+    {
+        "query": "query { member_aggregate { aggregate { count } } }",
+        "question": "How many members are there?"
+    },
+    {
+        "query": "query { member ( order_by : { name : asc } ) { name } }",
+        "question": "List the names of members in ascending alphabetical order."
+    },
+    {
+        "query": "query { member { name country } }",
+        "question": "What are the names and countries of members?"
+    },
+    {
+        "query": "query { member ( where : { _or : [ { country : { _eq : \"United States\" } } , { country : { _eq : \"Canada\" } } ] } ) { name } }",
+        "question": "Show the names of members whose country is \"United States\" or \"Canada\"."
+    },
+    {
+        "query": "query { college { leader_name college_location } }",
+        "question": "Show the leader names and locations of colleges."
+    },
+    {
+        "query": "query { member { name college { name } } }",
+        "question": "Show the names of members and names of colleges they go to."
+    },
+    {
+        "query": "query { member ( order_by : { name : asc } ) { name college { college_location } } }",
+        "question": "Show the names of members and the locations of colleges they go to in ascending alphabetical order of member names."
+    },
+    {
+        "query": "query { college ( where : { members : { country : { _eq : \"Canada\" } } } , distinct_on : leader_name ) { leader_name } }",
+        "question": "Show the distinct leader names of colleges associated with members from country \"Canada\"."
+    },
+    {
+        "query": "query { member { name rounds { decoration_theme } } }",
+        "question": "Show the names of members and the decoration themes they have."
+    },
+    {
+        "query": "query { member ( where : { rounds : { rank_in_round : { _gt : 3 } } } ) { name } }",
+        "question": "Show the names of members that have a rank in round higher than 3."
+    },
+    {
+        "query": "query { member ( order_by : { rounds_aggregate : { min : { rank_in_round : asc } } } ) { name } }",
+        "question": "Show the names of members in ascending order of their rank in rounds."
+    }
+]

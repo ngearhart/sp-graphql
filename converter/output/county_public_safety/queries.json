@@ -1,0 +1,106 @@
+[
+    {
+        "query": "query { county_public_safety_aggregate { aggregate { count } } }",
+        "question": "How many counties are there?"
+    },
+    {
+        "query": "query { county_public_safety_aggregate { aggregate { count } } }",
+        "question": "Count the number of countries."
+    },
+    {
+        "query": "query { county_public_safety ( order_by : { population : desc } ) { name } }",
+        "question": "List the names of counties in descending order of population."
+    },
+    {
+        "query": "query { county_public_safety ( order_by : { population : desc } ) { name } }",
+        "question": "What are the names of the counties of public safety, ordered by population descending?"
+    },
+    {
+        "query": "query { county_public_safety ( where : { location : { _neq : \"East\" } } , distinct_on : police_force ) { police_force } }",
+        "question": "List the distinct police forces of counties whose location is not on east side."
+    },
+    {
+        "query": "query { county_public_safety ( where : { location : { _neq : \"East\" } } , distinct_on : police_force ) { police_force } }",
+        "question": "What are the different police forces of counties that are not located in the East?"
+    },
+    {
+        "query": "query { county_public_safety_aggregate { aggregate { min { crime_rate } max { crime_rate } } } }",
+        "question": "What are the minimum and maximum crime rate of counties?"
+    },
+    {
+        "query": "query { county_public_safety_aggregate { aggregate { min { crime_rate } max { crime_rate } } } }",
+        "question": "Return the minimum and maximum crime rates across all counties."
+    },
+    {
+        "query": "query { county_public_safety ( order_by : { police_officers : asc } ) { crime_rate } }",
+        "question": "Show the crime rates of counties in ascending order of number of police officers."
+    },
+    {
+        "query": "query { county_public_safety ( order_by : { police_officers : asc } ) { crime_rate } }",
+        "question": "What are the crime rates of counties sorted by number of offices ascending?"
+    },
+    {
+        "query": "query { city ( order_by : { name : asc } ) { name } }",
+        "question": "What are the names of cities in ascending alphabetical order?"
+    },
+    {
+        "query": "query { city ( order_by : { name : asc } ) { name } }",
+        "question": "Return the names of cities, ordered alphabetically."
+    },
+    {
+        "query": "query { city ( where : { black : { _gt : 10.0 } } ) { hispanic } }",
+        "question": "What are the percentage of hispanics in cities with the black percentage higher than 10?"
+    },
+    {
+        "query": "query { city ( where : { black : { _gt : 10.0 } } ) { hispanic } }",
+        "question": "Return the hispanic percentage for cities in which the black percentage is greater than 10."
+    },
+    {
+        "query": "query { county_public_safety ( limit : 1 , order_by : { population : desc } ) { name } }",
+        "question": "List the name of the county with the largest population."
+    },
+    {
+        "query": "query { county_public_safety ( limit : 1 , order_by : { population : desc } ) { name } }",
+        "question": "What is the name of the county with the greatest population?"
+    },
+    {
+        "query": "query { city ( limit : 5 , order_by : { white : desc } ) { name } }",
+        "question": "List the names of the city with the top 5 white percentages."
+    },
+    {
+        "query": "query { city ( limit : 5 , order_by : { white : desc } ) { name } }",
+        "question": "What are the names of the five cities with the greatest proportion of white people?"
+    },
+    {
+        "query": "query { city { name county_public_safety { name } } }",
+        "question": "Show names of cities and names of counties they are in."
+    },
+    {
+        "query": "query { city { name county_public_safety { name } } }",
+        "question": "What are the names of cities, as well as the names of the counties they correspond to?"
+    },
+    {
+        "query": "query { city { white county_public_safety { crime_rate } } }",
+        "question": "Show white percentages of cities and the crime rates of counties they are in."
+    },
+    {
+        "query": "query { city { white county_public_safety { crime_rate } } }",
+        "question": "What are the white percentages of cities, and the corresponding crime rates of the counties they correspond to?"
+    },
+    {
+        "query": "query { county_public_safety ( where : { cities : { white : { _gt : 90.0 } } } ) { crime_rate } }",
+        "question": "Show the crime rate of counties with a city having white percentage more than 90."
+    },
+    {
+        "query": "query { county_public_safety ( where : { cities : { white : { _gt : 90.0 } } } ) { crime_rate } }",
+        "question": "What are the crime rates of counties that contain cities that have white percentages of over 90?"
+    },
+    {
+        "query": "query { county_public_safety ( order_by : { population : desc } ) { case_burden } }",
+        "question": "Show the case burden of counties in descending order of population."
+    },
+    {
+        "query": "query { county_public_safety ( order_by : { population : desc } ) { case_burden } }",
+        "question": "What are the case burdens of counties, ordered descending by population?"
+    }
+]

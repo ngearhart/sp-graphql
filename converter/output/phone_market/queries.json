@@ -1,0 +1,38 @@
+[
+    {
+        "query": "query { phone_aggregate { aggregate { count } } }",
+        "question": "How many phones are there?"
+    },
+    {
+        "query": "query { phone ( order_by : { price : asc } ) { name } }",
+        "question": "List the names of phones in ascending order of price."
+    },
+    {
+        "query": "query { phone { memory_in_g carrier } }",
+        "question": "What are the memories and carriers of phones?"
+    },
+    {
+        "query": "query { phone ( where : { memory_in_g : { _gt : 32 } } , distinct_on : carrier ) { carrier } }",
+        "question": "List the distinct carriers of phones with memories bigger than 32."
+    },
+    {
+        "query": "query { phone ( where : { _or : [ { carrier : { _eq : \"Sprint\" } } , { carrier : { _eq : \"TMobile\" } } ] } ) { name } }",
+        "question": "Show the names of phones with carrier either \"Sprint\" or \"TMobile\"."
+    },
+    {
+        "query": "query { phone ( limit : 1 , order_by : { price : desc } ) { carrier } }",
+        "question": "What is the carrier of the most expensive phone?"
+    },
+    {
+        "query": "query { phone { name phone_markets { market { district } } } }",
+        "question": "Show the names of phones and the districts of markets they are on."
+    },
+    {
+        "query": "query { market ( order_by : { ranking : asc } ) { district phone_markets { phone { name } } } }",
+        "question": "Show the names of phones and the districts of markets they are on, in ascending order of the ranking of the market."
+    },
+    {
+        "query": "query { phone ( where : { phone_markets : { market : { num_of_shops : { _gt : 50.0 } } } } ) { name } }",
+        "question": "Show the names of phones that are on market with number of shops greater than 50."
+    }
+]

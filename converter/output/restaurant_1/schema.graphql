@@ -1,0 +1,25 @@
+type Query {
+  """"""
+  Restaurant(_limit: Int, ResID: Int, ResName: String, Address: String, Rating: Int): [RestaurantT]
+
+  """"""
+  Student(_limit: Int, StuID: Int, LName: String, Fname: String, Age: Int, Sex: String, Major: Int, Advisor: Int, city_code: String): [StudentT]
+}
+
+type RestaurantT {
+  ResID: Int
+  ResName: String
+  Address: String
+  Rating: Int
+}
+
+type StudentT {
+  StuID: Int
+  LName: String
+  Fname: String
+  Age: Int
+  Sex: String
+  Major: Int
+  Advisor: Int
+  city_code: String
+}

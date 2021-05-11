@@ -1,0 +1,77 @@
+type Query {
+  """"""
+  Course(_limit: Int, CID: String, CName: String, Credits: Int, Instructor: Int, Days: String, Hours: String, DNO: Int): [CourseT]
+
+  """"""
+  Department(_limit: Int, DNO: Int, Division: String, DName: String, Room: String, Building: String, DPhone: Int): [DepartmentT]
+
+  """"""
+  Faculty(_limit: Int, FacID: Int, Lname: String, Fname: String, Rank: String, Sex: String, Phone: Int, Room: String, Building: String): [FacultyT]
+
+  """"""
+  Member_of(_limit: Int, FacID: Int, DNO: Int, Appt_Type: String): [Member_ofT]
+
+  """"""
+  Minor_in(_limit: Int, StuID: Int, DNO: Int): [Minor_inT]
+
+  """"""
+  Student(_limit: Int, StuID: Int, LName: String, Fname: String, Age: Int, Sex: String, Major: Int, Advisor: Int, city_code: String): [StudentT]
+}
+
+type CourseT {
+  CID: String
+  CName: String
+  Credits: Int
+  Instructor: Int
+  Days: String
+  Hours: String
+  DNO: Int
+  Department(_limit: Int, Division: String, DName: String, Room: String, Building: String, DPhone: Int): [DepartmentT]
+  Faculty(_limit: Int, Lname: String, Fname: String, Rank: String, Sex: String, Phone: Int, Room: String, Building: String): [FacultyT]
+}
+
+type DepartmentT {
+  DNO: Int
+  Division: String
+  DName: String
+  Room: String
+  Building: String
+  DPhone: Int
+}
+
+type FacultyT {
+  FacID: Int
+  Lname: String
+  Fname: String
+  Rank: String
+  Sex: String
+  Phone: Int
+  Room: String
+  Building: String
+}
+
+type Member_ofT {
+  FacID: Int
+  DNO: Int
+  Appt_Type: String
+  Department(_limit: Int, Division: String, DName: String, Room: String, Building: String, DPhone: Int): [DepartmentT]
+  Faculty(_limit: Int, Lname: String, Fname: String, Rank: String, Sex: String, Phone: Int, Room: String, Building: String): [FacultyT]
+}
+
+type Minor_inT {
+  StuID: Int
+  DNO: Int
+  Department(_limit: Int, Division: String, DName: String, Room: String, Building: String, DPhone: Int): [DepartmentT]
+  Student(_limit: Int, LName: String, Fname: String, Age: Int, Sex: String, Major: Int, Advisor: Int, city_code: String): [StudentT]
+}
+
+type StudentT {
+  StuID: Int
+  LName: String
+  Fname: String
+  Age: Int
+  Sex: String
+  Major: Int
+  Advisor: Int
+  city_code: String
+}

@@ -1,0 +1,11 @@
+type Query {
+  """"""
+  country(_limit: Int, Country_id: Int, Country_name: String, Capital: String, Official_native_language: String): [countryT]
+}
+
+type countryT {
+  Country_id: Int
+  Country_name: String
+  Capital: String
+  Official_native_language: String
+}

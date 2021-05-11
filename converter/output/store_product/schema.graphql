@@ -1,0 +1,37 @@
+type Query {
+  """"""
+  district(_limit: Int, District_ID: Int, District_name: String, Headquartered_City: String, City_Population: Float, City_Area: Float): [districtT]
+
+  """"""
+  product(_limit: Int, product_id: Int, product: String, dimensions: String, dpi: Float, pages_per_minute_color: Float, max_page_size: String, interface: String): [productT]
+
+  """"""
+  store(_limit: Int, Store_ID: Int, Store_Name: String, Type: String, Area_size: Float, Number_of_product_category: Float, Ranking: Int): [storeT]
+}
+
+type districtT {
+  District_ID: Int
+  District_name: String
+  Headquartered_City: String
+  City_Population: Float
+  City_Area: Float
+}
+
+type productT {
+  product_id: Int
+  product: String
+  dimensions: String
+  dpi: Float
+  pages_per_minute_color: Float
+  max_page_size: String
+  interface: String
+}
+
+type storeT {
+  Store_ID: Int
+  Store_Name: String
+  Type: String
+  Area_size: Float
+  Number_of_product_category: Float
+  Ranking: Int
+}

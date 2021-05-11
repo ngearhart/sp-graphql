@@ -1,0 +1,51 @@
+type Query {
+  """"""
+  Addresses(_limit: Int, Address_ID: String, Line_1: String, Line_2: String, City_Town: String, State_County: String, Other_Details: String): [AddressesT]
+
+  """"""
+  Marketing_Regions(_limit: Int, Marketing_Region_Code: String, Marketing_Region_Name: String, Marketing_Region_Descriptrion: String, Other_Details: String): [Marketing_RegionsT]
+
+  """"""
+  Products(_limit: Int, Product_ID: String, Product_Name: String, Product_Price: Float, Product_Description: String, Other_Product_Service_Details: String): [ProductsT]
+
+  """"""
+  Ref_Payment_Methods(_limit: Int, payment_method_code: String, payment_method_description: String): [Ref_Payment_MethodsT]
+
+  """"""
+  Ref_Service_Types(_limit: Int, Service_Type_Code: String, Parent_Service_Type_Code: String, Service_Type_Description: String): [Ref_Service_TypesT]
+}
+
+type AddressesT {
+  Address_ID: String
+  Line_1: String
+  Line_2: String
+  City_Town: String
+  State_County: String
+  Other_Details: String
+}
+
+type Marketing_RegionsT {
+  Marketing_Region_Code: String
+  Marketing_Region_Name: String
+  Marketing_Region_Descriptrion: String
+  Other_Details: String
+}
+
+type ProductsT {
+  Product_ID: String
+  Product_Name: String
+  Product_Price: Float
+  Product_Description: String
+  Other_Product_Service_Details: String
+}
+
+type Ref_Payment_MethodsT {
+  payment_method_code: String
+  payment_method_description: String
+}
+
+type Ref_Service_TypesT {
+  Service_Type_Code: String
+  Parent_Service_Type_Code: String
+  Service_Type_Description: String
+}

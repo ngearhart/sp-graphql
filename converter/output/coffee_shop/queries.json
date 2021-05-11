@@ -1,0 +1,34 @@
+[
+    {
+        "query": "query { member_aggregate ( where : { membership_card : { _eq : \"Black\" } } ) { aggregate { count } } }",
+        "question": "How many members have the black membership card?"
+    },
+    {
+        "query": "query { member ( where : { _or : [ { address : { _eq : \"Harford\" } } , { address : { _eq : \"Waterbury\" } } ] } ) { name } }",
+        "question": "Give me the names of members whose address is in Harford or Waterbury."
+    },
+    {
+        "query": "query { member ( where : { _or : [ { membership_card : { _eq : \"Black\" } } , { age : { _lt : 30 } } ] } ) { name member_id } }",
+        "question": "Find the ids and names of members who are under age 30 or with black membership card."
+    },
+    {
+        "query": "query { member ( order_by : { time_of_purchase : asc } ) { time_of_purchase age address } }",
+        "question": "Find the purchase time, age and address of each member, and show the results in the order of purchase time."
+    },
+    {
+        "query": "query { member_aggregate ( where : { address : { _neq : \"Hartford\" } } ) { aggregate { count } } }",
+        "question": "How many members are not living in Hartford?"
+    },
+    {
+        "query": "query { shop ( order_by : { open_year : asc } ) { address } }",
+        "question": "Show the shop addresses ordered by their opening year."
+    },
+    {
+        "query": "query { shop_aggregate { aggregate { avg { num_of_staff } avg { score } } } }",
+        "question": "What are the average score and average staff number of all shops?"
+    },
+    {
+        "query": "query { shop ( where : { happy_hours : { month : { _eq : \"May\" } } } ) { address shop_id } }",
+        "question": "What are the id and address of the shops which have a happy hour in May?"
+    }
+]

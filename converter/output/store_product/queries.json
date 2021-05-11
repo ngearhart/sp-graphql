@@ -1,0 +1,90 @@
+[
+    {
+        "query": "query { district ( order_by : { city_area : desc } , distinct_on : district_name ) { district_name } }",
+        "question": "Find all the distinct district names ordered by city area in descending."
+    },
+    {
+        "query": "query { district ( order_by : { city_area : desc } , distinct_on : district_name ) { district_name } }",
+        "question": "What are the different district names in order of descending city area?"
+    },
+    {
+        "query": "query { district ( where : { city_population : { _gte : 200000.0 , _lte : 2000000.0 } } ) { district_name city_population } }",
+        "question": "Find the name and population of district with population between 200000 and 2000000"
+    },
+    {
+        "query": "query { district ( where : { city_population : { _gte : 200000.0 , _lte : 2000000.0 } } ) { district_name city_population } }",
+        "question": "What are the district names and city populations for all districts that between 200,000 and 2,000,000 residents?"
+    },
+    {
+        "query": "query { district ( where : { _or : [ { city_area : { _gt : 10.0 } } , { city_population : { _gt : 100000.0 } } ] } ) { district_name } }",
+        "question": "Find the name all districts with city area greater than 10 or population larger than 100000"
+    },
+    {
+        "query": "query { district ( where : { _or : [ { city_area : { _gt : 10.0 } } , { city_population : { _gt : 100000.0 } } ] } ) { district_name } }",
+        "question": "What are the names of all districts with a city area greater than 10 or have more than 100000 people living there?"
+    },
+    {
+        "query": "query { district ( limit : 1 , order_by : { city_population : desc } ) { district_name } }",
+        "question": "Which district has the largest population?"
+    },
+    {
+        "query": "query { district ( limit : 1 , order_by : { city_population : desc } ) { district_name } }",
+        "question": "What is the name of the district with the most residents?"
+    },
+    {
+        "query": "query { district ( limit : 1 , order_by : { city_area : asc } ) { district_name } }",
+        "question": "Which district has the least area?"
+    },
+    {
+        "query": "query { district ( limit : 1 , order_by : { city_area : asc } ) { district_name } }",
+        "question": "What is the name of the district with the smallest area?"
+    },
+    {
+        "query": "query { district_aggregate ( limit : 3 , order_by : { city_area : desc } ) { aggregate { sum { city_population } } } }",
+        "question": "Find the total population of the top 3 districts with the largest area."
+    },
+    {
+        "query": "query { district_aggregate ( limit : 3 , order_by : { city_area : desc } ) { aggregate { sum { city_population } } } }",
+        "question": "What is the total number of residents for the districts with the 3 largest areas?"
+    },
+    {
+        "query": "query { district ( where : { store_districts : { store : { store_name : { _eq : \"Blackville\" } } } } ) { headquartered_city } }",
+        "question": "Which city is the headquarter of the store named \"Blackville\" in?"
+    },
+    {
+        "query": "query { district ( where : { store_districts : { store : { store_name : { _eq : \"Blackville\" } } } } ) { headquartered_city } }",
+        "question": "What city is the headquarter of the store Blackville?"
+    },
+    {
+        "query": "query { product_aggregate { aggregate { avg { pages_per_minute_color } } } }",
+        "question": "What is the average pages per minute color?"
+    },
+    {
+        "query": "query { product_aggregate { aggregate { avg { pages_per_minute_color } } } }",
+        "question": "What is the average number of pages per minute color?"
+    },
+    {
+        "query": "query { product ( where : { _and : { max_page_size : { _eq : \"A4\" } , pages_per_minute_color : { _lt : 5.0 } } } ) { product } }",
+        "question": "Find products with max page size as \"A4\" and pages per minute color smaller than 5."
+    },
+    {
+        "query": "query { product ( where : { _and : { max_page_size : { _eq : \"A4\" } , pages_per_minute_color : { _lt : 5.0 } } } ) { product } }",
+        "question": "What are the products with the maximum page size A4 that also have a pages per minute color smaller than 5?"
+    },
+    {
+        "query": "query { product ( where : { _or : [ { max_page_size : { _eq : \"A4\" } } , { pages_per_minute_color : { _lt : 5.0 } } ] } ) { product } }",
+        "question": "Find products with max page size as \"A4\" or pages per minute color smaller than 5."
+    },
+    {
+        "query": "query { product ( where : { _or : [ { max_page_size : { _eq : \"A4\" } } , { pages_per_minute_color : { _lt : 5.0 } } ] } ) { product } }",
+        "question": "What are the products with the maximum page size eqal to A4 or a pages per minute color less than 5?"
+    },
+    {
+        "query": "query { product ( where : { product : { _like : \"%Scanner%\" } } ) { product } }",
+        "question": "Find all the product whose name contains the word \"Scanner\"."
+    },
+    {
+        "query": "query { product ( where : { product : { _like : \"%Scanner%\" } } ) { product } }",
+        "question": "What are all of the products whose name includes the substring \"Scanner\"?"
+    }
+]

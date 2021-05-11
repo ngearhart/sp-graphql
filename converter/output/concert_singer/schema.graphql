@@ -1,0 +1,14 @@
+type Query {
+  """"""
+  stadium(_limit: Int, Stadium_ID: Int, Location: String, Name: String, Capacity: Int, Highest: Int, Lowest: Int, Average: Int): [stadiumT]
+}
+
+type stadiumT {
+  Stadium_ID: Int
+  Location: String
+  Name: String
+  Capacity: Int
+  Highest: Int
+  Lowest: Int
+  Average: Int
+}

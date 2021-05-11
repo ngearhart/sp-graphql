@@ -1,0 +1,74 @@
+[
+    {
+        "query": "query { employee_aggregate { aggregate { count } } }",
+        "question": "How many employees are there?"
+    },
+    {
+        "query": "query { employee_aggregate { aggregate { count } } }",
+        "question": "Count the number of employees"
+    },
+    {
+        "query": "query { employee ( order_by : { age : asc } ) { name } }",
+        "question": "Sort employee names by their age in ascending order."
+    },
+    {
+        "query": "query { employee ( order_by : { age : asc } ) { name } }",
+        "question": "List the names of employees and sort in ascending order of age."
+    },
+    {
+        "query": "query { shop ( limit : 1 , order_by : { number_products : desc } ) { manager_name district } }",
+        "question": "Find the manager name and district of the shop whose number of products is the largest."
+    },
+    {
+        "query": "query { shop ( limit : 1 , order_by : { number_products : desc } ) { manager_name district } }",
+        "question": "What are the manager name and district of the shop that sells the largest number of products?"
+    },
+    {
+        "query": "query { shop_aggregate { aggregate { min { number_products } max { number_products } } } }",
+        "question": "find the minimum and maximum number of products of all stores."
+    },
+    {
+        "query": "query { shop_aggregate { aggregate { min { number_products } max { number_products } } } }",
+        "question": "What are the minimum and maximum number of products across all the shops?"
+    },
+    {
+        "query": "query { shop ( order_by : { number_products : desc } ) { name location district } }",
+        "question": "Return the name, location and district of all shops in descending order of number of products."
+    },
+    {
+        "query": "query { shop ( order_by : { number_products : desc } ) { name location district } }",
+        "question": "Sort all the shops by number products in descending order, and return the name, location and district of each shop."
+    },
+    {
+        "query": "query { employee ( limit : 1 , order_by : { evaluations_aggregate : { max : { bonus : asc } } } ) { name } }",
+        "question": "Find the name of the employee who got the highest one time bonus."
+    },
+    {
+        "query": "query { employee ( limit : 1 , order_by : { evaluations_aggregate : { max : { bonus : asc } } } ) { name } }",
+        "question": "Which employee received the biggest bonus? Give me the employee name."
+    },
+    {
+        "query": "query { evaluation_aggregate { aggregate { sum { bonus } } } }",
+        "question": "What is total bonus given in all evaluations?"
+    },
+    {
+        "query": "query { evaluation_aggregate { aggregate { sum { bonus } } } }",
+        "question": "Find the total amount of bonus given in all the evaluations."
+    },
+    {
+        "query": "query { hiring { employee_id is_full_time shop_id start_from } }",
+        "question": "Give me all the information about hiring."
+    },
+    {
+        "query": "query { hiring { employee_id is_full_time shop_id start_from } }",
+        "question": "What is all the information about hiring?"
+    },
+    {
+        "query": "query { shop_aggregate { aggregate { count } } }",
+        "question": "How many different store locations are there?"
+    },
+    {
+        "query": "query { shop_aggregate { aggregate { count } } }",
+        "question": "Count the number of distinct store locations."
+    }
+]

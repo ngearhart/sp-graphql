@@ -1,0 +1,22 @@
+type Query {
+  """"""
+  debate(_limit: Int, Debate_ID: Int, Date: String, Venue: String, Num_of_Audience: Int): [debateT]
+
+  """"""
+  people(_limit: Int, People_ID: Int, District: String, Name: String, Party: String, Age: Int): [peopleT]
+}
+
+type debateT {
+  Debate_ID: Int
+  Date: String
+  Venue: String
+  Num_of_Audience: Int
+}
+
+type peopleT {
+  People_ID: Int
+  District: String
+  Name: String
+  Party: String
+  Age: Int
+}

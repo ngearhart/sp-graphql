@@ -1,0 +1,98 @@
+[
+    {
+        "query": "query { book_club_aggregate { aggregate { count } } }",
+        "question": "How many book clubs are there?"
+    },
+    {
+        "query": "query { book_club_aggregate { aggregate { count } } }",
+        "question": "Count the number of book clubs."
+    },
+    {
+        "query": "query { book_club ( where : { year : { _gt : 1989 } } ) { book_title author_or_editor } }",
+        "question": "show the titles, and authors or editors for all books made after the year 1989."
+    },
+    {
+        "query": "query { book_club ( where : { year : { _gt : 1989 } } ) { book_title author_or_editor } }",
+        "question": "What are the titles and authors or editors that correspond to books made after 1989?"
+    },
+    {
+        "query": "query { book_club ( distinct_on : publisher ) { publisher } }",
+        "question": "Show all distinct publishers for books."
+    },
+    {
+        "query": "query { book_club ( distinct_on : publisher ) { publisher } }",
+        "question": "What are all the different book publishers?"
+    },
+    {
+        "query": "query { book_club ( order_by : { year : desc } ) { year book_title publisher } }",
+        "question": "Show the years, book titles, and publishers for all books, in descending order by year."
+    },
+    {
+        "query": "query { book_club ( order_by : { year : desc } ) { year book_title publisher } }",
+        "question": "What are the years, titles, and publishers for all books, ordered by year descending?"
+    },
+    {
+        "query": "query { movie ( order_by : { budget_million : asc } ) { title year director } }",
+        "question": "Show all movie titles, years, and directors, ordered by budget."
+    },
+    {
+        "query": "query { movie ( order_by : { budget_million : asc } ) { title year director } }",
+        "question": "What are the titles, years, and directors of all movies, ordered by budget in millions?"
+    },
+    {
+        "query": "query { movie_aggregate { aggregate { count } } }",
+        "question": "How many movie directors are there?"
+    },
+    {
+        "query": "query { movie_aggregate { aggregate { count } } }",
+        "question": "Count the number of different directors."
+    },
+    {
+        "query": "query { movie ( limit : 1 , order_by : { gross_worldwide : desc } , where : { year : { _lte : 2000 } } ) { title director } }",
+        "question": "What is the title and director for the movie with highest worldwide gross in the year 2000 or before?"
+    },
+    {
+        "query": "query { movie ( limit : 1 , order_by : { gross_worldwide : desc } , where : { year : { _lte : 2000 } } ) { title director } }",
+        "question": "Return the title and director of the movie released in the year 2000 or earlier that had the highest worldwide gross."
+    },
+    {
+        "query": "query { movie ( where : { _or : [ { year : { _eq : 1999 } } , { year : { _eq : 2000 } } ] } ) { director } }",
+        "question": "Show all director names who have a movie in the year 1999 or 2000."
+    },
+    {
+        "query": "query { movie ( where : { _or : [ { year : { _eq : 1999 } } , { year : { _eq : 2000 } } ] } ) { director } }",
+        "question": "Which directors had a movie in either 1999 or 2000?"
+    },
+    {
+        "query": "query { movie_aggregate ( where : { year : { _lt : 2000 } } ) { aggregate { avg { budget_million } max { budget_million } min { budget_million } } } }",
+        "question": "What is the average, maximum, and minimum budget for all movies before 2000."
+    },
+    {
+        "query": "query { movie_aggregate ( where : { year : { _lt : 2000 } } ) { aggregate { avg { budget_million } max { budget_million } min { budget_million } } } }",
+        "question": "Return the average, maximum, and minimum budgets in millions for movies made before the year 2000."
+    },
+    {
+        "query": "query { culture_company ( where : { book_club : { publisher : { _eq : \"Alyson\" } } } ) { company_name } }",
+        "question": "List all company names with a book published by Alyson."
+    },
+    {
+        "query": "query { culture_company ( where : { book_club : { publisher : { _eq : \"Alyson\" } } } ) { company_name } }",
+        "question": "What are all the company names that have a book published by Alyson?"
+    },
+    {
+        "query": "query { movie ( where : { culture_company : { incorporated_in : { _eq : \"China\" } } } ) { title culture_company { book_club { book_title } } } }",
+        "question": "Show the movie titles and book titles for all companies in China."
+    },
+    {
+        "query": "query { movie ( where : { culture_company : { incorporated_in : { _eq : \"China\" } } } ) { title culture_company { book_club { book_title } } } }",
+        "question": "What are the titles of movies and books corresponding to companies incorporated in China?"
+    },
+    {
+        "query": "query { culture_company ( where : { movie : { year : { _eq : 1999 } } } ) { company_name } }",
+        "question": "Show all company names with a movie directed in year 1999."
+    },
+    {
+        "query": "query { culture_company ( where : { movie : { year : { _eq : 1999 } } } ) { company_name } }",
+        "question": "What are all company names that have a corresponding movie directed in the year 1999?"
+    }
+]

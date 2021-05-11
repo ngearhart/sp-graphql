@@ -1,0 +1,90 @@
+[
+    {
+        "query": "query { available_policies { customer_phone } }",
+        "question": "Find all the phone numbers."
+    },
+    {
+        "query": "query { available_policies { customer_phone } }",
+        "question": "What are all the phone numbers?"
+    },
+    {
+        "query": "query { available_policies ( where : { policy_type_code : { _eq : \"Life Insurance\" } } ) { customer_phone } }",
+        "question": "What are the customer phone numbers under the policy \"Life Insurance\"?"
+    },
+    {
+        "query": "query { available_policies ( where : { policy_type_code : { _eq : \"Life Insurance\" } } ) { customer_phone } }",
+        "question": "What are the phone numbers of customers using the policy with the code \"Life Insurance\"?"
+    },
+    {
+        "query": "query { settlements_aggregate { aggregate { sum { settlement_amount } avg { settlement_amount } } } }",
+        "question": "Find the total and average amount of settlements."
+    },
+    {
+        "query": "query { settlements_aggregate { aggregate { sum { settlement_amount } avg { settlement_amount } } } }",
+        "question": "Return the sum and average of all settlement amounts."
+    },
+    {
+        "query": "query { customers_aggregate ( where : { customer_name : { _eq : \"Dayana Robel\" } } ) { aggregate { count } } }",
+        "question": "How many policies are listed for the customer named \"Dayana Robel\"?"
+    },
+    {
+        "query": "query { customers_aggregate ( where : { customer_name : { _eq : \"Dayana Robel\" } } ) { aggregate { count } } }",
+        "question": "Count the total number of policies used by the customer named \"Dayana Robel\"."
+    },
+    {
+        "query": "query { available_policies ( where : { customers_policies : { customer : { customer_name : { _eq : \"Dayana Robel\" } } } } , distinct_on : policy_type_code ) { policy_type_code } }",
+        "question": "What are all the policy types of the customer named \"Dayana Robel\"?"
+    },
+    {
+        "query": "query { available_policies ( where : { customers_policies : { customer : { customer_name : { _eq : \"Dayana Robel\" } } } } , distinct_on : policy_type_code ) { policy_type_code } }",
+        "question": "Tell me the types of the policy used by the customer named \"Dayana Robel\"."
+    },
+    {
+        "query": "query { services ( order_by : { service_name : asc } ) { service_name } }",
+        "question": "List all the services in the alphabetical order."
+    },
+    {
+        "query": "query { services ( order_by : { service_name : asc } ) { service_name } }",
+        "question": "Give me a list of all the service names sorted alphabetically."
+    },
+    {
+        "query": "query { services_aggregate { aggregate { count } } }",
+        "question": "How many services are there?"
+    },
+    {
+        "query": "query { services_aggregate { aggregate { count } } }",
+        "question": "Count the total number of available services."
+    },
+    {
+        "query": "query { customers ( where : { customer_name : { _like : \"%Diana%\" } } ) { customer_id } }",
+        "question": "Find the IDs of customers whose name contains \"Diana\"."
+    },
+    {
+        "query": "query { customers ( where : { customer_name : { _like : \"%Diana%\" } } ) { customer_id } }",
+        "question": "What are the IDs of customers who have \"Diana\" in part of their names?"
+    },
+    {
+        "query": "query { settlements_aggregate { aggregate { max { settlement_amount } min { settlement_amount } } } }",
+        "question": "What are the maximum and minimum settlement amount on record?"
+    },
+    {
+        "query": "query { settlements_aggregate { aggregate { max { settlement_amount } min { settlement_amount } } } }",
+        "question": "Find the maximum and minimum settlement amount."
+    },
+    {
+        "query": "query { customers ( order_by : { customer_id : asc } ) { customer_id customer_name } }",
+        "question": "List all the customers in increasing order of IDs."
+    },
+    {
+        "query": "query { customers ( order_by : { customer_id : asc } ) { customer_id customer_name } }",
+        "question": "What is the ordered list of customer ids?"
+    },
+    {
+        "query": "query { customers_policies ( where : { customer : { customer_name : { _like : \"%Diana%\" } } } ) { date_opened date_closed } }",
+        "question": "Retrieve the open and close dates of all the policies associated with the customer whose name contains \"Diana\""
+    },
+    {
+        "query": "query { customers_policies ( where : { customer : { customer_name : { _like : \"%Diana%\" } } } ) { date_opened date_closed } }",
+        "question": "What are the open and close dates of all the policies used by the customer who have \"Diana\" in part of their names?"
+    }
+]

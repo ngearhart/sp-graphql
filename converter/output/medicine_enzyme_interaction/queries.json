@@ -1,0 +1,82 @@
+[
+    {
+        "query": "query { enzyme_aggregate { aggregate { count } } }",
+        "question": "How many kinds of enzymes are there?"
+    },
+    {
+        "query": "query { enzyme_aggregate { aggregate { count } } }",
+        "question": "What is the total count of enzymes?"
+    },
+    {
+        "query": "query { enzyme ( order_by : { name : desc } ) { name } }",
+        "question": "List the name of enzymes in descending lexicographical order."
+    },
+    {
+        "query": "query { enzyme ( order_by : { name : desc } ) { name } }",
+        "question": "What are the names of enzymes in descending order?"
+    },
+    {
+        "query": "query { enzyme { name location } }",
+        "question": "List the names and the locations that the enzymes can make an effect."
+    },
+    {
+        "query": "query { enzyme { name location } }",
+        "question": "What are the names and locations of all enzymes listed?"
+    },
+    {
+        "query": "query { enzyme_aggregate { aggregate { max { omim } } } }",
+        "question": "What is the maximum Online Mendelian Inheritance in Man (OMIM) value of the enzymes?"
+    },
+    {
+        "query": "query { enzyme_aggregate { aggregate { max { omim } } } }",
+        "question": "What is the maximum OMIM value in the database?"
+    },
+    {
+        "query": "query { enzyme ( where : { location : { _eq : \"Cytosol\" } } ) { product chromosome porphyria } }",
+        "question": "What is the product, chromosome and porphyria related to the enzymes which take effect at the location 'Cytosol'?"
+    },
+    {
+        "query": "query { enzyme ( where : { location : { _eq : \"Cytosol\" } } ) { product chromosome porphyria } }",
+        "question": "What is the product, chromosome, and porphyria of the enzymes located at 'Cytosol'?"
+    },
+    {
+        "query": "query { enzyme ( where : { product : { _neq : \"Heme\" } } ) { name } }",
+        "question": "What are the names of enzymes who does not produce 'Heme'?"
+    },
+    {
+        "query": "query { enzyme ( where : { product : { _neq : \"Heme\" } } ) { name } }",
+        "question": "What are the names of enzymes whose product is not 'Heme'?"
+    },
+    {
+        "query": "query { medicine ( where : { fda_approved : { _eq : \"Yes\" } } ) { name trade_name } }",
+        "question": "What are the names and trade names of the medicines which has 'Yes' value in the FDA record?"
+    },
+    {
+        "query": "query { medicine ( where : { fda_approved : { _eq : \"Yes\" } } ) { name trade_name } }",
+        "question": "What are the names and trade names of the medcines that are FDA approved?"
+    },
+    {
+        "query": "query { medicine_aggregate ( where : { fda_approved : { _eq : \"No\" } } ) { aggregate { count } } }",
+        "question": "How many medicines have the FDA approval status 'No' ?"
+    },
+    {
+        "query": "query { medicine_aggregate ( where : { fda_approved : { _eq : \"No\" } } ) { aggregate { count } } }",
+        "question": "How many medicines were not approved by the FDA?"
+    },
+    {
+        "query": "query { medicine_aggregate { aggregate { count } } }",
+        "question": "How many distinct FDA approval statuses are there for the medicines?"
+    },
+    {
+        "query": "query { medicine_aggregate { aggregate { count } } }",
+        "question": "How many different FDA approval statuses exist for medicines?"
+    },
+    {
+        "query": "query { enzyme ( where : { name : { _like : \"%ALA%\" } } ) { name } }",
+        "question": "Which enzyme names have the substring \"ALA\"?"
+    },
+    {
+        "query": "query { enzyme ( where : { name : { _like : \"%ALA%\" } } ) { name } }",
+        "question": "What are the names of enzymes that include the string 'ALA'?"
+    }
+]

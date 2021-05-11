@@ -1,0 +1,26 @@
+type Query {
+  """"""
+  climber(_limit: Int, Climber_ID: Int, Name: String, Country: String, Time: String, Points: Float, Mountain_ID: Int): [climberT]
+
+  """"""
+  mountain(_limit: Int, Mountain_ID: Int, Name: String, Height: Float, Prominence: Float, Range: String, Country: String): [mountainT]
+}
+
+type climberT {
+  Climber_ID: Int
+  Name: String
+  Country: String
+  Time: String
+  Points: Float
+  Mountain_ID: Int
+  mountain(_limit: Int, Name: String, Height: Float, Prominence: Float, Range: String, Country: String): [mountainT]
+}
+
+type mountainT {
+  Mountain_ID: Int
+  Name: String
+  Height: Float
+  Prominence: Float
+  Range: String
+  Country: String
+}

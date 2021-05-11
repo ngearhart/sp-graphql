@@ -1,0 +1,41 @@
+type Query {
+  """"""
+  airport(_limit: Int, id: Int, City: String, Country: String, IATA: String, ICAO: String, name: String): [airportT]
+
+  """"""
+  flight(_limit: Int, id: Int, Vehicle_Flight_number: String, Date: String, Pilot: String, Velocity: Float, Altitude: Float, airport_id: Int, company_id: Int): [flightT]
+
+  """"""
+  operate_company(_limit: Int, id: Int, name: String, Type: String, Principal_activities: String, Incorporated_in: String, Group_Equity_Shareholding: Float): [operate_companyT]
+}
+
+type airportT {
+  id: Int
+  City: String
+  Country: String
+  IATA: String
+  ICAO: String
+  name: String
+}
+
+type flightT {
+  id: Int
+  Vehicle_Flight_number: String
+  Date: String
+  Pilot: String
+  Velocity: Float
+  Altitude: Float
+  airport_id: Int
+  company_id: Int
+  airport(_limit: Int, City: String, Country: String, IATA: String, ICAO: String, name: String): [airportT]
+  operate_company(_limit: Int, name: String, Type: String, Principal_activities: String, Incorporated_in: String, Group_Equity_Shareholding: Float): [operate_companyT]
+}
+
+type operate_companyT {
+  id: Int
+  name: String
+  Type: String
+  Principal_activities: String
+  Incorporated_in: String
+  Group_Equity_Shareholding: Float
+}

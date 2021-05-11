@@ -1,0 +1,58 @@
+[
+    {
+        "query": "query { event_aggregate { aggregate { count } } }",
+        "question": "How many events are there?"
+    },
+    {
+        "query": "query { event ( order_by : { year : desc } ) { name } }",
+        "question": "List all the event names by year from the most recent to the oldest."
+    },
+    {
+        "query": "query { event ( limit : 1 , order_by : { year : desc } ) { name } }",
+        "question": "What is the name of the event that happened in the most recent year?"
+    },
+    {
+        "query": "query { stadium_aggregate { aggregate { count } } }",
+        "question": "How many stadiums are there?"
+    },
+    {
+        "query": "query { stadium ( limit : 1 , order_by : { capacity : desc } ) { name } }",
+        "question": "Find the name of the stadium that has the maximum capacity."
+    },
+    {
+        "query": "query { stadium_aggregate ( where : { opening_year : { _lt : 2006 } } ) { aggregate { count } } }",
+        "question": "How many cities have a stadium that was opened before the year of 2006?"
+    },
+    {
+        "query": "query { stadium_aggregate ( where : { country : { _neq : \"Russia\" } } ) { aggregate { count } } }",
+        "question": "How many stadiums are not in country \"Russia\"?"
+    },
+    {
+        "query": "query { swimmer ( order_by : { meter_100 : asc } ) { name } }",
+        "question": "Find the names of all swimmers, sorted by their 100 meter scores in ascending order."
+    },
+    {
+        "query": "query { swimmer_aggregate { aggregate { count } } }",
+        "question": "How many different countries are all the swimmers from?"
+    },
+    {
+        "query": "query { swimmer ( where : { nationality : { _eq : \"Australia\" } } ) { meter_200 meter_300 } }",
+        "question": "Find all 200 meter and 300 meter results of swimmers with nationality \"Australia\"."
+    },
+    {
+        "query": "query { swimmer ( where : { records : { result : { _eq : \"Win\" } } } ) { name } }",
+        "question": "Find the names of swimmers who has a result of \"win\"."
+    },
+    {
+        "query": "query { stadium ( where : { events : { name : { _eq : \"World Junior\" } } } ) { name capacity } }",
+        "question": "Find the name and capacity of the stadium where the event named \"World Junior\" happened."
+    },
+    {
+        "query": "query { swimmer { id meter_100 meter_200 meter_300 meter_400 meter_500 meter_600 meter_700 name nationality time } }",
+        "question": "Find all details for each swimmer."
+    },
+    {
+        "query": "query { stadium_aggregate ( where : { opening_year : { _eq : 2005 } } ) { aggregate { avg { capacity } } } }",
+        "question": "What is the average capacity of the stadiums that were opened in year 2005?"
+    }
+]

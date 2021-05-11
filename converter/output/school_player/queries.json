@@ -1,0 +1,106 @@
+[
+    {
+        "query": "query { school_aggregate { aggregate { count } } }",
+        "question": "How many schools are there?"
+    },
+    {
+        "query": "query { school_aggregate { aggregate { count } } }",
+        "question": "Count the number of schools."
+    },
+    {
+        "query": "query { school ( order_by : { enrollment : asc } ) { location } }",
+        "question": "List the locations of schools in ascending order of enrollment."
+    },
+    {
+        "query": "query { school ( order_by : { enrollment : asc } ) { location } }",
+        "question": "What is the list of school locations sorted in ascending order of school enrollment?"
+    },
+    {
+        "query": "query { school ( order_by : { founded : desc } ) { location } }",
+        "question": "List the locations of schools in descending order of founded year."
+    },
+    {
+        "query": "query { school ( order_by : { founded : desc } ) { location } }",
+        "question": "What is the list of school locations sorted in descending order of school foundation year?"
+    },
+    {
+        "query": "query { school ( where : { denomination : { _neq : \"Catholic\" } } ) { enrollment } }",
+        "question": "What are the enrollments of schools whose denomination is not \"Catholic\"?"
+    },
+    {
+        "query": "query { school ( where : { denomination : { _neq : \"Catholic\" } } ) { enrollment } }",
+        "question": "List the enrollment for each school that does not have \"Catholic\" as denomination."
+    },
+    {
+        "query": "query { school_aggregate { aggregate { avg { enrollment } } } }",
+        "question": "What is the average enrollment of schools?"
+    },
+    {
+        "query": "query { school_aggregate { aggregate { avg { enrollment } } } }",
+        "question": "Take the average of the school enrollment."
+    },
+    {
+        "query": "query { player ( order_by : { team : asc } ) { team } }",
+        "question": "What are the teams of the players, sorted in ascending alphabetical order?"
+    },
+    {
+        "query": "query { player ( order_by : { team : asc } ) { team } }",
+        "question": "Find the team of each player and sort them in ascending alphabetical order."
+    },
+    {
+        "query": "query { player_aggregate { aggregate { count } } }",
+        "question": "How many different positions of players are there?"
+    },
+    {
+        "query": "query { player_aggregate { aggregate { count } } }",
+        "question": "Count the number of distinct player positions."
+    },
+    {
+        "query": "query { player ( limit : 1 , order_by : { age : desc } ) { team } }",
+        "question": "Find the team of the player of the highest age."
+    },
+    {
+        "query": "query { player ( limit : 1 , order_by : { age : desc } ) { team } }",
+        "question": "Which team has the oldest player?"
+    },
+    {
+        "query": "query { player ( limit : 5 , order_by : { age : desc } ) { team } }",
+        "question": "List the teams of the players with the top 5 largest ages."
+    },
+    {
+        "query": "query { player ( limit : 5 , order_by : { age : desc } ) { team } }",
+        "question": "What are the teams that have the 5 oldest players?"
+    },
+    {
+        "query": "query { player { team school { location } } }",
+        "question": "For each player, show the team and the location of school they belong to."
+    },
+    {
+        "query": "query { player { team school { location } } }",
+        "question": "What are the team and the location of school each player belongs to?"
+    },
+    {
+        "query": "query { school { location school_details { nickname } } }",
+        "question": "Show locations and nicknames of schools."
+    },
+    {
+        "query": "query { school { location school_details { nickname } } }",
+        "question": "What are the location and nickname of each school?"
+    },
+    {
+        "query": "query { school ( limit : 1 , order_by : { enrollment : desc } ) { school_colors } }",
+        "question": "List the school color of the school that has the largest enrollment."
+    },
+    {
+        "query": "query { school ( limit : 1 , order_by : { enrollment : desc } ) { school_colors } }",
+        "question": "What is the school color of the school with the largest enrollment?"
+    },
+    {
+        "query": "query { school_details ( where : { division : { _neq : \"Division 1\" } } ) { nickname } }",
+        "question": "Show the nicknames of schools that are not in division 1."
+    },
+    {
+        "query": "query { school_details ( where : { division : { _neq : \"Division 1\" } } ) { nickname } }",
+        "question": "What are the nicknames of schools whose division is not 1?"
+    }
+]

@@ -1,0 +1,25 @@
+type Query {
+  """"""
+  cinema(_limit: Int, Cinema_ID: Int, Name: String, Openning_year: Int, Capacity: Int, Location: String): [cinemaT]
+
+  """"""
+  film(_limit: Int, Film_ID: Int, Rank_in_series: Int, Number_in_season: Int, Title: String, Directed_by: String, Original_air_date: String, Production_code: String): [filmT]
+}
+
+type cinemaT {
+  Cinema_ID: Int
+  Name: String
+  Openning_year: Int
+  Capacity: Int
+  Location: String
+}
+
+type filmT {
+  Film_ID: Int
+  Rank_in_series: Int
+  Number_in_season: Int
+  Title: String
+  Directed_by: String
+  Original_air_date: String
+  Production_code: String
+}

@@ -1,0 +1,74 @@
+[
+    {
+        "query": "query { submission_aggregate { aggregate { count } } }",
+        "question": "How many submissions are there?"
+    },
+    {
+        "query": "query { submission_aggregate { aggregate { count } } }",
+        "question": "Count the number of submissions."
+    },
+    {
+        "query": "query { submission ( order_by : { scores : asc } ) { author } }",
+        "question": "List the authors of submissions in ascending order of scores."
+    },
+    {
+        "query": "query { submission ( order_by : { scores : asc } ) { author } }",
+        "question": "Find the author for each submission and list them in ascending order of submission score."
+    },
+    {
+        "query": "query { submission { author college } }",
+        "question": "What are the authors of submissions and their colleges?"
+    },
+    {
+        "query": "query { submission { author college } }",
+        "question": "For each submission, show the author and their affiliated college."
+    },
+    {
+        "query": "query { submission ( where : { _or : [ { college : { _eq : \"Florida\" } } , { college : { _eq : \"Temple\" } } ] } ) { author } }",
+        "question": "Show the names of authors from college \"Florida\" or \"Temple\""
+    },
+    {
+        "query": "query { submission ( where : { _or : [ { college : { _eq : \"Florida\" } } , { college : { _eq : \"Temple\" } } ] } ) { author } }",
+        "question": "Which authors with submissions are from college \"Florida\" or \"Temple\"?"
+    },
+    {
+        "query": "query { submission_aggregate { aggregate { avg { scores } } } }",
+        "question": "What is the average score of submissions?"
+    },
+    {
+        "query": "query { submission_aggregate { aggregate { avg { scores } } } }",
+        "question": "Compute the average score of submissions."
+    },
+    {
+        "query": "query { submission ( limit : 1 , order_by : { scores : desc } ) { author } }",
+        "question": "What is the author of the submission with the highest score?"
+    },
+    {
+        "query": "query { submission ( limit : 1 , order_by : { scores : desc } ) { author } }",
+        "question": "Find the author who achieved the highest score in a submission."
+    },
+    {
+        "query": "query { submission { author acceptances { result } } }",
+        "question": "Show the authors of submissions and the acceptance results of their submissions."
+    },
+    {
+        "query": "query { submission { author acceptances { result } } }",
+        "question": "For each submission, find its author and acceptance result."
+    },
+    {
+        "query": "query { acceptance ( limit : 1 , order_by : { submission : { scores : desc } } ) { result } }",
+        "question": "Show the result of the submission with the highest score."
+    },
+    {
+        "query": "query { acceptance ( limit : 1 , order_by : { submission : { scores : desc } } ) { result } }",
+        "question": "Which submission received the highest score in acceptance result. Show me the result."
+    },
+    {
+        "query": "query { workshop ( order_by : { venue : asc } ) { date venue } }",
+        "question": "Show the date and venue of each workshop in ascending alphabetical order of the venue."
+    },
+    {
+        "query": "query { workshop ( order_by : { venue : asc } ) { date venue } }",
+        "question": "Sort the each workshop in alphabetical order of the venue. Return the date and venue of each workshop."
+    }
+]

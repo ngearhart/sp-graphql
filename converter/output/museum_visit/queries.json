@@ -1,0 +1,46 @@
+[
+    {
+        "query": "query { visitor_aggregate ( where : { age : { _lt : 30 } } ) { aggregate { count } } }",
+        "question": "How many visitors below age 30 are there?"
+    },
+    {
+        "query": "query { visitor ( order_by : { level_of_membership : desc } , where : { level_of_membership : { _gt : 4 } } ) { name } }",
+        "question": "Find the names of the visitors whose membership level is higher than 4, and order the results by the level from high to low."
+    },
+    {
+        "query": "query { visitor_aggregate ( where : { level_of_membership : { _lte : 4 } } ) { aggregate { avg { age } } } }",
+        "question": "What is the average age of the visitors whose membership level is not higher than 4?"
+    },
+    {
+        "query": "query { visitor ( order_by : { age : desc } , where : { level_of_membership : { _gt : 4 } } ) { name level_of_membership } }",
+        "question": "Find the name and membership level of the visitors whose membership level is higher than 4, and sort by their age from old to young."
+    },
+    {
+        "query": "query { museum ( limit : 1 , order_by : { num_of_staff : desc } ) { museum_id name } }",
+        "question": "Find the id and name of the museum that has the most staff members?"
+    },
+    {
+        "query": "query { museum_aggregate ( where : { open_year : { _lt : \"2009\" } } ) { aggregate { avg { num_of_staff } } } }",
+        "question": "Find the average number of staff working for the museums that were open before 2009."
+    },
+    {
+        "query": "query { museum ( where : { name : { _eq : \"Plaza Museum\" } } ) { num_of_staff open_year } }",
+        "question": "What are the opening year and staff number of the museum named Plaza Museum?"
+    },
+    {
+        "query": "query { visitor ( limit : 1 , order_by : { visits_aggregate : { max : { num_of_ticket : desc_nulls_last } } } ) { name age } }",
+        "question": "Find the name and age of the visitor who bought the most tickets at once."
+    },
+    {
+        "query": "query { visit_aggregate { aggregate { avg { num_of_ticket } max { num_of_ticket } } } }",
+        "question": "What are the average and maximum number of tickets bought in all visits?"
+    },
+    {
+        "query": "query { visit_aggregate ( where : { visitor : { level_of_membership : { _eq : 1 } } } ) { aggregate { sum { total_spent } } } }",
+        "question": "What is the total ticket expense of the visitors whose membership level is 1?"
+    },
+    {
+        "query": "query { museum_aggregate ( where : { _or : [ { open_year : { _gt : \"2013\" } } , { open_year : { _lt : \"2008\" } } ] } ) { aggregate { count } } }",
+        "question": "How many museums were opened after 2013 or before 2008?"
+    }
+]

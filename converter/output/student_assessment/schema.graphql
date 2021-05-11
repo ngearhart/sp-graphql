@@ -1,0 +1,62 @@
+type Query {
+  """"""
+  Addresses(_limit: Int, address_id: Int, line_1: String, line_2: String, city: String, zip_postcode: String, state_province_county: String, country: String): [AddressesT]
+
+  """"""
+  Courses(_limit: Int, course_id: String, course_name: String, course_description: String, other_details: String): [CoursesT]
+
+  """"""
+  People(_limit: Int, person_id: Int, first_name: String, middle_name: String, last_name: String, cell_mobile_number: String, email_address: String, login_name: String, password: String): [PeopleT]
+
+  """"""
+  People_Addresses(_limit: Int, person_address_id: Int, person_id: Int, address_id: Int, date_from: Date, date_to: Date): [People_AddressesT]
+
+  """"""
+  Students(_limit: Int, student_id: Int, student_details: String): [StudentsT]
+}
+
+type AddressesT {
+  address_id: Int
+  line_1: String
+  line_2: String
+  city: String
+  zip_postcode: String
+  state_province_county: String
+  country: String
+}
+
+type CoursesT {
+  course_id: String
+  course_name: String
+  course_description: String
+  other_details: String
+}
+
+type PeopleT {
+  person_id: Int
+  first_name: String
+  middle_name: String
+  last_name: String
+  cell_mobile_number: String
+  email_address: String
+  login_name: String
+  password: String
+}
+
+type People_AddressesT {
+  person_address_id: Int
+  person_id: Int
+  address_id: Int
+  date_from: Date
+  date_to: Date
+  Addresses(_limit: Int, line_1: String, line_2: String, city: String, zip_postcode: String, state_province_county: String, country: String): [AddressesT]
+  People(_limit: Int, first_name: String, middle_name: String, last_name: String, cell_mobile_number: String, email_address: String, login_name: String, password: String): [PeopleT]
+}
+
+scalar Date
+
+type StudentsT {
+  student_id: Int
+  student_details: String
+  People(_limit: Int, first_name: String, middle_name: String, last_name: String, cell_mobile_number: String, email_address: String, login_name: String, password: String): [PeopleT]
+}

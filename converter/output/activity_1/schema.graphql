@@ -1,0 +1,9 @@
+type Query {
+  """"""
+  Activity(_limit: Int, actid: Int, activity_name: String): [ActivityT]
+}
+
+type ActivityT {
+  actid: Int
+  activity_name: String
+}

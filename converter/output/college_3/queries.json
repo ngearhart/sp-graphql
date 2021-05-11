@@ -1,0 +1,210 @@
+[
+    {
+        "query": "query { course_aggregate { aggregate { count } } }",
+        "question": "How many courses are there in total?"
+    },
+    {
+        "query": "query { course_aggregate { aggregate { count } } }",
+        "question": "Count the number of courses."
+    },
+    {
+        "query": "query { course_aggregate ( where : { credits : { _gt : 2 } } ) { aggregate { count } } }",
+        "question": "How many courses have more than 2 credits?"
+    },
+    {
+        "query": "query { course_aggregate ( where : { credits : { _gt : 2 } } ) { aggregate { count } } }",
+        "question": "Count the number of courses with more than 2 credits."
+    },
+    {
+        "query": "query { course ( where : { credits : { _eq : 1 } } ) { cname } }",
+        "question": "List all names of courses with 1 credit?"
+    },
+    {
+        "query": "query { course ( where : { credits : { _eq : 1 } } ) { cname } }",
+        "question": "What are the names of courses with 1 credit?"
+    },
+    {
+        "query": "query { course ( where : { days : { _eq : \"MTW\" } } ) { cname } }",
+        "question": "Which courses are taught on days MTW?"
+    },
+    {
+        "query": "query { course ( where : { days : { _eq : \"MTW\" } } ) { cname } }",
+        "question": "What are the course names for courses taught on MTW?"
+    },
+    {
+        "query": "query { department_aggregate ( where : { division : { _eq : \"AS\" } } ) { aggregate { count } } }",
+        "question": "What is the number of departments in Division \"AS\"?"
+    },
+    {
+        "query": "query { department_aggregate ( where : { division : { _eq : \"AS\" } } ) { aggregate { count } } }",
+        "question": "How many departments are in the division AS?"
+    },
+    {
+        "query": "query { department ( where : { room : { _eq : \"268\" } } ) { dphone } }",
+        "question": "What are the phones of departments in Room 268?"
+    },
+    {
+        "query": "query { department ( where : { room : { _eq : \"268\" } } ) { dphone } }",
+        "question": "Give the phones for departments in room 268."
+    },
+    {
+        "query": "query { enrolled_in_aggregate ( where : { grade : { _eq : \"B\" } } ) { aggregate { count } } }",
+        "question": "Find the number of students that have at least one grade \"B\"."
+    },
+    {
+        "query": "query { enrolled_in_aggregate ( where : { grade : { _eq : \"B\" } } ) { aggregate { count } } }",
+        "question": "How many students have had at least one \"B\" grade?"
+    },
+    {
+        "query": "query { gradeconversion_aggregate { aggregate { max { gradepoint } min { gradepoint } } } }",
+        "question": "Find the max and min grade point for all letter grade."
+    },
+    {
+        "query": "query { gradeconversion_aggregate { aggregate { max { gradepoint } min { gradepoint } } } }",
+        "question": "What are the maximum and minumum grade points?"
+    },
+    {
+        "query": "query { student ( where : { fname : { _like : \"%a%\" } } , distinct_on : fname ) { fname } }",
+        "question": "Find the first names of students whose first names contain letter \"a\"."
+    },
+    {
+        "query": "query { student ( where : { fname : { _like : \"%a%\" } } , distinct_on : fname ) { fname } }",
+        "question": "What are the first names for students who have an \"a\" in their first name?"
+    },
+    {
+        "query": "query { faculty ( where : { _and : { sex : { _eq : \"M\" } , building : { _eq : \"NEB\" } } } ) { fname lname } }",
+        "question": "Find the first names and last names of male (sex is M) faculties who live in building NEB."
+    },
+    {
+        "query": "query { faculty ( where : { _and : { sex : { _eq : \"M\" } , building : { _eq : \"NEB\" } } } ) { fname lname } }",
+        "question": "What are the full names of faculties with sex M and who live in building NEB?"
+    },
+    {
+        "query": "query { faculty ( where : { _and : { rank : { _eq : \"Professor\" } , building : { _eq : \"NEB\" } } } ) { room } }",
+        "question": "Find the rooms of faculties with rank professor who live in building NEB."
+    },
+    {
+        "query": "query { faculty ( where : { _and : { building : { _eq : \"NEB\" } , rank : { _eq : \"Professor\" } } } ) { room } }",
+        "question": "What are the rooms for members of the faculty who are professors and who live in building NEB?"
+    },
+    {
+        "query": "query { department ( where : { building : { _eq : \"Mergenthaler\" } } ) { dname } }",
+        "question": "Find the department name that is in Building \"Mergenthaler\"."
+    },
+    {
+        "query": "query { department ( where : { building : { _eq : \"Mergenthaler\" } } ) { dname } }",
+        "question": "What is the name of the department in the Building Mergenthaler?"
+    },
+    {
+        "query": "query { course ( order_by : { credits : asc } ) { cid cname credits days dno hours instructor } }",
+        "question": "List all information about courses sorted by credits in the ascending order."
+    },
+    {
+        "query": "query { course ( order_by : { credits : asc } ) { cid cname credits days dno hours instructor } }",
+        "question": "What is all the information about courses, ordered by credits ascending?"
+    },
+    {
+        "query": "query { course ( order_by : { credits : asc } ) { cname } }",
+        "question": "List the course name of courses sorted by credits."
+    },
+    {
+        "query": "query { course ( order_by : { credits : asc } ) { cname } }",
+        "question": "What are the course names, ordered by credits?"
+    },
+    {
+        "query": "query { student ( order_by : { age : desc } ) { fname } }",
+        "question": "Find the first name of students in the descending order of age."
+    },
+    {
+        "query": "query { student ( order_by : { age : desc } ) { fname } }",
+        "question": "What are the first names of students, ordered by age from greatest to least?"
+    },
+    {
+        "query": "query { student ( order_by : { age : desc } , where : { sex : { _eq : \"F\" } } ) { lname } }",
+        "question": "Find the last name of female (sex is F) students in the descending order of age."
+    },
+    {
+        "query": "query { student ( order_by : { age : desc } , where : { sex : { _eq : \"F\" } } ) { lname } }",
+        "question": "What are the last names of female students, ordered by age descending?"
+    },
+    {
+        "query": "query { faculty ( order_by : { lname : asc } , where : { building : { _eq : \"Barton\" } } ) { lname } }",
+        "question": "Find the last names of faculties in building Barton in alphabetic order."
+    },
+    {
+        "query": "query { faculty ( order_by : { lname : asc } , where : { building : { _eq : \"Barton\" } } ) { lname } }",
+        "question": "What are the last names of faculty in building Barton, sorted by last name?"
+    },
+    {
+        "query": "query { faculty ( order_by : { fname : asc } , where : { rank : { _eq : \"Professor\" } } ) { fname } }",
+        "question": "Find the first names of faculties of rank Professor in alphabetic order."
+    },
+    {
+        "query": "query { faculty ( order_by : { fname : asc } , where : { rank : { _eq : \"Professor\" } } ) { fname } }",
+        "question": "What are the first names for all faculty professors, ordered by first name?"
+    },
+    {
+        "query": "query { faculty ( where : { courses : { cname : { _eq : \"COMPUTER LITERACY\" } } } ) { fname lname } }",
+        "question": "Find the first name and last name of the instructor of course that has course name"
+    },
+    {
+        "query": "query { faculty ( where : { courses : { cname : { _eq : \"COMPUTER LITERACY\" } } } ) { fname lname } }",
+        "question": "What is the full name of the instructor who has a course named COMPUTER LITERACY?"
+    },
+    {
+        "query": "query { department ( where : { courses : { cname : { _eq : \"INTRODUCTION TO COMPUTER SCIENCE\" } } } ) { dname room } }",
+        "question": "Find the department name and room of the course INTRODUCTION TO COMPUTER SCIENCE."
+    },
+    {
+        "query": "query { department ( where : { courses : { cname : { _eq : \"INTRODUCTION TO COMPUTER SCIENCE\" } } } ) { dname room } }",
+        "question": "What are the department name and room for the course INTRODUCTION TO COMPUTER SCIENCE?"
+    },
+    {
+        "query": "query { student ( where : { enrolled_ins : { gradeconversion : { gradepoint : { _gte : 3.8 } } } } , distinct_on : fname ) { fname } }",
+        "question": "Find the distinct student first names of all students that have grade point at least 3.8 in one course."
+    },
+    {
+        "query": "query { student ( where : { enrolled_ins : { gradeconversion : { gradepoint : { _gte : 3.8 } } } } , distinct_on : fname ) { fname } }",
+        "question": "What are the distinct first names for students with a grade point of 3.8 or above in at least one course?"
+    },
+    {
+        "query": "query { faculty ( where : { member_ofs : { dno : { _eq : 520 } } } ) { fname lname } }",
+        "question": "Find the full names of faculties who are members of department with department number 520."
+    },
+    {
+        "query": "query { faculty ( where : { member_ofs : { dno : { _eq : 520 } } } ) { fname lname } }",
+        "question": "What are the full names of faculty members who are a part of department 520?"
+    },
+    {
+        "query": "query { student ( where : { minor_ins : { dno : { _eq : 140 } } } ) { fname lname } }",
+        "question": "What are the first names and last names of the students that minor in the department with DNO 140."
+    },
+    {
+        "query": "query { student ( where : { minor_ins : { dno : { _eq : 140 } } } ) { fname lname } }",
+        "question": "What are the full names of students minoring in department 140?"
+    },
+    {
+        "query": "query { faculty ( where : { member_ofs : { department : { dname : { _eq : \"Computer Science\" } } } } ) { lname } }",
+        "question": "Find the last names of faculties who are members of computer science department."
+    },
+    {
+        "query": "query { faculty ( where : { member_ofs : { department : { dname : { _eq : \"Computer Science\" } } } } ) { lname } }",
+        "question": "What are the last names of faculty who are part of the computer science department?"
+    },
+    {
+        "query": "query { gradeconversion_aggregate ( where : { enrolled_ins : { student : { lname : { _eq : \"Smith\" } } } } ) { aggregate { avg { gradepoint } } } }",
+        "question": "Find the average grade point of student whose last name is Smith."
+    },
+    {
+        "query": "query { gradeconversion_aggregate ( where : { enrolled_ins : { student : { lname : { _eq : \"Smith\" } } } } ) { aggregate { avg { gradepoint } } } }",
+        "question": "What is the average gradepoint for students with the last name Smith?"
+    },
+    {
+        "query": "query { gradeconversion_aggregate ( where : { enrolled_ins : { student : { city_code : { _eq : \"NYC\" } } } } ) { aggregate { max { gradepoint } min { gradepoint } } } }",
+        "question": "What is the maximum and minimum grade point of students who live in NYC?"
+    },
+    {
+        "query": "query { gradeconversion_aggregate ( where : { enrolled_ins : { student : { city_code : { _eq : \"NYC\" } } } } ) { aggregate { max { gradepoint } min { gradepoint } } } }",
+        "question": "Give the maximum and minimum gradepoints for students living in NYC?"
+    }
+]

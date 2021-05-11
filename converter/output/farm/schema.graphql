@@ -1,0 +1,52 @@
+type Query {
+  """"""
+  city(_limit: Int, City_ID: Int, Official_Name: String, Status: String, Area_km_2: Float, Population: Float, Census_Ranking: String): [cityT]
+
+  """"""
+  competition_record(_limit: Int, Competition_ID: Int, Farm_ID: Int, Rank: Int): [competition_recordT]
+
+  """"""
+  farm(_limit: Int, Farm_ID: Int, Year: Int, Total_Horses: Float, Working_Horses: Float, Total_Cattle: Float, Oxen: Float, Bulls: Float, Cows: Float, Pigs: Float, Sheep_and_Goats: Float): [farmT]
+
+  """"""
+  farm_competition(_limit: Int, Competition_ID: Int, Year: Int, Theme: String, Host_city_ID: Int, Hosts: String): [farm_competitionT]
+}
+
+type cityT {
+  City_ID: Int
+  Official_Name: String
+  Status: String
+  Area_km_2: Float
+  Population: Float
+  Census_Ranking: String
+}
+
+type competition_recordT {
+  Competition_ID: Int
+  Farm_ID: Int
+  Rank: Int
+  farm(_limit: Int, Year: Int, Total_Horses: Float, Working_Horses: Float, Total_Cattle: Float, Oxen: Float, Bulls: Float, Cows: Float, Pigs: Float, Sheep_and_Goats: Float): [farmT]
+  farm_competition(_limit: Int, Year: Int, Theme: String, Host_city_ID: Int, Hosts: String): [farm_competitionT]
+}
+
+type farmT {
+  Farm_ID: Int
+  Year: Int
+  Total_Horses: Float
+  Working_Horses: Float
+  Total_Cattle: Float
+  Oxen: Float
+  Bulls: Float
+  Cows: Float
+  Pigs: Float
+  Sheep_and_Goats: Float
+}
+
+type farm_competitionT {
+  Competition_ID: Int
+  Year: Int
+  Theme: String
+  Host_city_ID: Int
+  Hosts: String
+  city(_limit: Int, Official_Name: String, Status: String, Area_km_2: Float, Population: Float, Census_Ranking: String): [cityT]
+}

@@ -103,7 +103,7 @@ def convert_dataset(dataset):
     system("docker compose down")
     system("docker compose up -d")
     print("Waiting for MySQL to be done loading...")
-    sleep(20)  # Arbitrary, but shouldn't take more than 30 seconds for MySQL to initialize
+    sleep(60)  # Arbitrary, but shouldn't take more than 30 seconds for MySQL to initialize
     system("node index.js")
     print("Copying schema file to output folder...")
     try:

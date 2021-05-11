@@ -1,0 +1,28 @@
+type Query {
+  """"""
+  Friend(_limit: Int, student_id: Int, friend_id: Int): [FriendT]
+
+  """"""
+  Highschooler(_limit: Int, ID: Int, name: String, grade: Int): [HighschoolerT]
+
+  """"""
+  Likes(_limit: Int, student_id: Int, liked_id: Int): [LikesT]
+}
+
+type FriendT {
+  student_id: Int
+  friend_id: Int
+  Highschooler(_limit: Int, name: String, grade: Int): [HighschoolerT]
+}
+
+type HighschoolerT {
+  ID: Int
+  name: String
+  grade: Int
+}
+
+type LikesT {
+  student_id: Int
+  liked_id: Int
+  Highschooler(_limit: Int, name: String, grade: Int): [HighschoolerT]
+}

@@ -1,0 +1,33 @@
+type Query {
+  """"""
+  Movie(_limit: Int, mID: Int, title: String, year: Int, director: String): [MovieT]
+
+  """"""
+  Rating(_limit: Int, rID: Int, mID: Int, stars: Int, ratingDate: Date): [RatingT]
+
+  """"""
+  Reviewer(_limit: Int, rID: Int, name: String): [ReviewerT]
+}
+
+type MovieT {
+  mID: Int
+  title: String
+  year: Int
+  director: String
+}
+
+type RatingT {
+  rID: Int
+  mID: Int
+  stars: Int
+  ratingDate: Date
+  Movie(_limit: Int, title: String, year: Int, director: String): [MovieT]
+  Reviewer(_limit: Int, name: String): [ReviewerT]
+}
+
+scalar Date
+
+type ReviewerT {
+  rID: Int
+  name: String
+}

@@ -1,0 +1,11 @@
+type Query {
+  """"""
+  county(_limit: Int, County_Id: Int, County_name: String, Population: Float, Zip_code: String): [countyT]
+}
+
+type countyT {
+  County_Id: Int
+  County_name: String
+  Population: Float
+  Zip_code: String
+}

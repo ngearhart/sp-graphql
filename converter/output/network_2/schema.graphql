@@ -1,0 +1,22 @@
+type Query {
+  """"""
+  Person(_limit: Int, name: String, age: Int, city: String, gender: String, job: String): [PersonT]
+
+  """"""
+  PersonFriend(_limit: Int, name: String, friend: String, year: Int): [PersonFriendT]
+}
+
+type PersonT {
+  name: String
+  age: Int
+  city: String
+  gender: String
+  job: String
+}
+
+type PersonFriendT {
+  name: String
+  friend: String
+  year: Int
+  Person(_limit: Int, age: Int, city: String, gender: String, job: String): [PersonT]
+}

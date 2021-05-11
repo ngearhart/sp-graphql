@@ -1,0 +1,50 @@
+[
+    {
+        "query": "query { furniture_aggregate { aggregate { sum { num_of_component } } } }",
+        "question": "How many furniture components are there in total?"
+    },
+    {
+        "query": "query { furniture ( limit : 1 , order_by : { market_rate : desc } ) { name furniture_id } }",
+        "question": "Return the name and id of the furniture with the highest market rate."
+    },
+    {
+        "query": "query { furniture_aggregate ( limit : 2 , order_by : { market_rate : desc } ) { aggregate { sum { market_rate } } } }",
+        "question": "find the total market rate of the furnitures that have the top 2 market shares."
+    },
+    {
+        "query": "query { furniture ( where : { num_of_component : { _gt : 10 } } ) { num_of_component name } }",
+        "question": "Find the component amounts and names of all furnitures that have more than 10 components."
+    },
+    {
+        "query": "query { furniture ( limit : 1 , order_by : { market_rate : asc } ) { name num_of_component } }",
+        "question": "Find the name and component amount of the least popular furniture."
+    },
+    {
+        "query": "query { manufacturer ( limit : 1 , order_by : { num_of_shops : desc } ) { open_year name } }",
+        "question": "Which manufacturer has the most number of shops? List its name and year of opening."
+    },
+    {
+        "query": "query { manufacturer_aggregate ( where : { num_of_shops : { _gt : 20 } } ) { aggregate { avg { num_of_factories } } } }",
+        "question": "Find the average number of factories for the manufacturers that have more than 20 shops."
+    },
+    {
+        "query": "query { manufacturer ( order_by : { open_year : asc } ) { name manufacturer_id } }",
+        "question": "List all manufacturer names and ids ordered by their opening year."
+    },
+    {
+        "query": "query { manufacturer ( where : { _or : [ { num_of_shops : { _gt : 10 } } , { num_of_factories : { _lt : 10 } } ] } ) { name open_year } }",
+        "question": "Give me the name and year of opening of the manufacturers that have either less than 10 factories or more than 10 shops."
+    },
+    {
+        "query": "query { manufacturer_aggregate ( where : { open_year : { _lt : 1990.0 } } ) { aggregate { max { num_of_shops } avg { num_of_factories } } } }",
+        "question": "what is the average number of factories and maximum number of shops for manufacturers that opened before 1990."
+    },
+    {
+        "query": "query { manufacturer ( limit : 1 , order_by : { furniture_manufactes_aggregate : { max : { price_in_dollar : desc_nulls_last } } } ) { manufacturer_id num_of_shops } }",
+        "question": "Find the id and number of shops for the company that produces the most expensive furniture."
+    },
+    {
+        "query": "query { furniture { name furniture_manufactes { price_in_dollar } } }",
+        "question": "Give me the names and prices of furnitures which some companies are manufacturing."
+    }
+]

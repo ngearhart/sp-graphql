@@ -1,0 +1,47 @@
+type Query {
+  """"""
+  Plays_Games(_limit: Int, StuID: Int, GameID: Int, Hours_Played: Int): [Plays_GamesT]
+
+  """"""
+  SportsInfo(_limit: Int, StuID: Int, SportName: String, HoursPerWeek: Int, GamesPlayed: Int, OnScholarship: String): [SportsInfoT]
+
+  """"""
+  Student(_limit: Int, StuID: Int, LName: String, Fname: String, Age: Int, Sex: String, Major: Int, Advisor: Int, city_code: String): [StudentT]
+
+  """"""
+  Video_Games(_limit: Int, GameID: Int, GName: String, GType: String): [Video_GamesT]
+}
+
+type Plays_GamesT {
+  StuID: Int
+  GameID: Int
+  Hours_Played: Int
+  Student(_limit: Int, LName: String, Fname: String, Age: Int, Sex: String, Major: Int, Advisor: Int, city_code: String): [StudentT]
+  Video_Games(_limit: Int, GName: String, GType: String): [Video_GamesT]
+}
+
+type StudentT {
+  StuID: Int
+  LName: String
+  Fname: String
+  Age: Int
+  Sex: String
+  Major: Int
+  Advisor: Int
+  city_code: String
+}
+
+type Video_GamesT {
+  GameID: Int
+  GName: String
+  GType: String
+}
+
+type SportsInfoT {
+  StuID: Int
+  SportName: String
+  HoursPerWeek: Int
+  GamesPlayed: Int
+  OnScholarship: String
+  Student(_limit: Int, LName: String, Fname: String, Age: Int, Sex: String, Major: Int, Advisor: Int, city_code: String): [StudentT]
+}

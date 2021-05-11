@@ -1,0 +1,24 @@
+type Query {
+  """"""
+  singer(_limit: Int, Singer_ID: Int, Name: String, Birth_Year: Float, Net_Worth_Millions: Float, Citizenship: String): [singerT]
+
+  """"""
+  song(_limit: Int, Song_ID: Int, Title: String, Singer_ID: Int, Sales: Float, Highest_Position: Float): [songT]
+}
+
+type singerT {
+  Singer_ID: Int
+  Name: String
+  Birth_Year: Float
+  Net_Worth_Millions: Float
+  Citizenship: String
+}
+
+type songT {
+  Song_ID: Int
+  Title: String
+  Singer_ID: Int
+  Sales: Float
+  Highest_Position: Float
+  singer(_limit: Int, Name: String, Birth_Year: Float, Net_Worth_Millions: Float, Citizenship: String): [singerT]
+}

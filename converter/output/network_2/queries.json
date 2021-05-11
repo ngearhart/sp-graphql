@@ -1,0 +1,82 @@
+[
+    {
+        "query": "query { person_aggregate ( where : { gender : { _eq : \"female\" } } ) { aggregate { count } } }",
+        "question": "How many females does this network has?"
+    },
+    {
+        "query": "query { person_aggregate ( where : { gender : { _eq : \"female\" } } ) { aggregate { count } } }",
+        "question": "How many females are in the network?"
+    },
+    {
+        "query": "query { person_aggregate { aggregate { avg { age } } } }",
+        "question": "What is the average age for all person?"
+    },
+    {
+        "query": "query { person_aggregate { aggregate { avg { age } } } }",
+        "question": "What is the average age for all people in the table?"
+    },
+    {
+        "query": "query { person_aggregate { aggregate { count } } }",
+        "question": "How many different cities are they from?"
+    },
+    {
+        "query": "query { person_aggregate { aggregate { count } } }",
+        "question": "How many different cities do people originate from?"
+    },
+    {
+        "query": "query { person_aggregate { aggregate { count } } }",
+        "question": "How many type of jobs do they have?"
+    },
+    {
+        "query": "query { person_aggregate { aggregate { count } } }",
+        "question": "How many different jobs are listed?"
+    },
+    {
+        "query": "query { person ( where : { _and : { job : { _eq : \"doctor\" } , name : { _eq : \"Zach\" } } } ) { age } }",
+        "question": "How old is the doctor named Zach?"
+    },
+    {
+        "query": "query { person ( where : { _and : { name : { _eq : \"Zach\" } , job : { _eq : \"doctor\" } } } ) { age } }",
+        "question": "What is the age of the doctor named Zach?"
+    },
+    {
+        "query": "query { person ( where : { age : { _lt : 30 } } ) { name } }",
+        "question": "Who is the person whose age is below 30?"
+    },
+    {
+        "query": "query { person ( where : { age : { _lt : 30 } } ) { name } }",
+        "question": "What is the name of the person whose age is below 30?"
+    },
+    {
+        "query": "query { person_aggregate ( where : { _and : { age : { _gt : 30 } , job : { _eq : \"engineer\" } } } ) { aggregate { count } } }",
+        "question": "How many people whose age is greater 30 and job is engineer?"
+    },
+    {
+        "query": "query { person_aggregate ( where : { _and : { job : { _eq : \"engineer\" } , age : { _gt : 30 } } } ) { aggregate { count } } }",
+        "question": "HOw many engineers are older than 30?"
+    },
+    {
+        "query": "query { person ( order_by : { name : asc } ) { name job } }",
+        "question": "list the name, job title of all people ordered by their names."
+    },
+    {
+        "query": "query { person ( order_by : { name : asc } ) { name job } }",
+        "question": "What are the names and job titles of every person ordered alphabetically by name?"
+    },
+    {
+        "query": "query { person ( order_by : { age : desc } ) { name } }",
+        "question": "Find the names of all person sorted in the descending order using age."
+    },
+    {
+        "query": "query { person ( order_by : { age : desc } ) { name } }",
+        "question": "What are the names of everybody sorted by age in descending order?"
+    },
+    {
+        "query": "query { person ( order_by : { age : asc } , where : { gender : { _eq : \"male\" } } ) { name } }",
+        "question": "Find the name and age of all males in order of their age."
+    },
+    {
+        "query": "query { person ( order_by : { age : asc } , where : { gender : { _eq : \"male\" } } ) { name } }",
+        "question": "What is the name and age of every male? Order the results by age."
+    }
+]

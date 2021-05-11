@@ -1,0 +1,13 @@
+type Query {
+  """"""
+  storm(_limit: Int, Storm_ID: Int, Name: String, Dates_active: String, Max_speed: Int, Damage_millions_USD: Float, Number_Deaths: Int): [stormT]
+}
+
+type stormT {
+  Storm_ID: Int
+  Name: String
+  Dates_active: String
+  Max_speed: Int
+  Damage_millions_USD: Float
+  Number_Deaths: Int
+}

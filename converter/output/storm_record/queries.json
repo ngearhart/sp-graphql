@@ -1,0 +1,82 @@
+[
+    {
+        "query": "query { region_aggregate { aggregate { count } } }",
+        "question": "How many regions do we have?"
+    },
+    {
+        "query": "query { region_aggregate { aggregate { count } } }",
+        "question": "Count the number of regions."
+    },
+    {
+        "query": "query { region ( order_by : { region_code : asc } ) { region_code region_name } }",
+        "question": "Show all region code and region name sorted by the codes."
+    },
+    {
+        "query": "query { region ( order_by : { region_code : asc } ) { region_code region_name } }",
+        "question": "What are the codes and names for all regions, sorted by codes?"
+    },
+    {
+        "query": "query { region ( order_by : { region_name : asc } ) { region_name } }",
+        "question": "List all region names in alphabetical order."
+    },
+    {
+        "query": "query { region ( order_by : { region_name : asc } ) { region_name } }",
+        "question": "What are the names of the regions in alphabetical order?"
+    },
+    {
+        "query": "query { region ( where : { region_name : { _neq : \"Denmark\" } } ) { region_name } }",
+        "question": "Show names for all regions except for Denmark."
+    },
+    {
+        "query": "query { region ( where : { region_name : { _neq : \"Denmark\" } } ) { region_name } }",
+        "question": "Return the names of all regions other than Denmark."
+    },
+    {
+        "query": "query { storm_aggregate ( where : { number_deaths : { _gt : 0 } } ) { aggregate { count } } }",
+        "question": "How many storms had death records?"
+    },
+    {
+        "query": "query { storm_aggregate ( where : { number_deaths : { _gt : 0 } } ) { aggregate { count } } }",
+        "question": "Count the number of storms in which at least 1 person died."
+    },
+    {
+        "query": "query { storm ( where : { number_deaths : { _gte : 1 } } ) { name dates_active number_deaths } }",
+        "question": "List name, dates active, and number of deaths for all storms with at least 1 death."
+    },
+    {
+        "query": "query { storm ( where : { number_deaths : { _gte : 1 } } ) { name dates_active number_deaths } }",
+        "question": "What are the names, dates active, and number of deaths for storms that had 1 or more death?"
+    },
+    {
+        "query": "query { storm_aggregate ( where : { max_speed : { _gt : 1000 } } ) { aggregate { avg { damage_millions_usd } max { damage_millions_usd } } } }",
+        "question": "Show the average and maximum damage for all storms with max speed higher than 1000."
+    },
+    {
+        "query": "query { storm_aggregate ( where : { max_speed : { _gt : 1000 } } ) { aggregate { avg { damage_millions_usd } max { damage_millions_usd } } } }",
+        "question": "What is the average and maximum damage in millions for storms that had a max speed over 1000?"
+    },
+    {
+        "query": "query { storm ( order_by : { max_speed : desc } ) { name damage_millions_usd } }",
+        "question": "List name and damage for all storms in a descending order of max speed."
+    },
+    {
+        "query": "query { storm ( order_by : { max_speed : desc } ) { name damage_millions_usd } }",
+        "question": "What are the names and damage in millions for storms, ordered by their max speeds descending?"
+    },
+    {
+        "query": "query { affected_region_aggregate { aggregate { count } } }",
+        "question": "How many regions are affected?"
+    },
+    {
+        "query": "query { affected_region_aggregate { aggregate { count } } }",
+        "question": "Count the number of different affected regions."
+    },
+    {
+        "query": "query { storm ( where : { affected_regions : { region : { region_name : { _eq : \"Denmark\" } } } } ) { name } }",
+        "question": "Show all storm names affecting region \"Denmark\"."
+    },
+    {
+        "query": "query { storm ( where : { affected_regions : { region : { region_name : { _eq : \"Denmark\" } } } } ) { name } }",
+        "question": "What are the names of the storms that affected Denmark?"
+    }
+]

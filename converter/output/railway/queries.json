@@ -1,0 +1,54 @@
+[
+    {
+        "query": "query { railway_aggregate { aggregate { count } } }",
+        "question": "How many railways are there?"
+    },
+    {
+        "query": "query { railway ( order_by : { builder : asc } ) { builder } }",
+        "question": "List the builders of railways in ascending alphabetical order."
+    },
+    {
+        "query": "query { railway { wheels location } }",
+        "question": "List the wheels and locations of the railways."
+    },
+    {
+        "query": "query { manager_aggregate ( where : { country : { _neq : \"Australia\t\" } } ) { aggregate { max { level } } } }",
+        "question": "What is the maximum level of managers in countries that are not \"Australia\"?"
+    },
+    {
+        "query": "query { manager_aggregate { aggregate { avg { age } } } }",
+        "question": "What is the average age for all managers?"
+    },
+    {
+        "query": "query { manager ( order_by : { level : asc } ) { name } }",
+        "question": "What are the names of managers in ascending order of level?"
+    },
+    {
+        "query": "query { train { name arrival } }",
+        "question": "What are the names and arrival times of trains?"
+    },
+    {
+        "query": "query { manager ( limit : 1 , order_by : { age : desc } ) { name } }",
+        "question": "What is the name of the oldest manager?"
+    },
+    {
+        "query": "query { train { name railway { location } } }",
+        "question": "Show the names of trains and locations of railways they are in."
+    },
+    {
+        "query": "query { railway ( where : { trains : { name : { _eq : \"Andaman Exp\" } } } ) { builder } }",
+        "question": "Show the builder of railways associated with the trains named \"Andaman Exp\"."
+    },
+    {
+        "query": "query { manager ( distinct_on : country ) { country } }",
+        "question": "Show the distinct countries of managers."
+    },
+    {
+        "query": "query { manager ( order_by : { level : desc } ) { working_year_starts } }",
+        "question": "Show the working years of managers in descending order of their level."
+    },
+    {
+        "query": "query { manager ( where : { _or : [ { age : { _gt : 50 } } , { age : { _lt : 46 } } ] } ) { country } }",
+        "question": "Show the countries that have managers of age above 50 or below 46."
+    }
+]

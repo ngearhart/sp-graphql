@@ -1,0 +1,142 @@
+[
+    {
+        "query": "query { people { first_name last_name } }",
+        "question": "what are the first name and last name of all candidates?"
+    },
+    {
+        "query": "query { people { first_name last_name } }",
+        "question": "What are the first and last names of all the candidates?"
+    },
+    {
+        "query": "query { student_course_attendance { student_id } }",
+        "question": "List the id of students who attended some courses?"
+    },
+    {
+        "query": "query { student_course_attendance { student_id } }",
+        "question": "What are the ids of all students who have attended at least one course?"
+    },
+    {
+        "query": "query { student_course_registrations { student_id course { course_name } } }",
+        "question": "What are the ids of all students for courses and what are the names of those courses?"
+    },
+    {
+        "query": "query { students ( limit : 1 , order_by : { student_course_registrations_aggregate : { max : { registration_date : desc_nulls_last } } } ) { student_details } }",
+        "question": "What is detail of the student who most recently registered course?"
+    },
+    {
+        "query": "query { students ( limit : 1 , order_by : { student_course_registrations_aggregate : { max : { registration_date : desc_nulls_last } } } ) { student_details } }",
+        "question": "What details do we have on the students who registered for courses most recently?"
+    },
+    {
+        "query": "query { courses_aggregate ( where : { course_name : { _eq : \"English\" } } ) { aggregate { count } } }",
+        "question": "How many students attend course English?"
+    },
+    {
+        "query": "query { courses_aggregate ( where : { course_name : { _eq : \"English\" } } ) { aggregate { count } } }",
+        "question": "How many students are attending English courses?"
+    },
+    {
+        "query": "query { courses_aggregate ( where : { student_course_attendances : { student_id : { _eq : 171 } } } ) { aggregate { count } } }",
+        "question": "How many courses do the student whose id is 171 attend?"
+    },
+    {
+        "query": "query { courses_aggregate ( where : { student_course_attendances : { student_id : { _eq : 171 } } } ) { aggregate { count } } }",
+        "question": "How many courses does the student with id 171 actually attend?"
+    },
+    {
+        "query": "query { candidates ( where : { person : { email_address : { _eq : \"stanley.monahan@example.org\" } } } ) { candidate_id } }",
+        "question": "Find id of the candidate whose email is stanley.monahan@example.org?"
+    },
+    {
+        "query": "query { candidates ( where : { person : { email_address : { _eq : \"stanley.monahan@example.org\" } } } ) { candidate_id } }",
+        "question": "What is the id of the candidate whose email is stanley.monahan@example.org?"
+    },
+    {
+        "query": "query { candidate_assessments ( limit : 1 , order_by : { assessment_date : desc } ) { candidate_id } }",
+        "question": "Find id of the candidate who most recently accessed the course?"
+    },
+    {
+        "query": "query { candidate_assessments ( limit : 1 , order_by : { assessment_date : desc } ) { candidate_id } }",
+        "question": "What is the id of the candidate who most recently accessed the course?"
+    },
+    {
+        "query": "query { candidate_assessments ( where : { asessment_outcome_code : { _eq : \"Pass\" } } ) { candidate_id } }",
+        "question": "Find id of candidates whose assessment code is \"Pass\"?"
+    },
+    {
+        "query": "query { candidate_assessments ( where : { asessment_outcome_code : { _eq : \"Pass\" } } ) { candidate_id } }",
+        "question": "What are the ids of the candidates that have an outcome code of Pass?"
+    },
+    {
+        "query": "query { people ( where : { candidates : { candidate_assessments : { asessment_outcome_code : { _eq : \"Fail\" } } } } ) { cell_mobile_number } }",
+        "question": "Find the cell mobile number of the candidates whose assessment code is \"Fail\"?"
+    },
+    {
+        "query": "query { people ( where : { candidates : { candidate_assessments : { asessment_outcome_code : { _eq : \"Fail\" } } } } ) { cell_mobile_number } }",
+        "question": "What are the cell phone numbers of the candidates that received an assessment code of \"Fail\"?"
+    },
+    {
+        "query": "query { student_course_attendance ( where : { course_id : { _eq : 301 } } ) { student_id } }",
+        "question": "What are the id of students who registered course 301?"
+    },
+    {
+        "query": "query { student_course_attendance ( where : { course_id : { _eq : 301 } } ) { student_id } }",
+        "question": "What are the ids of the students who registered for course 301?"
+    },
+    {
+        "query": "query { student_course_attendance ( limit : 1 , order_by : { date_of_attendance : desc } , where : { course_id : { _eq : 301 } } ) { student_id } }",
+        "question": "What is the id of the student who most recently registered course 301?"
+    },
+    {
+        "query": "query { student_course_attendance ( limit : 1 , order_by : { date_of_attendance : desc } , where : { course_id : { _eq : 301 } } ) { student_id } }",
+        "question": "What are the ids of the students who registered for course 301 most recently?"
+    },
+    {
+        "query": "query { addresses ( distinct_on : city ) { city } }",
+        "question": "Find distinct cities of addresses of people?"
+    },
+    {
+        "query": "query { addresses ( distinct_on : city ) { city } }",
+        "question": "What are the different cities where people live?"
+    },
+    {
+        "query": "query { addresses ( distinct_on : city ) { city } }",
+        "question": "Find distinct cities of address of students?"
+    },
+    {
+        "query": "query { addresses ( distinct_on : city ) { city } }",
+        "question": "What are the different cities where students live?"
+    },
+    {
+        "query": "query { courses ( order_by : { course_name : asc } ) { course_name } }",
+        "question": "List the names of courses in alphabetical order?"
+    },
+    {
+        "query": "query { courses ( order_by : { course_name : asc } ) { course_name } }",
+        "question": "What are the names of the courses in alphabetical order?"
+    },
+    {
+        "query": "query { people ( order_by : { first_name : asc } ) { first_name } }",
+        "question": "List the first names of people in alphabetical order?"
+    },
+    {
+        "query": "query { people ( order_by : { first_name : asc } ) { first_name } }",
+        "question": "What are the first names of the people in alphabetical order?"
+    },
+    {
+        "query": "query { student_course_registrations ( order_by : { registration_date : asc } , where : { course : { course_name : { _eq : \"statistics\" } } } ) { student_id } }",
+        "question": "List the id of students who registered course statistics in the order of registration date."
+    },
+    {
+        "query": "query { student_course_registrations ( order_by : { registration_date : asc } , where : { course : { course_name : { _eq : \"statistics\" } } } ) { student_id } }",
+        "question": "What are the ids of the students who registered course statistics by order of registration date?"
+    },
+    {
+        "query": "query { student_course_attendance ( order_by : { date_of_attendance : asc } , where : { course : { course_name : { _eq : \"statistics\" } } } ) { student_id } }",
+        "question": "List the id of students who attended  statistics courses in the order of attendance date."
+    },
+    {
+        "query": "query { student_course_attendance ( order_by : { date_of_attendance : asc } , where : { course : { course_name : { _eq : \"statistics\" } } } ) { student_id } }",
+        "question": "What are the ids of the students who attended courses in the statistics department in order of attendance date."
+    }
+]

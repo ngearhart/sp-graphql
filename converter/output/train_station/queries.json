@@ -1,0 +1,54 @@
+[
+    {
+        "query": "query { station_aggregate { aggregate { count } } }",
+        "question": "How many train stations are there?"
+    },
+    {
+        "query": "query { station { name location number_of_platforms } }",
+        "question": "Show the name, location, and number of platforms for all stations."
+    },
+    {
+        "query": "query { station ( distinct_on : location ) { location } }",
+        "question": "What are all locations of train stations?"
+    },
+    {
+        "query": "query { station ( where : { location : { _neq : \"London\" } } ) { name total_passengers } }",
+        "question": "Show the names and total passengers for all train stations not in London."
+    },
+    {
+        "query": "query { station ( limit : 3 , order_by : { total_passengers : desc } ) { name main_services } }",
+        "question": "Show the names and main services for train stations that have the top three total number of passengers."
+    },
+    {
+        "query": "query { station_aggregate ( where : { _or : [ { location : { _eq : \"London\" } } , { location : { _eq : \"Glasgow\" } } ] } ) { aggregate { avg { total_passengers } max { total_passengers } } } }",
+        "question": "What is the average and maximum number of total passengers for train stations in London or Glasgow?"
+    },
+    {
+        "query": "query { station ( where : { _and : { number_of_platforms : { _gte : 15 } , total_passengers : { _gt : 25.0 } } } , distinct_on : location ) { location } }",
+        "question": "Show all locations that have train stations with at least 15 platforms and train stations with more than 25 total passengers."
+    },
+    {
+        "query": "query { train { name time service } }",
+        "question": "Show the name, time, and service for all trains."
+    },
+    {
+        "query": "query { train_aggregate { aggregate { count } } }",
+        "question": "Show the number of trains"
+    },
+    {
+        "query": "query { train ( order_by : { time : asc } ) { name service } }",
+        "question": "Show the name and service for all trains in order by time."
+    },
+    {
+        "query": "query { station { name train_stations { train { name } } } }",
+        "question": "show the train name and station name for each train."
+    },
+    {
+        "query": "query { train ( order_by : { time : desc } , where : { train_stations : { station : { location : { _eq : \"London\" } } } } ) { name time } }",
+        "question": "Show all train names and times in stations in London in descending order by train time."
+    },
+    {
+        "query": "query { station ( order_by : { annual_entry_exit : asc , annual_interchanges : asc } ) { name location } }",
+        "question": "List the names and locations of all stations ordered by their yearly entry exit and interchange amounts."
+    }
+]

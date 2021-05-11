@@ -1,0 +1,24 @@
+type Query {
+  """"""
+  device(_limit: Int, Device_ID: Int, Device: String, Carrier: String, Package_Version: String, Applications: String, Software_Platform: String): [deviceT]
+
+  """"""
+  shop(_limit: Int, Shop_ID: Int, Shop_Name: String, Location: String, Open_Date: String, Open_Year: Int): [shopT]
+}
+
+type deviceT {
+  Device_ID: Int
+  Device: String
+  Carrier: String
+  Package_Version: String
+  Applications: String
+  Software_Platform: String
+}
+
+type shopT {
+  Shop_ID: Int
+  Shop_Name: String
+  Location: String
+  Open_Date: String
+  Open_Year: Int
+}

@@ -1,0 +1,170 @@
+[
+    {
+        "query": "query { bank_aggregate { aggregate { count } } }",
+        "question": "How many bank branches are there?"
+    },
+    {
+        "query": "query { bank_aggregate { aggregate { count } } }",
+        "question": "Count the number of bank branches."
+    },
+    {
+        "query": "query { bank_aggregate { aggregate { sum { no_of_customers } } } }",
+        "question": "How many customers are there?"
+    },
+    {
+        "query": "query { bank_aggregate { aggregate { sum { no_of_customers } } } }",
+        "question": "What is the total number of customers across banks?"
+    },
+    {
+        "query": "query { bank_aggregate ( where : { city : { _eq : \"New York City\" } } ) { aggregate { sum { no_of_customers } } } }",
+        "question": "Find the number of customers in the banks at New York City."
+    },
+    {
+        "query": "query { bank_aggregate ( where : { city : { _eq : \"New York City\" } } ) { aggregate { sum { no_of_customers } } } }",
+        "question": "What is the total number of customers who use banks in New York City?"
+    },
+    {
+        "query": "query { bank_aggregate ( where : { state : { _eq : \"Utah\" } } ) { aggregate { avg { no_of_customers } } } }",
+        "question": "Find the average number of customers in all banks of Utah state."
+    },
+    {
+        "query": "query { bank_aggregate ( where : { state : { _eq : \"Utah\" } } ) { aggregate { avg { no_of_customers } } } }",
+        "question": "What is the average number of customers across banks in the state of Utah?"
+    },
+    {
+        "query": "query { bank_aggregate { aggregate { avg { no_of_customers } } } }",
+        "question": "Find the average number of customers cross all banks."
+    },
+    {
+        "query": "query { bank_aggregate { aggregate { avg { no_of_customers } } } }",
+        "question": "What is the average number of bank customers?"
+    },
+    {
+        "query": "query { bank ( where : { bname : { _eq : \"morningside\" } } ) { city state } }",
+        "question": "Find the city and state of the bank branch named morningside."
+    },
+    {
+        "query": "query { bank ( where : { bname : { _eq : \"morningside\" } } ) { city state } }",
+        "question": "What city and state is the bank with the name morningside in?"
+    },
+    {
+        "query": "query { bank ( where : { state : { _eq : \"New York\" } } ) { bname } }",
+        "question": "Find the branch names of banks in the New York state."
+    },
+    {
+        "query": "query { bank ( where : { state : { _eq : \"New York\" } } ) { bname } }",
+        "question": "What are the names of banks in the state of New York?"
+    },
+    {
+        "query": "query { customer ( order_by : { acc_bal : asc } ) { cust_name } }",
+        "question": "List the name of all customers sorted by their account balance in ascending order."
+    },
+    {
+        "query": "query { customer ( order_by : { acc_bal : asc } ) { cust_name } }",
+        "question": "What are the names of all customers, ordered by account balance?"
+    },
+    {
+        "query": "query { customer ( where : { no_of_loans : { _eq : 0 } } ) { state acc_type credit_score } }",
+        "question": "Find the state, account type, and credit score of the customer whose number of loan is 0."
+    },
+    {
+        "query": "query { customer ( where : { no_of_loans : { _eq : 0 } } ) { state acc_type credit_score } }",
+        "question": "What are the states, account types, and credit scores for customers who have 0 loans?"
+    },
+    {
+        "query": "query { bank_aggregate { aggregate { count } } }",
+        "question": "Find the number of different cities which banks are located at."
+    },
+    {
+        "query": "query { bank_aggregate { aggregate { count } } }",
+        "question": "In how many different cities are banks located?"
+    },
+    {
+        "query": "query { bank_aggregate { aggregate { count } } }",
+        "question": "Find the number of different states which banks are located at."
+    },
+    {
+        "query": "query { bank_aggregate { aggregate { count } } }",
+        "question": "In how many different states are banks located?"
+    },
+    {
+        "query": "query { customer_aggregate { aggregate { count } } }",
+        "question": "How many distinct types of accounts are there?"
+    },
+    {
+        "query": "query { customer_aggregate { aggregate { count } } }",
+        "question": "Count the number of different account types."
+    },
+    {
+        "query": "query { customer ( where : { cust_name : { _like : \"%a%\" } } ) { cust_name acc_bal } }",
+        "question": "Find the name and account balance of the customer whose name includes the letter \u2018a\u2019."
+    },
+    {
+        "query": "query { customer ( where : { cust_name : { _like : \"%a%\" } } ) { cust_name acc_bal } }",
+        "question": "What are the names and account balances of customers with the letter a in their names?"
+    },
+    {
+        "query": "query { customer_aggregate ( where : { _or : [ { state : { _eq : \"Utah\" } } , { state : { _eq : \"Texas\" } } ] } ) { aggregate { sum { acc_bal } } } }",
+        "question": "Find the total account balance of each customer from Utah or Texas."
+    },
+    {
+        "query": "query { customer_aggregate ( where : { _or : [ { state : { _eq : \"Utah\" } } , { state : { _eq : \"Texas\" } } ] } ) { aggregate { sum { acc_bal } } } }",
+        "question": "What are the total account balances for each customer from Utah or Texas?"
+    },
+    {
+        "query": "query { bank ( limit : 1 , order_by : { no_of_customers : desc } ) { bname } }",
+        "question": "Find the branch name of the bank that has the most number of customers."
+    },
+    {
+        "query": "query { bank ( limit : 1 , order_by : { no_of_customers : desc } ) { bname } }",
+        "question": "What is the name of the bank branch with the greatest number of customers?"
+    },
+    {
+        "query": "query { customer ( limit : 1 , order_by : { credit_score : asc } ) { cust_name } }",
+        "question": "Find the name of customer who has the lowest credit score."
+    },
+    {
+        "query": "query { customer ( limit : 1 , order_by : { credit_score : asc } ) { cust_name } }",
+        "question": "What is the name of the customer with the worst credit score?"
+    },
+    {
+        "query": "query { customer ( limit : 1 , order_by : { credit_score : desc } ) { cust_name acc_type acc_bal } }",
+        "question": "Find the name, account type, and account balance of the customer who has the highest credit score."
+    },
+    {
+        "query": "query { customer ( limit : 1 , order_by : { credit_score : desc } ) { cust_name acc_type acc_bal } }",
+        "question": "What is the name, account type, and account balance corresponding to the customer with the highest credit score?"
+    },
+    {
+        "query": "query { bank ( distinct_on : bname ) { bname } }",
+        "question": "Find the name of bank branches that provided some loans."
+    },
+    {
+        "query": "query { bank ( distinct_on : bname ) { bname } }",
+        "question": "What are the names of the different banks that have provided loans?"
+    },
+    {
+        "query": "query { customer ( where : { loans : { amount : { _gt : 3000 } } } ) { cust_name } }",
+        "question": "Find the the name of the customers who have a loan with amount more than 3000."
+    },
+    {
+        "query": "query { customer ( where : { loans : { amount : { _gt : 3000 } } } ) { cust_name } }",
+        "question": "What are the names of customers who have a loan of more than 3000 in amount?"
+    },
+    {
+        "query": "query { bank ( where : { loans : { loan_type : { _eq : \"Business\" } } } ) { bname city } }",
+        "question": "Find the city and name of bank branches that provide business loans."
+    },
+    {
+        "query": "query { bank ( where : { loans : { loan_type : { _eq : \"Business\" } } } ) { bname city } }",
+        "question": "What are the names and cities of bank branches that offer loans for business?"
+    },
+    {
+        "query": "query { loan_aggregate ( where : { bank : { state : { _eq : \"New York\" } } } ) { aggregate { sum { amount } } } }",
+        "question": "Find the total amount of loans provided by bank branches in the state of New York."
+    },
+    {
+        "query": "query { loan_aggregate ( where : { bank : { state : { _eq : \"New York\" } } } ) { aggregate { sum { amount } } } }",
+        "question": "What is the total amount of money loaned by banks in New York state?"
+    }
+]

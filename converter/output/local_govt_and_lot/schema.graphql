@@ -1,0 +1,128 @@
+type Query {
+  """"""
+  Customer_Event_Notes(_limit: Int, Customer_Event_Note_ID: Int, Customer_Event_ID: Int, service_type_code: String, resident_id: Int, property_id: Int, date_moved_in: Date): [Customer_Event_NotesT]
+
+  """"""
+  Customer_Events(_limit: Int, Customer_Event_ID: Int, customer_id: Int, date_moved_in: Date, property_id: Int, resident_id: Int, thing_id: Int): [Customer_EventsT]
+
+  """"""
+  Customers(_limit: Int, customer_id: Int, customer_details: String): [CustomersT]
+
+  """"""
+  Organizations(_limit: Int, organization_id: Int, parent_organization_id: Int, organization_details: String): [OrganizationsT]
+
+  """"""
+  Properties(_limit: Int, property_id: Int, property_type_code: String, property_address: String, other_details: String): [PropertiesT]
+
+  """"""
+  Residents(_limit: Int, resident_id: Int, property_id: Int, date_moved_in: Date, date_moved_out: Date, other_details: String): [ResidentsT]
+
+  """"""
+  Residents_Services(_limit: Int, resident_id: Int, service_id: Int, date_moved_in: Date, property_id: Int, date_requested: Date, date_provided: Date, other_details: String): [Residents_ServicesT]
+
+  """"""
+  Services(_limit: Int, service_id: Int, organization_id: Int, service_type_code: String, service_details: String): [ServicesT]
+
+  """"""
+  Things(_limit: Int, thing_id: Int, organization_id: Int, Type_of_Thing_Code: String, service_type_code: String, service_details: String): [ThingsT]
+
+  """"""
+  Timed_Locations_of_Things(_limit: Int, thing_id: Int, Date_and_Time: Date, Location_Code: String): [Timed_Locations_of_ThingsT]
+
+  """"""
+  Timed_Status_of_Things(_limit: Int, thing_id: Int, Date_and_Date: Date, Status_of_Thing_Code: String): [Timed_Status_of_ThingsT]
+}
+
+type Customer_Event_NotesT {
+  Customer_Event_Note_ID: Int
+  Customer_Event_ID: Int
+  service_type_code: String
+  resident_id: Int
+  property_id: Int
+  date_moved_in: Date
+  Customer_Events(_limit: Int, customer_id: Int, date_moved_in: Date, property_id: Int, resident_id: Int, thing_id: Int): [Customer_EventsT]
+}
+
+scalar Date
+
+type Customer_EventsT {
+  Customer_Event_ID: Int
+  customer_id: Int
+  date_moved_in: Date
+  property_id: Int
+  resident_id: Int
+  thing_id: Int
+  Customers(_limit: Int, customer_details: String): [CustomersT]
+  Residents(_limit: Int, resident_id: Int, property_id: Int, date_moved_out: Date, other_details: String): [ResidentsT]
+  Things(_limit: Int, organization_id: Int, Type_of_Thing_Code: String, service_type_code: String, service_details: String): [ThingsT]
+}
+
+type CustomersT {
+  customer_id: Int
+  customer_details: String
+}
+
+type ResidentsT {
+  resident_id: Int
+  property_id: Int
+  date_moved_in: Date
+  date_moved_out: Date
+  other_details: String
+  Properties(_limit: Int, property_type_code: String, property_address: String, other_details: String): [PropertiesT]
+}
+
+type PropertiesT {
+  property_id: Int
+  property_type_code: String
+  property_address: String
+  other_details: String
+}
+
+type ThingsT {
+  thing_id: Int
+  organization_id: Int
+  Type_of_Thing_Code: String
+  service_type_code: String
+  service_details: String
+  Organizations(_limit: Int, parent_organization_id: Int, organization_details: String): [OrganizationsT]
+}
+
+type OrganizationsT {
+  organization_id: Int
+  parent_organization_id: Int
+  organization_details: String
+}
+
+type Residents_ServicesT {
+  resident_id: Int
+  service_id: Int
+  date_moved_in: Date
+  property_id: Int
+  date_requested: Date
+  date_provided: Date
+  other_details: String
+  Residents(_limit: Int, resident_id: Int, property_id: Int, date_moved_out: Date, other_details: String): [ResidentsT]
+  Services(_limit: Int, organization_id: Int, service_type_code: String, service_details: String): [ServicesT]
+}
+
+type ServicesT {
+  service_id: Int
+  organization_id: Int
+  service_type_code: String
+  service_details: String
+  Organizations(_limit: Int, parent_organization_id: Int, organization_details: String): [OrganizationsT]
+}
+
+type Timed_Locations_of_ThingsT {
+  thing_id: Int
+  Date_and_Time: Date
+  Location_Code: String
+  Things(_limit: Int, organization_id: Int, Type_of_Thing_Code: String, service_type_code: String, service_details: String): [ThingsT]
+}
+
+type Timed_Status_of_ThingsT {
+  thing_id: Int
+  Date_and_Date: Date
+  Status_of_Thing_Code: String
+  Things(_limit: Int, organization_id: Int, Type_of_Thing_Code: String, service_type_code: String, service_details: String): [ThingsT]
+}

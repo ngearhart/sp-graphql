@@ -1,0 +1,47 @@
+type Query {
+  """"""
+  Documents(_limit: Int, Document_ID: Int, Template_ID: Int, Document_Name: String, Document_Description: String, Other_Details: String): [DocumentsT]
+
+  """"""
+  Paragraphs(_limit: Int, Paragraph_ID: Int, Document_ID: Int, Paragraph_Text: String, Other_Details: String): [ParagraphsT]
+
+  """"""
+  Ref_Template_Types(_limit: Int, Template_Type_Code: String, Template_Type_Description: String): [Ref_Template_TypesT]
+
+  """"""
+  Templates(_limit: Int, Template_ID: Int, Version_Number: Int, Template_Type_Code: String, Date_Effective_From: Date, Date_Effective_To: Date, Template_Details: String): [TemplatesT]
+}
+
+type DocumentsT {
+  Document_ID: Int
+  Template_ID: Int
+  Document_Name: String
+  Document_Description: String
+  Other_Details: String
+  Templates(_limit: Int, Version_Number: Int, Template_Type_Code: String, Date_Effective_From: Date, Date_Effective_To: Date, Template_Details: String): [TemplatesT]
+}
+
+type TemplatesT {
+  Template_ID: Int
+  Version_Number: Int
+  Template_Type_Code: String
+  Date_Effective_From: Date
+  Date_Effective_To: Date
+  Template_Details: String
+  Ref_Template_Types(_limit: Int, Template_Type_Description: String): [Ref_Template_TypesT]
+}
+
+scalar Date
+
+type Ref_Template_TypesT {
+  Template_Type_Code: String
+  Template_Type_Description: String
+}
+
+type ParagraphsT {
+  Paragraph_ID: Int
+  Document_ID: Int
+  Paragraph_Text: String
+  Other_Details: String
+  Documents(_limit: Int, Template_ID: Int, Document_Name: String, Document_Description: String, Other_Details: String): [DocumentsT]
+}

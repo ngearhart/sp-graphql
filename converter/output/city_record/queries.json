@@ -1,0 +1,90 @@
+[
+    {
+        "query": "query { hosting_city ( limit : 1 , order_by : { year : desc } ) { host_city } }",
+        "question": "What is id of the city that hosted events in the most recent year?"
+    },
+    {
+        "query": "query { hosting_city ( limit : 1 , order_by : { year : desc } ) { host_city } }",
+        "question": "Find the city that hosted some events in the most recent year. What is the id of this city?"
+    },
+    {
+        "query": "query { match ( where : { competition : { _eq : \"1994 FIFA World Cup qualification\" } } ) { match_id } }",
+        "question": "Find the match ids of the cities that hosted competition \"1994 FIFA World Cup qualification\"?"
+    },
+    {
+        "query": "query { match ( where : { competition : { _eq : \"1994 FIFA World Cup qualification\" } } ) { match_id } }",
+        "question": "What is the match id of the competition called \"1994 FIFA World Cup qualification\"?"
+    },
+    {
+        "query": "query { city ( where : { hosting_cities : { year : { _gt : 2010 } } } ) { city } }",
+        "question": "Find the cities which were once a host city after 2010?"
+    },
+    {
+        "query": "query { city ( where : { hosting_cities : { year : { _gt : 2010 } } } ) { city } }",
+        "question": "Which cities served as a host city after 2010?"
+    },
+    {
+        "query": "query { temperature ( where : { city : { city : { _eq : \"Shanghai\" } } } ) { jan } }",
+        "question": "Give me the temperature of Shanghai in January."
+    },
+    {
+        "query": "query { temperature ( where : { city : { city : { _eq : \"Shanghai\" } } } ) { jan } }",
+        "question": "What is the temperature of \"Shanghai\" city in January?"
+    },
+    {
+        "query": "query { hosting_city ( where : { city : { city : { _eq : \"Taizhou ( Zhejiang )\" } } } ) { year } }",
+        "question": "What is the host year of city \"Taizhou ( Zhejiang )\"?"
+    },
+    {
+        "query": "query { hosting_city ( where : { city : { city : { _eq : \"Taizhou ( Zhejiang )\" } } } ) { year } }",
+        "question": "IN which year did city \"Taizhou ( Zhejiang )\" serve as a host city?"
+    },
+    {
+        "query": "query { city ( limit : 3 , order_by : { regional_population : desc } ) { city } }",
+        "question": "Which three cities have the largest regional population?"
+    },
+    {
+        "query": "query { city ( limit : 3 , order_by : { regional_population : desc } ) { city } }",
+        "question": "What are the three largest cities in terms of regional population?"
+    },
+    {
+        "query": "query { city ( limit : 1 , order_by : { gdp : asc } ) { city gdp } }",
+        "question": "Which city has the lowest GDP? Please list the city name and its GDP."
+    },
+    {
+        "query": "query { city ( limit : 1 , order_by : { gdp : asc } ) { city gdp } }",
+        "question": "What is the city with the smallest GDP? Return the city and its GDP."
+    },
+    {
+        "query": "query { city ( limit : 1 , order_by : { temperatures_aggregate : { max : { feb : desc_nulls_last } } } ) { city } }",
+        "question": "Which city has the highest temperature in February?"
+    },
+    {
+        "query": "query { city ( limit : 1 , order_by : { temperatures_aggregate : { max : { feb : desc_nulls_last } } } ) { city } }",
+        "question": "In February, which city marks the highest temperature?"
+    },
+    {
+        "query": "query { city ( where : { regional_population : { _gt : 10000000 } } ) { city } }",
+        "question": "Please give me a list of cities whose regional population is over 10000000."
+    },
+    {
+        "query": "query { city ( where : { regional_population : { _gt : 10000000 } } ) { city } }",
+        "question": "Which cities have regional population above 10000000?"
+    },
+    {
+        "query": "query { match ( order_by : { date : desc } ) { venue } }",
+        "question": "List venues of all matches in the order of their dates starting from the most recent one."
+    },
+    {
+        "query": "query { match ( order_by : { date : desc } ) { venue } }",
+        "question": "What are the venues of all the matches? Sort them in the descending order of match date."
+    },
+    {
+        "query": "query { city ( limit : 1 , order_by : { regional_population : desc } ) { gdp } }",
+        "question": "what is the GDP of the city with the largest population."
+    },
+    {
+        "query": "query { city ( limit : 1 , order_by : { regional_population : desc } ) { gdp } }",
+        "question": "Find the GDP of the city with the largest regional population."
+    }
+]

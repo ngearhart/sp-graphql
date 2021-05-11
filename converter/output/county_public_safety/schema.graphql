@@ -1,0 +1,32 @@
+type Query {
+  """"""
+  city(_limit: Int, City_ID: Int, County_ID: Int, Name: String, White: Float, Black: Float, Amerindian: Float, Asian: Float, Multiracial: Float, Hispanic: Float): [cityT]
+
+  """"""
+  county_public_safety(_limit: Int, County_ID: Int, Name: String, Population: Int, Police_officers: Int, Residents_per_officer: Int, Case_burden: Int, Crime_rate: Float, Police_force: String, Location: String): [county_public_safetyT]
+}
+
+type cityT {
+  City_ID: Int
+  County_ID: Int
+  Name: String
+  White: Float
+  Black: Float
+  Amerindian: Float
+  Asian: Float
+  Multiracial: Float
+  Hispanic: Float
+  county_public_safety(_limit: Int, Name: String, Population: Int, Police_officers: Int, Residents_per_officer: Int, Case_burden: Int, Crime_rate: Float, Police_force: String, Location: String): [county_public_safetyT]
+}
+
+type county_public_safetyT {
+  County_ID: Int
+  Name: String
+  Population: Int
+  Police_officers: Int
+  Residents_per_officer: Int
+  Case_burden: Int
+  Crime_rate: Float
+  Police_force: String
+  Location: String
+}

@@ -1,0 +1,42 @@
+[
+    {
+        "query": "query { driver_aggregate { aggregate { count } } }",
+        "question": "How many drivers are there?"
+    },
+    {
+        "query": "query { driver { name home_city age } }",
+        "question": "Show the name, home city, and age for all drivers."
+    },
+    {
+        "query": "query { driver ( order_by : { age : desc } ) { name } }",
+        "question": "Show the name of drivers in descending order of age."
+    },
+    {
+        "query": "query { driver ( distinct_on : home_city ) { home_city } }",
+        "question": "Show all different home cities."
+    },
+    {
+        "query": "query { driver ( where : { _and : { home_city : { _eq : \"Hartford\" } , age : { _gt : 40 } } } ) { party } }",
+        "question": "Show the party with drivers from Hartford and drivers older than 40."
+    },
+    {
+        "query": "query { school { school school_buses { driver { name } } } }",
+        "question": "Show the school name and driver name for all school buses."
+    },
+    {
+        "query": "query { school_bus_aggregate { aggregate { max { years_working } min { years_working } avg { years_working } } } }",
+        "question": "What is the maximum, minimum and average years spent working on a school bus?"
+    },
+    {
+        "query": "query { driver_aggregate ( where : { _or : [ { home_city : { _eq : \"Hartford\" } } , { age : { _lt : 40 } } ] } ) { aggregate { count } } }",
+        "question": "How many drivers are from Hartford city or younger than 40?"
+    },
+    {
+        "query": "query { driver ( where : { _and : { home_city : { _eq : \"Hartford\" } , age : { _lt : 40 } } } ) { name } }",
+        "question": "List names for drivers from Hartford city and younger than 40."
+    },
+    {
+        "query": "query { driver ( limit : 1 , order_by : { school_buses_aggregate : { max : { years_working : desc_nulls_last } } } ) { name } }",
+        "question": "find the name of driver who is driving the school bus with the longest working history."
+    }
+]

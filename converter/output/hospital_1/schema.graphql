@@ -1,0 +1,168 @@
+type Query {
+  """"""
+  Affiliated_With(_limit: Int, Physician: Int, Department: Int, PrimaryAffiliation: Int): [Affiliated_WithT]
+
+  """"""
+  Appointment(_limit: Int, AppointmentID: Int, Patient: Int, PrepNurse: Int, Physician: Int, Start: Date, End: Date, ExaminationRoom: String): [AppointmentT]
+
+  """"""
+  Block(_limit: Int, BlockFloor: Int, BlockCode: Int): [BlockT]
+
+  """"""
+  Department(_limit: Int, DepartmentID: Int, Name: String, Head: Int): [DepartmentT]
+
+  """"""
+  Medication(_limit: Int, Code: Int, Name: String, Brand: String, Description: String): [MedicationT]
+
+  """"""
+  Nurse(_limit: Int, EmployeeID: Int, Name: String, Position: String, Registered: Int, SSN: Int): [NurseT]
+
+  """"""
+  On_Call(_limit: Int, Nurse: Int, BlockFloor: Int, BlockCode: Int, OnCallStart: Date, OnCallEnd: Date): [On_CallT]
+
+  """"""
+  Patient(_limit: Int, SSN: Int, Name: String, Address: String, Phone: String, InsuranceID: Int, PCP: Int): [PatientT]
+
+  """"""
+  Physician(_limit: Int, EmployeeID: Int, Name: String, Position: String, SSN: Int): [PhysicianT]
+
+  """"""
+  Prescribes(_limit: Int, Physician: Int, Patient: Int, Medication: Int, Date: Date, Appointment: Int, Dose: String): [PrescribesT]
+
+  """"""
+  Procedures(_limit: Int, Code: Int, Name: String, Cost: Float): [ProceduresT]
+
+  """"""
+  Room(_limit: Int, RoomNumber: Int, RoomType: String, BlockFloor: Int, BlockCode: Int, Unavailable: Int): [RoomT]
+
+  """"""
+  Stay(_limit: Int, StayID: Int, Patient: Int, Room: Int, StayStart: Date, StayEnd: Date): [StayT]
+
+  """"""
+  Trained_In(_limit: Int, Physician: Int, Treatment: Int, CertificationDate: Date, CertificationExpires: Date): [Trained_InT]
+
+  """"""
+  Undergoes(_limit: Int, Patient: Int, Procedures: Int, Stay: Int, DateUndergoes: Date, Physician: Int, AssistingNurse: Int): [UndergoesT]
+}
+
+type Affiliated_WithT {
+  Physician(_limit: Int, Name: String, Position: String, SSN: Int): [PhysicianT]
+  Department(_limit: Int, Name: String, Head: Int): [DepartmentT]
+  PrimaryAffiliation: Int
+}
+
+type PhysicianT {
+  EmployeeID: Int
+  Name: String
+  Position: String
+  SSN: Int
+}
+
+type DepartmentT {
+  DepartmentID: Int
+  Name: String
+  Head: Int
+  Physician(_limit: Int, Name: String, Position: String, SSN: Int): [PhysicianT]
+}
+
+type AppointmentT {
+  AppointmentID: Int
+  Patient(_limit: Int, Name: String, Address: String, Phone: String, InsuranceID: Int, PCP: Int): [PatientT]
+  PrepNurse: Int
+  Physician(_limit: Int, Name: String, Position: String, SSN: Int): [PhysicianT]
+  Start: Date
+  End: Date
+  ExaminationRoom: String
+  Nurse(_limit: Int, Name: String, Position: String, Registered: Int, SSN: Int): [NurseT]
+}
+
+type PatientT {
+  SSN: Int
+  Name: String
+  Address: String
+  Phone: String
+  InsuranceID: Int
+  PCP: Int
+  Physician(_limit: Int, Name: String, Position: String, SSN: Int): [PhysicianT]
+}
+
+scalar Date
+
+type NurseT {
+  EmployeeID: Int
+  Name: String
+  Position: String
+  Registered: Int
+  SSN: Int
+}
+
+type BlockT {
+  BlockFloor: Int
+  BlockCode: Int
+}
+
+type MedicationT {
+  Code: Int
+  Name: String
+  Brand: String
+  Description: String
+}
+
+type On_CallT {
+  Nurse(_limit: Int, Name: String, Position: String, Registered: Int, SSN: Int): [NurseT]
+  BlockFloor: Int
+  BlockCode: Int
+  OnCallStart: Date
+  OnCallEnd: Date
+  Block(_limit: Int, BlockFloor: Int): [BlockT]
+}
+
+type PrescribesT {
+  Physician(_limit: Int, Name: String, Position: String, SSN: Int): [PhysicianT]
+  Patient(_limit: Int, Name: String, Address: String, Phone: String, InsuranceID: Int, PCP: Int): [PatientT]
+  Medication(_limit: Int, Name: String, Brand: String, Description: String): [MedicationT]
+  Date: Date
+  Appointment(_limit: Int, Patient: Int, PrepNurse: Int, Physician: Int, Start: Date, End: Date, ExaminationRoom: String): [AppointmentT]
+  Dose: String
+}
+
+type ProceduresT {
+  Code: Int
+  Name: String
+  Cost: Float
+}
+
+type RoomT {
+  RoomNumber: Int
+  RoomType: String
+  BlockFloor: Int
+  BlockCode: Int
+  Unavailable: Int
+  Block(_limit: Int, BlockCode: Int): [BlockT]
+}
+
+type StayT {
+  StayID: Int
+  Patient(_limit: Int, Name: String, Address: String, Phone: String, InsuranceID: Int, PCP: Int): [PatientT]
+  Room(_limit: Int, RoomType: String, BlockFloor: Int, BlockCode: Int, Unavailable: Int): [RoomT]
+  StayStart: Date
+  StayEnd: Date
+}
+
+type Trained_InT {
+  Physician(_limit: Int, Name: String, Position: String, SSN: Int): [PhysicianT]
+  Treatment: Int
+  CertificationDate: Date
+  CertificationExpires: Date
+  Procedures(_limit: Int, Name: String, Cost: Float): [ProceduresT]
+}
+
+type UndergoesT {
+  Patient(_limit: Int, Name: String, Address: String, Phone: String, InsuranceID: Int, PCP: Int): [PatientT]
+  Procedures(_limit: Int, Name: String, Cost: Float): [ProceduresT]
+  Stay(_limit: Int, Patient: Int, Room: Int, StayStart: Date, StayEnd: Date): [StayT]
+  DateUndergoes: Date
+  Physician(_limit: Int, Name: String, Position: String, SSN: Int): [PhysicianT]
+  AssistingNurse: Int
+  Nurse(_limit: Int, Name: String, Position: String, Registered: Int, SSN: Int): [NurseT]
+}

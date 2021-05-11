@@ -1,0 +1,23 @@
+type Query {
+  """"""
+  Manufacturers(_limit: Int, Code: Int, Name: String, Headquarter: String, Founder: String, Revenue: Float): [ManufacturersT]
+
+  """"""
+  Products(_limit: Int, Code: Int, Name: String, Price: Float, Manufacturer: Int): [ProductsT]
+}
+
+type ManufacturersT {
+  Code: Int
+  Name: String
+  Headquarter: String
+  Founder: String
+  Revenue: Float
+}
+
+type ProductsT {
+  Code: Int
+  Name: String
+  Price: Float
+  Manufacturer: Int
+  Manufacturers(_limit: Int, Name: String, Headquarter: String, Founder: String, Revenue: Float): [ManufacturersT]
+}

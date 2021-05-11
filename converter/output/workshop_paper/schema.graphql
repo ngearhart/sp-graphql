@@ -1,0 +1,21 @@
+type Query {
+  """"""
+  submission(_limit: Int, Submission_ID: Int, Scores: Float, Author: String, College: String): [submissionT]
+
+  """"""
+  workshop(_limit: Int, Workshop_ID: Int, Date: String, Venue: String, Name: String): [workshopT]
+}
+
+type submissionT {
+  Submission_ID: Int
+  Scores: Float
+  Author: String
+  College: String
+}
+
+type workshopT {
+  Workshop_ID: Int
+  Date: String
+  Venue: String
+  Name: String
+}

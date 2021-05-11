@@ -1,0 +1,26 @@
+[
+    {
+        "query": "query { products_aggregate { aggregate { count } } }",
+        "question": "How many products are there?"
+    },
+    {
+        "query": "query { products ( order_by : { product_price : asc } ) { product_name } }",
+        "question": "List the name of products in ascending order of price."
+    },
+    {
+        "query": "query { products { product_name product_type_code } }",
+        "question": "What are the names and type codes of products?"
+    },
+    {
+        "query": "query { products ( where : { _or : [ { product_name : { _eq : \"Dining\" } } , { product_name : { _eq : \"Trading Policy\" } } ] } ) { product_price } }",
+        "question": "Show the prices of the products named \"Dining\" or \"Trading Policy\"."
+    },
+    {
+        "query": "query { products_aggregate { aggregate { avg { product_price } } } }",
+        "question": "What is the average price for products?"
+    },
+    {
+        "query": "query { products ( limit : 1 , order_by : { product_price : desc } ) { product_name } }",
+        "question": "What is the name of the product with the highest price?"
+    }
+]

@@ -1,0 +1,13 @@
+type Query {
+  """"""
+  city(_limit: Int, City_ID: Int, City: String, Hanzi: String, Hanyu_Pinyin: String, Regional_Population: Int, GDP: Float): [cityT]
+}
+
+type cityT {
+  City_ID: Int
+  City: String
+  Hanzi: String
+  Hanyu_Pinyin: String
+  Regional_Population: Int
+  GDP: Float
+}

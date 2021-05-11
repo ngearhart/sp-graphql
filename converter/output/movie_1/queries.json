@@ -1,0 +1,146 @@
+[
+    {
+        "query": "query { movie ( where : { director : { _eq : \"Steven Spielberg\" } } ) { title } }",
+        "question": "Find the titles of all movies directed by steven spielberg."
+    },
+    {
+        "query": "query { movie ( where : { director : { _eq : \"Steven Spielberg\" } } ) { title } }",
+        "question": "What are the names of all movies directed by Steven Spielberg?"
+    },
+    {
+        "query": "query { movie ( where : { _and : { year : { _gt : 2000 } , director : { _eq : \"James Cameron\" } } } ) { title } }",
+        "question": "What is the name of the movie produced after 2000 and directed by James Cameron?"
+    },
+    {
+        "query": "query { movie ( where : { _and : { year : { _gt : 2000 } , director : { _eq : \"James Cameron\" } } } ) { title } }",
+        "question": "What are the titles of all movies that James Cameron directed after 2000?"
+    },
+    {
+        "query": "query { movie_aggregate ( where : { year : { _lt : 2000 } } ) { aggregate { count } } }",
+        "question": "How many movies were made before 2000?"
+    },
+    {
+        "query": "query { movie_aggregate ( where : { year : { _lt : 2000 } } ) { aggregate { count } } }",
+        "question": "How many movies were made before 2000?"
+    },
+    {
+        "query": "query { movie ( where : { title : { _eq : \"Avatar\" } } ) { director } }",
+        "question": "Who is the director of movie Avatar?"
+    },
+    {
+        "query": "query { movie ( where : { title : { _eq : \"Avatar\" } } ) { director } }",
+        "question": "Who directed Avatar?"
+    },
+    {
+        "query": "query { reviewer_aggregate { aggregate { count } } }",
+        "question": "How many reviewers listed?"
+    },
+    {
+        "query": "query { reviewer_aggregate { aggregate { count } } }",
+        "question": "How many reviewers are there?"
+    },
+    {
+        "query": "query { reviewer ( where : { name : { _like : \"%Mike%\" } } ) { rid } }",
+        "question": "What is the id of the reviewer whose name has substring \u201cMike\u201d?"
+    },
+    {
+        "query": "query { reviewer ( where : { name : { _like : \"%Mike%\" } } ) { rid } }",
+        "question": "What is the id of the reviewer whose name includes the word \"Mike\"?"
+    },
+    {
+        "query": "query { reviewer ( where : { name : { _eq : \"Daniel Lewis\" } } ) { rid } }",
+        "question": "What is the reviewer id of Daniel Lewis?"
+    },
+    {
+        "query": "query { reviewer ( where : { name : { _eq : \"Daniel Lewis\" } } ) { rid } }",
+        "question": "What is the id of the reviewer named Daniel Lewis?"
+    },
+    {
+        "query": "query { rating_aggregate ( where : { stars : { _gt : 3 } } ) { aggregate { count } } }",
+        "question": "What is the total number of ratings that has more than 3 stars?"
+    },
+    {
+        "query": "query { rating_aggregate ( where : { stars : { _gt : 3 } } ) { aggregate { count } } }",
+        "question": "How many movie ratings have more than 3 stars?"
+    },
+    {
+        "query": "query { rating_aggregate { aggregate { max { stars } min { stars } } } }",
+        "question": "What is the lowest and highest rating star?"
+    },
+    {
+        "query": "query { rating_aggregate { aggregate { max { stars } min { stars } } } }",
+        "question": "What is the maximum and mininum number of stars a rating can receive?"
+    },
+    {
+        "query": "query { movie ( order_by : { year : asc } , where : { ratings : { stars : { _gte : 4 } } } , distinct_on : year ) { year } }",
+        "question": "Find all years that have a movie that received a rating of 4 or 5, and sort them in increasing order of year."
+    },
+    {
+        "query": "query { movie ( order_by : { year : asc } , where : { ratings : { stars : { _gte : 4 } } } , distinct_on : year ) { year } }",
+        "question": "In what years did a movie receive a 4 or 5 star rating, and list the years from oldest to most recently?"
+    },
+    {
+        "query": "query { movie ( where : { ratings : { stars : { _eq : 5 } } } ) { director title } }",
+        "question": "What are the names of directors who directed movies with 5 star rating? Also return the title of these movies."
+    },
+    {
+        "query": "query { movie ( where : { ratings : { stars : { _eq : 5 } } } ) { director title } }",
+        "question": "What are the names of the directors who created a movie with a 5 star rating, and what was the name of those movies?"
+    },
+    {
+        "query": "query { reviewer ( where : { ratings : { ratingdate : { _eq : \"null\" } } } , distinct_on : name ) { name } }",
+        "question": "Find the names of all reviewers who have ratings with a NULL value for the date."
+    },
+    {
+        "query": "query { reviewer ( where : { ratings : { ratingdate : { _eq : \"null\" } } } , distinct_on : name ) { name } }",
+        "question": "What are the different names of all reviewers whose ratings do not have a date field?"
+    },
+    {
+        "query": "query { reviewer ( where : { ratings : { movie : { title : { _eq : \"Gone with the Wind\" } } } } , distinct_on : name ) { name } }",
+        "question": "Find the names of all reviewers who rated Gone with the Wind."
+    },
+    {
+        "query": "query { reviewer ( where : { ratings : { movie : { title : { _eq : \"Gone with the Wind\" } } } } , distinct_on : name ) { name } }",
+        "question": "What are the names of all the different reviewers who rates Gone with the Wind?"
+    },
+    {
+        "query": "query { movie ( limit : 3 , order_by : { ratings_aggregate : { max : { stars : desc_nulls_last } } } ) { title year } }",
+        "question": "What are the names and years of the movies that has the top 3 highest rating star?"
+    },
+    {
+        "query": "query { movie ( limit : 3 , order_by : { ratings_aggregate : { max : { stars : desc_nulls_last } } } ) { title year } }",
+        "question": "What are the names and years released for the movies with the top 3 highest ratings?"
+    },
+    {
+        "query": "query { movie ( where : { ratings : { stars : { _gte : 3 , _lte : 5 } } } ) { title } }",
+        "question": "What are the titles of all movies that have rating star is between 3 and 5?"
+    },
+    {
+        "query": "query { movie ( where : { ratings : { stars : { _gte : 3 , _lte : 5 } } } ) { title } }",
+        "question": "What are the titles of all movies that have between 3 and 5 stars?"
+    },
+    {
+        "query": "query { reviewer ( where : { ratings : { stars : { _gt : 3 } } } ) { name } }",
+        "question": "Find the names of reviewers who had given higher than 3 star ratings."
+    },
+    {
+        "query": "query { reviewer ( where : { ratings : { stars : { _gt : 3 } } } ) { name } }",
+        "question": "What are the names of the reviewers who have rated a movie more than 3 stars before?"
+    },
+    {
+        "query": "query { rating ( where : { stars : { _neq : 4 } } ) { rid } }",
+        "question": "Find the ids of reviewers who didn't only give 4 star."
+    },
+    {
+        "query": "query { rating ( where : { stars : { _neq : 4 } } ) { rid } }",
+        "question": "What are the ids of all reviewers who have not given 4 stars at least once?"
+    },
+    {
+        "query": "query { movie ( where : { _or : [ { director : { _eq : \"James Cameron\" } } , { year : { _lt : 1980 } } ] } ) { title } }",
+        "question": "What are names of the movies that are either made before 1980 or directed by James Cameron?"
+    },
+    {
+        "query": "query { movie ( where : { _or : [ { director : { _eq : \"James Cameron\" } } , { year : { _lt : 1980 } } ] } ) { title } }",
+        "question": "What are the names of all movies made before 1980 or had James Cameron as the director?"
+    }
+]

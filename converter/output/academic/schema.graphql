@@ -1,0 +1,85 @@
+type Query {
+  """"""
+  author(_limit: Int, aid: Int, homepage: String, name: String, oid: Int): [authorT]
+
+  """"""
+  conference(_limit: Int, cid: Int, homepage: String, name: String): [conferenceT]
+
+  """"""
+  domain(_limit: Int, did: Int, name: String): [domainT]
+
+  """"""
+  domain_author(_limit: Int, aid: Int, did: Int): [domain_authorT]
+
+  """"""
+  domain_conference(_limit: Int, cid: Int, did: Int): [domain_conferenceT]
+
+  """"""
+  domain_journal(_limit: Int, did: Int, jid: Int): [domain_journalT]
+
+  """"""
+  domain_keyword(_limit: Int, did: Int, kid: Int): [domain_keywordT]
+
+  """"""
+  journal(_limit: Int, homepage: String, jid: Int, name: String): [journalT]
+
+  """"""
+  keyword(_limit: Int, keyword: String, kid: Int): [keywordT]
+}
+
+type authorT {
+  aid: Int
+  homepage: String
+  name: String
+  oid: Int
+}
+
+type conferenceT {
+  cid: Int
+  homepage: String
+  name: String
+}
+
+type domainT {
+  did: Int
+  name: String
+}
+
+type domain_authorT {
+  aid: Int
+  did: Int
+  author(_limit: Int, homepage: String, name: String, oid: Int): [authorT]
+  domain(_limit: Int, name: String): [domainT]
+}
+
+type domain_conferenceT {
+  cid: Int
+  did: Int
+  conference(_limit: Int, homepage: String, name: String): [conferenceT]
+  domain(_limit: Int, name: String): [domainT]
+}
+
+type domain_journalT {
+  did: Int
+  jid: Int
+  domain(_limit: Int, name: String): [domainT]
+  journal(_limit: Int, homepage: String, name: String): [journalT]
+}
+
+type journalT {
+  homepage: String
+  jid: Int
+  name: String
+}
+
+type domain_keywordT {
+  did: Int
+  kid: Int
+  domain(_limit: Int, name: String): [domainT]
+  keyword(_limit: Int, keyword: String): [keywordT]
+}
+
+type keywordT {
+  keyword: String
+  kid: Int
+}

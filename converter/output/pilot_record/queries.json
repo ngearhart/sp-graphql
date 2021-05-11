@@ -1,0 +1,34 @@
+[
+    {
+        "query": "query { pilot_aggregate { aggregate { count } } }",
+        "question": "How many pilots are there?"
+    },
+    {
+        "query": "query { pilot ( order_by : { rank : asc } ) { pilot_name } }",
+        "question": "List the names of pilots in ascending order of rank."
+    },
+    {
+        "query": "query { pilot { position team } }",
+        "question": "What are the positions and teams of pilots?"
+    },
+    {
+        "query": "query { pilot ( where : { age : { _gt : 30 } } , distinct_on : position ) { position } }",
+        "question": "List the distinct positions of pilots older than 30."
+    },
+    {
+        "query": "query { pilot ( where : { _or : [ { team : { _eq : \"Bradley\" } } , { team : { _eq : \"Fordham\" } } ] } ) { pilot_name } }",
+        "question": "Show the names of pilots from team \"Bradley\" or \"Fordham\"."
+    },
+    {
+        "query": "query { pilot ( limit : 1 , order_by : { rank : asc } ) { join_year } }",
+        "question": "What is the joined year of the pilot of the highest rank?"
+    },
+    {
+        "query": "query { pilot { pilot_name pilot_records { aircraft { model } } } }",
+        "question": "Show the names of pilots and models of aircrafts they have flied with."
+    },
+    {
+        "query": "query { pilot ( order_by : { rank : asc } ) { pilot_name pilot_records { aircraft { fleet_series } } } }",
+        "question": "Show the names of pilots and fleet series of the aircrafts they have flied with in ascending order of the rank of the pilot."
+    }
+]

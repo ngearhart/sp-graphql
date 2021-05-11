@@ -1,0 +1,194 @@
+[
+    {
+        "query": "query { apartment_bookings_aggregate { aggregate { count } } }",
+        "question": "How many apartment bookings are there in total?"
+    },
+    {
+        "query": "query { apartment_bookings_aggregate { aggregate { count } } }",
+        "question": "Count the total number of apartment bookings."
+    },
+    {
+        "query": "query { apartment_bookings { booking_start_date booking_end_date } }",
+        "question": "Show the start dates and end dates of all the apartment bookings."
+    },
+    {
+        "query": "query { apartment_bookings { booking_start_date booking_end_date } }",
+        "question": "What are the start date and end date of each apartment booking?"
+    },
+    {
+        "query": "query { apartment_buildings ( distinct_on : building_description ) { building_description } }",
+        "question": "Show all distinct building descriptions."
+    },
+    {
+        "query": "query { apartment_buildings ( distinct_on : building_description ) { building_description } }",
+        "question": "Give me a list of all the distinct building descriptions."
+    },
+    {
+        "query": "query { apartment_buildings ( where : { building_manager : { _eq : \"Emma\" } } ) { building_short_name } }",
+        "question": "Show the short names of the buildings managed by \"Emma\"."
+    },
+    {
+        "query": "query { apartment_buildings ( where : { building_manager : { _eq : \"Emma\" } } ) { building_short_name } }",
+        "question": "Which buildings does \"Emma\" manage? Give me the short names of the buildings."
+    },
+    {
+        "query": "query { apartment_buildings ( where : { building_manager : { _eq : \"Brenden\" } } ) { building_address building_phone } }",
+        "question": "Show the addresses and phones of all the buildings managed by \"Brenden\"."
+    },
+    {
+        "query": "query { apartment_buildings ( where : { building_manager : { _eq : \"Brenden\" } } ) { building_address building_phone } }",
+        "question": "What are the address and phone number of the buildings managed by \"Brenden\"?"
+    },
+    {
+        "query": "query { apartment_buildings ( where : { building_full_name : { _like : \"%court%\" } } ) { building_full_name } }",
+        "question": "What are the building full names that contain the word \"court\"?"
+    },
+    {
+        "query": "query { apartment_buildings ( where : { building_full_name : { _like : \"%court%\" } } ) { building_full_name } }",
+        "question": "Find all the building full names containing the word \"court\"."
+    },
+    {
+        "query": "query { apartments_aggregate { aggregate { min { bathroom_count } max { bathroom_count } } } }",
+        "question": "What is the minimum and maximum number of bathrooms of all the apartments?"
+    },
+    {
+        "query": "query { apartments_aggregate { aggregate { min { bathroom_count } max { bathroom_count } } } }",
+        "question": "Give me the minimum and maximum bathroom count among all the apartments."
+    },
+    {
+        "query": "query { apartments_aggregate { aggregate { avg { bedroom_count } } } }",
+        "question": "What is the average number of bedrooms of all apartments?"
+    },
+    {
+        "query": "query { apartments_aggregate { aggregate { avg { bedroom_count } } } }",
+        "question": "Find the average number of bedrooms of all the apartments."
+    },
+    {
+        "query": "query { apartments { apt_number room_count } }",
+        "question": "Return the apartment number and the number of rooms for each apartment."
+    },
+    {
+        "query": "query { apartments { apt_number room_count } }",
+        "question": "What are the apartment number and the room count of each apartment?"
+    },
+    {
+        "query": "query { apartments_aggregate ( where : { apt_type_code : { _eq : \"Studio\" } } ) { aggregate { avg { room_count } } } }",
+        "question": "What is the average number of rooms of apartments with type code \"Studio\"?"
+    },
+    {
+        "query": "query { apartments_aggregate ( where : { apt_type_code : { _eq : \"Studio\" } } ) { aggregate { avg { room_count } } } }",
+        "question": "Find the average room count of the apartments that have the \"Studio\" type code."
+    },
+    {
+        "query": "query { apartments ( where : { apt_type_code : { _eq : \"Flat\" } } ) { apt_number } }",
+        "question": "Return the apartment numbers of the apartments with type code \"Flat\"."
+    },
+    {
+        "query": "query { apartments ( where : { apt_type_code : { _eq : \"Flat\" } } ) { apt_number } }",
+        "question": "Which apartments have type code \"Flat\"? Give me their apartment numbers."
+    },
+    {
+        "query": "query { guests { guest_first_name guest_last_name } }",
+        "question": "Return the first names and last names of all guests"
+    },
+    {
+        "query": "query { guests { guest_first_name guest_last_name } }",
+        "question": "What are the first names and last names of all the guests?"
+    },
+    {
+        "query": "query { guests ( where : { gender_code : { _eq : \"Male\" } } ) { date_of_birth } }",
+        "question": "Return the date of birth for all the guests with gender code \"Male\"."
+    },
+    {
+        "query": "query { guests ( where : { gender_code : { _eq : \"Male\" } } ) { date_of_birth } }",
+        "question": "What are dates of birth of all the guests whose gender is \"Male\"?"
+    },
+    {
+        "query": "query { apartment_bookings ( where : { apartment : { apt_number : { _eq : \"Suite 634\" } } } ) { booking_status_code } }",
+        "question": "What is the booking status code of the apartment with apartment number \"Suite 634\"?"
+    },
+    {
+        "query": "query { apartment_bookings ( where : { apartment : { apt_number : { _eq : \"Suite 634\" } } } ) { booking_status_code } }",
+        "question": "Tell me the booking status code for the apartment with number \"Suite 634\"."
+    },
+    {
+        "query": "query { apartments ( where : { apartment_bookings : { booking_status_code : { _eq : \"Confirmed\" } } } , distinct_on : apt_number ) { apt_number } }",
+        "question": "Show the distinct apartment numbers of the apartments that have bookings with status code \"Confirmed\"."
+    },
+    {
+        "query": "query { apartments ( where : { apartment_bookings : { booking_status_code : { _eq : \"Confirmed\" } } } , distinct_on : apt_number ) { apt_number } }",
+        "question": "Which apartments have bookings with status code \"Confirmed\"? Return their apartment numbers."
+    },
+    {
+        "query": "query { apartments_aggregate ( where : { apartment_bookings : { booking_status_code : { _eq : \"Provisional\" } } } ) { aggregate { avg { room_count } } } }",
+        "question": "Show the average room count of the apartments that have booking status code \"Provisional\"."
+    },
+    {
+        "query": "query { apartments_aggregate ( where : { apartment_bookings : { booking_status_code : { _eq : \"Provisional\" } } } ) { aggregate { avg { room_count } } } }",
+        "question": "What is the average room count of the apartments whose booking status code is \"Provisional\"?"
+    },
+    {
+        "query": "query { guests ( where : { apartment_bookings : { booking_status_code : { _eq : \"Confirmed\" } } } ) { guest_first_name guest_last_name } }",
+        "question": "Show the first names and last names of all the guests that have apartment bookings with status code \"Confirmed\"."
+    },
+    {
+        "query": "query { guests ( where : { apartment_bookings : { booking_status_code : { _eq : \"Confirmed\" } } } ) { guest_first_name guest_last_name } }",
+        "question": "Which guests have apartment bookings with status code \"Confirmed\"? Return their first names and last names."
+    },
+    {
+        "query": "query { apartment_facilities ( where : { apartment : { bedroom_count : { _gt : 4 } } } ) { facility_code } }",
+        "question": "Show the facility codes of apartments with more than 4 bedrooms."
+    },
+    {
+        "query": "query { apartment_facilities ( where : { apartment : { bedroom_count : { _gt : 4 } } } ) { facility_code } }",
+        "question": "What are the facility codes of the apartments with more than four bedrooms?"
+    },
+    {
+        "query": "query { apartments_aggregate ( where : { apartment_facilities : { facility_code : { _eq : \"Gym\" } } } ) { aggregate { sum { room_count } } } }",
+        "question": "Show the total number of rooms of all apartments with facility code \"Gym\"."
+    },
+    {
+        "query": "query { apartments_aggregate ( where : { apartment_facilities : { facility_code : { _eq : \"Gym\" } } } ) { aggregate { sum { room_count } } } }",
+        "question": "Find the total number of rooms in the apartments that have facility code \"Gym\"."
+    },
+    {
+        "query": "query { apartments_aggregate ( where : { apartment_building : { building_short_name : { _eq : \"Columbus Square\" } } } ) { aggregate { sum { room_count } } } }",
+        "question": "Show the total number of rooms of the apartments in the building with short name \"Columbus Square\"."
+    },
+    {
+        "query": "query { apartments_aggregate ( where : { apartment_building : { building_short_name : { _eq : \"Columbus Square\" } } } ) { aggregate { sum { room_count } } } }",
+        "question": "How many rooms in total are there in the apartments in the building with short name \"Columbus Square\"?"
+    },
+    {
+        "query": "query { apartment_buildings ( where : { apartments : { bathroom_count : { _gt : 2 } } } ) { building_address } }",
+        "question": "Show the addresses of the buildings that have apartments with more than 2 bathrooms."
+    },
+    {
+        "query": "query { apartment_buildings ( where : { apartments : { bathroom_count : { _gt : 2 } } } ) { building_address } }",
+        "question": "Which buildings have apartments that have more than two bathrooms? Give me the addresses of the buildings."
+    },
+    {
+        "query": "query { apartments ( where : { apartment_building : { building_manager : { _eq : \"Kyle\" } } } ) { apt_type_code apt_number } }",
+        "question": "Show the apartment type codes and apartment numbers in the buildings managed by \"Kyle\"."
+    },
+    {
+        "query": "query { apartments ( where : { apartment_building : { building_manager : { _eq : \"Kyle\" } } } ) { apt_type_code apt_number } }",
+        "question": "What apartment type codes and apartment numbers do the buildings managed by \"Kyle\" have?"
+    },
+    {
+        "query": "query { apartments ( order_by : { room_count : asc } ) { apt_number } }",
+        "question": "Return all the apartment numbers sorted by the room count in ascending order."
+    },
+    {
+        "query": "query { apartments ( order_by : { room_count : asc } ) { apt_number } }",
+        "question": "Sort the apartment numbers in ascending order of room count."
+    },
+    {
+        "query": "query { apartments ( limit : 1 , order_by : { bedroom_count : desc } ) { apt_number } }",
+        "question": "Return the apartment number with the largest number of bedrooms."
+    },
+    {
+        "query": "query { apartments ( limit : 1 , order_by : { bedroom_count : desc } ) { apt_number } }",
+        "question": "What is the apartment number of the apartment with the most beds?"
+    }
+]

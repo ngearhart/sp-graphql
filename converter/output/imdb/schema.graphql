@@ -1,0 +1,22 @@
+type Query {
+  """"""
+  actor(_limit: Int, aid: Int, gender: String, name: String, nationality: String, birth_city: String, birth_year: Int): [actorT]
+
+  """"""
+  copyright(_limit: Int, id: Int, msid: Int, cid: Int): [copyrightT]
+}
+
+type actorT {
+  aid: Int
+  gender: String
+  name: String
+  nationality: String
+  birth_city: String
+  birth_year: Int
+}
+
+type copyrightT {
+  id: Int
+  msid: Int
+  cid: Int
+}

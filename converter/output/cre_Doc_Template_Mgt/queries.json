@@ -1,0 +1,202 @@
+[
+    {
+        "query": "query { documents_aggregate { aggregate { count } } }",
+        "question": "How many documents do we have?"
+    },
+    {
+        "query": "query { documents_aggregate { aggregate { count } } }",
+        "question": "Count the number of documents."
+    },
+    {
+        "query": "query { documents { document_id document_name document_description } }",
+        "question": "List document IDs, document names, and document descriptions for all documents."
+    },
+    {
+        "query": "query { documents { document_id document_name document_description } }",
+        "question": "What are the ids, names, and descriptions for all documents?"
+    },
+    {
+        "query": "query { documents ( where : { document_description : { _like : \"%w%\" } } ) { document_name template_id } }",
+        "question": "What is the document name and template id for document with description with the letter 'w' in it?"
+    },
+    {
+        "query": "query { documents ( where : { document_description : { _like : \"%w%\" } } ) { document_name template_id } }",
+        "question": "Return the names and template ids for documents that contain the letter w in their description."
+    },
+    {
+        "query": "query { documents ( where : { document_name : { _eq : \"Robbin CV\" } } ) { document_id template_id document_description } }",
+        "question": "What is the document id, template id and description for document named \"Robbin CV\"?"
+    },
+    {
+        "query": "query { documents ( where : { document_name : { _eq : \"Robbin CV\" } } ) { document_id template_id document_description } }",
+        "question": "Return the document id, template id, and description for the document with the name Robbin CV."
+    },
+    {
+        "query": "query { documents_aggregate { aggregate { count } } }",
+        "question": "How many different templates do all document use?"
+    },
+    {
+        "query": "query { documents_aggregate { aggregate { count } } }",
+        "question": "Count the number of different templates used for documents."
+    },
+    {
+        "query": "query { documents_aggregate ( where : { template : { template_type_code : { _eq : \"PPT\" } } } ) { aggregate { count } } }",
+        "question": "How many documents are using the template with type code 'PPT'?"
+    },
+    {
+        "query": "query { documents_aggregate ( where : { template : { template_type_code : { _eq : \"PPT\" } } } ) { aggregate { count } } }",
+        "question": "Count the number of documents that use the PPT template type."
+    },
+    {
+        "query": "query { templates_aggregate { aggregate { count } } }",
+        "question": "How many templates do we have?"
+    },
+    {
+        "query": "query { templates_aggregate { aggregate { count } } }",
+        "question": "Count the number of templates."
+    },
+    {
+        "query": "query { templates { template_id version_number template_type_code } }",
+        "question": "Show template ids, version numbers, and template type codes for all templates."
+    },
+    {
+        "query": "query { templates { template_id version_number template_type_code } }",
+        "question": "What are the ids, version numbers, and type codes for each template?"
+    },
+    {
+        "query": "query { templates ( distinct_on : template_type_code ) { template_type_code } }",
+        "question": "Show all distinct template type codes for all templates."
+    },
+    {
+        "query": "query { templates ( distinct_on : template_type_code ) { template_type_code } }",
+        "question": "What are the different template type codes?"
+    },
+    {
+        "query": "query { templates ( where : { _or : [ { template_type_code : { _eq : \"PP\" } } , { template_type_code : { _eq : \"PPT\" } } ] } ) { template_id } }",
+        "question": "What are the ids of templates with template type code PP or PPT?"
+    },
+    {
+        "query": "query { templates ( where : { _or : [ { template_type_code : { _eq : \"PP\" } } , { template_type_code : { _eq : \"PPT\" } } ] } ) { template_id } }",
+        "question": "Return the ids of templates that have the code PP or PPT."
+    },
+    {
+        "query": "query { templates_aggregate ( where : { template_type_code : { _eq : \"CV\" } } ) { aggregate { count } } }",
+        "question": "How many templates have template type code CV?"
+    },
+    {
+        "query": "query { templates_aggregate ( where : { template_type_code : { _eq : \"CV\" } } ) { aggregate { count } } }",
+        "question": "Count the number of templates of the type CV."
+    },
+    {
+        "query": "query { templates ( where : { version_number : { _gt : 5 } } ) { version_number template_type_code } }",
+        "question": "What is the version number and template type code for the template with version number later than 5?"
+    },
+    {
+        "query": "query { templates ( where : { version_number : { _gt : 5 } } ) { version_number template_type_code } }",
+        "question": "Return the version numbers and template type codes of templates with a version number greater than 5."
+    },
+    {
+        "query": "query { templates_aggregate { nodes { template_type_code } aggregate { min { version_number } } } }",
+        "question": "What the smallest version number and its template type code?"
+    },
+    {
+        "query": "query { templates_aggregate { nodes { template_type_code } aggregate { min { version_number } } } }",
+        "question": "Return the lowest version number, along with its corresponding template type code."
+    },
+    {
+        "query": "query { templates ( where : { documents : { document_name : { _eq : \"Data base\" } } } ) { template_type_code } }",
+        "question": "What is the template type code of the template used by document with the name \"Data base\"?"
+    },
+    {
+        "query": "query { templates ( where : { documents : { document_name : { _eq : \"Data base\" } } } ) { template_type_code } }",
+        "question": "Return the template type code of the template that is used by a document named Data base."
+    },
+    {
+        "query": "query { documents ( where : { template : { template_type_code : { _eq : \"BK\" } } } ) { document_name } }",
+        "question": "Show all document names using templates with template type code BK."
+    },
+    {
+        "query": "query { documents ( where : { template : { template_type_code : { _eq : \"BK\" } } } ) { document_name } }",
+        "question": "What are the names of documents that use templates with the code BK?"
+    },
+    {
+        "query": "query { ref_template_types { template_type_code template_type_description } }",
+        "question": "Show all template type codes and descriptions."
+    },
+    {
+        "query": "query { ref_template_types { template_type_code template_type_description } }",
+        "question": "What are the type codes and descriptions for all template types?"
+    },
+    {
+        "query": "query { ref_template_types ( where : { template_type_code : { _eq : \"AD\" } } ) { template_type_description } }",
+        "question": "What is the template type descriptions for template type code \"AD\"."
+    },
+    {
+        "query": "query { ref_template_types ( where : { template_type_code : { _eq : \"AD\" } } ) { template_type_description } }",
+        "question": "Return the template type description of the template type with the code AD."
+    },
+    {
+        "query": "query { ref_template_types ( where : { template_type_description : { _eq : \"Book\" } } ) { template_type_code } }",
+        "question": "What is the template type code for template type description \"Book\"."
+    },
+    {
+        "query": "query { ref_template_types ( where : { template_type_description : { _eq : \"Book\" } } ) { template_type_code } }",
+        "question": "Return the type code of the template type with the description \"Book\"."
+    },
+    {
+        "query": "query { ref_template_types ( distinct_on : template_type_description ) { template_type_description } }",
+        "question": "What are the distinct template type descriptions for the templates ever used by any document?"
+    },
+    {
+        "query": "query { ref_template_types ( distinct_on : template_type_description ) { template_type_description } }",
+        "question": "Return the different descriptions for templates that have been used in a document."
+    },
+    {
+        "query": "query { templates ( where : { ref_template_type : { template_type_description : { _eq : \"Presentation\" } } } ) { template_id } }",
+        "question": "What are the template ids with template type description \"Presentation\"."
+    },
+    {
+        "query": "query { templates ( where : { ref_template_type : { template_type_description : { _eq : \"Presentation\" } } } ) { template_id } }",
+        "question": "Return the ids corresponding to templates with the description 'Presentation'."
+    },
+    {
+        "query": "query { paragraphs_aggregate { aggregate { count } } }",
+        "question": "How many paragraphs in total?"
+    },
+    {
+        "query": "query { paragraphs_aggregate { aggregate { count } } }",
+        "question": "Count the number of paragraphs."
+    },
+    {
+        "query": "query { paragraphs_aggregate ( where : { document : { document_name : { _eq : \"Summer Show\" } } } ) { aggregate { count } } }",
+        "question": "How many paragraphs for the document with name 'Summer Show'?"
+    },
+    {
+        "query": "query { paragraphs_aggregate ( where : { document : { document_name : { _eq : \"Summer Show\" } } } ) { aggregate { count } } }",
+        "question": "Count the number of paragraphs in the document named 'Summer Show'."
+    },
+    {
+        "query": "query { paragraphs ( where : { paragraph_text : { _eq : \"Korea\" } } ) { other_details } }",
+        "question": "Show paragraph details for paragraph with text 'Korea'."
+    },
+    {
+        "query": "query { paragraphs ( where : { paragraph_text : { _eq : \"Korea\" } } ) { other_details } }",
+        "question": "What are the details for the paragraph that includes the text 'Korea'?"
+    },
+    {
+        "query": "query { paragraphs ( where : { document : { document_name : { _eq : \"Welcome to NY\" } } } ) { paragraph_id paragraph_text } }",
+        "question": "Show all paragraph ids and texts for the document with name 'Welcome to NY'."
+    },
+    {
+        "query": "query { paragraphs ( where : { document : { document_name : { _eq : \"Welcome to NY\" } } } ) { paragraph_id paragraph_text } }",
+        "question": "What are the ids and texts of paragraphs in the document titled 'Welcome to NY'?"
+    },
+    {
+        "query": "query { paragraphs ( where : { document : { document_name : { _eq : \"Customer reviews\" } } } ) { paragraph_text } }",
+        "question": "Show all paragraph texts for the document \"Customer reviews\"."
+    },
+    {
+        "query": "query { paragraphs ( where : { document : { document_name : { _eq : \"Customer reviews\" } } } ) { paragraph_text } }",
+        "question": "What are the paragraph texts for the document with the name 'Customer reviews'?"
+    }
+]

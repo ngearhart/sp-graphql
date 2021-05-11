@@ -1,0 +1,74 @@
+[
+    {
+        "query": "query { teacher_aggregate { aggregate { count } } }",
+        "question": "How many teachers are there?"
+    },
+    {
+        "query": "query { teacher_aggregate { aggregate { count } } }",
+        "question": "What is the total count of teachers?"
+    },
+    {
+        "query": "query { teacher ( order_by : { age : asc } ) { name } }",
+        "question": "List the names of teachers in ascending order of age."
+    },
+    {
+        "query": "query { teacher ( order_by : { age : asc } ) { name } }",
+        "question": "What are the names of the teachers ordered by ascending age?"
+    },
+    {
+        "query": "query { teacher { age hometown } }",
+        "question": "What are the age and hometown of teachers?"
+    },
+    {
+        "query": "query { teacher { age hometown } }",
+        "question": "What is the age and hometown of every teacher?"
+    },
+    {
+        "query": "query { teacher ( where : { hometown : { _neq : \"Little Lever Urban Distric\" } } ) { name } }",
+        "question": "List the name of teachers whose hometown is not \"Little Lever Urban District\"."
+    },
+    {
+        "query": "query { teacher ( where : { hometown : { _neq : \"Little Lever Urban Distric\" } } ) { name } }",
+        "question": "What are the names of the teachers whose hometown is not \"Little Lever Urban District\"?"
+    },
+    {
+        "query": "query { teacher ( where : { _or : [ { age : { _eq : \"32\" } } , { age : { _eq : \"33\" } } ] } ) { name } }",
+        "question": "Show the name of teachers aged either 32 or 33?"
+    },
+    {
+        "query": "query { teacher ( where : { _or : [ { age : { _eq : \"32\" } } , { age : { _eq : \"33\" } } ] } ) { name } }",
+        "question": "What are the names of the teachers who are aged either 32 or 33?"
+    },
+    {
+        "query": "query { teacher ( limit : 1 , order_by : { age : asc } ) { hometown } }",
+        "question": "What is the hometown of the youngest teacher?"
+    },
+    {
+        "query": "query { teacher ( limit : 1 , order_by : { age : asc } ) { hometown } }",
+        "question": "Where is the youngest teacher from?"
+    },
+    {
+        "query": "query { teacher { name course_arranges { course { course } } } }",
+        "question": "Show names of teachers and the courses they are arranged to teach."
+    },
+    {
+        "query": "query { teacher { name course_arranges { course { course } } } }",
+        "question": "What is the name of each teacher and what course they teach?"
+    },
+    {
+        "query": "query { teacher ( order_by : { name : asc } ) { name course_arranges { course { course } } } }",
+        "question": "Show names of teachers and the courses they are arranged to teach in ascending alphabetical order of the teacher's name."
+    },
+    {
+        "query": "query { teacher ( order_by : { name : asc } ) { name course_arranges { course { course } } } }",
+        "question": "What are the names of the teachers and the courses they teach in ascending alphabetical order by the name of the teacher?"
+    },
+    {
+        "query": "query { teacher ( where : { course_arranges : { course : { course : { _eq : \"Math\" } } } } ) { name } }",
+        "question": "Show the name of the teacher for the math course."
+    },
+    {
+        "query": "query { teacher ( where : { course_arranges : { course : { course : { _eq : \"Math\" } } } } ) { name } }",
+        "question": "What are the names of the people who teach math courses?"
+    }
+]

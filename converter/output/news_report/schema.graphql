@@ -1,0 +1,23 @@
+type Query {
+  """"""
+  event(_limit: Int, Event_ID: Int, Date: String, Venue: String, Name: String, Event_Attendance: Int): [eventT]
+
+  """"""
+  journalist(_limit: Int, journalist_ID: Int, Name: String, Nationality: String, Age: String, Years_working: Int): [journalistT]
+}
+
+type eventT {
+  Event_ID: Int
+  Date: String
+  Venue: String
+  Name: String
+  Event_Attendance: Int
+}
+
+type journalistT {
+  journalist_ID: Int
+  Name: String
+  Nationality: String
+  Age: String
+  Years_working: Int
+}

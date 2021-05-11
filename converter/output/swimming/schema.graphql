@@ -1,0 +1,18 @@
+type Query {
+  """"""
+  swimmer(_limit: Int, ID: Int, name: String, Nationality: String, meter_100: Float, meter_200: String, meter_300: String, meter_400: String, meter_500: String, meter_600: String, meter_700: String, Time: String): [swimmerT]
+}
+
+type swimmerT {
+  ID: Int
+  name: String
+  Nationality: String
+  meter_100: Float
+  meter_200: String
+  meter_300: String
+  meter_400: String
+  meter_500: String
+  meter_600: String
+  meter_700: String
+  Time: String
+}

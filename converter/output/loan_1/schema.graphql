@@ -1,0 +1,27 @@
+type Query {
+  """"""
+  bank(_limit: Int, branch_ID: Int, bname: String, no_of_customers: Int, city: String, state: String): [bankT]
+
+  """"""
+  customer(_limit: Int, cust_ID: String, cust_name: String, acc_type: String, acc_bal: Int, no_of_loans: Int, credit_score: Int, branch_ID: Int, state: String): [customerT]
+}
+
+type bankT {
+  branch_ID: Int
+  bname: String
+  no_of_customers: Int
+  city: String
+  state: String
+}
+
+type customerT {
+  cust_ID: String
+  cust_name: String
+  acc_type: String
+  acc_bal: Int
+  no_of_loans: Int
+  credit_score: Int
+  branch_ID: Int
+  state: String
+  bank(_limit: Int, bname: String, no_of_customers: Int, city: String, state: String): [bankT]
+}

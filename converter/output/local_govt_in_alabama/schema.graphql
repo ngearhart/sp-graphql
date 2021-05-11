@@ -1,0 +1,38 @@
+type Query {
+  """"""
+  Events(_limit: Int, Event_ID: Int, Service_ID: Int, Event_Details: String): [EventsT]
+
+  """"""
+  Participants(_limit: Int, Participant_ID: Int, Participant_Type_Code: String, Participant_Details: String): [ParticipantsT]
+
+  """"""
+  Participants_in_Events(_limit: Int, Event_ID: Int, Participant_ID: Int): [Participants_in_EventsT]
+
+  """"""
+  Services(_limit: Int, Service_ID: Int, Service_Type_Code: String): [ServicesT]
+}
+
+type EventsT {
+  Event_ID: Int
+  Service_ID: Int
+  Event_Details: String
+  Services(_limit: Int, Service_Type_Code: String): [ServicesT]
+}
+
+type ServicesT {
+  Service_ID: Int
+  Service_Type_Code: String
+}
+
+type ParticipantsT {
+  Participant_ID: Int
+  Participant_Type_Code: String
+  Participant_Details: String
+}
+
+type Participants_in_EventsT {
+  Event_ID: Int
+  Participant_ID: Int
+  Events(_limit: Int, Service_ID: Int, Event_Details: String): [EventsT]
+  Participants(_limit: Int, Participant_Type_Code: String, Participant_Details: String): [ParticipantsT]
+}

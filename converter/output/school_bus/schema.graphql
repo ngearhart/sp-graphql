@@ -1,0 +1,23 @@
+type Query {
+  """"""
+  driver(_limit: Int, Driver_ID: Int, Name: String, Party: String, Home_city: String, Age: Int): [driverT]
+
+  """"""
+  school(_limit: Int, School_ID: Int, Grade: String, School: String, Location: String, Type: String): [schoolT]
+}
+
+type driverT {
+  Driver_ID: Int
+  Name: String
+  Party: String
+  Home_city: String
+  Age: Int
+}
+
+type schoolT {
+  School_ID: Int
+  Grade: String
+  School: String
+  Location: String
+  Type: String
+}

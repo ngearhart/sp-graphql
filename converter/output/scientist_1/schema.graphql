@@ -1,0 +1,28 @@
+type Query {
+  """"""
+  AssignedTo(_limit: Int, Scientist: Int, Project: String): [AssignedToT]
+
+  """"""
+  Projects(_limit: Int, Code: String, Name: String, Hours: Int): [ProjectsT]
+
+  """"""
+  Scientists(_limit: Int, SSN: Int, Name: String): [ScientistsT]
+}
+
+type AssignedToT {
+  Scientist: Int
+  Project: String
+  Projects(_limit: Int, Name: String, Hours: Int): [ProjectsT]
+  Scientists(_limit: Int, Name: String): [ScientistsT]
+}
+
+type ProjectsT {
+  Code: String
+  Name: String
+  Hours: Int
+}
+
+type ScientistsT {
+  SSN: Int
+  Name: String
+}

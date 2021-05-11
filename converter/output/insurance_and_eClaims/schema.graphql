@@ -1,0 +1,46 @@
+type Query {
+  """"""
+  Claim_Headers(_limit: Int, Claim_Header_ID: Int, Claim_Status_Code: String, Claim_Type_Code: String, Policy_ID: Int, Date_of_Claim: Date, Date_of_Settlement: Date, Amount_Claimed: Float, Amount_Piad: Float): [Claim_HeadersT]
+
+  """"""
+  Customers(_limit: Int, Customer_ID: Int, Customer_Details: String): [CustomersT]
+
+  """"""
+  Policies(_limit: Int, Policy_ID: Int, Customer_ID: Int, Policy_Type_Code: String, Start_Date: Date, End_Date: Date): [PoliciesT]
+
+  """"""
+  Staff(_limit: Int, Staff_ID: Int, Staff_Details: String): [StaffT]
+}
+
+type Claim_HeadersT {
+  Claim_Header_ID: Int
+  Claim_Status_Code: String
+  Claim_Type_Code: String
+  Policy_ID: Int
+  Date_of_Claim: Date
+  Date_of_Settlement: Date
+  Amount_Claimed: Float
+  Amount_Piad: Float
+  Policies(_limit: Int, Customer_ID: Int, Policy_Type_Code: String, Start_Date: Date, End_Date: Date): [PoliciesT]
+}
+
+scalar Date
+
+type PoliciesT {
+  Policy_ID: Int
+  Customer_ID: Int
+  Policy_Type_Code: String
+  Start_Date: Date
+  End_Date: Date
+  Customers(_limit: Int, Customer_Details: String): [CustomersT]
+}
+
+type CustomersT {
+  Customer_ID: Int
+  Customer_Details: String
+}
+
+type StaffT {
+  Staff_ID: Int
+  Staff_Details: String
+}

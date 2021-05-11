@@ -1,0 +1,66 @@
+[
+    {
+        "query": "query { singer_aggregate { aggregate { count } } }",
+        "question": "How many singers are there?"
+    },
+    {
+        "query": "query { singer_aggregate { aggregate { count } } }",
+        "question": "What is the count of singers?"
+    },
+    {
+        "query": "query { singer ( order_by : { net_worth_millions : asc } ) { name } }",
+        "question": "List the name of singers in ascending order of net worth."
+    },
+    {
+        "query": "query { singer ( order_by : { net_worth_millions : asc } ) { name } }",
+        "question": "What are the names of singers ordered by ascending net worth?"
+    },
+    {
+        "query": "query { singer { birth_year citizenship } }",
+        "question": "What are the birth year and citizenship of singers?"
+    },
+    {
+        "query": "query { singer { birth_year citizenship } }",
+        "question": "What are the birth years and citizenships of the singers?"
+    },
+    {
+        "query": "query { singer ( where : { citizenship : { _neq : \"France\" } } ) { name } }",
+        "question": "List the name of singers whose citizenship is not \"France\"."
+    },
+    {
+        "query": "query { singer ( where : { citizenship : { _neq : \"France\" } } ) { name } }",
+        "question": "What are the names of the singers who are not French citizens?"
+    },
+    {
+        "query": "query { singer ( where : { _or : [ { birth_year : { _eq : 1948.0 } } , { birth_year : { _eq : 1949.0 } } ] } ) { name } }",
+        "question": "Show the name of singers whose birth year is either 1948 or 1949?"
+    },
+    {
+        "query": "query { singer ( where : { _or : [ { birth_year : { _eq : 1948.0 } } , { birth_year : { _eq : 1949.0 } } ] } ) { name } }",
+        "question": "What are the names of the singers whose birth years are either 1948 or 1949?"
+    },
+    {
+        "query": "query { singer ( limit : 1 , order_by : { net_worth_millions : desc } ) { name } }",
+        "question": "What is the name of the singer with the largest net worth?"
+    },
+    {
+        "query": "query { singer ( limit : 1 , order_by : { net_worth_millions : desc } ) { name } }",
+        "question": "What is the name of the singer who is worth the most?"
+    },
+    {
+        "query": "query { song { title singer { name } } }",
+        "question": "Show titles of songs and names of singers."
+    },
+    {
+        "query": "query { song { title singer { name } } }",
+        "question": "What are the song titles and singer names?"
+    },
+    {
+        "query": "query { singer ( where : { songs : { sales : { _gt : 300000.0 } } } , distinct_on : name ) { name } }",
+        "question": "Show distinct names of singers that have songs with sales more than 300000."
+    },
+    {
+        "query": "query { singer ( where : { songs : { sales : { _gt : 300000.0 } } } , distinct_on : name ) { name } }",
+        "question": "what are the different names of the singers that have sales more than 300000?"
+    }
+]

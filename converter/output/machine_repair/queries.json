@@ -1,0 +1,74 @@
+[
+    {
+        "query": "query { technician_aggregate { aggregate { count } } }",
+        "question": "How many technicians are there?"
+    },
+    {
+        "query": "query { technician_aggregate { aggregate { count } } }",
+        "question": "What is the number of technicians?"
+    },
+    {
+        "query": "query { technician ( order_by : { age : asc } ) { name } }",
+        "question": "List the names of technicians in ascending order of age."
+    },
+    {
+        "query": "query { technician ( order_by : { age : asc } ) { name } }",
+        "question": "What are the names of the technicians by ascending order of age?"
+    },
+    {
+        "query": "query { technician { team starting_year } }",
+        "question": "What are the team and starting year of technicians?"
+    },
+    {
+        "query": "query { technician { team starting_year } }",
+        "question": "What is the team and starting year for each technician?"
+    },
+    {
+        "query": "query { technician ( where : { team : { _neq : \"NYY\" } } ) { name } }",
+        "question": "List the name of technicians whose team is not \"NYY\"."
+    },
+    {
+        "query": "query { technician ( where : { team : { _neq : \"NYY\" } } ) { name } }",
+        "question": "What is the name of the technician whose team is not 'NYY'?"
+    },
+    {
+        "query": "query { technician ( where : { _or : [ { age : { _eq : 36 } } , { age : { _eq : 37 } } ] } ) { name } }",
+        "question": "Show the name of technicians aged either 36 or 37"
+    },
+    {
+        "query": "query { technician ( where : { _or : [ { age : { _eq : 36 } } , { age : { _eq : 37 } } ] } ) { name } }",
+        "question": "What are the names of the technicians aged either 36 or 37?"
+    },
+    {
+        "query": "query { technician ( limit : 1 , order_by : { age : desc } ) { starting_year } }",
+        "question": "What is the starting year of the oldest technicians?"
+    },
+    {
+        "query": "query { technician ( limit : 1 , order_by : { age : desc } ) { starting_year } }",
+        "question": "What is the starting year for the oldest technician?"
+    },
+    {
+        "query": "query { technician { name repair_assignments { machine { machine_series } } } }",
+        "question": "Show names of technicians and series of machines they are assigned to repair."
+    },
+    {
+        "query": "query { technician { name repair_assignments { machine { machine_series } } } }",
+        "question": "What are the names of technicians and the machine series that they repair?"
+    },
+    {
+        "query": "query { machine ( order_by : { quality_rank : asc } ) { repair_assignments { technician { name } } } }",
+        "question": "Show names of technicians in ascending order of quality rank of the machine they are assigned."
+    },
+    {
+        "query": "query { machine ( order_by : { quality_rank : asc } ) { repair_assignments { technician { name } } } }",
+        "question": "What are the names of the technicians by ascending order of quality rank for the machine they are assigned?"
+    },
+    {
+        "query": "query { technician ( where : { repair_assignments : { machine : { value_points : { _gt : 70.0 } } } } ) { name } }",
+        "question": "Show names of technicians who are assigned to repair machines with value point more than 70."
+    },
+    {
+        "query": "query { technician ( where : { repair_assignments : { machine : { value_points : { _gt : 70.0 } } } } ) { name } }",
+        "question": "What are the names of the technicians that are assigned to repair machines with more point values than 70?"
+    }
+]

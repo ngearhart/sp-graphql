@@ -1,0 +1,14 @@
+type Query {
+  """"""
+  railway(_limit: Int, Railway_ID: Int, Railway: String, Builder: String, Built: String, Wheels: String, Location: String, ObjectNumber: String): [railwayT]
+}
+
+type railwayT {
+  Railway_ID: Int
+  Railway: String
+  Builder: String
+  Built: String
+  Wheels: String
+  Location: String
+  ObjectNumber: String
+}

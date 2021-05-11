@@ -1,0 +1,250 @@
+[
+    {
+        "query": "query { ref_calendar_aggregate { aggregate { count } } }",
+        "question": "How many calendar items do we have?"
+    },
+    {
+        "query": "query { ref_calendar_aggregate { aggregate { count } } }",
+        "question": "Count the number of all the calendar items."
+    },
+    {
+        "query": "query { ref_calendar { calendar_date day_number } }",
+        "question": "Show all calendar dates and day Numbers."
+    },
+    {
+        "query": "query { ref_calendar { calendar_date day_number } }",
+        "question": "What are all the calendar dates and day Numbers?"
+    },
+    {
+        "query": "query { ref_document_types_aggregate { aggregate { count } } }",
+        "question": "Show the number of document types."
+    },
+    {
+        "query": "query { ref_document_types_aggregate { aggregate { count } } }",
+        "question": "How many document types are there?"
+    },
+    {
+        "query": "query { ref_document_types { document_type_code document_type_name } }",
+        "question": "List all document type codes and document type names."
+    },
+    {
+        "query": "query { ref_document_types { document_type_code document_type_name } }",
+        "question": "What are all the document type codes and document type names?"
+    },
+    {
+        "query": "query { ref_document_types ( where : { document_type_code : { _eq : \"RV\" } } ) { document_type_name document_type_description } }",
+        "question": "What is the name and description for document type code RV?"
+    },
+    {
+        "query": "query { ref_document_types ( where : { document_type_code : { _eq : \"RV\" } } ) { document_type_name document_type_description } }",
+        "question": "Give me the name and description of the document type code RV."
+    },
+    {
+        "query": "query { ref_document_types ( where : { document_type_name : { _eq : \"Paper\" } } ) { document_type_code } }",
+        "question": "What is the document type code for document type \"Paper\"?"
+    },
+    {
+        "query": "query { ref_document_types ( where : { document_type_name : { _eq : \"Paper\" } } ) { document_type_code } }",
+        "question": "Find the code of the document type \"Paper\"."
+    },
+    {
+        "query": "query { all_documents_aggregate ( where : { _or : [ { document_type_code : { _eq : \"CV\" } } , { document_type_code : { _eq : \"BK\" } } ] } ) { aggregate { count } } }",
+        "question": "Show the number of documents with document type code CV or BK."
+    },
+    {
+        "query": "query { all_documents_aggregate ( where : { _or : [ { document_type_code : { _eq : \"CV\" } } , { document_type_code : { _eq : \"BK\" } } ] } ) { aggregate { count } } }",
+        "question": "How many documents have document type code CV or BK?"
+    },
+    {
+        "query": "query { all_documents ( where : { document_name : { _eq : \"Marry CV\" } } ) { date_stored } }",
+        "question": "What is the date when the document \"Marry CV\" was stored?"
+    },
+    {
+        "query": "query { all_documents ( where : { document_name : { _eq : \"Marry CV\" } } ) { date_stored } }",
+        "question": "When was the document named \"Marry CV\" stored? Give me the date."
+    },
+    {
+        "query": "query { ref_calendar { day_number all_documents { date_stored } } }",
+        "question": "What is the day Number and date of all the documents?"
+    },
+    {
+        "query": "query { ref_calendar { day_number all_documents { date_stored } } }",
+        "question": "Return the day Number and stored date for all the documents."
+    },
+    {
+        "query": "query { ref_document_types ( where : { all_documents : { document_name : { _eq : \"How to read a book\" } } } ) { document_type_name } }",
+        "question": "What is the document type name for the document with name \"How to read a book\"?"
+    },
+    {
+        "query": "query { ref_document_types ( where : { all_documents : { document_name : { _eq : \"How to read a book\" } } } ) { document_type_name } }",
+        "question": "Find the document type name of the document named \"How to read a book\"."
+    },
+    {
+        "query": "query { ref_locations_aggregate { aggregate { count } } }",
+        "question": "Show the number of locations."
+    },
+    {
+        "query": "query { ref_locations_aggregate { aggregate { count } } }",
+        "question": "How many locations are listed in the database?"
+    },
+    {
+        "query": "query { ref_locations { location_code location_name } }",
+        "question": "List all location codes and location names."
+    },
+    {
+        "query": "query { ref_locations { location_code location_name } }",
+        "question": "What are all the location codes and location names?"
+    },
+    {
+        "query": "query { ref_locations ( where : { location_code : { _eq : \"x\" } } ) { location_name location_description } }",
+        "question": "What are the name and description for location code x?"
+    },
+    {
+        "query": "query { ref_locations ( where : { location_code : { _eq : \"x\" } } ) { location_name location_description } }",
+        "question": "Give me the name and description of the location with code x."
+    },
+    {
+        "query": "query { ref_locations ( where : { location_name : { _eq : \"Canada\" } } ) { location_code } }",
+        "question": "What is the location code for the country \"Canada\"?"
+    },
+    {
+        "query": "query { ref_locations ( where : { location_name : { _eq : \"Canada\" } } ) { location_code } }",
+        "question": "Show the location code of the country \"Canada\"."
+    },
+    {
+        "query": "query { roles_aggregate { aggregate { count } } }",
+        "question": "How many roles are there?"
+    },
+    {
+        "query": "query { roles_aggregate { aggregate { count } } }",
+        "question": "Count the total number of roles listed."
+    },
+    {
+        "query": "query { roles { role_code role_name role_description } }",
+        "question": "List all role codes, role names, and role descriptions."
+    },
+    {
+        "query": "query { roles { role_code role_name role_description } }",
+        "question": "What are all the role codes, role names, and role descriptions?"
+    },
+    {
+        "query": "query { roles ( where : { role_code : { _eq : \"MG\" } } ) { role_name role_description } }",
+        "question": "What are the name and description for role code \"MG\"?"
+    },
+    {
+        "query": "query { roles ( where : { role_code : { _eq : \"MG\" } } ) { role_name role_description } }",
+        "question": "Find the name and description of the role with code \"MG\"."
+    },
+    {
+        "query": "query { roles ( where : { role_name : { _eq : \"Proof Reader\" } } ) { role_description } }",
+        "question": "Show the description for role name \"Proof Reader\"."
+    },
+    {
+        "query": "query { roles ( where : { role_name : { _eq : \"Proof Reader\" } } ) { role_description } }",
+        "question": "What is the description of the role named \"Proof Reader\"?"
+    },
+    {
+        "query": "query { employees_aggregate { aggregate { count } } }",
+        "question": "How many employees do we have?"
+    },
+    {
+        "query": "query { employees_aggregate { aggregate { count } } }",
+        "question": "Find the number of employees we have."
+    },
+    {
+        "query": "query { employees ( where : { employee_name : { _eq : \"Armani\" } } ) { employee_name role_code date_of_birth } }",
+        "question": "Show the name, role code, and date of birth for the employee with name 'Armani'."
+    },
+    {
+        "query": "query { employees ( where : { employee_name : { _eq : \"Armani\" } } ) { employee_name role_code date_of_birth } }",
+        "question": "What are the name, role code, and date of birth of the employee named 'Armani'?"
+    },
+    {
+        "query": "query { employees ( where : { employee_name : { _eq : \"Ebba\" } } ) { employee_id } }",
+        "question": "What is the id for the employee called Ebba?"
+    },
+    {
+        "query": "query { employees ( where : { employee_name : { _eq : \"Ebba\" } } ) { employee_id } }",
+        "question": "Show the id of the employee named Ebba."
+    },
+    {
+        "query": "query { employees ( where : { role_code : { _eq : \"HR\" } } ) { employee_name } }",
+        "question": "Show the names of all the employees with role \"HR\"."
+    },
+    {
+        "query": "query { employees ( where : { role_code : { _eq : \"HR\" } } ) { employee_name } }",
+        "question": "Which employees have the role with code \"HR\"? Find their names."
+    },
+    {
+        "query": "query { roles ( where : { employees : { employee_name : { _eq : \"Ebba\" } } } ) { role_name role_description } }",
+        "question": "What is the role name and role description for employee called Ebba?"
+    },
+    {
+        "query": "query { roles ( where : { employees : { employee_name : { _eq : \"Ebba\" } } } ) { role_name role_description } }",
+        "question": "Show the name and description of the role played by the employee named Ebba."
+    },
+    {
+        "query": "query { employees ( where : { role : { role_name : { _eq : \"Editor\" } } } ) { employee_name } }",
+        "question": "Show the names of employees with role name Editor."
+    },
+    {
+        "query": "query { employees ( where : { role : { role_name : { _eq : \"Editor\" } } } ) { employee_name } }",
+        "question": "Find the names of all the employees whose the role name is \"Editor\"."
+    },
+    {
+        "query": "query { employees ( where : { _or : [ { role : { role_name : { _eq : \"Human Resource\" } } } , { role : { role_name : { _eq : \"Manager\" } } } ] } ) { employee_id } }",
+        "question": "Show the employee ids for all employees with role name \"Human Resource\" or \"Manager\"."
+    },
+    {
+        "query": "query { employees ( where : { _or : [ { role : { role_name : { _eq : \"Human Resource\" } } } , { role : { role_name : { _eq : \"Manager\" } } } ] } ) { employee_id } }",
+        "question": "What are the employee ids of the employees whose role name is \"Human Resource\" or \"Manager\"?"
+    },
+    {
+        "query": "query { document_locations ( distinct_on : location_code ) { location_code } }",
+        "question": "What are the different location codes for documents?"
+    },
+    {
+        "query": "query { document_locations ( distinct_on : location_code ) { location_code } }",
+        "question": "Give me all the distinct location codes for documents."
+    },
+    {
+        "query": "query { ref_locations ( where : { document_locations : { all_document : { document_name : { _eq : \"Robin CV\" } } } } ) { location_name } }",
+        "question": "Show the location name for document \"Robin CV\"."
+    },
+    {
+        "query": "query { ref_locations ( where : { document_locations : { all_document : { document_name : { _eq : \"Robin CV\" } } } } ) { location_name } }",
+        "question": "What is the location name of the document \"Robin CV\"?"
+    },
+    {
+        "query": "query { document_locations { location_code date_in_location_from date_in_locaton_to } }",
+        "question": "Show the location code, the starting date and ending data in that location for all the documents."
+    },
+    {
+        "query": "query { document_locations { location_code date_in_location_from date_in_locaton_to } }",
+        "question": "What are each document's location code, and starting date and ending data in that location?"
+    },
+    {
+        "query": "query { document_locations ( where : { all_document : { document_name : { _eq : \"Robin CV\" } } } ) { date_in_location_from date_in_locaton_to } }",
+        "question": "What is \"the date in location from\" and \"the date in location to\" for the document with name \"Robin CV\"?"
+    },
+    {
+        "query": "query { document_locations ( where : { all_document : { document_name : { _eq : \"Robin CV\" } } } ) { date_in_location_from date_in_locaton_to } }",
+        "question": "Find the starting date and ending data in location for the document named \"Robin CV\"."
+    },
+    {
+        "query": "query { documents_to_be_destroyed ( distinct_on : destruction_authorised_by_employee_id ) { destruction_authorised_by_employee_id } }",
+        "question": "Show the ids of all employees who have authorized destruction."
+    },
+    {
+        "query": "query { documents_to_be_destroyed ( distinct_on : destruction_authorised_by_employee_id ) { destruction_authorised_by_employee_id } }",
+        "question": "What are the ids of all the employees who authorize document destruction?"
+    },
+    {
+        "query": "query { documents_to_be_destroyed ( distinct_on : destroyed_by_employee_id ) { destroyed_by_employee_id } }",
+        "question": "Show the ids of all employees who have destroyed a document."
+    },
+    {
+        "query": "query { documents_to_be_destroyed ( distinct_on : destroyed_by_employee_id ) { destroyed_by_employee_id } }",
+        "question": "What are the ids of all the employees who have destroyed documents?"
+    }
+]

@@ -1,0 +1,154 @@
+[
+    {
+        "query": "query { bookings_aggregate { aggregate { count } } }",
+        "question": "How many bookings do we have?"
+    },
+    {
+        "query": "query { bookings_aggregate { aggregate { count } } }",
+        "question": "Count the total number of bookings made."
+    },
+    {
+        "query": "query { bookings { order_date } }",
+        "question": "List the order dates of all the bookings."
+    },
+    {
+        "query": "query { bookings { order_date } }",
+        "question": "What is the order date of each booking?"
+    },
+    {
+        "query": "query { bookings { planned_delivery_date actual_delivery_date } }",
+        "question": "Show all the planned delivery dates and actual delivery dates of bookings."
+    },
+    {
+        "query": "query { bookings { planned_delivery_date actual_delivery_date } }",
+        "question": "What are the planned delivery date and actual delivery date for each booking?"
+    },
+    {
+        "query": "query { customers_aggregate { aggregate { count } } }",
+        "question": "How many customers do we have?"
+    },
+    {
+        "query": "query { customers_aggregate { aggregate { count } } }",
+        "question": "Count the number of customers recorded."
+    },
+    {
+        "query": "query { customers ( where : { customer_name : { _eq : \"Harold\" } } ) { customer_phone customer_email_address } }",
+        "question": "What are the phone and email for customer Harold?"
+    },
+    {
+        "query": "query { customers ( where : { customer_name : { _eq : \"Harold\" } } ) { customer_phone customer_email_address } }",
+        "question": "Find the phone number and email address of customer \"Harold\"."
+    },
+    {
+        "query": "query { drama_workshop_groups { store_name } }",
+        "question": "Show all the Store_Name of drama workshop groups."
+    },
+    {
+        "query": "query { drama_workshop_groups { store_name } }",
+        "question": "What are the store names of drama workshop groups?"
+    },
+    {
+        "query": "query { invoices_aggregate { aggregate { min { order_quantity } avg { order_quantity } max { order_quantity } } } }",
+        "question": "Show the minimum, average, maximum order quantity of all invoices."
+    },
+    {
+        "query": "query { invoices_aggregate { aggregate { min { order_quantity } avg { order_quantity } max { order_quantity } } } }",
+        "question": "What are the minimum, average, and maximum quantities ordered? Check all the invoices."
+    },
+    {
+        "query": "query { invoices ( distinct_on : payment_method_code ) { payment_method_code } }",
+        "question": "What are the distinct payment method codes in all the invoices?"
+    },
+    {
+        "query": "query { invoices ( distinct_on : payment_method_code ) { payment_method_code } }",
+        "question": "Show me the distinct payment method codes from the invoice record."
+    },
+    {
+        "query": "query { marketing_regions ( where : { marketing_region_name : { _eq : \"China\" } } ) { marketing_region_descriptrion } }",
+        "question": "What is the description of the marketing region China?"
+    },
+    {
+        "query": "query { marketing_regions ( where : { marketing_region_name : { _eq : \"China\" } } ) { marketing_region_descriptrion } }",
+        "question": "Find the marketing region description of China?"
+    },
+    {
+        "query": "query { products ( limit : 1 , order_by : { product_price : desc } ) { product_name } }",
+        "question": "What is the name of the most expensive product?"
+    },
+    {
+        "query": "query { products ( limit : 1 , order_by : { product_price : desc } ) { product_name } }",
+        "question": "Tell me the name of the most pricy product."
+    },
+    {
+        "query": "query { products ( order_by : { product_price : asc } ) { product_name } }",
+        "question": "List all product names in ascending order of price."
+    },
+    {
+        "query": "query { products ( order_by : { product_price : asc } ) { product_name } }",
+        "question": "Sort the names of products in ascending order of their price."
+    },
+    {
+        "query": "query { performers ( where : { customer_name : { _eq : \"Ashley\" } } ) { customer_phone } }",
+        "question": "What is the phone number of the performer Ashley?"
+    },
+    {
+        "query": "query { performers ( where : { customer_name : { _eq : \"Ashley\" } } ) { customer_phone } }",
+        "question": "Find the phone number of performer \"Ashley\"."
+    },
+    {
+        "query": "query { marketing_regions ( where : { stores : { store_name : { _eq : \"Rob Dinning\" } } } ) { marketing_region_name } }",
+        "question": "What is the name of the marketing region that the store Rob Dinning belongs to?"
+    },
+    {
+        "query": "query { marketing_regions ( where : { stores : { store_name : { _eq : \"Rob Dinning\" } } } ) { marketing_region_name } }",
+        "question": "Return the name of the marketing region the store Rob Dinning is located in."
+    },
+    {
+        "query": "query { ref_service_types ( where : { services : { product_price : { _gt : 100 } } } ) { service_type_description } }",
+        "question": "What are the descriptions of the service types with product price above 100?"
+    },
+    {
+        "query": "query { ref_service_types ( where : { services : { product_price : { _gt : 100 } } } ) { service_type_description } }",
+        "question": "Give me the descriptions of the service types that cost more than 100."
+    },
+    {
+        "query": "query { drama_workshop_groups { store_phone store_email_address } }",
+        "question": "What are the phones and emails of workshop groups in which services are performed?"
+    },
+    {
+        "query": "query { drama_workshop_groups { store_phone store_email_address } }",
+        "question": "Give me all the phone numbers and email addresses of the workshop groups where services are performed."
+    },
+    {
+        "query": "query { drama_workshop_groups ( where : { services : { product_name : { _eq : \"film\" } } } ) { store_phone store_email_address } }",
+        "question": "What are the names of workshop groups in which services with product name \"film\" are performed?"
+    },
+    {
+        "query": "query { drama_workshop_groups ( where : { services : { product_name : { _eq : \"film\" } } } ) { store_phone store_email_address } }",
+        "question": "Find the names of the workshop groups where services with product name \"film\" are performed."
+    },
+    {
+        "query": "query { customer_orders ( where : { order_items : { order_quantity : { _eq : \"1\" } } } ) { actual_delivery_date } }",
+        "question": "What are the actual delivery dates of orders with quantity 1?"
+    },
+    {
+        "query": "query { customer_orders ( where : { order_items : { order_quantity : { _eq : \"1\" } } } ) { actual_delivery_date } }",
+        "question": "List the actual delivery date for all the orders with quantity 1"
+    },
+    {
+        "query": "query { drama_workshop_groups_aggregate { aggregate { count } } }",
+        "question": "How many distinct currency codes are there for all drama workshop groups?"
+    },
+    {
+        "query": "query { drama_workshop_groups_aggregate { aggregate { count } } }",
+        "question": "Find the number of distinct currency codes used in drama workshop groups."
+    },
+    {
+        "query": "query { invoices_aggregate ( where : { payment_method_code : { _eq : \"MasterCard\" } } ) { aggregate { avg { order_quantity } } } }",
+        "question": "What is the average quantities ordered with payment method code \"MasterCard\" on invoices?"
+    },
+    {
+        "query": "query { invoices_aggregate ( where : { payment_method_code : { _eq : \"MasterCard\" } } ) { aggregate { avg { order_quantity } } } }",
+        "question": "Check the invoices record and compute the average quantities ordered with the payment method \"MasterCard\"."
+    }
+]

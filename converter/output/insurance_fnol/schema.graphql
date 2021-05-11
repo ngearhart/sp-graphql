@@ -1,0 +1,26 @@
+type Query {
+  """"""
+  Available_Policies(_limit: Int, Policy_ID: Int, policy_type_code: String, Customer_Phone: String): [Available_PoliciesT]
+
+  """"""
+  Customers(_limit: Int, Customer_ID: Int, Customer_name: String): [CustomersT]
+
+  """"""
+  Services(_limit: Int, Service_ID: Int, Service_name: String): [ServicesT]
+}
+
+type Available_PoliciesT {
+  Policy_ID: Int
+  policy_type_code: String
+  Customer_Phone: String
+}
+
+type CustomersT {
+  Customer_ID: Int
+  Customer_name: String
+}
+
+type ServicesT {
+  Service_ID: Int
+  Service_name: String
+}

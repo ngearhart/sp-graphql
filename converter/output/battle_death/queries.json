@@ -1,0 +1,42 @@
+[
+    {
+        "query": "query { ship_aggregate ( where : { disposition_of_ship : { _eq : \"Captured\" } } ) { aggregate { count } } }",
+        "question": "How many ships ended up being 'Captured'?"
+    },
+    {
+        "query": "query { ship ( order_by : { name : desc } ) { name tonnage } }",
+        "question": "List the name and tonnage ordered by in descending alphaetical order for the names."
+    },
+    {
+        "query": "query { battle { name date } }",
+        "question": "List the name, date and result of each battle."
+    },
+    {
+        "query": "query { death_aggregate { aggregate { max { killed } min { killed } } } }",
+        "question": "What is maximum and minimum death toll caused each time?"
+    },
+    {
+        "query": "query { death_aggregate { aggregate { avg { injured } } } }",
+        "question": "What is the average number of injuries caused each time?"
+    },
+    {
+        "query": "query { death ( where : { ship : { tonnage : { _eq : \"t\" } } } ) { killed injured } }",
+        "question": "What are the death and injury situations caused by the ship with tonnage 't'?"
+    },
+    {
+        "query": "query { battle ( where : { bulgarian_commander : { _neq : \"Boril\" } } ) { name result } }",
+        "question": "What are the name and results of the battles when the bulgarian commander is not 'Boril'"
+    },
+    {
+        "query": "query { battle ( where : { _and : { bulgarian_commander : { _eq : \"Kaloyan\" } , latin_commander : { _eq : \"Baldwin I\" } } } ) { name } }",
+        "question": "What are the distinct battle names which are between bulgarian commander 'Kaloyan' and latin commander 'Baldwin I'?"
+    },
+    {
+        "query": "query { battle_aggregate { aggregate { count } } }",
+        "question": "How many different results are there for the battles?"
+    },
+    {
+        "query": "query { death ( where : { note : { _like : \"%East%\" } } ) { note } }",
+        "question": "What are the notes of the death events which has substring 'East'?"
+    }
+]

@@ -1,0 +1,23 @@
+type Query {
+  """"""
+  market(_limit: Int, Market_ID: Int, District: String, Num_of_employees: Int, Num_of_shops: Float, Ranking: Int): [marketT]
+
+  """"""
+  phone(_limit: Int, Name: String, Phone_ID: Int, Memory_in_G: Int, Carrier: String, Price: Float): [phoneT]
+}
+
+type marketT {
+  Market_ID: Int
+  District: String
+  Num_of_employees: Int
+  Num_of_shops: Float
+  Ranking: Int
+}
+
+type phoneT {
+  Name: String
+  Phone_ID: Int
+  Memory_in_G: Int
+  Carrier: String
+  Price: Float
+}

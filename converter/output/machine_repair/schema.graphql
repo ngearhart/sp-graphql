@@ -1,0 +1,11 @@
+type Query {
+  """"""
+  repair(_limit: Int, repair_ID: Int, name: String, Launch_Date: String, Notes: String): [repairT]
+}
+
+type repairT {
+  repair_ID: Int
+  name: String
+  Launch_Date: String
+  Notes: String
+}

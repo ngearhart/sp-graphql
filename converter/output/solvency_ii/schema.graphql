@@ -1,0 +1,114 @@
+type Query {
+  """"""
+  Addresses(_limit: Int, Address_ID: Int, address_details: String): [AddressesT]
+
+  """"""
+  Agreements(_limit: Int, Document_ID: Int, Event_ID: Int): [AgreementsT]
+
+  """"""
+  Assets(_limit: Int, Asset_ID: Int, Other_Details: String): [AssetsT]
+
+  """"""
+  Assets_in_Events(_limit: Int, Asset_ID: Int, Event_ID: Int): [Assets_in_EventsT]
+
+  """"""
+  Channels(_limit: Int, Channel_ID: Int, Other_Details: String): [ChannelsT]
+
+  """"""
+  Events(_limit: Int, Event_ID: Int, Address_ID: Int, Channel_ID: Int, Event_Type_Code: String, Finance_ID: Int, Location_ID: Int): [EventsT]
+
+  """"""
+  Finances(_limit: Int, Finance_ID: Int, Other_Details: String): [FinancesT]
+
+  """"""
+  Locations(_limit: Int, Location_ID: Int, Other_Details: String): [LocationsT]
+
+  """"""
+  Parties(_limit: Int, Party_ID: Int, Party_Details: String): [PartiesT]
+
+  """"""
+  Parties_in_Events(_limit: Int, Party_ID: Int, Event_ID: Int, Role_Code: String): [Parties_in_EventsT]
+
+  """"""
+  Products(_limit: Int, Product_ID: Int, Product_Type_Code: String, Product_Name: String, Product_Price: Float): [ProductsT]
+
+  """"""
+  Products_in_Events(_limit: Int, Product_in_Event_ID: Int, Event_ID: Int, Product_ID: Int): [Products_in_EventsT]
+}
+
+type AddressesT {
+  Address_ID: Int
+  address_details: String
+}
+
+type AgreementsT {
+  Document_ID: Int
+  Event_ID: Int
+  Events(_limit: Int, Address_ID: Int, Channel_ID: Int, Event_Type_Code: String, Finance_ID: Int, Location_ID: Int): [EventsT]
+}
+
+type EventsT {
+  Event_ID: Int
+  Address_ID: Int
+  Channel_ID: Int
+  Event_Type_Code: String
+  Finance_ID: Int
+  Location_ID: Int
+  Addresses(_limit: Int, address_details: String): [AddressesT]
+  Finances(_limit: Int, Other_Details: String): [FinancesT]
+  Locations(_limit: Int, Other_Details: String): [LocationsT]
+}
+
+type FinancesT {
+  Finance_ID: Int
+  Other_Details: String
+}
+
+type LocationsT {
+  Location_ID: Int
+  Other_Details: String
+}
+
+type AssetsT {
+  Asset_ID: Int
+  Other_Details: String
+}
+
+type Assets_in_EventsT {
+  Asset_ID: Int
+  Event_ID: Int
+  Events(_limit: Int, Address_ID: Int, Channel_ID: Int, Event_Type_Code: String, Finance_ID: Int, Location_ID: Int): [EventsT]
+}
+
+type ChannelsT {
+  Channel_ID: Int
+  Other_Details: String
+}
+
+type PartiesT {
+  Party_ID: Int
+  Party_Details: String
+}
+
+type Parties_in_EventsT {
+  Party_ID: Int
+  Event_ID: Int
+  Role_Code: String
+  Events(_limit: Int, Address_ID: Int, Channel_ID: Int, Event_Type_Code: String, Finance_ID: Int, Location_ID: Int): [EventsT]
+  Parties(_limit: Int, Party_Details: String): [PartiesT]
+}
+
+type ProductsT {
+  Product_ID: Int
+  Product_Type_Code: String
+  Product_Name: String
+  Product_Price: Float
+}
+
+type Products_in_EventsT {
+  Product_in_Event_ID: Int
+  Event_ID: Int
+  Product_ID: Int
+  Events(_limit: Int, Address_ID: Int, Channel_ID: Int, Event_Type_Code: String, Finance_ID: Int, Location_ID: Int): [EventsT]
+  Products(_limit: Int, Product_Type_Code: String, Product_Name: String, Product_Price: Float): [ProductsT]
+}

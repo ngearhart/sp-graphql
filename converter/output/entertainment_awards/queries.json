@@ -1,0 +1,54 @@
+[
+    {
+        "query": "query { artwork_aggregate { aggregate { count } } }",
+        "question": "How many artworks are there?"
+    },
+    {
+        "query": "query { artwork ( order_by : { name : asc } ) { name } }",
+        "question": "List the name of artworks in ascending alphabetical order."
+    },
+    {
+        "query": "query { artwork ( where : { type : { _neq : \"Program Talent Show\" } } ) { name } }",
+        "question": "List the name of artworks whose type is not \"Program Talent Show\"."
+    },
+    {
+        "query": "query { festival_detail { festival_name location } }",
+        "question": "What are the names and locations of festivals?"
+    },
+    {
+        "query": "query { festival_detail ( order_by : { year : asc } ) { chair_name } }",
+        "question": "What are the names of the chairs of festivals, sorted in ascending order of the year held?"
+    },
+    {
+        "query": "query { festival_detail ( limit : 1 , order_by : { num_of_audience : desc } ) { location } }",
+        "question": "What is the location of the festival with the largest number of audience?"
+    },
+    {
+        "query": "query { festival_detail ( where : { year : { _eq : 2007 } } ) { festival_name } }",
+        "question": "What are the names of festivals held in year 2007?"
+    },
+    {
+        "query": "query { festival_detail_aggregate { aggregate { avg { num_of_audience } } } }",
+        "question": "What is the average number of audience for festivals?"
+    },
+    {
+        "query": "query { festival_detail ( limit : 3 , order_by : { year : desc } ) { festival_name } }",
+        "question": "Show the names of the three most recent festivals."
+    },
+    {
+        "query": "query { artwork { name nominations { festival_detail { festival_name } } } }",
+        "question": "For each nomination, show the name of the artwork and name of the festival where it is nominated."
+    },
+    {
+        "query": "query { festival_detail ( where : { nominations : { artwork : { type : { _eq : \"Program Talent Show\" } } } } ) { festival_name } }",
+        "question": "Show the names of festivals that have nominated artworks of type \"Program Talent Show\"."
+    },
+    {
+        "query": "query { festival_detail ( where : { _or : [ { year : { _eq : 2008 } } , { year : { _eq : 2010 } } ] } ) { num_of_audience } }",
+        "question": "Show the number of audience in year 2008 or 2010."
+    },
+    {
+        "query": "query { festival_detail_aggregate { aggregate { sum { num_of_audience } } } }",
+        "question": "What are the total number of the audiences who visited any of the festivals?"
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "query": "query { game_aggregate ( where : { season : { _gt : 2007 } } ) { aggregate { count } } }",
+        "question": "How many games are held after season 2007?"
+    },
+    {
+        "query": "query { game ( order_by : { home_team : desc } ) { date } }",
+        "question": "List the dates of games by the home team name in descending order."
+    },
+    {
+        "query": "query { game { season home_team away_team } }",
+        "question": "List the season, home team, away team of all the games."
+    },
+    {
+        "query": "query { stadium_aggregate { aggregate { max { home_games } min { home_games } avg { home_games } } } }",
+        "question": "What are the maximum, minimum and average home games each stadium held?"
+    },
+    {
+        "query": "query { stadium ( where : { capacity_percentage : { _gt : 100.0 } } ) { average_attendance } }",
+        "question": "What is the average attendance of stadiums with capacity percentage higher than 100%?"
+    },
+    {
+        "query": "query { injury_accident ( where : { injury : { _neq : \"Knee problem\" } } ) { player number_of_matches source } }",
+        "question": "What are the player name, number of matches, and information source for players who do not suffer from injury of 'Knee problem'?"
+    },
+    {
+        "query": "query { game ( where : { injury_accidents : { player : { _eq : \"Walter Samuel\" } } } ) { season } }",
+        "question": "What is the season of the game which causes the player 'Walter Samuel' to get injured?"
+    },
+    {
+        "query": "query { injury_accident_aggregate { aggregate { count } } }",
+        "question": "How many different kinds of information sources are there for injury accidents?"
+    },
+    {
+        "query": "query { injury_accident_aggregate ( where : { game : { season : { _gt : 2010 } } } ) { aggregate { count } } }",
+        "question": "How many distinct kinds of injuries happened after season 2010?"
+    },
+    {
+        "query": "query { stadium ( where : { name : { _like : \"%Bank%\" } } ) { name } }",
+        "question": "Which stadium name contains the substring \"Bank\"?"
+    },
+    {
+        "query": "query { game ( order_by : { season : desc } ) { date injury_accidents { player } } }",
+        "question": "For each injury accident, find the date of the game and the name of the injured player in the game, and sort the results in descending order of game season."
+    }
+]

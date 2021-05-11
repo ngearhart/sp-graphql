@@ -1,0 +1,18 @@
+type Query {
+  """"""
+  business(_limit: Int, bid: Int, business_id: String, name: String, full_address: String, city: String, latitude: String, longitude: String, review_count: Int, is_open: Int, rating: Float, state: String): [businessT]
+}
+
+type businessT {
+  bid: Int
+  business_id: String
+  name: String
+  full_address: String
+  city: String
+  latitude: String
+  longitude: String
+  review_count: Int
+  is_open: Int
+  rating: Float
+  state: String
+}

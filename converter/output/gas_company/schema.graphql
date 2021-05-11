@@ -1,0 +1,28 @@
+type Query {
+  """"""
+  company(_limit: Int, Company_ID: Int, Rank: Int, Company: String, Headquarters: String, Main_Industry: String, Sales_billion: Float, Profits_billion: Float, Assets_billion: Float, Market_Value: Float): [companyT]
+
+  """"""
+  gas_station(_limit: Int, Station_ID: Int, Open_Year: Int, Location: String, Manager_Name: String, Vice_Manager_Name: String, Representative_Name: String): [gas_stationT]
+}
+
+type companyT {
+  Company_ID: Int
+  Rank: Int
+  Company: String
+  Headquarters: String
+  Main_Industry: String
+  Sales_billion: Float
+  Profits_billion: Float
+  Assets_billion: Float
+  Market_Value: Float
+}
+
+type gas_stationT {
+  Station_ID: Int
+  Open_Year: Int
+  Location: String
+  Manager_Name: String
+  Vice_Manager_Name: String
+  Representative_Name: String
+}

@@ -1,0 +1,12 @@
+type Query {
+  """"""
+  conductor(_limit: Int, Conductor_ID: Int, Name: String, Age: Int, Nationality: String, Year_of_Work: Int): [conductorT]
+}
+
+type conductorT {
+  Conductor_ID: Int
+  Name: String
+  Age: Int
+  Nationality: String
+  Year_of_Work: Int
+}

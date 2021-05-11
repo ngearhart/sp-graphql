@@ -1,0 +1,62 @@
+[
+    {
+        "query": "query { cinema_aggregate { aggregate { count } } }",
+        "question": "How many cinema do we have?"
+    },
+    {
+        "query": "query { cinema_aggregate { aggregate { count } } }",
+        "question": "Count the number of cinemas."
+    },
+    {
+        "query": "query { cinema { name openning_year capacity } }",
+        "question": "Show name, opening year, and capacity for each cinema."
+    },
+    {
+        "query": "query { cinema ( distinct_on : location ) { location } }",
+        "question": "What are all the locations with a cinema?"
+    },
+    {
+        "query": "query { cinema ( distinct_on : location ) { location } }",
+        "question": "Find the distinct locations that has a cinema."
+    },
+    {
+        "query": "query { cinema ( order_by : { openning_year : desc } ) { name openning_year } }",
+        "question": "Show all the cinema names and opening years in descending order of opening year."
+    },
+    {
+        "query": "query { cinema ( limit : 1 , order_by : { capacity : desc } ) { name location } }",
+        "question": "What are the name and location of the cinema with the largest capacity?"
+    },
+    {
+        "query": "query { cinema_aggregate ( where : { openning_year : { _gte : 2011 } } ) { aggregate { avg { capacity } min { capacity } max { capacity } } } }",
+        "question": "Show the average, minimum, and maximum capacity for all the cinemas opened in year 2011 or later."
+    },
+    {
+        "query": "query { film { title directed_by } }",
+        "question": "Show the title and director for all films."
+    },
+    {
+        "query": "query { film { title directed_by } }",
+        "question": "What are the title and director of each film?"
+    },
+    {
+        "query": "query { film ( distinct_on : directed_by ) { directed_by } }",
+        "question": "Show all directors."
+    },
+    {
+        "query": "query { film ( distinct_on : directed_by ) { directed_by } }",
+        "question": "Who are all the directors?"
+    },
+    {
+        "query": "query { cinema { name schedules { film { title } } schedules { date price } } }",
+        "question": "Show cinema name, film title, date, and price for each record in schedule."
+    },
+    {
+        "query": "query { film_aggregate ( where : { title : { _like : \"%Dummy%\" } } ) { aggregate { count } } }",
+        "question": "How many films have the word 'Dummy' in their titles?"
+    },
+    {
+        "query": "query { film_aggregate ( where : { title : { _like : \"%Dummy%\" } } ) { aggregate { count } } }",
+        "question": "Count the number of films whose title contains the word 'Dummy'."
+    }
+]

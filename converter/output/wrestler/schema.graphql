@@ -1,0 +1,13 @@
+type Query {
+  """"""
+  wrestler(_limit: Int, Wrestler_ID: Int, Name: String, Reign: String, Days_held: String, Location: String, Event: String): [wrestlerT]
+}
+
+type wrestlerT {
+  Wrestler_ID: Int
+  Name: String
+  Reign: String
+  Days_held: String
+  Location: String
+  Event: String
+}

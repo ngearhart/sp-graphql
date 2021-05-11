@@ -1,0 +1,122 @@
+[
+    {
+        "query": "query { climber_aggregate { aggregate { count } } }",
+        "question": "How many climbers are there?"
+    },
+    {
+        "query": "query { climber_aggregate { aggregate { count } } }",
+        "question": "Count the number of climbers."
+    },
+    {
+        "query": "query { climber ( order_by : { points : desc } ) { name } }",
+        "question": "List the names of climbers in descending order of points."
+    },
+    {
+        "query": "query { climber ( order_by : { points : desc } ) { name } }",
+        "question": "What are the names of the climbers, ordered by points descending?"
+    },
+    {
+        "query": "query { climber ( where : { country : { _neq : \"Switzerland\" } } ) { name } }",
+        "question": "List the names of climbers whose country is not Switzerland."
+    },
+    {
+        "query": "query { climber ( where : { country : { _neq : \"Switzerland\" } } ) { name } }",
+        "question": "What are the names of climbers who are not from the country of Switzerland?"
+    },
+    {
+        "query": "query { climber_aggregate ( where : { country : { _eq : \"United Kingdom\" } } ) { aggregate { max { points } } } }",
+        "question": "What is the maximum point for climbers whose country is United Kingdom?"
+    },
+    {
+        "query": "query { climber_aggregate ( where : { country : { _eq : \"United Kingdom\" } } ) { aggregate { max { points } } } }",
+        "question": "Return the maximum number of points for climbers from the United Kingdom."
+    },
+    {
+        "query": "query { climber_aggregate { aggregate { count } } }",
+        "question": "How many distinct countries are the climbers from?"
+    },
+    {
+        "query": "query { climber_aggregate { aggregate { count } } }",
+        "question": "Count the number of different countries that climbers are from."
+    },
+    {
+        "query": "query { mountain ( order_by : { name : asc } ) { name } }",
+        "question": "What are the names of mountains in ascending alphabetical order?"
+    },
+    {
+        "query": "query { mountain ( order_by : { name : asc } ) { name } }",
+        "question": "Give the names of mountains in alphabetical order."
+    },
+    {
+        "query": "query { mountain ( where : { height : { _gt : 5000.0 } } ) { country } }",
+        "question": "What are the countries of mountains with height bigger than 5000?"
+    },
+    {
+        "query": "query { mountain ( where : { height : { _gt : 5000.0 } } ) { country } }",
+        "question": "Return the countries of the mountains that have a height larger than 5000."
+    },
+    {
+        "query": "query { mountain ( limit : 1 , order_by : { height : desc } ) { name } }",
+        "question": "What is the name of the highest mountain?"
+    },
+    {
+        "query": "query { mountain ( limit : 1 , order_by : { height : desc } ) { name } }",
+        "question": "Return the name of the mountain with the greatest height."
+    },
+    {
+        "query": "query { mountain ( limit : 3 , order_by : { prominence : desc } , distinct_on : range ) { range } }",
+        "question": "List the distinct ranges of the mountains with the top 3 prominence."
+    },
+    {
+        "query": "query { mountain ( limit : 3 , order_by : { prominence : desc } , distinct_on : range ) { range } }",
+        "question": "What are the different ranges of the 3 mountains with the highest prominence?"
+    },
+    {
+        "query": "query { climber { name mountain { name } } }",
+        "question": "Show names of climbers and the names of mountains they climb."
+    },
+    {
+        "query": "query { climber { name mountain { name } } }",
+        "question": "What are the names of climbers and the corresponding names of mountains that they climb?"
+    },
+    {
+        "query": "query { climber { name mountain { height } } }",
+        "question": "Show the names of climbers and the heights of mountains they climb."
+    },
+    {
+        "query": "query { climber { name mountain { height } } }",
+        "question": "What are the names of climbers and the corresponding heights of the mountains that they climb?"
+    },
+    {
+        "query": "query { mountain ( limit : 1 , order_by : { climbers_aggregate : { max : { points : desc_nulls_last } } } ) { height } }",
+        "question": "Show the height of the mountain climbed by the climber with the maximum points."
+    },
+    {
+        "query": "query { mountain ( limit : 1 , order_by : { climbers_aggregate : { max : { points : desc_nulls_last } } } ) { height } }",
+        "question": "What is the height of the mountain climbined by the climbing who had the most points?"
+    },
+    {
+        "query": "query { mountain ( where : { climbers : { country : { _eq : \"West Germany\" } } } , distinct_on : name ) { name } }",
+        "question": "Show the distinct names of mountains climbed by climbers from country \"West Germany\"."
+    },
+    {
+        "query": "query { mountain ( where : { climbers : { country : { _eq : \"West Germany\" } } } , distinct_on : name ) { name } }",
+        "question": "What are the different names of mountains ascended by climbers from the country of West Germany?"
+    },
+    {
+        "query": "query { climber ( where : { mountain : { country : { _eq : \"Uganda\" } } } ) { time } }",
+        "question": "Show the times used by climbers to climb mountains in Country Uganda."
+    },
+    {
+        "query": "query { climber ( where : { mountain : { country : { _eq : \"Uganda\" } } } ) { time } }",
+        "question": "What are the times used by climbers who climbed mountains in the country of Uganda?"
+    },
+    {
+        "query": "query { mountain ( where : { _or : [ { height : { _gt : 5000.0 } } , { prominence : { _gt : 1000.0 } } ] } ) { name } }",
+        "question": "Show the names of mountains with height more than 5000 or prominence more than 1000."
+    },
+    {
+        "query": "query { mountain ( where : { _or : [ { height : { _gt : 5000.0 } } , { prominence : { _gt : 1000.0 } } ] } ) { name } }",
+        "question": "What are the names of mountains that have a height of over 5000 or a prominence of over 1000?"
+    }
+]

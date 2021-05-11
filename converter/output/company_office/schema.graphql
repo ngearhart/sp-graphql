@@ -1,0 +1,13 @@
+type Query {
+  """"""
+  buildings(_limit: Int, id: Int, name: String, City: String, Height: Int, Stories: Int, Status: String): [buildingsT]
+}
+
+type buildingsT {
+  id: Int
+  name: String
+  City: String
+  Height: Int
+  Stories: Int
+  Status: String
+}

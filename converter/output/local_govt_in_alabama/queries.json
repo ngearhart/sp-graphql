@@ -1,0 +1,30 @@
+[
+    {
+        "query": "query { events ( where : { service : { service_type_code : { _eq : \"Marriage\" } } } ) { event_details } }",
+        "question": "what are the event details of the services that have the type code 'Marriage'?"
+    },
+    {
+        "query": "query { participants { participant_id participant_type_code participant_details } }",
+        "question": "What are all the the participant ids, type code and details?"
+    },
+    {
+        "query": "query { participants_aggregate ( where : { participant_type_code : { _eq : \"Organizer\" } } ) { aggregate { count } } }",
+        "question": "How many participants belong to the type 'Organizer'?"
+    },
+    {
+        "query": "query { services ( order_by : { service_type_code : asc } ) { service_type_code } }",
+        "question": "List the type of the services in alphabetical order."
+    },
+    {
+        "query": "query { events { service_id event_details } }",
+        "question": "List the service id and details for the events."
+    },
+    {
+        "query": "query { participants_aggregate ( where : { participant_details : { _like : \"%Dr.%\" } } ) { aggregate { count } } }",
+        "question": "How many events had participants whose details had the substring 'Dr.'"
+    },
+    {
+        "query": "query { participants_in_events_aggregate { aggregate { count } } }",
+        "question": "What are all the distinct participant ids who attended any events?"
+    }
+]

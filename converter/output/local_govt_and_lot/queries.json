@@ -1,0 +1,38 @@
+[
+    {
+        "query": "query { services ( where : { organization : { organization_details : { _eq : \"Denesik and Sons Party\" } } } , distinct_on : service_type_code ) { service_type_code } }",
+        "question": "What is the distinct service types that are provided by the organization which has detail 'Denesik and Sons Party'?"
+    },
+    {
+        "query": "query { things { thing_id type_of_thing_code organization { organization_details } } }",
+        "question": "List the id and type of each thing, and the details of the organization that owns it."
+    },
+    {
+        "query": "query { customer_events { date_moved_in customer { customer_id customer_details } } }",
+        "question": "What is each customer's move in date, and the corresponding customer id and details?"
+    },
+    {
+        "query": "query { timed_locations_of_things_aggregate ( where : { thing : { service_details : { _eq : \"Unsatisfied\" } } } ) { aggregate { count } } }",
+        "question": "How many distinct locations have the things with service detail 'Unsatisfied' been located in?"
+    },
+    {
+        "query": "query { timed_status_of_things_aggregate { aggregate { count } } }",
+        "question": "How many different status codes of things are there?"
+    },
+    {
+        "query": "query { residents_aggregate { aggregate { max { date_moved_in } } } }",
+        "question": "When is the last day any resident moved in?"
+    },
+    {
+        "query": "query { residents ( where : { other_details : { _like : \"%Miss%\" } } ) { other_details } }",
+        "question": "What are the resident details containing the substring 'Miss'?"
+    },
+    {
+        "query": "query { customer_events { customer_event_id date_moved_in property_id } }",
+        "question": "List the customer event id and the corresponding move in date and property id."
+    },
+    {
+        "query": "query { residents ( distinct_on : date_moved_in ) { date_moved_in } }",
+        "question": "What are the distinct move in dates of the residents?"
+    }
+]

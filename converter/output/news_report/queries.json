@@ -1,0 +1,46 @@
+[
+    {
+        "query": "query { journalist_aggregate { aggregate { count } } }",
+        "question": "How many journalists are there?"
+    },
+    {
+        "query": "query { journalist ( order_by : { years_working : asc } ) { name } }",
+        "question": "List the names of journalists in ascending order of years working."
+    },
+    {
+        "query": "query { journalist { nationality age } }",
+        "question": "What are the nationalities and ages of journalists?"
+    },
+    {
+        "query": "query { journalist ( where : { _or : [ { nationality : { _eq : \"England\" } } , { nationality : { _eq : \"Wales\" } } ] } ) { name } }",
+        "question": "Show the names of journalists from \"England\" or \"Wales\"."
+    },
+    {
+        "query": "query { journalist_aggregate { aggregate { avg { years_working } } } }",
+        "question": "What is the average number of years spent working as a journalist?"
+    },
+    {
+        "query": "query { journalist ( limit : 1 , order_by : { years_working : desc } ) { nationality } }",
+        "question": "What is the nationality of the journalist with the largest number of years working?"
+    },
+    {
+        "query": "query { event ( order_by : { event_attendance : desc } ) { date name venue } }",
+        "question": "Show the dates, places, and names of events in descending order of the attendance."
+    },
+    {
+        "query": "query { journalist { name news_reports { event { date } } } }",
+        "question": "Show the names of journalists and the dates of the events they reported."
+    },
+    {
+        "query": "query { event ( order_by : { event_attendance : asc } ) { name news_reports { journalist { name } } } }",
+        "question": "Show the names of journalists and the names of the events they reported in ascending order of attendance"
+    },
+    {
+        "query": "query { event_aggregate { aggregate { avg { event_attendance } max { event_attendance } } } }",
+        "question": "what are the average and maximum attendances of all events?"
+    },
+    {
+        "query": "query { event ( limit : 2 , order_by : { event_attendance : desc } ) { venue name } }",
+        "question": "List the event venues and names that have the top 2 most number of people attended."
+    }
+]

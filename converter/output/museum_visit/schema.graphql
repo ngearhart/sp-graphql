@@ -1,0 +1,11 @@
+type Query {
+  """"""
+  museum(_limit: Int, Museum_ID: Int, Name: String, Num_of_Staff: Int, Open_Year: String): [museumT]
+}
+
+type museumT {
+  Museum_ID: Int
+  Name: String
+  Num_of_Staff: Int
+  Open_Year: String
+}

@@ -1,0 +1,35 @@
+type Query {
+  """"""
+  enzyme(_limit: Int, id: Int, name: String, Location: String, Product: String, Chromosome: String, OMIM: Int, Porphyria: String): [enzymeT]
+
+  """"""
+  medicine(_limit: Int, id: Int, name: String, Trade_Name: String, FDA_approved: String): [medicineT]
+
+  """"""
+  medicine_enzyme_interaction(_limit: Int, enzyme_id: Int, medicine_id: Int, interaction_type: String): [medicine_enzyme_interactionT]
+}
+
+type enzymeT {
+  id: Int
+  name: String
+  Location: String
+  Product: String
+  Chromosome: String
+  OMIM: Int
+  Porphyria: String
+}
+
+type medicineT {
+  id: Int
+  name: String
+  Trade_Name: String
+  FDA_approved: String
+}
+
+type medicine_enzyme_interactionT {
+  enzyme_id: Int
+  medicine_id: Int
+  interaction_type: String
+  enzyme(_limit: Int, name: String, Location: String, Product: String, Chromosome: String, OMIM: Int, Porphyria: String): [enzymeT]
+  medicine(_limit: Int, name: String, Trade_Name: String, FDA_approved: String): [medicineT]
+}

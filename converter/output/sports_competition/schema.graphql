@@ -1,0 +1,11 @@
+type Query {
+  """"""
+  club(_limit: Int, Club_ID: Int, name: String, Region: String, Start_year: String): [clubT]
+}
+
+type clubT {
+  Club_ID: Int
+  name: String
+  Region: String
+  Start_year: String
+}

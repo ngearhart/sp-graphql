@@ -1,0 +1,82 @@
+[
+    {
+        "query": "query { scientists_aggregate { aggregate { count } } }",
+        "question": "Find the total number of scientists."
+    },
+    {
+        "query": "query { scientists_aggregate { aggregate { count } } }",
+        "question": "How many scientists are there?"
+    },
+    {
+        "query": "query { projects_aggregate { aggregate { sum { hours } } } }",
+        "question": "Find the total hours of all projects."
+    },
+    {
+        "query": "query { projects_aggregate { aggregate { sum { hours } } } }",
+        "question": "What is the total number of hours for all projects?"
+    },
+    {
+        "query": "query { assignedto_aggregate { aggregate { count } } }",
+        "question": "How many different scientists are assigned to any project?"
+    },
+    {
+        "query": "query { assignedto_aggregate { aggregate { count } } }",
+        "question": "Count the number of different scientists assigned to any project."
+    },
+    {
+        "query": "query { projects_aggregate { aggregate { count } } }",
+        "question": "Find the number of distinct projects."
+    },
+    {
+        "query": "query { projects_aggregate { aggregate { count } } }",
+        "question": "How many different projects are there?"
+    },
+    {
+        "query": "query { projects_aggregate { aggregate { avg { hours } } } }",
+        "question": "Find the average hours of all projects."
+    },
+    {
+        "query": "query { projects_aggregate { aggregate { avg { hours } } } }",
+        "question": "What is the average hours across all projects?"
+    },
+    {
+        "query": "query { projects ( limit : 1 , order_by : { hours : desc } ) { name } }",
+        "question": "Find the name of project that continues for the longest time."
+    },
+    {
+        "query": "query { projects ( limit : 1 , order_by : { hours : desc } ) { name } }",
+        "question": "What is the name of the project with the most hours?"
+    },
+    {
+        "query": "query { projects ( where : { hours : { _gte : 100 , _lte : 300 } } ) { name } }",
+        "question": "Find the name of projects that require between 100 and 300 hours of work."
+    },
+    {
+        "query": "query { projects ( where : { hours : { _gte : 100 , _lte : 300 } } ) { name } }",
+        "question": "What are the names of projects that require between 100 and 300 hours?"
+    },
+    {
+        "query": "query { scientists ( order_by : { name : asc } ) { name } }",
+        "question": "List the names of all scientists sorted in alphabetical order."
+    },
+    {
+        "query": "query { scientists ( order_by : { name : asc } ) { name } }",
+        "question": "What are the names of all the scientists in alphabetical order?"
+    },
+    {
+        "query": "query { scientists { name } }",
+        "question": "Find the name of scientists who are assigned to some project."
+    },
+    {
+        "query": "query { scientists { name } }",
+        "question": "What are the names of scientists who are assigned to any project?"
+    },
+    {
+        "query": "query { assignedto ( order_by : { projectByProject : { name : asc } , scientistByScientist : { name : asc } } ) { scientistByScientist { name } projectByProject { name hours } } }",
+        "question": "List all the scientists' names, their projects' names, and the hours worked by that scientist on each project, in alphabetical order of project name, and then scientist name."
+    },
+    {
+        "query": "query { assignedto ( order_by : { projectByProject : { name : asc } , scientistByScientist : { name : asc } } ) { scientistByScientist { name } projectByProject { name hours } } }",
+        "question": "What are the names of each scientist, the names of the projects that they work on, and the hours for each of those projects, listed in alphabetical order by project name, then scientist name."
+    }
+]

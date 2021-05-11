@@ -1,0 +1,94 @@
+[
+    {
+        "query": "query { ref_document_status { document_status_code } }",
+        "question": "What document status codes do we have?"
+    },
+    {
+        "query": "query { ref_document_status ( where : { document_status_code : { _eq : \"working\" } } ) { document_status_description } }",
+        "question": "What is the description of document status code 'working'?"
+    },
+    {
+        "query": "query { ref_document_types { document_type_code } }",
+        "question": "What document type codes do we have?"
+    },
+    {
+        "query": "query { ref_document_types ( where : { document_type_code : { _eq : \"Paper\" } } ) { document_type_description } }",
+        "question": "What is the description of document type 'Paper'?"
+    },
+    {
+        "query": "query { ref_shipping_agents { shipping_agent_name } }",
+        "question": "What are the shipping agent names?"
+    },
+    {
+        "query": "query { ref_shipping_agents ( where : { shipping_agent_name : { _eq : \"UPS\" } } ) { shipping_agent_code } }",
+        "question": "What is the shipping agent code of shipping agent UPS?"
+    },
+    {
+        "query": "query { roles { role_code } }",
+        "question": "What are all role codes?"
+    },
+    {
+        "query": "query { roles ( where : { role_code : { _eq : \"ED\" } } ) { role_description } }",
+        "question": "What is the description of role code ED?"
+    },
+    {
+        "query": "query { employees_aggregate { aggregate { count } } }",
+        "question": "How many employees do we have?"
+    },
+    {
+        "query": "query { roles ( where : { employees : { employee_name : { _eq : \"Koby\" } } } ) { role_description } }",
+        "question": "What is the role of the employee named Koby?"
+    },
+    {
+        "query": "query { documents { document_id receipt_date } }",
+        "question": "List all document ids and receipt dates of documents."
+    },
+    {
+        "query": "query { ref_document_status ( where : { documents : { document_id : { _eq : 1 } } } ) { document_status_description } }",
+        "question": "What is the document status description of the document with id 1?"
+    },
+    {
+        "query": "query { documents_aggregate ( where : { document_status_code : { _eq : \"done\" } } ) { aggregate { count } } }",
+        "question": "How many documents have the status code done?"
+    },
+    {
+        "query": "query { documents ( where : { document_id : { _eq : 2 } } ) { document_type_code } }",
+        "question": "List the document type code for the document with the id 2."
+    },
+    {
+        "query": "query { documents ( where : { _and : { document_type_code : { _eq : \"Paper\" } , document_status_code : { _eq : \"done\" } } } ) { document_id } }",
+        "question": "List the document ids for any documents with the status code done and the type code paper."
+    },
+    {
+        "query": "query { ref_shipping_agents ( where : { documents : { document_id : { _eq : 2 } } } ) { shipping_agent_name } }",
+        "question": "What is the name of the shipping agent of the document with id 2?"
+    },
+    {
+        "query": "query { ref_shipping_agents_aggregate ( where : { shipping_agent_name : { _eq : \"USPS\" } } ) { aggregate { count } } }",
+        "question": "How many documents were shipped by USPS?"
+    },
+    {
+        "query": "query { documents ( where : { document_id : { _eq : 3 } } ) { receipt_date } }",
+        "question": "What is the receipt date of the document with id 3?"
+    },
+    {
+        "query": "query { addresses ( where : { documents_maileds : { document_id : { _eq : 4 } } } ) { address_details } }",
+        "question": "What address was the document with id 4 mailed to?"
+    },
+    {
+        "query": "query { documents_mailed ( where : { document_id : { _eq : 7 } } ) { mailing_date } }",
+        "question": "What is the mail date of the document with id 7?"
+    },
+    {
+        "query": "query { document_drafts ( where : { document_id : { _eq : 7 } } ) { draft_details } }",
+        "question": "What is draft detail of the document with id 7?"
+    },
+    {
+        "query": "query { draft_copies_aggregate ( where : { document_id : { _eq : 2 } } ) { aggregate { count } } }",
+        "question": "How many draft copies does the document with id 2 have?"
+    },
+    {
+        "query": "query { employees ( where : { circulation_histories : { document_id : { _eq : 1 } } } ) { employee_name } }",
+        "question": "List all employees in the circulation history of the document with id 1. List the employee's name."
+    }
+]

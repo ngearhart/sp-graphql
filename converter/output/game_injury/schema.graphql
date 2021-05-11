@@ -1,0 +1,41 @@
+type Query {
+  """"""
+  game(_limit: Int, stadium_id: Int, id: Int, Season: Int, Date: String, Home_team: String, Away_team: String, Score: String, Competition: String): [gameT]
+
+  """"""
+  injury_accident(_limit: Int, game_id: Int, id: Int, Player: String, Injury: String, Number_of_matches: String, Source: String): [injury_accidentT]
+
+  """"""
+  stadium(_limit: Int, id: Int, name: String, Home_Games: Int, Average_Attendance: Float, Total_Attendance: Float, Capacity_Percentage: Float): [stadiumT]
+}
+
+type gameT {
+  stadium_id: Int
+  id: Int
+  Season: Int
+  Date: String
+  Home_team: String
+  Away_team: String
+  Score: String
+  Competition: String
+  stadium(_limit: Int, name: String, Home_Games: Int, Average_Attendance: Float, Total_Attendance: Float, Capacity_Percentage: Float): [stadiumT]
+}
+
+type stadiumT {
+  id: Int
+  name: String
+  Home_Games: Int
+  Average_Attendance: Float
+  Total_Attendance: Float
+  Capacity_Percentage: Float
+}
+
+type injury_accidentT {
+  game_id: Int
+  id: Int
+  Player: String
+  Injury: String
+  Number_of_matches: String
+  Source: String
+  game(_limit: Int, stadium_id: Int, Season: Int, Date: String, Home_team: String, Away_team: String, Score: String, Competition: String): [gameT]
+}

@@ -1,0 +1,38 @@
+[
+    {
+        "query": "query { station { local_authority services } }",
+        "question": "list the local authorities and services provided by all stations."
+    },
+    {
+        "query": "query { train ( order_by : { time : asc } ) { train_number name } }",
+        "question": "show all train numbers and names ordered by their time from early to late."
+    },
+    {
+        "query": "query { train ( order_by : { time : asc } , where : { destination : { _eq : \"Chennai\" } } ) { time train_number } }",
+        "question": "Give me the times and numbers of all trains that go to Chennai, ordered by time."
+    },
+    {
+        "query": "query { train_aggregate ( where : { name : { _like : \"%Express%\" } } ) { aggregate { count } } }",
+        "question": "How many trains have 'Express' in their names?"
+    },
+    {
+        "query": "query { train ( where : { _and : { destination : { _eq : \"Guruvayur\" } , origin : { _eq : \"Chennai\" } } } ) { train_number time } }",
+        "question": "Find the number and time of the train that goes from Chennai to Guruvayur."
+    },
+    {
+        "query": "query { weekly_weather_aggregate ( where : { station : { network_name : { _eq : \"Amersham\" } } } ) { aggregate { max { low_temperature } avg { precipitation } } } }",
+        "question": "Give me the maximum low temperature and average precipitation at the Amersham station."
+    },
+    {
+        "query": "query { train ( where : { routes : { station : { local_authority : { _eq : \"Chiltern\" } } } } ) { name time } }",
+        "question": "Find names and times of trains that run through stations for the local authority Chiltern."
+    },
+    {
+        "query": "query { station_aggregate { aggregate { count } } }",
+        "question": "How many different services are provided by all stations?"
+    },
+    {
+        "query": "query { weekly_weather_aggregate { aggregate { min { low_temperature } max { wind_speed_mph } } } }",
+        "question": "show the lowest low temperature and highest wind speed in miles per hour."
+    }
+]

@@ -1,0 +1,17 @@
+type Query {
+  """"""
+  school(_limit: Int, School_ID: Int, School: String, Location: String, Enrollment: Float, Founded: Float, Denomination: String, Boys_or_Girls: String, Day_or_Boarding: String, Year_Entered_Competition: Float, School_Colors: String): [schoolT]
+}
+
+type schoolT {
+  School_ID: Int
+  School: String
+  Location: String
+  Enrollment: Float
+  Founded: Float
+  Denomination: String
+  Boys_or_Girls: String
+  Day_or_Boarding: String
+  Year_Entered_Competition: Float
+  School_Colors: String
+}

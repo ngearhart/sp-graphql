@@ -1,0 +1,114 @@
+[
+    {
+        "query": "query { club_aggregate { aggregate { count } } }",
+        "question": "How many clubs are there?"
+    },
+    {
+        "query": "query { club_aggregate { aggregate { count } } }",
+        "question": "What is the total number of clubs?"
+    },
+    {
+        "query": "query { club ( order_by : { region : asc } , distinct_on : region ) { region } }",
+        "question": "List the distinct region of clubs in ascending alphabetical order."
+    },
+    {
+        "query": "query { club ( order_by : { region : asc } , distinct_on : region ) { region } }",
+        "question": "What are the different regions of clubs in ascending alphabetical order?"
+    },
+    {
+        "query": "query { club_rank_aggregate { aggregate { avg { gold } } } }",
+        "question": "What is the average number of gold medals for clubs?"
+    },
+    {
+        "query": "query { club_rank_aggregate { aggregate { avg { gold } } } }",
+        "question": "What is the average number of gold medals for a club?"
+    },
+    {
+        "query": "query { competition { competition_type country } }",
+        "question": "What are the types and countries of competitions?"
+    },
+    {
+        "query": "query { competition { competition_type country } }",
+        "question": "What are the types of every competition and in which countries are they located?"
+    },
+    {
+        "query": "query { competition ( where : { competition_type : { _neq : \"Tournament\" } } , distinct_on : year ) { year } }",
+        "question": "What are the distinct years in which the competitions type is not \"Tournament\"?"
+    },
+    {
+        "query": "query { competition ( where : { competition_type : { _neq : \"Tournament\" } } , distinct_on : year ) { year } }",
+        "question": "What are the different years for all competitions that are not of type equal to tournament?"
+    },
+    {
+        "query": "query { club_rank_aggregate { aggregate { max { silver } min { silver } } } }",
+        "question": "What are the maximum and minimum number of silver medals for clubs."
+    },
+    {
+        "query": "query { club_rank_aggregate { aggregate { max { silver } min { silver } } } }",
+        "question": "What are the maximum and minimum number of silver medals for all the clubs?"
+    },
+    {
+        "query": "query { club_rank_aggregate ( where : { total : { _lt : 10.0 } } ) { aggregate { count } } }",
+        "question": "How many clubs have total medals less than 10?"
+    },
+    {
+        "query": "query { club_rank_aggregate ( where : { total : { _lt : 10.0 } } ) { aggregate { count } } }",
+        "question": "What is the total number of clubs that have less than 10 medals in total?"
+    },
+    {
+        "query": "query { club ( order_by : { start_year : asc } ) { name } }",
+        "question": "List all club names in ascending order of start year."
+    },
+    {
+        "query": "query { club ( order_by : { start_year : asc } ) { name } }",
+        "question": "What are the names of all the clubs starting with the oldest?"
+    },
+    {
+        "query": "query { club ( order_by : { name : desc } ) { name } }",
+        "question": "List all club names in descending alphabetical order."
+    },
+    {
+        "query": "query { club ( order_by : { name : desc } ) { name } }",
+        "question": "What are the names of all the clubs ordered in descending alphabetical order?"
+    },
+    {
+        "query": "query { club { name players { player_id } } }",
+        "question": "Please show the names and the players of clubs."
+    },
+    {
+        "query": "query { club { name players { player_id } } }",
+        "question": "What are the names and players of all the clubs?"
+    },
+    {
+        "query": "query { club ( where : { players : { position : { _eq : \"Right Wing\" } } } ) { name } }",
+        "question": "Show the names of clubs that have players with position \"Right Wing\"."
+    },
+    {
+        "query": "query { club ( where : { players : { position : { _eq : \"Right Wing\" } } } ) { name } }",
+        "question": "What are the names of the clubs that have players in the position of \"Right Wing\"?"
+    },
+    {
+        "query": "query { player_aggregate ( where : { club : { name : { _eq : \"AIB\" } } } ) { aggregate { avg { points } } } }",
+        "question": "What is the average points of players from club with name \"AIB\"."
+    },
+    {
+        "query": "query { player_aggregate ( where : { club : { name : { _eq : \"AIB\" } } } ) { aggregate { avg { points } } } }",
+        "question": "What is the average number of points for players from the \"AIB\" club?"
+    },
+    {
+        "query": "query { player_aggregate { aggregate { sum { points } } } }",
+        "question": "Show total points of all players."
+    },
+    {
+        "query": "query { player_aggregate { aggregate { sum { points } } } }",
+        "question": "What is the total number of points for all players?"
+    },
+    {
+        "query": "query { player_aggregate { aggregate { count } } }",
+        "question": "how many different positions are there?"
+    },
+    {
+        "query": "query { player_aggregate { aggregate { count } } }",
+        "question": "How many different position for players are listed?"
+    }
+]

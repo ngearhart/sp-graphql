@@ -1,0 +1,93 @@
+type Query {
+  """"""
+  All_Documents(_limit: Int, Document_ID: Int, Date_Stored: Date, Document_Type_Code: String, Document_Name: String, Document_Description: String, Other_Details: String): [All_DocumentsT]
+
+  """"""
+  Document_Locations(_limit: Int, Document_ID: Int, Location_Code: String, Date_in_Location_From: Date, Date_in_Locaton_To: Date): [Document_LocationsT]
+
+  """"""
+  Documents_to_be_Destroyed(_limit: Int, Document_ID: Int, Destruction_Authorised_by_Employee_ID: Int, Destroyed_by_Employee_ID: Int, Planned_Destruction_Date: Date, Actual_Destruction_Date: Date, Other_Details: String): [Documents_to_be_DestroyedT]
+
+  """"""
+  Employees(_limit: Int, Employee_ID: Int, Role_Code: String, Employee_Name: String, Gender_MFU: String, Date_of_Birth: Date, Other_Details: String): [EmployeesT]
+
+  """"""
+  Ref_Calendar(_limit: Int, Calendar_Date: Date, Day_Number: Int): [Ref_CalendarT]
+
+  """"""
+  Ref_Document_Types(_limit: Int, Document_Type_Code: String, Document_Type_Name: String, Document_Type_Description: String): [Ref_Document_TypesT]
+
+  """"""
+  Ref_Locations(_limit: Int, Location_Code: String, Location_Name: String, Location_Description: String): [Ref_LocationsT]
+
+  """"""
+  Roles(_limit: Int, Role_Code: String, Role_Name: String, Role_Description: String): [RolesT]
+}
+
+type All_DocumentsT {
+  Document_ID: Int
+  Date_Stored: Date
+  Document_Type_Code: String
+  Document_Name: String
+  Document_Description: String
+  Other_Details: String
+  Ref_Calendar(_limit: Int, Day_Number: Int): [Ref_CalendarT]
+  Ref_Document_Types(_limit: Int, Document_Type_Name: String, Document_Type_Description: String): [Ref_Document_TypesT]
+}
+
+scalar Date
+
+type Ref_CalendarT {
+  Calendar_Date: Date
+  Day_Number: Int
+}
+
+type Ref_Document_TypesT {
+  Document_Type_Code: String
+  Document_Type_Name: String
+  Document_Type_Description: String
+}
+
+type Document_LocationsT {
+  Document_ID: Int
+  Location_Code: String
+  Date_in_Location_From: Date
+  Date_in_Locaton_To: Date
+  All_Documents(_limit: Int, Date_Stored: Date, Document_Type_Code: String, Document_Name: String, Document_Description: String, Other_Details: String): [All_DocumentsT]
+  Ref_Calendar(_limit: Int, Day_Number: Int): [Ref_CalendarT]
+  Ref_Locations(_limit: Int, Location_Name: String, Location_Description: String): [Ref_LocationsT]
+}
+
+type Ref_LocationsT {
+  Location_Code: String
+  Location_Name: String
+  Location_Description: String
+}
+
+type Documents_to_be_DestroyedT {
+  Document_ID: Int
+  Destruction_Authorised_by_Employee_ID: Int
+  Destroyed_by_Employee_ID: Int
+  Planned_Destruction_Date: Date
+  Actual_Destruction_Date: Date
+  Other_Details: String
+  All_Documents(_limit: Int, Date_Stored: Date, Document_Type_Code: String, Document_Name: String, Document_Description: String, Other_Details: String): [All_DocumentsT]
+  Employees(_limit: Int, Role_Code: String, Employee_Name: String, Gender_MFU: String, Date_of_Birth: Date, Other_Details: String): [EmployeesT]
+  Ref_Calendar(_limit: Int, Day_Number: Int): [Ref_CalendarT]
+}
+
+type EmployeesT {
+  Employee_ID: Int
+  Role_Code: String
+  Employee_Name: String
+  Gender_MFU: String
+  Date_of_Birth: Date
+  Other_Details: String
+  Roles(_limit: Int, Role_Name: String, Role_Description: String): [RolesT]
+}
+
+type RolesT {
+  Role_Code: String
+  Role_Name: String
+  Role_Description: String
+}

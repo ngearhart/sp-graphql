@@ -1,0 +1,73 @@
+type Query {
+  """"""
+  Benefits_Overpayments(_limit: Int, council_tax_id: Int, cmi_cross_ref_id: Int): [Benefits_OverpaymentsT]
+
+  """"""
+  Business_Rates(_limit: Int, business_rates_id: Int, cmi_cross_ref_id: Int): [Business_RatesT]
+
+  """"""
+  CMI_Cross_References(_limit: Int, cmi_cross_ref_id: Int, master_customer_id: Int, source_system_code: String): [CMI_Cross_ReferencesT]
+
+  """"""
+  Council_Tax(_limit: Int, council_tax_id: Int, cmi_cross_ref_id: Int): [Council_TaxT]
+
+  """"""
+  Customer_Master_Index(_limit: Int, master_customer_id: Int, cmi_details: String): [Customer_Master_IndexT]
+
+  """"""
+  Electoral_Register(_limit: Int, electoral_register_id: Int, cmi_cross_ref_id: Int): [Electoral_RegisterT]
+
+  """"""
+  Parking_Fines(_limit: Int, council_tax_id: Int, cmi_cross_ref_id: Int): [Parking_FinesT]
+
+  """"""
+  Rent_Arrears(_limit: Int, council_tax_id: Int, cmi_cross_ref_id: Int): [Rent_ArrearsT]
+}
+
+type Benefits_OverpaymentsT {
+  council_tax_id: Int
+  cmi_cross_ref_id: Int
+  CMI_Cross_References(_limit: Int, master_customer_id: Int, source_system_code: String): [CMI_Cross_ReferencesT]
+}
+
+type CMI_Cross_ReferencesT {
+  cmi_cross_ref_id: Int
+  master_customer_id: Int
+  source_system_code: String
+  Customer_Master_Index(_limit: Int, cmi_details: String): [Customer_Master_IndexT]
+}
+
+type Customer_Master_IndexT {
+  master_customer_id: Int
+  cmi_details: String
+}
+
+type Business_RatesT {
+  business_rates_id: Int
+  cmi_cross_ref_id: Int
+  CMI_Cross_References(_limit: Int, master_customer_id: Int, source_system_code: String): [CMI_Cross_ReferencesT]
+}
+
+type Council_TaxT {
+  council_tax_id: Int
+  cmi_cross_ref_id: Int
+  CMI_Cross_References(_limit: Int, master_customer_id: Int, source_system_code: String): [CMI_Cross_ReferencesT]
+}
+
+type Electoral_RegisterT {
+  electoral_register_id: Int
+  cmi_cross_ref_id: Int
+  CMI_Cross_References(_limit: Int, master_customer_id: Int, source_system_code: String): [CMI_Cross_ReferencesT]
+}
+
+type Parking_FinesT {
+  council_tax_id: Int
+  cmi_cross_ref_id: Int
+  CMI_Cross_References(_limit: Int, master_customer_id: Int, source_system_code: String): [CMI_Cross_ReferencesT]
+}
+
+type Rent_ArrearsT {
+  council_tax_id: Int
+  cmi_cross_ref_id: Int
+  CMI_Cross_References(_limit: Int, master_customer_id: Int, source_system_code: String): [CMI_Cross_ReferencesT]
+}

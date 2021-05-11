@@ -1,0 +1,11 @@
+type Query {
+  """"""
+  employee(_limit: Int, Employee_ID: Int, Name: String, Age: Int, City: String): [employeeT]
+}
+
+type employeeT {
+  Employee_ID: Int
+  Name: String
+  Age: Int
+  City: String
+}

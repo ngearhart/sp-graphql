@@ -1,0 +1,36 @@
+type Query {
+  """"""
+  Club(_limit: Int, ClubID: Int, ClubName: String, ClubDesc: String, ClubLocation: String): [ClubT]
+
+  """"""
+  Member_of_club(_limit: Int, StuID: Int, ClubID: Int, Position: String): [Member_of_clubT]
+
+  """"""
+  Student(_limit: Int, StuID: Int, LName: String, Fname: String, Age: Int, Sex: String, Major: Int, Advisor: Int, city_code: String): [StudentT]
+}
+
+type ClubT {
+  ClubID: Int
+  ClubName: String
+  ClubDesc: String
+  ClubLocation: String
+}
+
+type Member_of_clubT {
+  StuID: Int
+  ClubID: Int
+  Position: String
+  Club(_limit: Int, ClubName: String, ClubDesc: String, ClubLocation: String): [ClubT]
+  Student(_limit: Int, LName: String, Fname: String, Age: Int, Sex: String, Major: Int, Advisor: Int, city_code: String): [StudentT]
+}
+
+type StudentT {
+  StuID: Int
+  LName: String
+  Fname: String
+  Age: Int
+  Sex: String
+  Major: Int
+  Advisor: Int
+  city_code: String
+}

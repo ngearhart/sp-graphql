@@ -1,0 +1,12 @@
+type Query {
+  """"""
+  people(_limit: Int, People_ID: Int, Age: Int, Name: String, Nationality: String, Graduation_College: String): [peopleT]
+}
+
+type peopleT {
+  People_ID: Int
+  Age: Int
+  Name: String
+  Nationality: String
+  Graduation_College: String
+}

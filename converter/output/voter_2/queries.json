@@ -1,0 +1,122 @@
+[
+    {
+        "query": "query { student_aggregate { aggregate { count } } }",
+        "question": "Find the number of students in total."
+    },
+    {
+        "query": "query { student_aggregate { aggregate { count } } }",
+        "question": "How many students are there in total?"
+    },
+    {
+        "query": "query { voting_record_aggregate { aggregate { count } } }",
+        "question": "Find the number of voting records in total."
+    },
+    {
+        "query": "query { voting_record_aggregate { aggregate { count } } }",
+        "question": "How many voting records do we have?"
+    },
+    {
+        "query": "query { voting_record_aggregate { aggregate { count } } }",
+        "question": "Find the distinct number of president votes."
+    },
+    {
+        "query": "query { voting_record_aggregate { aggregate { count } } }",
+        "question": "How many distinct president votes are recorded?"
+    },
+    {
+        "query": "query { student_aggregate { aggregate { max { age } } } }",
+        "question": "Find the maximum age of all the students."
+    },
+    {
+        "query": "query { student_aggregate { aggregate { max { age } } } }",
+        "question": "What is the oldest age among the students?"
+    },
+    {
+        "query": "query { student ( where : { major : { _eq : 50 } } ) { lname } }",
+        "question": "Find the last names of students with major 50."
+    },
+    {
+        "query": "query { student ( where : { major : { _eq : 50 } } ) { lname } }",
+        "question": "What are the last names of students studying major 50?"
+    },
+    {
+        "query": "query { student ( where : { age : { _gt : 22 } } ) { fname } }",
+        "question": "Find the first names of students with age above 22."
+    },
+    {
+        "query": "query { student ( where : { age : { _gt : 22 } } ) { fname } }",
+        "question": "What are the first names of all the students aged above 22?"
+    },
+    {
+        "query": "query { student ( where : { sex : { _eq : \"M\" } } ) { major } }",
+        "question": "What are the majors of male (sex is M) students?"
+    },
+    {
+        "query": "query { student ( where : { sex : { _eq : \"M\" } } ) { major } }",
+        "question": "List the major of each male student."
+    },
+    {
+        "query": "query { student_aggregate ( where : { sex : { _eq : \"F\" } } ) { aggregate { avg { age } } } }",
+        "question": "What is the average age of female (sex is F) students?"
+    },
+    {
+        "query": "query { student_aggregate ( where : { sex : { _eq : \"F\" } } ) { aggregate { avg { age } } } }",
+        "question": "Find the average age of female students."
+    },
+    {
+        "query": "query { student_aggregate ( where : { major : { _eq : 600 } } ) { aggregate { max { age } min { age } } } }",
+        "question": "What are the maximum and minimum age of students with major 600?"
+    },
+    {
+        "query": "query { student_aggregate ( where : { major : { _eq : 600 } } ) { aggregate { max { age } min { age } } } }",
+        "question": "Tell me the ages of the oldest and youngest students studying major 600."
+    },
+    {
+        "query": "query { student ( where : { city_code : { _eq : \"BAL\" } } ) { advisor } }",
+        "question": "Who are the advisors for students that live in a city with city code \"BAL\"?"
+    },
+    {
+        "query": "query { student ( where : { city_code : { _eq : \"BAL\" } } ) { advisor } }",
+        "question": "Show the advisors of the students whose city of residence has city code \"BAL\"."
+    },
+    {
+        "query": "query { voting_record ( where : { election_cycle : { _eq : \"Fall\" } } , distinct_on : secretary_vote ) { secretary_vote } }",
+        "question": "What are the distinct secretary votes in the fall election cycle?"
+    },
+    {
+        "query": "query { voting_record ( where : { election_cycle : { _eq : \"Fall\" } } , distinct_on : secretary_vote ) { secretary_vote } }",
+        "question": "Return all the distinct secretary votes made in the fall election cycle."
+    },
+    {
+        "query": "query { voting_record ( where : { registration_date : { _eq : \"08/30/2015\" } } , distinct_on : president_vote ) { president_vote } }",
+        "question": "What are the distinct president votes on 08/30/2015?"
+    },
+    {
+        "query": "query { voting_record ( where : { registration_date : { _eq : \"08/30/2015\" } } , distinct_on : president_vote ) { president_vote } }",
+        "question": "Show all the distinct president votes made on 08/30/2015."
+    },
+    {
+        "query": "query { student ( distinct_on : lname ) { lname } }",
+        "question": "Find the distinct last names of the students who have class president votes."
+    },
+    {
+        "query": "query { student ( distinct_on : lname ) { lname } }",
+        "question": "What are the distinct last names of the students who have class president votes?"
+    },
+    {
+        "query": "query { student ( distinct_on : fname ) { fname } }",
+        "question": "Find the distinct first names of the students who have class senator votes."
+    },
+    {
+        "query": "query { student ( distinct_on : fname ) { fname } }",
+        "question": "What are the distinct first names of the students who have class president votes?"
+    },
+    {
+        "query": "query { student ( distinct_on : major ) { major } }",
+        "question": "Find the distinct majors of students who have treasurer votes."
+    },
+    {
+        "query": "query { student ( distinct_on : major ) { major } }",
+        "question": "What are the distinct majors that students with treasurer votes are studying?"
+    }
+]

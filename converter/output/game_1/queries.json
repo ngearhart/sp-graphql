@@ -1,0 +1,162 @@
+[
+    {
+        "query": "query { video_games_aggregate { aggregate { count } } }",
+        "question": "How many video games exist?"
+    },
+    {
+        "query": "query { video_games_aggregate { aggregate { count } } }",
+        "question": "How many video games do you have?"
+    },
+    {
+        "query": "query { video_games_aggregate { aggregate { count } } }",
+        "question": "How many video game types exist?"
+    },
+    {
+        "query": "query { video_games_aggregate { aggregate { count } } }",
+        "question": "What is the count of different game types?"
+    },
+    {
+        "query": "query { video_games ( distinct_on : gtype ) { gtype } }",
+        "question": "Show all video game types."
+    },
+    {
+        "query": "query { video_games ( distinct_on : gtype ) { gtype } }",
+        "question": "What are the different types of video games?"
+    },
+    {
+        "query": "query { video_games ( order_by : { gname : asc } ) { gname gtype } }",
+        "question": "Show all video games and their types in the order of their names."
+    },
+    {
+        "query": "query { video_games ( order_by : { gname : asc } ) { gname gtype } }",
+        "question": "What are the names of all the video games and their types in alphabetical order?"
+    },
+    {
+        "query": "query { video_games ( where : { gtype : { _eq : \"Collectible card game\" } } ) { gname } }",
+        "question": "Show all video games with type Collectible card game."
+    },
+    {
+        "query": "query { video_games ( where : { gtype : { _eq : \"Collectible card game\" } } ) { gname } }",
+        "question": "What are the names of all video games that are collectible cards?"
+    },
+    {
+        "query": "query { video_games ( where : { gname : { _eq : \"Call of Destiny\" } } ) { gtype } }",
+        "question": "What is the type of video game Call of Destiny."
+    },
+    {
+        "query": "query { video_games ( where : { gname : { _eq : \"Call of Destiny\" } } ) { gtype } }",
+        "question": "What type of game is Call of Destiny?"
+    },
+    {
+        "query": "query { video_games_aggregate ( where : { gtype : { _eq : \"Massively multiplayer online game\" } } ) { aggregate { count } } }",
+        "question": "How many video games have type Massively multiplayer online game?"
+    },
+    {
+        "query": "query { video_games_aggregate ( where : { gtype : { _eq : \"Massively multiplayer online game\" } } ) { aggregate { count } } }",
+        "question": "Count the number of video games with Massively multiplayer online game type ."
+    },
+    {
+        "query": "query { student ( where : { city_code : { _eq : \"CHI\" } } ) { stuid } }",
+        "question": "Show ids for all students who live in CHI."
+    },
+    {
+        "query": "query { student ( where : { city_code : { _eq : \"CHI\" } } ) { stuid } }",
+        "question": "What are the ids of all students who live in CHI?"
+    },
+    {
+        "query": "query { student ( where : { advisor : { _eq : 1121 } } ) { stuid } }",
+        "question": "Show ids for all students who have advisor 1121."
+    },
+    {
+        "query": "query { student ( where : { advisor : { _eq : 1121 } } ) { stuid } }",
+        "question": "What are the ids of all students who have advisor number 1121?"
+    },
+    {
+        "query": "query { student ( where : { major : { _eq : 600 } } ) { fname } }",
+        "question": "Show first name for all students with major 600."
+    },
+    {
+        "query": "query { student ( where : { major : { _eq : 600 } } ) { fname } }",
+        "question": "What are the first names for all students who are from the major numbered 600?"
+    },
+    {
+        "query": "query { sportsinfo_aggregate { aggregate { count } } }",
+        "question": "How many sports do we have?"
+    },
+    {
+        "query": "query { sportsinfo_aggregate { aggregate { count } } }",
+        "question": "How many different types of sports do we offer?"
+    },
+    {
+        "query": "query { sportsinfo_aggregate { aggregate { count } } }",
+        "question": "How many students play sports?"
+    },
+    {
+        "query": "query { sportsinfo_aggregate { aggregate { count } } }",
+        "question": "How many different students are involved in sports?"
+    },
+    {
+        "query": "query { sportsinfo ( where : { onscholarship : { _eq : \"Y\" } } ) { stuid } }",
+        "question": "List ids for all student who are on scholarship."
+    },
+    {
+        "query": "query { sportsinfo ( where : { onscholarship : { _eq : \"Y\" } } ) { stuid } }",
+        "question": "What are the ids for all sporty students who are on scholarship?"
+    },
+    {
+        "query": "query { student ( where : { sportsinfos : { onscholarship : { _eq : \"Y\" } } } ) { lname } }",
+        "question": "Show last names for all student who are on scholarship."
+    },
+    {
+        "query": "query { student ( where : { sportsinfos : { onscholarship : { _eq : \"Y\" } } } ) { lname } }",
+        "question": "What are the last names for all scholarship students?"
+    },
+    {
+        "query": "query { sportsinfo_aggregate { aggregate { sum { gamesplayed } } } }",
+        "question": "How many games are played for all students?"
+    },
+    {
+        "query": "query { sportsinfo_aggregate { aggregate { sum { gamesplayed } } } }",
+        "question": "What is the total number of games played?"
+    },
+    {
+        "query": "query { sportsinfo_aggregate ( where : { _and : { sportname : { _eq : \"Football\" } , onscholarship : { _eq : \"Y\" } } } ) { aggregate { sum { gamesplayed } } } }",
+        "question": "How many games are played for all football games by students on scholarship?"
+    },
+    {
+        "query": "query { sportsinfo_aggregate ( where : { _and : { sportname : { _eq : \"Football\" } , onscholarship : { _eq : \"Y\" } } } ) { aggregate { sum { gamesplayed } } } }",
+        "question": "What is the total number of all football games played by scholarship students?"
+    },
+    {
+        "query": "query { sportsinfo_aggregate ( where : { _and : { student : { fname : { _eq : \"David\" } , lname : { _eq : \"Shieber\" } } } } ) { aggregate { sum { hoursperweek } sum { gamesplayed } } } }",
+        "question": "Show total hours per week and number of games played for student David Shieber."
+    },
+    {
+        "query": "query { sportsinfo_aggregate ( where : { _and : { student : { lname : { _eq : \"Shieber\" } , fname : { _eq : \"David\" } } } } ) { aggregate { sum { hoursperweek } sum { gamesplayed } } } }",
+        "question": "What is the total number of hours per work and number of games played by David Shieber?"
+    },
+    {
+        "query": "query { sportsinfo_aggregate ( where : { student : { age : { _lt : 20 } } } ) { aggregate { sum { hoursperweek } sum { gamesplayed } } } }",
+        "question": "Show total hours per week and number of games played for students under 20."
+    },
+    {
+        "query": "query { sportsinfo_aggregate ( where : { student : { age : { _lt : 20 } } } ) { aggregate { sum { hoursperweek } sum { gamesplayed } } } }",
+        "question": "What is the total number of hours per week and number of games played by students under 20?"
+    },
+    {
+        "query": "query { plays_games_aggregate { aggregate { count } } }",
+        "question": "How many students play video games?"
+    },
+    {
+        "query": "query { plays_games_aggregate { aggregate { count } } }",
+        "question": "How many different students play games?"
+    },
+    {
+        "query": "query { student ( where : { _or : [ { sportsinfos : { sportname : { _eq : \"Football\" } } } , { sportsinfos : { sportname : { _eq : \"Lacrosse\" } } } ] } ) { lname fname } }",
+        "question": "Find the last and first name of students who are playing Football or Lacrosse."
+    },
+    {
+        "query": "query { student ( where : { _or : [ { sportsinfos : { sportname : { _eq : \"Football\" } } } , { sportsinfos : { sportname : { _eq : \"Lacrosse\" } } } ] } ) { lname fname } }",
+        "question": "What is the first and last name of all students who play Football or Lacrosse?"
+    }
+]

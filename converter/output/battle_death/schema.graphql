@@ -1,0 +1,39 @@
+type Query {
+  """"""
+  battle(_limit: Int, id: Int, name: String, date: String, bulgarian_commander: String, latin_commander: String, result: String): [battleT]
+
+  """"""
+  death(_limit: Int, caused_by_ship_id: Int, id: Int, note: String, killed: Int, injured: Int): [deathT]
+
+  """"""
+  ship(_limit: Int, lost_in_battle: Int, id: Int, name: String, tonnage: String, ship_type: String, location: String, disposition_of_ship: String): [shipT]
+}
+
+type battleT {
+  id: Int
+  name: String
+  date: String
+  bulgarian_commander: String
+  latin_commander: String
+  result: String
+}
+
+type deathT {
+  caused_by_ship_id: Int
+  id: Int
+  note: String
+  killed: Int
+  injured: Int
+  ship(_limit: Int, lost_in_battle: Int, name: String, tonnage: String, ship_type: String, location: String, disposition_of_ship: String): [shipT]
+}
+
+type shipT {
+  lost_in_battle: Int
+  id: Int
+  name: String
+  tonnage: String
+  ship_type: String
+  location: String
+  disposition_of_ship: String
+  battle(_limit: Int, name: String, date: String, bulgarian_commander: String, latin_commander: String, result: String): [battleT]
+}

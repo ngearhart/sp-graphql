@@ -1,0 +1,194 @@
+[
+    {
+        "query": "query { artist_aggregate { aggregate { count } } }",
+        "question": "How many artists are there?"
+    },
+    {
+        "query": "query { artist_aggregate { aggregate { count } } }",
+        "question": "Count the number of artists."
+    },
+    {
+        "query": "query { artist { age } }",
+        "question": "List the age of all music artists."
+    },
+    {
+        "query": "query { artist { age } }",
+        "question": "What are the ages of all music artists?"
+    },
+    {
+        "query": "query { artist_aggregate { aggregate { avg { age } } } }",
+        "question": "What is the average age of all artists?"
+    },
+    {
+        "query": "query { artist_aggregate { aggregate { avg { age } } } }",
+        "question": "Return the average age across all artists."
+    },
+    {
+        "query": "query { artist ( where : { artist : { _eq : \"Triumfall\" } } ) { famous_title } }",
+        "question": "What are the famous titles of the artist \"Triumfall\"?"
+    },
+    {
+        "query": "query { artist ( where : { artist : { _eq : \"Triumfall\" } } ) { famous_title } }",
+        "question": "Return the famous titles of the artist called \"Triumfall\"."
+    },
+    {
+        "query": "query { artist ( distinct_on : famous_release_date ) { famous_release_date } }",
+        "question": "What are the distinct Famous release dates?"
+    },
+    {
+        "query": "query { artist ( distinct_on : famous_release_date ) { famous_release_date } }",
+        "question": "Give the distinct famous release dates for all artists."
+    },
+    {
+        "query": "query { music_festival { date_of_ceremony result } }",
+        "question": "Return the dates of ceremony and the results of all music festivals"
+    },
+    {
+        "query": "query { music_festival { date_of_ceremony result } }",
+        "question": "What are the dates of ceremony and results for each music festival?"
+    },
+    {
+        "query": "query { music_festival ( where : { result : { _eq : \"Awarded\" } } ) { category } }",
+        "question": "What are the category of music festivals with result \"Awarded\"?"
+    },
+    {
+        "query": "query { music_festival ( where : { result : { _eq : \"Awarded\" } } ) { category } }",
+        "question": "Return the categories of music festivals that have the result \"Awarded\"."
+    },
+    {
+        "query": "query { volume_aggregate { aggregate { max { weeks_on_top } min { weeks_on_top } } } }",
+        "question": "What are the maximum and minimum week on top of all volumes?"
+    },
+    {
+        "query": "query { volume_aggregate { aggregate { max { weeks_on_top } min { weeks_on_top } } } }",
+        "question": "Give the maximum and minimum weeks on top across all volumes."
+    },
+    {
+        "query": "query { volume ( where : { weeks_on_top : { _gt : 1.0 } } ) { song } }",
+        "question": "What are the songs in volumes with more than 1 week on top?"
+    },
+    {
+        "query": "query { volume ( where : { weeks_on_top : { _gt : 1.0 } } ) { song } }",
+        "question": "Give the songs included in volumes that have more than 1 week on top."
+    },
+    {
+        "query": "query { volume ( order_by : { song : asc } ) { song } }",
+        "question": "Please list all songs in volumes in ascending alphabetical order."
+    },
+    {
+        "query": "query { volume ( order_by : { song : asc } ) { song } }",
+        "question": "What are the the songs in volumes, listed in ascending order?"
+    },
+    {
+        "query": "query { volume_aggregate { aggregate { count } } }",
+        "question": "How many distinct artists do the volumes associate to?"
+    },
+    {
+        "query": "query { volume_aggregate { aggregate { count } } }",
+        "question": "Count the number of distinct artists who have volumes."
+    },
+    {
+        "query": "query { music_festival ( where : { volumeByVolume : { weeks_on_top : { _gt : 2.0 } } } ) { date_of_ceremony } }",
+        "question": "Please show the date of ceremony of the volumes that last more than 2 weeks on top."
+    },
+    {
+        "query": "query { music_festival ( where : { volumeByVolume : { weeks_on_top : { _gt : 2.0 } } } ) { date_of_ceremony } }",
+        "question": "What are the dates of ceremony at music festivals corresponding to volumes that lasted more than 2 weeks on top?"
+    },
+    {
+        "query": "query { volume ( where : { music_festivals : { result : { _eq : \"Nominated\" } } } ) { song } }",
+        "question": "Please show the songs that have result \"nominated\" at music festivals."
+    },
+    {
+        "query": "query { volume ( where : { music_festivals : { result : { _eq : \"Nominated\" } } } ) { song } }",
+        "question": "What are the songs in volumes that have resulted in a nomination at music festivals?"
+    },
+    {
+        "query": "query { volume ( where : { artist : { artist : { _eq : \"Gorgoroth\" } } } ) { issue_date } }",
+        "question": "What are the issue dates of volumes associated with the artist \"Gorgoroth\"?"
+    },
+    {
+        "query": "query { volume ( where : { artist : { artist : { _eq : \"Gorgoroth\" } } } ) { issue_date } }",
+        "question": "Return the issue dates of volumes that are by the artist named Gorgoroth."
+    },
+    {
+        "query": "query { volume ( where : { artist : { age : { _gte : 32 } } } ) { song } }",
+        "question": "What are the songs in volumes associated with the artist aged 32 or older?"
+    },
+    {
+        "query": "query { volume ( where : { artist : { age : { _gte : 32 } } } ) { song } }",
+        "question": "Return names of songs in volumes that are by artists that are at least 32 years old."
+    },
+    {
+        "query": "query { volume_aggregate ( where : { artist : { age : { _lte : 25 } } } ) { aggregate { avg { weeks_on_top } } } }",
+        "question": "What is the average weeks on top of volumes associated with the artist aged 25 or younger?"
+    },
+    {
+        "query": "query { volume_aggregate ( where : { artist : { age : { _lte : 25 } } } ) { aggregate { avg { weeks_on_top } } } }",
+        "question": "Return the average number of weeks on top for volumes by artists that are at most 25 years old."
+    },
+    {
+        "query": "query { artist ( where : { volumes : { weeks_on_top : { _gt : 2.0 } } } ) { famous_title } }",
+        "question": "What are the famous title of the artists associated with volumes with more than 2 weeks on top?"
+    },
+    {
+        "query": "query { artist ( where : { volumes : { weeks_on_top : { _gt : 2.0 } } } ) { famous_title } }",
+        "question": "Return the famous titles for artists that have volumes that lasted more than 2 weeks on top."
+    },
+    {
+        "query": "query { artist ( order_by : { age : desc } ) { famous_title age } }",
+        "question": "Please list the age and famous title of artists in descending order of age."
+    },
+    {
+        "query": "query { artist ( order_by : { age : desc } ) { famous_title age } }",
+        "question": "What are the famous titles and ages of each artist, listed in descending order by age?"
+    },
+    {
+        "query": "query { artist ( limit : 1 , order_by : { age : desc } ) { famous_release_date } }",
+        "question": "What is the famous release date of the artist with the oldest age?"
+    },
+    {
+        "query": "query { artist ( limit : 1 , order_by : { age : desc } ) { famous_release_date } }",
+        "question": "Return the famous release date for the oldest artist."
+    },
+    {
+        "query": "query { volume ( limit : 1 , order_by : { weeks_on_top : desc } ) { song } }",
+        "question": "What is the song in the volume with the maximum weeks on top?"
+    },
+    {
+        "query": "query { volume ( limit : 1 , order_by : { weeks_on_top : desc } ) { song } }",
+        "question": "Return the song in the volume that has spent the most weeks on top?"
+    },
+    {
+        "query": "query { music_festival ( where : { _and : { result : { _eq : \"Awarded\" } , category : { _eq : \"Best Song\" } } } ) { date_of_ceremony } }",
+        "question": "What are the date of ceremony of music festivals with category \"Best Song\" and result \"Awarded\"?"
+    },
+    {
+        "query": "query { music_festival ( where : { _and : { result : { _eq : \"Awarded\" } , category : { _eq : \"Best Song\" } } } ) { date_of_ceremony } }",
+        "question": "Return the dates of ceremony corresponding to music festivals that had the category \"Best Song\" and result \"Awarded\"."
+    },
+    {
+        "query": "query { volume ( limit : 1 , order_by : { weeks_on_top : asc } ) { issue_date } }",
+        "question": "What is the issue date of the volume with the minimum weeks on top?"
+    },
+    {
+        "query": "query { volume ( limit : 1 , order_by : { weeks_on_top : asc } ) { issue_date } }",
+        "question": "Return the issue date of the volume that has spent the fewest weeks on top."
+    },
+    {
+        "query": "query { volume_aggregate { aggregate { count } } }",
+        "question": "How many distinct artists have volumes?"
+    },
+    {
+        "query": "query { volume_aggregate { aggregate { count } } }",
+        "question": "Count the number of artists who have had volumes."
+    },
+    {
+        "query": "query { volume ( where : { artist : { age : { _lte : 23 } } } ) { issue_date } }",
+        "question": "What are the issue dates of volumes associated with the artist aged 23 or younger?"
+    },
+    {
+        "query": "query { volume ( where : { artist : { age : { _lte : 23 } } } ) { issue_date } }",
+        "question": "Return the issue dates of volumes by artists who are at most 23 years old?"
+    }
+]

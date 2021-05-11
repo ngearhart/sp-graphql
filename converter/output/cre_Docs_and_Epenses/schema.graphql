@@ -1,0 +1,73 @@
+type Query {
+  """"""
+  Accounts(_limit: Int, Account_ID: Int, Statement_ID: Int, Account_Details: String): [AccountsT]
+
+  """"""
+  Documents(_limit: Int, Document_ID: Int, Document_Type_Code: String, Project_ID: Int, Document_Date: Date, Document_Name: String, Document_Description: String, Other_Details: String): [DocumentsT]
+
+  """"""
+  Documents_with_Expenses(_limit: Int, Document_ID: Int, Budget_Type_Code: String, Document_Details: String): [Documents_with_ExpensesT]
+
+  """"""
+  Projects(_limit: Int, Project_ID: Int, Project_Details: String): [ProjectsT]
+
+  """"""
+  Ref_Budget_Codes(_limit: Int, Budget_Type_Code: String, Budget_Type_Description: String): [Ref_Budget_CodesT]
+
+  """"""
+  Ref_Document_Types(_limit: Int, Document_Type_Code: String, Document_Type_Name: String, Document_Type_Description: String): [Ref_Document_TypesT]
+
+  """"""
+  Statements(_limit: Int, Statement_ID: Int, Statement_Details: String): [StatementsT]
+}
+
+type AccountsT {
+  Account_ID: Int
+  Statement_ID: Int
+  Account_Details: String
+  Statements(_limit: Int, Statement_Details: String): [StatementsT]
+}
+
+type StatementsT {
+  Statement_ID: Int
+  Statement_Details: String
+  Documents(_limit: Int, Document_Type_Code: String, Project_ID: Int, Document_Date: Date, Document_Name: String, Document_Description: String, Other_Details: String): [DocumentsT]
+}
+
+type DocumentsT {
+  Document_ID: Int
+  Document_Type_Code: String
+  Project_ID: Int
+  Document_Date: Date
+  Document_Name: String
+  Document_Description: String
+  Other_Details: String
+  Projects(_limit: Int, Project_Details: String): [ProjectsT]
+  Ref_Document_Types(_limit: Int, Document_Type_Name: String, Document_Type_Description: String): [Ref_Document_TypesT]
+}
+
+scalar Date
+
+type ProjectsT {
+  Project_ID: Int
+  Project_Details: String
+}
+
+type Ref_Document_TypesT {
+  Document_Type_Code: String
+  Document_Type_Name: String
+  Document_Type_Description: String
+}
+
+type Documents_with_ExpensesT {
+  Document_ID: Int
+  Budget_Type_Code: String
+  Document_Details: String
+  Documents(_limit: Int, Document_Type_Code: String, Project_ID: Int, Document_Date: Date, Document_Name: String, Document_Description: String, Other_Details: String): [DocumentsT]
+  Ref_Budget_Codes(_limit: Int, Budget_Type_Description: String): [Ref_Budget_CodesT]
+}
+
+type Ref_Budget_CodesT {
+  Budget_Type_Code: String
+  Budget_Type_Description: String
+}

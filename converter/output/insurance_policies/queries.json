@@ -1,0 +1,90 @@
+[
+    {
+        "query": "query { payments ( order_by : { date_payment_made : asc } ) { payment_method_code date_payment_made amount_payment } }",
+        "question": "List the method, date and amount of all the payments, in ascending order of date."
+    },
+    {
+        "query": "query { payments ( order_by : { date_payment_made : asc } ) { payment_method_code date_payment_made amount_payment } }",
+        "question": "What are the method, date and amount of each payment? Sort the list in ascending order of date."
+    },
+    {
+        "query": "query { claims ( limit : 1 , order_by : { amount_claimed : desc } ) { amount_settled amount_claimed } }",
+        "question": "Among all the claims, what is the settlement amount of the claim with the largest claim amount? List both the settlement amount and claim amount."
+    },
+    {
+        "query": "query { claims ( limit : 1 , order_by : { amount_claimed : desc } ) { amount_settled amount_claimed } }",
+        "question": "Find the settlement amount of the claim with the largest claim amount. Show both the settlement amount and claim amount."
+    },
+    {
+        "query": "query { claims ( limit : 1 , order_by : { amount_settled : asc } ) { amount_settled amount_claimed } }",
+        "question": "Among all the claims, what is the amount claimed in the claim with the least amount settled? List both the settlement amount and claim amount."
+    },
+    {
+        "query": "query { claims ( limit : 1 , order_by : { amount_settled : asc } ) { amount_settled amount_claimed } }",
+        "question": "Find the claimed amount in the claim with the least amount settled. Show both the settlement amount and claim amount."
+    },
+    {
+        "query": "query { claims ( limit : 1 , order_by : { date_claim_made : asc } ) { date_claim_made } }",
+        "question": "Of all the claims, what was the earliest date when any claim was made?"
+    },
+    {
+        "query": "query { claims ( limit : 1 , order_by : { date_claim_made : asc } ) { date_claim_made } }",
+        "question": "Tell me the the date when the first claim was made."
+    },
+    {
+        "query": "query { settlements_aggregate { aggregate { sum { amount_settled } } } }",
+        "question": "What is the total amount of settlement made for all the settlements?"
+    },
+    {
+        "query": "query { settlements_aggregate { aggregate { sum { amount_settled } } } }",
+        "question": "Compute the total amount of settlement across all the settlements."
+    },
+    {
+        "query": "query { settlements { date_claim_made date_claim_settled } }",
+        "question": "What are the claim dates and settlement dates of all the settlements?"
+    },
+    {
+        "query": "query { settlements { date_claim_made date_claim_settled } }",
+        "question": "Tell me the the claim date and settlement date for each settlement case."
+    },
+    {
+        "query": "query { payments_aggregate { aggregate { sum { amount_payment } } } }",
+        "question": "What is the total amount of payment?"
+    },
+    {
+        "query": "query { payments_aggregate { aggregate { sum { amount_payment } } } }",
+        "question": "Compute the total amount of payment processed."
+    },
+    {
+        "query": "query { customers ( distinct_on : customer_details ) { customer_details } }",
+        "question": "What are all the distinct details of the customers?"
+    },
+    {
+        "query": "query { customers ( distinct_on : customer_details ) { customer_details } }",
+        "question": "Return the distinct customer details."
+    },
+    {
+        "query": "query { settlements_aggregate { aggregate { count } } }",
+        "question": "How many settlements are there in total?"
+    },
+    {
+        "query": "query { settlements_aggregate { aggregate { count } } }",
+        "question": "Count the total number of settlements made."
+    },
+    {
+        "query": "query { payments ( where : { payment_method_code : { _eq : \"Visa\" } } ) { payment_id date_payment_made amount_payment } }",
+        "question": "Which Payments were processed with Visa? List the payment Id, the date and the amount."
+    },
+    {
+        "query": "query { payments ( where : { payment_method_code : { _eq : \"Visa\" } } ) { payment_id date_payment_made amount_payment } }",
+        "question": "Give me the payment Id, the date and the amount for all the payments processed with Visa."
+    },
+    {
+        "query": "query { claims_aggregate { aggregate { sum { amount_claimed } } } }",
+        "question": "Find the total claimed amount of all the claims."
+    },
+    {
+        "query": "query { claims_aggregate { aggregate { sum { amount_claimed } } } }",
+        "question": "What is total amount claimed summed across all the claims?"
+    }
+]

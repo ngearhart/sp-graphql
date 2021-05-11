@@ -1,0 +1,27 @@
+type Query {
+  """"""
+  actor(_limit: Int, Actor_ID: Int, Name: String, Musical_ID: Int, Character: String, Duration: String, age: Int): [actorT]
+
+  """"""
+  musical(_limit: Int, Musical_ID: Int, Name: String, Year: Int, Award: String, Category: String, Nominee: String, Result: String): [musicalT]
+}
+
+type actorT {
+  Actor_ID: Int
+  Name: String
+  Musical_ID: Int
+  Character: String
+  Duration: String
+  age: Int
+  actor(_limit: Int, Name: String, Musical_ID: Int, Character: String, Duration: String, age: Int): [actorT]
+}
+
+type musicalT {
+  Musical_ID: Int
+  Name: String
+  Year: Int
+  Award: String
+  Category: String
+  Nominee: String
+  Result: String
+}

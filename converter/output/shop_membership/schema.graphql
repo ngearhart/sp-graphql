@@ -1,0 +1,12 @@
+type Query {
+  """"""
+  member(_limit: Int, Member_ID: Int, Card_Number: String, Name: String, Hometown: String, Level: Int): [memberT]
+}
+
+type memberT {
+  Member_ID: Int
+  Card_Number: String
+  Name: String
+  Hometown: String
+  Level: Int
+}

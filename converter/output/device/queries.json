@@ -1,0 +1,82 @@
+[
+    {
+        "query": "query { device_aggregate { aggregate { count } } }",
+        "question": "How many devices are there?"
+    },
+    {
+        "query": "query { device_aggregate { aggregate { count } } }",
+        "question": "Count the number of devices."
+    },
+    {
+        "query": "query { device ( order_by : { carrier : asc } ) { carrier } }",
+        "question": "List the carriers of devices in ascending alphabetical order."
+    },
+    {
+        "query": "query { device ( order_by : { carrier : asc } ) { carrier } }",
+        "question": "What are the different carriers for devices, listed in alphabetical order?"
+    },
+    {
+        "query": "query { device ( where : { software_platform : { _neq : \"Android\" } } ) { carrier } }",
+        "question": "What are the carriers of devices whose software platforms are not \"Android\"?"
+    },
+    {
+        "query": "query { device ( where : { software_platform : { _neq : \"Android\" } } ) { carrier } }",
+        "question": "Return the device carriers that do not have Android as their software platform."
+    },
+    {
+        "query": "query { shop ( order_by : { open_year : asc } ) { shop_name } }",
+        "question": "What are the names of shops in ascending order of open year?"
+    },
+    {
+        "query": "query { shop ( order_by : { open_year : asc } ) { shop_name } }",
+        "question": "Return the names of shops, ordered by year of opening ascending."
+    },
+    {
+        "query": "query { stock_aggregate { aggregate { avg { quantity } } } }",
+        "question": "What is the average quantity of stocks?"
+    },
+    {
+        "query": "query { stock_aggregate { aggregate { avg { quantity } } } }",
+        "question": "Give the average quantity of stocks."
+    },
+    {
+        "query": "query { shop ( order_by : { shop_name : asc } ) { shop_name location } }",
+        "question": "What are the names and location of the shops in ascending alphabetical order of name."
+    },
+    {
+        "query": "query { shop ( order_by : { shop_name : asc } ) { shop_name location } }",
+        "question": "Return the names and locations of shops, ordered by name in alphabetical order."
+    },
+    {
+        "query": "query { device_aggregate { aggregate { count } } }",
+        "question": "How many different software platforms are there for devices?"
+    },
+    {
+        "query": "query { device_aggregate { aggregate { count } } }",
+        "question": "Count the number of different software platforms."
+    },
+    {
+        "query": "query { shop ( where : { shop_name : { _eq : \"Apple\" } } ) { open_date open_year } }",
+        "question": "List the open date of open year of the shop named \"Apple\"."
+    },
+    {
+        "query": "query { shop ( where : { shop_name : { _eq : \"Apple\" } } ) { open_date open_year } }",
+        "question": "What are the open dates and years for the shop named Apple?"
+    },
+    {
+        "query": "query { shop ( limit : 1 , order_by : { open_year : desc } ) { shop_name } }",
+        "question": "List the name of the shop with the latest open year."
+    },
+    {
+        "query": "query { shop ( limit : 1 , order_by : { open_year : desc } ) { shop_name } }",
+        "question": "What is the shop name corresponding to the shop that opened in the most recent year?"
+    },
+    {
+        "query": "query { shop { shop_name stocks { device { carrier } } } }",
+        "question": "Show names of shops and the carriers of devices they have in stock."
+    },
+    {
+        "query": "query { shop { shop_name stocks { device { carrier } } } }",
+        "question": "What are the names of device shops, and what are the carriers that they carry devices in stock for?"
+    }
+]

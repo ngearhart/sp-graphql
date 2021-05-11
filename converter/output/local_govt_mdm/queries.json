@@ -1,0 +1,42 @@
+[
+    {
+        "query": "query { customer_master_index ( where : { cmi_cross_references : { source_system_code : { _eq : \"Tax\" } } } ) { cmi_details } }",
+        "question": "what are the details of the cmi masters that have the cross reference code 'Tax'?"
+    },
+    {
+        "query": "query { cmi_cross_references ( order_by : { benefits_overpayments_aggregate : { min : { council_tax_id : asc } } } ) { source_system_code benefits_overpayments { council_tax_id } } }",
+        "question": "What is the tax source system code related to the benefits and overpayments? List the code and the benifit id, order by benifit id."
+    },
+    {
+        "query": "query { cmi_cross_references { source_system_code master_customer_id parking_fines { council_tax_id } } }",
+        "question": "Wat is the tax source system code and master customer id of the taxes related to each parking fine id?"
+    },
+    {
+        "query": "query { electoral_register ( where : { _or : [ { cmi_cross_reference : { source_system_code : { _eq : \"Electoral\" } } } , { cmi_cross_reference : { source_system_code : { _eq : \"Tax\" } } } ] } ) { electoral_register_id } }",
+        "question": "What are the register ids of electoral registries that have the cross reference source system code 'Electoral' or 'Tax'?"
+    },
+    {
+        "query": "query { cmi_cross_references_aggregate { aggregate { count } } }",
+        "question": "How many different source system code for the cmi cross references are there?"
+    },
+    {
+        "query": "query { customer_master_index ( order_by : { cmi_details : desc } ) { cmi_details } }",
+        "question": "List all information about customer master index, and sort them by details in descending order."
+    },
+    {
+        "query": "query { parking_fines { council_tax_id cmi_cross_ref_id } }",
+        "question": "List the council tax ids and their related cmi cross references of all the parking fines."
+    },
+    {
+        "query": "query { rent_arrears_aggregate { aggregate { count } } }",
+        "question": "How many council taxes are collected for renting arrears ?"
+    },
+    {
+        "query": "query { cmi_cross_references ( where : { customer_master_index : { cmi_details : { _eq : \"Gottlieb ,  Becker and Wyman\" } } } , distinct_on : source_system_code ) { source_system_code } }",
+        "question": "What are the distinct cross reference source system codes which are related to the master customer details 'Gottlieb, Becker and Wyman'?"
+    },
+    {
+        "query": "query { cmi_cross_references ( where : { source_system_code : { _like : \"%en%\" } } , distinct_on : source_system_code ) { source_system_code } }",
+        "question": "Which distinct source system code includes the substring 'en'?"
+    }
+]

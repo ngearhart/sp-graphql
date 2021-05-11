@@ -1,0 +1,114 @@
+[
+    {
+        "query": "query { channel ( where : { owner : { _neq : \"CCTV\" } } ) { name } }",
+        "question": "Find the names of channels that are not owned by CCTV."
+    },
+    {
+        "query": "query { channel ( where : { owner : { _neq : \"CCTV\" } } ) { name } }",
+        "question": "Which channels are not owned by CCTV? Give me the channel names."
+    },
+    {
+        "query": "query { channel ( order_by : { rating_in_percent : desc } ) { name } }",
+        "question": "List all channel names ordered by their rating in percent from big to small."
+    },
+    {
+        "query": "query { channel ( order_by : { rating_in_percent : desc } ) { name } }",
+        "question": "Give me a list of all the channel names sorted by the channel rating in descending order."
+    },
+    {
+        "query": "query { channel ( limit : 1 , order_by : { rating_in_percent : desc } ) { owner } }",
+        "question": "What is the owner of the channel that has the highest rating ratio?"
+    },
+    {
+        "query": "query { channel ( limit : 1 , order_by : { rating_in_percent : desc } ) { owner } }",
+        "question": "Show me the owner of the channel with the highest rating."
+    },
+    {
+        "query": "query { program_aggregate { aggregate { count } } }",
+        "question": "how many programs are there?"
+    },
+    {
+        "query": "query { program_aggregate { aggregate { count } } }",
+        "question": "Count the number of programs."
+    },
+    {
+        "query": "query { program ( order_by : { launch : asc } ) { name } }",
+        "question": "list all the names of programs, ordering by launch time."
+    },
+    {
+        "query": "query { program ( order_by : { launch : asc } ) { name } }",
+        "question": "What is the list of program names, sorted by the order of launch date?"
+    },
+    {
+        "query": "query { program { name origin owner } }",
+        "question": "List the name, origin and owner of each program."
+    },
+    {
+        "query": "query { program { name origin owner } }",
+        "question": "What are the name, origin and owner of each program?"
+    },
+    {
+        "query": "query { program ( limit : 1 , order_by : { launch : desc } ) { name } }",
+        "question": "find the name of the program that was launched most recently."
+    },
+    {
+        "query": "query { program ( limit : 1 , order_by : { launch : desc } ) { name } }",
+        "question": "Which program was launched most recently? Return the program name."
+    },
+    {
+        "query": "query { channel_aggregate ( where : { owner : { _eq : \"CCTV\" } } ) { aggregate { sum { share_in_percent } } } }",
+        "question": "find the total percentage share of all channels owned by CCTV."
+    },
+    {
+        "query": "query { channel_aggregate ( where : { owner : { _eq : \"CCTV\" } } ) { aggregate { sum { share_in_percent } } } }",
+        "question": "What is the total share (in percent) of all the channels owned by CCTV?"
+    },
+    {
+        "query": "query { channel ( where : { broadcasts : { time_of_day : { _eq : \"Morning\" } } } ) { name } }",
+        "question": "Find the names of the channels that are broadcast in the morning."
+    },
+    {
+        "query": "query { channel ( where : { broadcasts : { time_of_day : { _eq : \"Morning\" } } } ) { name } }",
+        "question": "Which channels are broadcast in the morning? Give me the channel names."
+    },
+    {
+        "query": "query { broadcast_aggregate ( where : { time_of_day : { _eq : \"Night\" } } ) { aggregate { count } } }",
+        "question": "find the number of different programs that are broadcast during night time."
+    },
+    {
+        "query": "query { broadcast_aggregate ( where : { time_of_day : { _eq : \"Night\" } } ) { aggregate { count } } }",
+        "question": "How many distinct programs are broadcast at \"Night\" time?"
+    },
+    {
+        "query": "query { program ( order_by : { origin : asc } ) { origin } }",
+        "question": "List all program origins in the alphabetical order."
+    },
+    {
+        "query": "query { program ( order_by : { origin : asc } ) { origin } }",
+        "question": "What is the list of program origins ordered alphabetically?"
+    },
+    {
+        "query": "query { channel_aggregate { aggregate { count } } }",
+        "question": "what is the number of different channel owners?"
+    },
+    {
+        "query": "query { channel_aggregate { aggregate { count } } }",
+        "question": "Count the number of distinct channel owners."
+    },
+    {
+        "query": "query { program ( where : { origin : { _neq : \"Beijing\" } } ) { name } }",
+        "question": "find the names of programs whose origin is not in Beijing."
+    },
+    {
+        "query": "query { program ( where : { origin : { _neq : \"Beijing\" } } ) { name } }",
+        "question": "Which programs' origins are not \"Beijing\"? Give me the program names."
+    },
+    {
+        "query": "query { channel ( where : { _or : [ { owner : { _eq : \"CCTV\" } } , { owner : { _eq : \"HBS\" } } ] } ) { name } }",
+        "question": "What are the names of the channels owned by CCTV or HBS?"
+    },
+    {
+        "query": "query { channel ( where : { _or : [ { owner : { _eq : \"CCTV\" } } , { owner : { _eq : \"HBS\" } } ] } ) { name } }",
+        "question": "List the names of all the channels owned by either CCTV or HBS"
+    }
+]
