@@ -1,7 +1,11 @@
 # sp-graphql
 Semantic Parsing to GraphQL - Based on Andre Carrera's work
 
-## Host OS Setup
+## Dataset Conversion
+There is an automatic SQLite to GraphQL schema converter in the /converter folder.
+See [converter/README.md](converter/README.md) for more information.
+
+## Model setup
 1. Download [cosql_dataset.zip](https://drive.google.com/uc?id=14x6lsWqlu6gR-aYxa6cemslDN3qT3zxP)
 2. Unzip cosql_dataset.zip, SPEGQL-dataset.zip, and spider.zip
 3. Run `git clone https://github.com/huggingface/transformers && pip install ./transformers`
@@ -13,5 +17,6 @@ Semantic Parsing to GraphQL - Based on Andre Carrera's work
 ## Running
 1. Run `python main.py`
 
-
-There will be more runtime options in the future
+## What is left to do
+- See converter/README.md
+- Model is still not totally working compared to Carrera's Jupyter setup

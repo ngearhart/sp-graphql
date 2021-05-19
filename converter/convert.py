@@ -9,7 +9,19 @@ import json
 
 import re
 
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--dataset_name', type=str,
+                    help='The name of the dataset to process')
+parser.add_argument('--all', action='store_true')
+parser.add_argument('--spider_path', default=abspath('../spider'))
+parser.add_argument('--spegql_path', default=abspath('../SPEGQL-dataset'))
+
+training_data = defaultdict(list)
+
+
 def convert_sqlite_file(old_path, new_path):
+    """Convert an input SQLite schema into a MySQL compatible schema."""
 
     def this_line_is_useless(line):
         useless_es = [
@@ -25,9 +37,6 @@ def convert_sqlite_file(old_path, new_path):
         for useless in useless_es:
             if re.search(useless, line):
                 return True
-
-    def has_primary_key(line):
-        return bool(re.search(r'PRIMARY KEY', line))
 
     searching_for_end = False
     open(new_path, "a").close()  # Touch new file just in case
@@ -89,16 +98,11 @@ def convert_sqlite_file(old_path, new_path):
 
                 new_file.writelines([line])
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--dataset_name', type=str,
-                    help='The name of the dataset to process')
-parser.add_argument('--all', action='store_true')
 
-training_data = defaultdict(list)
-
-def convert_dataset(dataset):
+def convert_dataset(spider_path, dataset):
+    """Run the converter on a specific dataset."""
     print("Copying SQL file...")
-    convert_sqlite_file(join(abspath('..'), 'spider', 'database', dataset, 'schema.sql'), join(curdir, 'db_dumps', 'schema.sql'))
+    convert_sqlite_file(join(spider_path, 'database', dataset, 'schema.sql'), join(curdir, 'db_dumps', 'schema.sql'))
     print("Launching MySQL database...")
     system("docker compose down")
     system("docker compose up -d")
@@ -106,6 +110,7 @@ def convert_dataset(dataset):
     sleep(60)  # Arbitrary, but shouldn't take more than 30 seconds for MySQL to initialize
     system("node index.js")
     print("Copying schema file to output folder...")
+    # Create folders if they do not exist
     try:
         mkdir(join(curdir, 'output'))
     except:
@@ -123,11 +128,12 @@ def convert_dataset(dataset):
 
     print("Done!")
 
+
 if __name__ == "__main__":
     args = parser.parse_args()
 
     # Load training data
-    with open(abspath('../SPEGQL-dataset/dataset/dev.json'), 'r', encoding='utf-8') as dev:
+    with open(join(args.spegql_path, 'dataset', 'dev.json'), 'r', encoding='utf-8') as dev:
         lines = dev.readlines()
         data = json.loads(''.join(lines))
         for obj in data:
@@ -135,7 +141,7 @@ if __name__ == "__main__":
                 "query": obj["query"],
                 "question": obj["question"]
             })
-    with open(abspath('../SPEGQL-dataset/dataset/train.json'), 'r', encoding='utf-8') as train:
+    with open(join(args.spegql_path, 'dataset', 'train.json'), 'r', encoding='utf-8') as train:
         lines = train.readlines()
         data = json.loads(''.join(lines))
         for obj in data:
@@ -146,10 +152,10 @@ if __name__ == "__main__":
 
     if args.all:
         errors = []
-        for dataset in listdir(abspath('../spider/database')):
+        for dataset in listdir(join(args.spider_path, 'database')):
             try:
                 print(' - - CONVERTING {} - -'.format(dataset))
-                convert_dataset(dataset)
+                convert_dataset(args.spider_path, dataset)
             except KeyboardInterrupt:
                 print(', '.join(errors))
                 exit()
@@ -157,4 +163,7 @@ if __name__ == "__main__":
                 errors.append(dataset)
         print(', '.join(errors))
     else:
-        convert_dataset(args.dataset_name[0])
+        if args.dataset_name is None:
+            print("Missing argument: Dataset name")
+            exit(1)
+        convert_dataset(args.spider_path, args.dataset_name)
