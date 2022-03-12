@@ -50,7 +50,7 @@ def pre_train(system: T5MultiSPModel, callbacks=[]) -> Trainer:
     return trainer
 
 
-def fine_tune(system: T5MultiSPModel, callbacks=[]) -> Trainer:
+def fine_tune(system: T5MultiSPModel, callbacks=[], gpus=1) -> Trainer:
     system.task = 'finetune'
     system.batch_size = 2  # because t5-base is smaller than bart.
     # system.lr=3e-4 # -6 is original
@@ -77,7 +77,7 @@ def fine_tune(system: T5MultiSPModel, callbacks=[]) -> Trainer:
 
     # trainer = Trainer(gpus=1,max_epochs=1, progress_bar_refresh_rate=1, train_percent_check=0.2)
     # trainer = Trainer(gpus=1, progress_bar_refresh_rate=1, val_check_interval=0.4)
-    trainer = Trainer(gpus=1, max_epochs=5,
+    trainer = Trainer(gpus=gpus, max_epochs=5,
                       progress_bar_refresh_rate=1, val_check_interval=0.5)
     # trainer = Trainer(gpus=1, max_epochs=3, progress_bar_refresh_rate=1, val_check_interval=0.5)
     # trainer = Trainer(gpus=1,max_epochs=3, progress_bar_refresh_rate=1,checkpoint_callback=checkpoint_callback)
@@ -104,7 +104,7 @@ def fine_tune(system: T5MultiSPModel, callbacks=[]) -> Trainer:
     # !zip -r finished_train.zip finished.ckpt
     system = system.load_from_checkpoint('finished.ckpt')
     system.task = 'finetune'
-    trainer = Trainer(gpus=1, max_epochs=0,
+    trainer = Trainer(gpus=gpus, max_epochs=0,
                       progress_bar_refresh_rate=1, val_check_interval=0.5)
     trainer.fit(system) #, callbacks=callbacks)
     # TODO: Running fit moves the system to CPU
@@ -132,13 +132,17 @@ def main():
     if num_gpus_torch == 0:
         print("Torch does not detect any GPUs. Try https://github.com/PyTorchLightning/pytorch-lightning/issues/1314")
         return
+    else:
+        print(f'{num_gpus_torch} cuda devices detected')
 
     hparams = argparse.Namespace(
         **{'lr': 0.0004365158322401656})  # for 3 epochs
     # system = ConvBartSystem(dataset, train_sampler, batch_size=2)
 
     print("Creating model...")
-    system = T5MultiSPModel(hparams, batch_size=32)
+    # Change batch size depending on how much memory your GPU has
+    # system = T5MultiSPModel(hparams, batch_size=32)
+    system = T5MultiSPModel(hparams, batch_size=2)
     # system.lr = 3e-4
     
     # Set device
@@ -152,7 +156,7 @@ def main():
     # pre_train(system, [tensorboard_callback])
 
     print("Fine tuning...")
-    trainer = fine_tune(system, [tensorboard_callback])
+    trainer = fine_tune(system, [tensorboard_callback], gpus=[0])
     print("Testing...")
     test(system, trainer, 'graphql')
     test(system, trainer, 'sql')

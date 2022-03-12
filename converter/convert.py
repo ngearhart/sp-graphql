@@ -1,4 +1,6 @@
 import argparse
+import subprocess
+from genericpath import exists
 
 from os import curdir, mkdir, system, remove, listdir
 from os.path import join, abspath
@@ -7,7 +9,10 @@ from time import sleep
 from collections import defaultdict
 import json
 
+import io
 import re
+from types import SimpleNamespace
+import sqlite3
 
 
 parser = argparse.ArgumentParser()
@@ -18,6 +23,12 @@ parser.add_argument('--spider_path', default=abspath('../spider'))
 parser.add_argument('--spegql_path', default=abspath('../SPEGQL-dataset'))
 
 training_data = defaultdict(list)
+
+
+def dump_sqlite(sqlite_file, sql_output):
+    with sqlite3.connect(sqlite_file) as conn, io.open(sql_output, 'w+') as p: 
+        for line in conn.iterdump(): 
+            p.write('%s\n' % line)
 
 
 def convert_sqlite_file(old_path, new_path):
@@ -42,6 +53,7 @@ def convert_sqlite_file(old_path, new_path):
     open(new_path, "a").close()  # Touch new file just in case
     with open(old_path, 'r', encoding='utf-8') as old_file:
         with open(new_path, 'w+', encoding='utf-8') as new_file:
+            new_file.writelines(["SET foreign_key_checks = 0;\n"])  # Disable fkey checks
             for line in old_file.readlines():
                 if this_line_is_useless(line):
                     continue
@@ -96,18 +108,32 @@ def convert_sqlite_file(old_path, new_path):
                 if re.match(r"AUTOINCREMENT", line):
                     line = re.sub("AUTOINCREMENT", "AUTO_INCREMENT", line)
 
+                # Many datasets in SPIDER use `text` as a primary key which MySQL does not support
+                if re.match(r".* text.", line):
+                    line = re.sub("text", "char(255)", line)
+
                 new_file.writelines([line])
+            new_file.writelines(["SET foreign_key_checks = 1;\n"])  # Re-enable fkey checks
 
 
 def convert_dataset(spider_path, dataset):
     """Run the converter on a specific dataset."""
     print("Copying SQL file...")
-    convert_sqlite_file(join(spider_path, 'database', dataset, 'schema.sql'), join(curdir, 'db_dumps', 'schema.sql'))
+    # Create db_dumps folder if it doesn't exist
+    if not exists(join(curdir, 'db_dumps')):
+        mkdir(join(curdir, 'db_dumps'))
+    dump_sqlite(join(spider_path, 'database', dataset, f'{dataset}.sqlite'), join(spider_path, 'database', dataset, 'schema_2.sql'))
+    convert_sqlite_file(join(spider_path, 'database', dataset, 'schema_2.sql'), join(curdir, 'db_dumps', 'schema.sql'))
     print("Launching MySQL database...")
     system("docker compose down")
     system("docker compose up -d")
     print("Waiting for MySQL to be done loading...")
-    sleep(60)  # Arbitrary, but shouldn't take more than 30 seconds for MySQL to initialize
+    p = SimpleNamespace()
+    p.stdout = ""
+    while p.stdout is None or "healthy" not in p.stdout:
+        p = subprocess.run("docker inspect --format='{{.State.Health}}' converter-db-1")
+        print(p.stdout)
+        sleep(0.5)
     system("node index.js")
     print("Copying schema file to output folder...")
     # Create folders if they do not exist

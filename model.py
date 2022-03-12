@@ -32,7 +32,7 @@ class T5MultiSPModel(pl.LightningModule):
         self.num_beams = num_beams
 
         # self.lr=3e-5
-        self.hparams = hparams
+        self.save_hyperparameters(hparams)
 
         self.task = task
         self.test_flag = test_flag
@@ -132,12 +132,12 @@ class T5MultiSPModel(pl.LightningModule):
         return {'progress_bar': tensorboard_logs, 'log': tensorboard_logs}
 
     def optimizer_step(self, epoch, batch_idx, optimizer, optimizer_idx, second_order_closure=None, *args, **kwargs):
-        if self.trainer.use_tpu:
+        if self.trainer.tpu_cores is not None and self.trainer.tpu_cores > 0:
             print("Invalid code (optimizer_step handler)")
             exit(1)
             # xm.optimizer_step(optimizer)
         else:
-            optimizer.step()
+            optimizer.step(closure=second_order_closure)
         optimizer.zero_grad()
         self.lr_scheduler.step()
 
