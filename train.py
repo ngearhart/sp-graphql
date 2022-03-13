@@ -166,8 +166,7 @@ def main():
     test(system, trainer, 'sql')
     trainer.save_checkpoint(f'finished-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt')
 
-    # TODO: NTLK and Flask stuff
-
+    print(f'All done! You can now use the file finished-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt with server.py.')
 
 if __name__ == "__main__":
     main()
