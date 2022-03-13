@@ -102,9 +102,9 @@ def fine_tune(system: T5MultiSPModel, callbacks=[], gpus=1) -> Trainer:
     hyps = [system.tokenizer.decode(
         g, skip_special_tokens=True, clean_up_tokenization_spaces=False) for g in generated_ids]
     print(hyps)
-    # trainer.save_checkpoint('finished.ckpt')
+    trainer.save_checkpoint(f'fine-tuned-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt')
     # !zip -r finished_train.zip finished.ckpt
-    system = system.load_from_checkpoint('finished.ckpt')
+    # system = system.load_from_checkpoint('finished.ckpt')
     system.task = 'finetune'
     trainer = Trainer(gpus=gpus, max_epochs=0,
                       progress_bar_refresh_rate=1, val_check_interval=0.5)
