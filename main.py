@@ -141,8 +141,8 @@ def main():
 
     print("Creating model...")
     # Change batch size depending on how much memory your GPU has
-    # system = T5MultiSPModel(hparams, batch_size=32)
-    system = T5MultiSPModel(hparams, batch_size=2)
+    system = T5MultiSPModel(hparams, batch_size=32)
+    # system = T5MultiSPModel(hparams, batch_size=2)
     # system.lr = 3e-4
     
     # Set device
