@@ -159,9 +159,12 @@ def main():
 
     print("Fine tuning...")
     trainer = fine_tune(system, [tensorboard_callback], gpus=[0])
+    trainer.save_checkpoint(f'post-tuning-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt')
     print("Testing...")
     test(system, trainer, 'graphql')
+    trainer.save_checkpoint(f'post-graphql-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt')
     test(system, trainer, 'sql')
+    trainer.save_checkpoint(f'finished-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt')
 
     # TODO: NTLK and Flask stuff
 
