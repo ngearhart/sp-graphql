@@ -1,3 +1,5 @@
+print('Initializing')
+
 import argparse
 from datetime import datetime
 from os import curdir
