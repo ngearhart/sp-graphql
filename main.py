@@ -118,7 +118,7 @@ def test(system: T5MultiSPModel, trainer: Trainer, test_flag: str):
     system.num_beams = 3
     system.test_flag = test_flag
     system.prepare_data()
-    trainer.test()
+    trainer.test(system, dataloaders=system.test_dataloader())
 
 
 def main():
