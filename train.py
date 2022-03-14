@@ -177,7 +177,7 @@ def main():
         trainer = Trainer(gpus=[0,1,2,3,4,5,6,7], max_epochs=5,
                         progress_bar_refresh_rate=1, val_check_interval=0.5)
         torch.distributed.init_process_group(
-            backend='nccl', world_size=8
+            backend='nccl', world_size=8, rank=0
         )
         system = DistributedDataParallel(system)
         system.load_from_checkpoint(args.test_checkpoint)
