@@ -7,6 +7,7 @@ from os.path import join
 
 import tensorflow
 import torch
+from torch.nn.parallel import DistributedDataParallel
 from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import ModelCheckpoint
 from tensorflow.keras.callbacks import TensorBoard
@@ -173,8 +174,9 @@ def main():
         trainer = fine_tune(system, [tensorboard_callback], gpus=[0])
         trainer.save_checkpoint(f'post-tuning-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt')
     else:
-        trainer = Trainer(gpus=[0], max_epochs=5,
+        trainer = Trainer(gpus=[0,1,2,3,4,5,6,7], max_epochs=5,
                         progress_bar_refresh_rate=1, val_check_interval=0.5)
+        system = DistributedDataParallel(system)
         system.load_from_checkpoint(args.test_checkpoint)
         system.task = 'finetune'
 
