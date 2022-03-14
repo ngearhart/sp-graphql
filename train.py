@@ -3,6 +3,7 @@ print('Initializing')
 import argparse
 from datetime import datetime
 from os import curdir
+import os
 from os.path import join
 
 import tensorflow
@@ -174,6 +175,8 @@ def main():
         trainer = fine_tune(system, [tensorboard_callback], gpus=[0])
         trainer.save_checkpoint(f'post-tuning-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt')
     else:
+        os.environ['MASTER_ADDR'] = 'localhost'
+        os.environ['MASTER_PORT'] = '12355'
         trainer = Trainer(gpus=[0,1,2,3,4,5,6,7], max_epochs=5,
                         progress_bar_refresh_rate=1, val_check_interval=0.5)
         torch.distributed.init_process_group(
