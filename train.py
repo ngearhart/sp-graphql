@@ -121,7 +121,28 @@ def test(system: T5MultiSPModel, trainer: Trainer, test_flag: str):
     trainer.test(system, dataloaders=system.test_dataloader())
 
 
+def generate_system():
+    hparams = argparse.Namespace(
+        **{'lr': 0.0004365158322401656})  # for 3 epochs
+    # system = ConvBartSystem(dataset, train_sampler, batch_size=2)
+
+    print("Creating model...")
+    # Change batch size depending on how much memory your GPU has
+    system = T5MultiSPModel(hparams, batch_size=32)
+    # system = T5MultiSPModel(hparams, batch_size=2)
+    # system.lr = 3e-4
+    
+    # Set device
+    system = system.to(DEVICE)
+    return system
+
+
 def main():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--test-checkpoint', type=str, default=None)
+    args = parser.parse_args()
+
     num_gpus = len(tensorflow.config.list_physical_devices('GPU'))
     if num_gpus > 0:
         print("Num GPUs Available: ", num_gpus)
@@ -137,29 +158,26 @@ def main():
     else:
         print(f'{num_gpus_torch} cuda devices detected')
 
-    hparams = argparse.Namespace(
-        **{'lr': 0.0004365158322401656})  # for 3 epochs
-    # system = ConvBartSystem(dataset, train_sampler, batch_size=2)
-
-    print("Creating model...")
-    # Change batch size depending on how much memory your GPU has
-    system = T5MultiSPModel(hparams, batch_size=32)
-    # system = T5MultiSPModel(hparams, batch_size=2)
-    # system.lr = 3e-4
-    
-    # Set device
-    system = system.to(DEVICE)
+    system = generate_system()
 
     # Tensorboard setup
     log_dir = join(curdir, "logs", "fit", datetime.now().strftime("%Y%m%d-%H%M%S"))
     tensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
 
-    # print("Pretraining...")
-    # pre_train(system, [tensorboard_callback])
+    trainer = None
+    if args.test_checkpoint is None:
+        print("Pretraining...")
+        pre_train(system, [tensorboard_callback])
 
-    print("Fine tuning...")
-    trainer = fine_tune(system, [tensorboard_callback], gpus=[0])
-    trainer.save_checkpoint(f'post-tuning-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt')
+        print("Fine tuning...")
+        trainer = fine_tune(system, [tensorboard_callback], gpus=[0])
+        trainer.save_checkpoint(f'post-tuning-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt')
+    else:
+        trainer = Trainer(gpus=[0], max_epochs=5,
+                        progress_bar_refresh_rate=1, val_check_interval=0.5)
+        system.load_from_checkpoint(args.test_checkpoint)
+        system.task = 'finetune'
+
     print("Testing...")
     test(system, trainer, 'graphql')
     trainer.save_checkpoint(f'post-graphql-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt')
