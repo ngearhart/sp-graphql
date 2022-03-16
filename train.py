@@ -11,13 +11,14 @@ import torch
 from torch.nn.parallel import DistributedDataParallel
 from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import ModelCheckpoint
+from pytorch_lightning.loggers import TensorBoardLogger
 from tensorflow.keras.callbacks import TensorBoard
 
 from constants import DEVICE
 from model import T5MultiSPModel
 
 
-def pre_train(system: T5MultiSPModel, callbacks=[]) -> Trainer:
+def pre_train(system: T5MultiSPModel, callbacks=[], logger=None) -> Trainer:
     # trainer = Trainer(num_tpu_cores=8,max_epochs=1)
     # trainer = Trainer(max_epochs=1, train_percent_check=0.1)
     # checkpoint_callback = ModelCheckpoint(
@@ -27,7 +28,7 @@ def pre_train(system: T5MultiSPModel, callbacks=[]) -> Trainer:
     #     mode='min',
     #     prefix=''
     # )
-    trainer = Trainer(gpus=[0], max_epochs=1, progress_bar_refresh_rate=1, callbacks=callbacks)
+    trainer = Trainer(gpus=[0], max_epochs=1, progress_bar_refresh_rate=1, callbacks=callbacks, logger=logger)
 
     # # TODO: Is train percent check the same as val check interval?
     # trainer = Trainer(gpus=1, max_epochs=1,
@@ -54,7 +55,7 @@ def pre_train(system: T5MultiSPModel, callbacks=[]) -> Trainer:
     return trainer
 
 
-def fine_tune(system: T5MultiSPModel, callbacks=[], gpus=1) -> Trainer:
+def fine_tune(system: T5MultiSPModel, callbacks=[], gpus=1, logger=None) -> Trainer:
     system.task = 'finetune'
     system.batch_size = 2  # because t5-base is smaller than bart.
     # system.lr=3e-4 # -6 is original
@@ -82,7 +83,7 @@ def fine_tune(system: T5MultiSPModel, callbacks=[], gpus=1) -> Trainer:
     # trainer = Trainer(gpus=1,max_epochs=1, progress_bar_refresh_rate=1, train_percent_check=0.2)
     # trainer = Trainer(gpus=1, progress_bar_refresh_rate=1, val_check_interval=0.4)
     trainer = Trainer(gpus=gpus, max_epochs=5,
-                      progress_bar_refresh_rate=1, val_check_interval=0.5, callbacks=callbacks)
+                      progress_bar_refresh_rate=1, val_check_interval=0.5, callbacks=callbacks, logger=logger)
     # trainer = Trainer(gpus=1, max_epochs=3, progress_bar_refresh_rate=1, val_check_interval=0.5)
     # trainer = Trainer(gpus=1,max_epochs=3, progress_bar_refresh_rate=1,checkpoint_callback=checkpoint_callback)
     # trainer = Trainer(num_tpu_cores=8,max_epochs=1, progress_bar_refresh_rate=1)
@@ -164,15 +165,24 @@ def main():
 
     # Tensorboard setup
     log_dir = join(curdir, "logs", "fit", datetime.now().strftime("%Y%m%d-%H%M%S"))
-    tensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
+    tensorboard_callback = TensorBoard(
+        log_dir=log_dir,
+        histogram_freq=1,
+        write_graph=True, 
+        write_images=True
+    )
+
+    tensorboard_logger = TensorBoardLogger(
+        'tb_logs', name='spegql-run'
+    )
 
     trainer = None
     if args.test_checkpoint is None:
         print("Pretraining...")
-        pre_train(system, [tensorboard_callback])
+        pre_train(system, logger=tensorboard_logger)
 
         print("Fine tuning...")
-        trainer = fine_tune(system, [tensorboard_callback], gpus=[0])
+        trainer = fine_tune(system, gpus=[0], logger=tensorboard_logger)
         trainer.save_checkpoint(f'post-tuning-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt')
     else:
         os.environ['MASTER_ADDR'] = 'localhost'

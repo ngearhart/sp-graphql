@@ -111,6 +111,28 @@ class T5MultiSPModel(pl.LightningModule):
         tensorboard_logs = {"train_loss": loss}
         return {"loss": loss, "log": tensorboard_logs}
 
+    def training_epoch_end(self,outputs):
+        #  the function is called after every epoch is completed
+
+        # calculating average loss  
+        avg_loss = torch.stack([x['loss'] for x in outputs]).mean()
+
+        # calculating correect and total predictions
+        correct=sum([x["correct"] for  x in outputs])
+        total=sum([x["total"] for  x in outputs])
+
+        # creating log dictionary
+        tensorboard_logs = {'loss': avg_loss,"Accuracy": correct/total}
+
+        epoch_dictionary={
+            # required
+            'loss': avg_loss,
+            
+            # for logging purposes
+            'log': tensorboard_logs}
+
+        return epoch_dictionary
+
     def validation_step(self, batch, batch_idx):
         loss = self._step(batch)
 
