@@ -86,7 +86,7 @@ def fine_tune(system: T5MultiSPModel, callbacks=[], gpus=1) -> Trainer:
     # trainer = Trainer(gpus=1, max_epochs=3, progress_bar_refresh_rate=1, val_check_interval=0.5)
     # trainer = Trainer(gpus=1,max_epochs=3, progress_bar_refresh_rate=1,checkpoint_callback=checkpoint_callback)
     # trainer = Trainer(num_tpu_cores=8,max_epochs=1, progress_bar_refresh_rate=1)
-    trainer.fit(system) #, callbacks=callbacks)
+    trainer.fit(system, callbacks=callbacks)
     # TODO: Running fit moves the system to CPU
     system = system.to(DEVICE)
     inputs = system.val_dataset[0]
@@ -107,12 +107,12 @@ def fine_tune(system: T5MultiSPModel, callbacks=[], gpus=1) -> Trainer:
     trainer.save_checkpoint(f'fine-tuned-{datetime.now().strftime("%Y%m%d-%H%M%S")}.ckpt')
     # !zip -r finished_train.zip finished.ckpt
     # system = system.load_from_checkpoint('finished.ckpt')
-    system.task = 'finetune'
-    trainer = Trainer(gpus=gpus, max_epochs=0,
-                      progress_bar_refresh_rate=1, val_check_interval=0.5)
-    trainer.fit(system) #, callbacks=callbacks)
-    # TODO: Running fit moves the system to CPU
-    system = system.to(DEVICE)
+    # system.task = 'finetune'
+    # trainer = Trainer(gpus=gpus, max_epochs=0,
+    #                   progress_bar_refresh_rate=1, val_check_interval=0.5)
+    # trainer.fit(system) #, callbacks=callbacks)
+    # # TODO: Running fit moves the system to CPU
+    # system = system.to(DEVICE)
     return trainer
 
 
