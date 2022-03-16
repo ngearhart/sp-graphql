@@ -27,7 +27,7 @@ def pre_train(system: T5MultiSPModel, callbacks=[]) -> Trainer:
     #     mode='min',
     #     prefix=''
     # )
-    trainer = Trainer(gpus=[0], max_epochs=1, progress_bar_refresh_rate=1)
+    trainer = Trainer(gpus=[0], max_epochs=1, progress_bar_refresh_rate=1, callbacks=callbacks)
 
     # # TODO: Is train percent check the same as val check interval?
     # trainer = Trainer(gpus=1, max_epochs=1,
@@ -39,7 +39,7 @@ def pre_train(system: T5MultiSPModel, callbacks=[]) -> Trainer:
     # import gc
     # gc.collect()
 
-    trainer.fit(system) #callbacks=callbacks)
+    trainer.fit(system)
     # TODO: Running fit moves the system to CPU
     system = system.to(DEVICE)
     system.tokenizer.decode(system.train_dataset[0]['source_ids'].squeeze(
@@ -82,11 +82,11 @@ def fine_tune(system: T5MultiSPModel, callbacks=[], gpus=1) -> Trainer:
     # trainer = Trainer(gpus=1,max_epochs=1, progress_bar_refresh_rate=1, train_percent_check=0.2)
     # trainer = Trainer(gpus=1, progress_bar_refresh_rate=1, val_check_interval=0.4)
     trainer = Trainer(gpus=gpus, max_epochs=5,
-                      progress_bar_refresh_rate=1, val_check_interval=0.5)
+                      progress_bar_refresh_rate=1, val_check_interval=0.5, callbacks=callbacks)
     # trainer = Trainer(gpus=1, max_epochs=3, progress_bar_refresh_rate=1, val_check_interval=0.5)
     # trainer = Trainer(gpus=1,max_epochs=3, progress_bar_refresh_rate=1,checkpoint_callback=checkpoint_callback)
     # trainer = Trainer(num_tpu_cores=8,max_epochs=1, progress_bar_refresh_rate=1)
-    trainer.fit(system, callbacks=callbacks)
+    trainer.fit(system)
     # TODO: Running fit moves the system to CPU
     system = system.to(DEVICE)
     inputs = system.val_dataset[0]
