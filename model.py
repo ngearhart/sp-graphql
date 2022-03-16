@@ -211,11 +211,14 @@ class T5MultiSPModel(pl.LightningModule):
         else:
             output_test_predictions_file = os.path.join(
                 os.getcwd(), "test_predictions.txt")
-            with open(output_test_predictions_file, "w+") as p_writer:
+            with open(output_test_predictions_file, "w+", encoding='utf-8') as p_writer:
                 for output_batch in outputs:
-                    p_writer.writelines(
-                        s + "\n" for s in output_batch["preds"])
-                p_writer.close()
+                    try:
+                        p_writer.writelines(
+                            s + "\n" for s in output_batch["preds"])
+                    except Exception as e:
+                        # Ignore encoding errors
+                        print(f'Encoding error: {e}')
             tensorboard_logs = {"test_loss": avg_loss}
             return {"progress_bar": tensorboard_logs, "log": tensorboard_logs}
 
@@ -257,10 +260,10 @@ class T5MultiSPModel(pl.LightningModule):
             self.val_dataset = ConcatDataset([val_dataset_g, val_dataset_s])
 
     def train_dataloader(self):
-        return DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True)
+        return DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=8)
 
     def val_dataloader(self):
-        return DataLoader(self.val_dataset, batch_size=self.batch_size)
+        return DataLoader(self.val_dataset, batch_size=self.batch_size, num_workers=8)
 
     def test_dataloader(self):
-        return DataLoader(self.test_dataset, batch_size=self.batch_size)
+        return DataLoader(self.test_dataset, batch_size=self.batch_size, num_workers=8)

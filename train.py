@@ -177,15 +177,15 @@ def main():
     else:
         os.environ['MASTER_ADDR'] = 'localhost'
         os.environ['MASTER_PORT'] = '12355'
-        trainer = Trainer(gpus=[0,1,2,3,4,5,6,7], max_epochs=5,
+        trainer = Trainer(max_epochs=5,
                         progress_bar_refresh_rate=1, val_check_interval=0.5)
-        print('Initializing process group...')
-        torch.distributed.init_process_group(
-            backend='nccl', world_size=8, rank=0
-        )
-        print('Setting up parallel data system')
-        system = DistributedDataParallel(system)
-        print('Done')
+        # print('Initializing process group...')
+        # torch.distributed.init_process_group(
+        #     backend='nccl', world_size=8, rank=0
+        # )
+        # print('Setting up parallel data system')
+        # system = DistributedDataParallel(system)
+        # print('Done')
         system.load_from_checkpoint(args.test_checkpoint)
         system.task = 'finetune'
 
